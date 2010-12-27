@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8" />
+<title>Highcharts Widget</title>
+<script src="jquery-1.4.2.js" type="text/javascript" charset="utf-8"></script>
+<script src="jquery-ui-1.8.custom.js" type="text/javascript" charset="utf-8"></script>
+<script src="highcharts.2.1.1.compiled.js" type="text/javascript" charset="utf-8"></script>
+<script src="jquery.ui.allychart.js" type="text/javascript" charset="utf-8"></script>
+
+
+<script type="text/javascript" charset="utf-8">
+	
+	$(function() {
+
+		
+		$('#highcharts_container').allyChart();		
+		$('#highcharts_container').allyChart('addSeries', 'Oh my!', [23,42,32]);
+		$('#highcharts_container').allyChart('draw');
+		
+	});
+	
+
+	
+	
+</script>
+
+
+
+
+</head>
+
+<body>
+	
+<h1>Highcharts Widget</h1>	
+
+
+<div id="highcharts_container"></div>
+
+</body>
+
+</html>
