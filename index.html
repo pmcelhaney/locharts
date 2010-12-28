@@ -13,10 +13,12 @@
 <script type="text/javascript" charset="utf-8">
 	
 	$(function() {
-
-		
-		$('#highcharts_container').allyChart();		
+		$('#highcharts_container').allyChart({width: 800, height: 400});		
+		$('#highcharts_container').allyChart('setCategories', ['2008','2009','2010']);
 		$('#highcharts_container').allyChart('addSeries', 'Oh my!', [23,42,32]);
+		$('#highcharts_container').allyChart('addSeries', 'Lions', [10,20,30]); 
+		$('#highcharts_container').allyChart('addSeries', 'Tigers', [14,7,33]); 
+		$('#highcharts_container').allyChart('addSeries', 'Bears', [25,4,22]); 
 		$('#highcharts_container').allyChart('draw');
 		
 	});
