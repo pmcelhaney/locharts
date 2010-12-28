@@ -11,40 +11,9 @@
 
 
 <script type="text/javascript" charset="utf-8">
-	
 	$(function() {
-
-		
-		
-		$('#table-based-chart').allyChart({width: 800, height: 400});
-		
-		var categories = $('#cd-rate-table thead th:gt(0)').map(function() { return $(this).text()  })
-			
-		$('#table-based-chart').allyChart('setCategories', categories );
-		console.log(categories);	
-		
-		
-		$('#highcharts_container').allyChart({width: 800, height: 400});		
-		$('#highcharts_container').allyChart('setCategories', categories );
-		
-		$('#cd-rate-table tbody tr').each(function () {
-			var data = $(this).find('td').map(function () {
-				return parseFloat($(this).text());
-			}).toArray();
-			$('#highcharts_container').allyChart('addSeries', $(this).find('th').text(), data);
-		});
-		
-		$('#table-based-chart').allyChart('draw');
-		
-		
-		
-	
-		$('#highcharts_container').allyChart('draw');
+		$('#chart_container').allyChart({width: 800, height: 400, sourceTable: '#cd-rate-table'});
 	});
-	
-
-	
-	
 </script>
 
 
@@ -57,11 +26,12 @@
 <h1>Highcharts Widget</h1>	
 
 
-<div id="highcharts_container"></div>
 
 
 <table id="cd-rate-table" summary="A comparison of 1, 2, and 4-year CD rates from three different banks. The best rate is Ally's 4-year CD, at 1.50 APY.">
 	<caption>CD Rates</caption>
+
+	
 	<thead>
 		<tr>
 			<th id="cd-rate-table-company">Company</th>
@@ -97,8 +67,11 @@
 		</tr>
 	</tbody>	
 </table>
-	
-<div id="table-based-chart"></div>
+
+
+<div id="chart_container"></div>
+
+
 
 </body>
 

@@ -21,7 +21,7 @@
 			
 		},
 		_chartOptions: {},
-		_create: function() { 	
+		_create: function(o) {
 			this._chartOptions = {
 			    chart: {
 			        renderTo: this.element[0],
@@ -38,7 +38,7 @@
 			        text: ''
 			    },
 			    legend: {
-			        enabled: false
+			        enabled: true
 			    },
 			    yAxis: {
 			    	title: ''
@@ -47,6 +47,10 @@
 			    	
 			    },
 				series: []
+			};
+			if (this.options.sourceTable) {
+				this.readTable(this.options.sourceTable);	
+				this.draw();
 			}
 		},
 		
@@ -56,6 +60,18 @@
 		
 		setCategories: function (categories) {
 			this._chartOptions.xAxis.categories = categories;
+		},
+		
+		readTable: function (table) {
+			var $table = $(table);
+			var self = this;
+			this.setCategories($table.find('thead th:gt(0)').map(function() { return $(this).text()  }).toArray());
+			$table.find('tbody tr').each(function () {
+				var data = $(this).find('td').map(function () {
+					return parseFloat($(this).text());
+				}).toArray();
+				self.addSeries($(this).find('th').text(), data);
+			});
 		},
 		
 		draw: function () {
