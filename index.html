@@ -13,14 +13,33 @@
 <script type="text/javascript" charset="utf-8">
 	
 	$(function() {
-		$('#highcharts_container').allyChart({width: 800, height: 400});		
-		$('#highcharts_container').allyChart('setCategories', ['2008','2009','2010']);
-		$('#highcharts_container').allyChart('addSeries', 'Oh my!', [23,42,32]);
-		$('#highcharts_container').allyChart('addSeries', 'Lions', [10,20,30]); 
-		$('#highcharts_container').allyChart('addSeries', 'Tigers', [14,7,33]); 
-		$('#highcharts_container').allyChart('addSeries', 'Bears', [25,4,22]); 
-		$('#highcharts_container').allyChart('draw');
+
 		
+		
+		$('#table-based-chart').allyChart({width: 800, height: 400});
+		
+		var categories = $('#cd-rate-table thead th:gt(0)').map(function() { return $(this).text()  })
+			
+		$('#table-based-chart').allyChart('setCategories', categories );
+		console.log(categories);	
+		
+		
+		$('#highcharts_container').allyChart({width: 800, height: 400});		
+		$('#highcharts_container').allyChart('setCategories', categories );
+		
+		$('#cd-rate-table tbody tr').each(function () {
+			var data = $(this).find('td').map(function () {
+				return parseFloat($(this).text());
+			}).toArray();
+			$('#highcharts_container').allyChart('addSeries', $(this).find('th').text(), data);
+		});
+		
+		$('#table-based-chart').allyChart('draw');
+		
+		
+		
+	
+		$('#highcharts_container').allyChart('draw');
 	});
 	
 
@@ -41,7 +60,7 @@
 <div id="highcharts_container"></div>
 
 
-<table summary="A comparison of 1, 2, and 4-year CD rates from three different banks. The best rate is Ally's 4-year CD, at 1.50 APY.">
+<table id="cd-rate-table" summary="A comparison of 1, 2, and 4-year CD rates from three different banks. The best rate is Ally's 4-year CD, at 1.50 APY.">
 	<caption>CD Rates</caption>
 	<thead>
 		<tr>
