@@ -2,19 +2,26 @@
                     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<link rel="stylesheet" href="/qunit/qunit.css" type="text/css" media="screen" />
-<script type="text/javascript" src="/qunit/qunit.js"></script>
-
+<script src="/jquery-1.4.2.js" type="text/javascript" charset="utf-8"></script>
+<script src="/jquery-ui-1.8.custom.js" type="text/javascript" charset="utf-8"></script>
 <script>
-
 // Mock the Highcharts object.
 Highcharts = {};
 Highcharts.Chart = function (options, callback) {
 	this.options = options;	
 	this.callback = callback;
+	Highcharts.chart = this;
 };
 
+</script>
+
+<script src="/jquery.ui.allychart.js" type="text/javascript" charset="utf-8"></script>
+
+<link rel="stylesheet" href="/qunit/qunit.css" type="text/css" media="screen" />
+<script type="text/javascript" src="/qunit/qunit.js"></script>
+
+
+<script>
 
 $(document).ready(function(){
     
@@ -29,6 +36,15 @@ test("Mock Highcharts", function() {
 });
 
 
+module("allychart: core")
+
+test("set width and height", function() {	
+  $('#chart-target').allyChart({width: 200, height: 100, sourceTable:'#empty-table' });
+  var chart = Highcharts.chart;
+  equals(200, chart.options.chart.width);
+  equals(100, chart.options.chart.height);
+});
+
 });
 </script>
   
@@ -40,6 +56,8 @@ test("Mock Highcharts", function() {
 <h2 id="qunit-userAgent"></h2>
 <ol id="qunit-tests"></ol>
 <div id="qunit-fixture">
+	
+<table id="empty-table"></table>	
 	
 <table id="cd-rate-table" summary="A comparison of 1, 2, and 4-year CD rates from three different banks. The best rate is Ally's 4-year CD, at 1.50 APY.">
 	<caption>CD Rates</caption>
@@ -77,6 +95,8 @@ test("Mock Highcharts", function() {
 		</tr>
 	</tbody>	
 </table>
+
+<div id="chart-target"></div>
 	
 	
 	
