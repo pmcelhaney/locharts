@@ -21,32 +21,8 @@ Highcharts.Chart = function (options, callback) {
 <script type="text/javascript" src="/qunit/qunit.js"></script>
 
 
-<script>
+<script src="allychart_core.js" type="text/javascript" charset="utf-8"></script>
 
-$(document).ready(function(){
-    
-module("Sanity Tests");
-test("Make sure the source table exists", function() {
-  equals(1, $('#cd-rate-table').length);
-});
-
-test("Mock Highcharts", function() {	
-  var chart = new Highcharts.Chart({foo: 'bar'});
-  equals('bar', chart.options.foo);
-});
-
-
-module("allychart: core")
-
-test("set width and height", function() {	
-  $('#chart-target').allyChart({width: 200, height: 100, sourceTable:'#empty-table' });
-  var chart = Highcharts.chart;
-  equals(200, chart.options.chart.width);
-  equals(100, chart.options.chart.height);
-});
-
-});
-</script>
   
 </head>
 <body>
