@@ -65,7 +65,8 @@
 		readTable: function (table) {
 			var $table = $(table);
 			var self = this;
-			this.setCategories($table.find('thead th:gt(0)').map(function() { return $(this).text()  }).toArray());
+			var headersPerRow = $table.find('tbody > tr:eq(0) > th').length;
+			this.setCategories($table.find('thead th:gt(' + (headersPerRow - 1) + ')').map(function() { return $(this).text()  }).toArray());
 			$table.find('tbody tr').each(function () {
 				var data = $(this).find('td').map(function () {
 					return parseFloat($(this).text());
