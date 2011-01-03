@@ -15,4 +15,9 @@ test("set chart container", function() {
   equals(Highcharts.chart.options.renderTo, document.getElementById('#chart-target'));
 });
 
+test("read categories from thead > th", function() {	
+  $('#chart-target').allyChart({sourceTable: '#cd-rate-table' });
+  same(Highcharts.chart.options.xAxis.categories, ['1 Year', '2 Year', '4 Year']); 
+});
+
 })(jQuery);
