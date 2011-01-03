@@ -27,5 +27,21 @@ test("when reading categories, skip THs that are just headers of headers", funct
 });
 
 
+test("read series data from table", function() {	
+	var data = [
+  		[1.28, 1.38, 1.50],
+  		[1.09, 1.18, 1.30],
+  		[1.02, 1.35, 1.46]
+  	];
+  	$('#chart-target').allyChart({sourceTable: '#cd-rate-table' });
+  	$(data).each(function (i) {
+  		same(Highcharts.chart.options.series[i].data, data[i]); 
+	});
+});
+
+
+
+
 
 })(jQuery);
+
