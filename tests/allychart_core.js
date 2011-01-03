@@ -40,6 +40,20 @@ test("read series data from table", function() {
 });
 
 
+test("read series data from table, converting blanks to null", function() {	
+	var data = [
+  		[50000, 50800, 51500, 52312],
+  		[ null,  null, 51800, 52911],
+  		[ null,  null,  null, 53301]
+  	];
+  	$('#chart-target').allyChart({sourceTable: '#cd-ryr-table' });
+  	$(data).each(function (i) {
+  		same(Highcharts.chart.options.series[i].data, data[i]); 
+	});
+});
+
+
+
 test("read series names from table", function() {	
 	var names = ['Ally', 'Last Union', 'Bank Of Elbonia'];
   	$('#chart-target').allyChart({sourceTable: '#cd-rate-table' });

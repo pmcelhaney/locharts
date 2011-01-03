@@ -71,6 +71,12 @@
 				var data = $(this).find('td').map(function () {
 					return parseFloat($(this).text());
 				}).toArray();
+				$(data).each(function (i) {
+					if (isNaN(this)) {
+						data[i] = null;
+					}	
+				});
+				console.log(data)
 				self.addSeries($(this).find('th').text(), data);
 			});
 		},
