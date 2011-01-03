@@ -40,6 +40,15 @@ test("read series data from table", function() {
 });
 
 
+test("read series names from table", function() {	
+	var names = ['Ally', 'Last Union', 'Bank Of Elbonia'];
+  	$('#chart-target').allyChart({sourceTable: '#cd-rate-table' });
+  	$(names).each(function (i) {
+  		same(Highcharts.chart.options.series[i].name, names[i]); 
+	});
+});
+
+
 
 
 
