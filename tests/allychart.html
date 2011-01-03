@@ -7,11 +7,25 @@
 <script type="text/javascript" src="/qunit/qunit.js"></script>
 
 <script>
+
+// Mock the Highcharts object.
+Highcharts = {};
+Highcharts.Chart = function (options, callback) {
+	this.options = options;	
+	this.callback = callback;
+};
+
+
 $(document).ready(function(){
     
 module("Sanity Tests");
 test("Make sure the source table exists", function() {
-  equals(1, $('#cd-rate-table').length)
+  equals(1, $('#cd-rate-table').length);
+});
+
+test("Mock Highcharts", function() {	
+  var chart = new Highcharts.Chart({foo: 'bar'});
+  equals('bar', chart.options.foo);
 });
 
 
