@@ -80,14 +80,22 @@
 			var xValues = $table.find('thead th:gt(' + (headersPerRow - 1) + ')').map(function() { return $(this).text()  }).toArray();
 			this.setCategories(xValues);
 		
-			$table.find('tbody tr').each(function () {
-				var data = $(this).find('td').map(function (i) {
-					var x = xValues[i];
-					var y = $(this).text();
-					return [[ xValues[i], y.length ? parseFloat(y) : null]];
-				}).toArray();
+			$table.find('tbody tr').each(function (i) {
+				var data = self._seriesFactory(this, i,  self._pointFactory);
 				self.addSeries($(this).find('th').text(), data);
 			});
+		},
+		
+		_seriesFactory: function (tr, rowNumber,  pointFactory) {
+			return $(tr).find('td').map(function (colNumber) {
+				return pointFactory(this, colNumber);
+			}).toArray();
+		},
+		
+		_pointFactory: function(td, colNumber) {
+			var x = $(td).closest('table').find('>thead>tr>th').eq(colNumber+1).text();
+			var y = $(td).text();
+			return [[ x, y.length ? parseFloat(y) : null]];	
 		},
 		
 		draw: function () {
