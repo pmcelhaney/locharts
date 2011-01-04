@@ -30,11 +30,11 @@ test("when reading categories, skip THs that are just headers of headers", funct
 
 test("read series data from table", function() {	
 	var data = [
-  		[1.28, 1.38, 1.50],
-  		[1.09, 1.18, 1.30],
-  		[1.02, 1.35, 1.46]
+  		[23,29,35],
+  		[46,55,65],
+  		[67,81,95]
   	];
-  	$('#chart-target').allyChart({sourceTable: '#cd-rate-table' });
+  	$('#chart-target').allyChart({sourceTable: '#simple-table' });
   	$(data).each(function (i) {
   		same(Highcharts.chart.options.series[i].data, data[i]); 
 	});
@@ -43,36 +43,26 @@ test("read series data from table", function() {
 
 test("read series data from table, converting blanks to null", function() {	
 	var data = [
-  		[50000, 50800, 51500, 52312],
-  		[ null, 50800, 51800, 52911],
-  		[ null,  null, 51800, 53301]
+  		[23,null,35],
+  		[46,55,null],
+  		[67,81,95]
   	];
-  	$('#chart-target').allyChart({sourceTable: '#cd-ryr-table' });
+  	$('#simple-table tbody').find('tr:eq(0) td:eq(1)').text('').end().find('tr:eq(1) td:eq(2)').text('');
+  	$('#chart-target').allyChart({sourceTable: '#simple-table' });
   	$(data).each(function (i) {
   		same(Highcharts.chart.options.series[i].data, data[i]); 
 	});
 });
-
-
-
-test("read series names from table", function() {	
-	var names = ['Ally', 'Last Union', 'Bank Of Elbonia'];
-  	$('#chart-target').allyChart({sourceTable: '#cd-rate-table' });
-  	$(names).each(function (i) {
-  		same(Highcharts.chart.options.series[i].name, names[i]); 
-	});
-});
-
 
 test("read series data from table, differential mode", function() {	
 	var data = [
-  		[50000, 50800,       51500,             52312],
-  		[ null,     0, 51800-51500,       52911-52312],
-  		[ null,  null,           0, 53301-52911      ]
+  		[      23,       29,       35],
+  		[   46-23,    55-29,    65-35],
+  		[   67-46,    81-55,    95-65]
   	];
-  	$('#chart-target').allyChart({sourceTable: '#cd-ryr-table', differential: true });
+  	$('#chart-target').allyChart({sourceTable: '#simple-table', differential: true });
   	$(data).each(function (i) {
-  		same(Highcharts.chart.options.series[i].data, data[i]); 
+  		same(data[i], Highcharts.chart.options.series[i].data); 
 	});
 });
 
