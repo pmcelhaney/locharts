@@ -2,12 +2,13 @@
 
 module("allychart: core");
 
-test("set width, height, and margin", function() {	
-  $('#chart-target').allyChart({width: 200, height: 100, margin: [10,20,30,40], sourceTable:'#empty-table' });
+test("set width, height, margin, and type", function() {	
+  $('#chart-target').allyChart({width: 200, height: 100, margin: [10,20,30,40], sourceTable:'#empty-table', type: 'area' });
   var chart = Highcharts.chart;
   equals(200, chart.options.chart.width);
   equals(100, chart.options.chart.height);
   same([10,20,30,40], chart.options.chart.margin);
+  equals(chart.options.chart.type, 'area');
 });
 
 test("set chart container", function() {	

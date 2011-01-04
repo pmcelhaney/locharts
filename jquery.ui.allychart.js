@@ -17,8 +17,8 @@
 		options: {  
 			width: null,
 			height: null,
-			margin: [75,75,75,75] 
-			
+			margin: [75,75,75,75],
+			type: 'line'
 		},
 		_chartOptions: {},
 		_create: function(o) {
@@ -95,6 +95,7 @@
 			this._chartOptions.chart.width = this.options.width;
 			this._chartOptions.chart.height = this.options.height;
 			this._chartOptions.chart.margin = this.options.margin;
+			this._chartOptions.chart.type = this.options.type;
 			this._chart = new Highcharts.Chart(this._chartOptions);
 		}
 
