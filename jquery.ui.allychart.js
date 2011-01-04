@@ -60,8 +60,8 @@
 			if (this.options.differential) {
 				$(data).each(function (i) {
 					$(series).each(function() {
-						if(data[i] !== null) {
-							data[i] -= this.data[i];
+						if(data[i][1] !== null) {
+							data[i][1] -= this.data[i][1];
 						} 
 					});
 				});		
@@ -77,16 +77,15 @@
 			var $table = $(table);
 			var self = this;
 			var headersPerRow = $table.find('tbody > tr:eq(0) > th').length;
-			this.setCategories($table.find('thead th:gt(' + (headersPerRow - 1) + ')').map(function() { return $(this).text()  }).toArray());
+			var xValues = $table.find('thead th:gt(' + (headersPerRow - 1) + ')').map(function() { return $(this).text()  }).toArray();
+			this.setCategories(xValues);
+		
 			$table.find('tbody tr').each(function () {
-				var data = $(this).find('td').map(function () {
-					return parseFloat($(this).text());
+				var data = $(this).find('td').map(function (i) {
+					var x = xValues[i];
+					var y = $(this).text();
+					return [[ xValues[i], y.length ? parseFloat(y) : null]];
 				}).toArray();
-				$(data).each(function (i) {
-					if (isNaN(this)) {
-						data[i] = null;
-					}	
-				});
 				self.addSeries($(this).find('th').text(), data);
 			});
 		},

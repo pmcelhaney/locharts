@@ -30,9 +30,9 @@ test("when reading categories, skip THs that are just headers of headers", funct
 
 test("read series data from table", function() {	
 	var data = [
-  		[23,29,35],
-  		[46,55,65],
-  		[67,81,95]
+  		[['1',23], ['3',29], ['5',35]],
+  		[['1',46], ['3',55], ['5',65]],
+  		[['1',67], ['3',81], ['5',95]]
   	];
   	$('#chart-target').allyChart({sourceTable: '#simple-table' });
   	$(data).each(function (i) {
@@ -43,9 +43,9 @@ test("read series data from table", function() {
 
 test("read series data from table, converting blanks to null", function() {	
 	var data = [
-  		[23,null,35],
-  		[46,55,null],
-  		[67,81,95]
+  		[['1', 23], ['3', null], ['5',   35]],
+  		[['1', 46], ['3',   55], ['5', null]],
+  		[['1', 67], ['3',   81], ['5',   95]]
   	];
   	$('#simple-table tbody').find('tr:eq(0) td:eq(1)').text('').end().find('tr:eq(1) td:eq(2)').text('');
   	$('#chart-target').allyChart({sourceTable: '#simple-table' });
@@ -54,15 +54,16 @@ test("read series data from table, converting blanks to null", function() {
 	});
 });
 
+
 test("read series data from table, differential mode", function() {	
 	var data = [
-  		[      23,       29,       35],
-  		[   46-23,    55-29,    65-35],
-  		[   67-46,    81-55,    95-65]
+  		[ ['1',    23], ['3',     29],  ['5',    35]],
+  		[ ['1', 46-23], ['3',  55-29],  ['5', 65-35]],
+  		[ ['1', 67-46], ['3',  81-55],  ['5', 95-65]]
   	];
   	$('#chart-target').allyChart({sourceTable: '#simple-table', differential: true });
   	$(data).each(function (i) {
-  		same(data[i], Highcharts.chart.options.series[i].data); 
+  		same(Highcharts.chart.options.series[i].data, data[i]); 
 	});
 });
 
