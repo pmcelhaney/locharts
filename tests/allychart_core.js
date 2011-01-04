@@ -63,6 +63,19 @@ test("read series names from table", function() {
 });
 
 
+test("read series data from table, differential mode", function() {	
+	var data = [
+  		[50000, 50800,       51500,             52312],
+  		[ null,     0, 51800-51500,       52911-52312],
+  		[ null,  null,           0, 53301-52911      ]
+  	];
+  	$('#chart-target').allyChart({sourceTable: '#cd-ryr-table', differential: true });
+  	$(data).each(function (i) {
+  		same(Highcharts.chart.options.series[i].data, data[i]); 
+	});
+});
+
+
 
 
 

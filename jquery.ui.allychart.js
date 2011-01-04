@@ -55,7 +55,18 @@
 		},
 		
 		addSeries: function (name, data) {
-			this._chartOptions.series.push({ name: name, data: data });
+			var data = data;
+			var series = this._chartOptions.series;
+			if (this.options.differential) {
+				$(data).each(function (i) {
+					$(series).each(function() {
+						if(data[i] !== null) {
+							data[i] -= this.data[i];
+						} 
+					});
+				});		
+			}
+			series.push({ name: name, data: data });
 		},
 		
 		setCategories: function (categories) {
@@ -76,7 +87,6 @@
 						data[i] = null;
 					}	
 				});
-				console.log(data)
 				self.addSeries($(this).find('th').text(), data);
 			});
 		},
