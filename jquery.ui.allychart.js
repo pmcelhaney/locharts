@@ -23,13 +23,20 @@
 		_chartOptions: {},
 		_create: function(o) {
 			this._chartOptions = {
+				
+				plotOptions: {
+        			area: {
+            			stacking: 'normal'
+	        		}
+				},
 			    chart: {
 			        renderTo: this.element[0],
 			        plotBorderColor: '#DCDFE3',
 			        plotBorderWidth: '1',
 			        style: {
 			        	fontFamily: "Arial,Helvetica,Sans-Serif"
-			        }
+			        },
+			        
 			    },
 			    credits: {
 			        enabled: false
@@ -58,15 +65,22 @@
 			var data = data;
 			var series = this._chartOptions.series;
 			if (this.options.differential) {
+				var i = data.length;
+				
 				$(data).each(function (i) {
 					$(series).each(function() {
 						if(data[i][1] !== null) {
 							data[i][1] -= this.data[i][1];
 						} 
 					});
-				});		
+				});
+				
+				series.unshift({ name: name, data: data });		
+			
+			} else {
+				series.push({ name: name, data: data });
 			}
-			series.push({ name: name, data: data });
+			
 		},
 		
 		setCategories: function (categories) {

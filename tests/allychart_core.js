@@ -56,15 +56,18 @@ test("read series data from table, converting blanks to null", function() {
 
 
 test("read series data from table, differential mode", function() {	
+	// Note: To facilitate stacking, series' are added last-to-first
 	var data = [
-  		[ ['1',    23], ['3',     29],  ['5',    35]],
+  		[ ['1', 67-46], ['3',  81-55],  ['5', 95-65]],
   		[ ['1', 46-23], ['3',  55-29],  ['5', 65-35]],
-  		[ ['1', 67-46], ['3',  81-55],  ['5', 95-65]]
+  		[ ['1',    23], ['3',     29],  ['5',    35]]
   	];
   	$('#chart-target').allyChart({sourceTable: '#simple-table', differential: true });
   	$(data).each(function (i) {
   		same(Highcharts.chart.options.series[i].data, data[i]); 
 	});
+	
+	equals(Highcharts.chart.options.plotOptions.area.stacking, 'normal');
 });
 
 
