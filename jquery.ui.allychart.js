@@ -102,25 +102,25 @@
 			var $table = $(table);
 			var self = this;
 			var headersPerRow = $table.find('tbody > tr:eq(0) > th').length;
-			var xValues = $table.find('thead th:gt(' + (headersPerRow - 1) + ')').map(function() { return $(this).text()  }).toArray();
+			var xValues = $table.find( 'thead th:gt(' + (headersPerRow - 1) + ')' ).map( function() { return $(this).text() } ).toArray();
 			this.setCategories(xValues);
 		
 			$table.find('tbody tr').each(function (i) {
-				var data = self._seriesFactory(this, i,  self._pointFactory);
+				var data = self._seriesFactory(this, i, self._pointFactory);
 				self.addSeries($(this).find('th').text(), data);
 			});
 		},
 		
 		_seriesFactory: function (tr, rowNumber,  pointFactory) {
 			return $(tr).find('td').map(function (colNumber) {
-				return pointFactory(this, colNumber);
+				return [ pointFactory(this, colNumber) ];
 			}).toArray();
 		},
 		
 		_pointFactory: function(td, colNumber) {
 			var x = $(td).closest('table').find('>thead>tr>th').eq(colNumber+1).text();
 			var y = $(td).text();
-			return [[ x, y.length ? parseFloat(y) : null]];	
+			return [ x, (y.length ? parseFloat(y) : null) ];	
 		},
 		
 		draw: function () {
