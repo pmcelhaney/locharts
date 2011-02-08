@@ -13,6 +13,15 @@
 
 
 (function( $, Highcharts ) {
+	
+	var smallerNumber = function(a, b) {
+		return typeof a === 'number' && typeof b === 'number' ? Math.min(a,b)
+		       : typeof a === 'number' ? a
+		       : typeof b === 'number' ? b
+		       : null
+	}
+	
+	
 	$.widget("ui.allyChart", {
 		options: {  
 			width: null,
@@ -48,10 +57,9 @@
 			        enabled: true
 			    },
 			    yAxis: {
-			    	title: ''
-			    },
+			    	min: null
+				},
 			    xAxis: {
-			    	
 			    },
 				series: []
 			};
@@ -64,10 +72,13 @@
 		addSeries: function (name, data) {
 			var data = data;
 			var series = this._chartOptions.series;
+			var yAxis = this._chartOptions.yAxis;
+
 			if (this.options.differential) {
 				var i = data.length;
 				
 				$(data).each(function (i) {
+					yAxis.min = smallerNumber(yAxis.min, data[i][1]);
 					$(series).each(function() {
 						if(data[i][1] !== null) {
 							data[i][1] -= this.data[i][1];
@@ -76,7 +87,7 @@
 				});
 				
 				series.unshift({ name: name, data: data });		
-			
+				
 			} else {
 				series.push({ name: name, data: data });
 			}

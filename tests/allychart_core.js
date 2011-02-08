@@ -68,6 +68,9 @@ test("read series data from table, differential mode", function() {
 	});
 	
 	equals(Highcharts.chart.options.plotOptions.area.stacking, 'normal');
+	
+	// Make sure the y axis starts at the right place
+	equals(Highcharts.chart.options.yAxis.min, 23);
 });
 
 
