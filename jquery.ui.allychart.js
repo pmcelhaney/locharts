@@ -106,23 +106,33 @@
 			this.setCategories(xValues);
 		
 			$table.find('tbody tr').each(function (i) {
-				var data = self._seriesFactory(this, i, self._pointFactory);
+				var data = self._seriesFactory(this, i, self._pointFactory, headersPerRow);
 				self.addSeries($(this).find('th').text(), data);
 			});
 		},
 		
-		_seriesFactory: function (tr, rowNumber,  pointFactory) {
-			return $(tr).find('td').map(function (colNumber) {
-				return [ pointFactory(this, colNumber) ];
+		
+		/* 
+			This should probably take (table, rowNumber, headersPerRow)
+			_parseXValue and _parseYValue would get (table, rowNumber, colNumber)
+		*/
+		_seriesFactory: function (tr, rowNumber,  pointFactory, headersPerRow) {
+			var widget = this;
+			return $(tr).find('td').map(function (i, td) {
+				var colNumber = headersPerRow + i;
+				return [ [ widget._readXValue(td, colNumber), widget._readYValue(td, colNumber) ] ]; 
 			}).toArray();
 		},
 		
-		_pointFactory: function(td, colNumber) {
-			var x = $(td).closest('table').find('>thead>tr>th').eq(colNumber+1).text();
-			var y = $(td).text();
-			return [ x, (y.length ? parseFloat(y) : null) ];	
+		_readXValue: function (td, colNumber) {
+			return $(td).closest('table').find('>thead>tr>th').eq(colNumber).text();
 		},
 		
+		_readYValue: function (td, colNumber) {
+			var str = $(td).text()
+			return str.length ? parseFloat(str) : null;
+		},
+		 
 		draw: function () {
 			this._chartOptions.chart.width = this.options.width;
 			this._chartOptions.chart.height = this.options.height;

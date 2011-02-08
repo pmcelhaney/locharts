@@ -73,6 +73,11 @@ test("read series data from table, differential mode", function() {
 	equals(Highcharts.chart.options.yAxis.min, 23);
 });
 
+test("multiple column headers", function() {	
+	$('#chart-target').allyChart({sourceTable: '#cd-ryr-table' });
+  	console.log(Highcharts.chart.options.series[0]);
+	equals(Highcharts.chart.options.series[0].data[0][0], '01/01/2011'); 
+});
 
 
 
