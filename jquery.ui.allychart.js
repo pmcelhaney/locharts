@@ -106,7 +106,7 @@
 			this.setCategories(xValues);
 		
 			$table.find('tbody tr').each(function (i) {
-				var data = self._seriesFactory(this, i, self._pointFactory, headersPerRow);
+				var data = self._seriesFactory(this, i, headersPerRow);
 				self.addSeries($(this).find('th').text(), data);
 			});
 		},
@@ -116,7 +116,7 @@
 			This should probably take (table, rowNumber, headersPerRow)
 			_parseXValue and _parseYValue would get (table, rowNumber, colNumber)
 		*/
-		_seriesFactory: function (tr, rowNumber,  pointFactory, headersPerRow) {
+		_seriesFactory: function (tr, rowNumber,  headersPerRow) {
 			var widget = this;
 			return $(tr).find('td').map(function (i, td) {
 				var colNumber = headersPerRow + i;
