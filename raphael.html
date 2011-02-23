@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8" />
+<title>Ally Charts</title>
+<script src="lib/jquery-1.4.2.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/jquery-ui-1.8.custom.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/raphael/raphael.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/raphael/g.raphael.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/raphael/g.pie.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/raphael/g.line.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/raphael/g.dot.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/raphael/g.bar.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript" charset="utf-8">
+	$(function () {
+		var r = Raphael("graphael-bar-chart-container", 600, 400);
+	 	window.CHART = r.g.barchart(10, 10, 580, 380, [[10,20,30,40]]);
+		axis = r.g.axis(85,380,420,0,3,3,0,["Today",  "Yesterday", "Tomorrow", "Future"], "+", 3);
+		
+	});
+</script>
+
+<style type="text/css" media="screen">
+	#graphael-bar-chart-container {
+		border: 1px solid gray;
+		width: 600px;
+		height: 400px;
+	}
+</style>
+
+</head>
+
+<body>
+		
+	
+<h1>Ally Charts</h1>	
+
+
+<h2>gRaphaël  Bar Chart</h2>
+
+<p><a href="http://raphaeljs.com/" title="gRaphaël—JavaScript Library">gRaphaël</a>  is a library built on top of <a href="http://raphaeljs.com/" title="Raphaël—JavaScript Library">Raphaël</a>. It's not documented at all by the author, although 
+<a href="https://github.com/kennyshen/g.raphael">kennyshen</a> has started some documentation</a>. The API is not
+great, with lots of functions that have several parameters that take parameter objects instead. I do like Raphaël,
+and gRaphaël at least shows the promise of the plugin API.</p> 
+
+<div id="graphael-bar-chart-container"></div>
+
+
+
+</body>
+
+</html>
