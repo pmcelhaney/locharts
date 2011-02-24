@@ -1,14 +1,11 @@
-var barChart = (function () {
+var BarChart = function () {
 	
-	var paper;
+	var paper = Raphael("raphael-bar-chart-container", chartWidth, chartHeight);;
 	var chartWidth = 600;
 	var chartHeight = 400;
 	var margin = 10;
 	var width = 135;
 	
-	var init = function () {
-		paper = Raphael("raphael-bar-chart-container", chartWidth, chartHeight);
-	}
 	
 	var drawBar = function (index, height) {
 		var x = margin + (width + margin) * index;
@@ -19,14 +16,13 @@ var barChart = (function () {
 	};
 	
 	return {
-		init: init,
 		drawBar: drawBar
 	};
-}());
+};
 
 
 $(function () {
-	barChart.init();
+	var barChart = BarChart();
 	
 	var values = [50,150,250,350];
 	
