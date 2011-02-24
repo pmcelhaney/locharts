@@ -15,8 +15,15 @@ var BarChart = function (container) {
 		.animate({height: height, y: chartHeight - margin - height}, 1500, "elastic");
 	};
 	
+	var addValues = function (values) {
+		$(values).each(function(i, val) {
+			setTimeout(function () { drawBar(i, val); }, i * 100);
+		});
+	};
+	
 	return {
-		drawBar: drawBar
+		drawBar: drawBar,
+		addValues: addValues
 	};
 };
 
@@ -24,11 +31,9 @@ var BarChart = function (container) {
 $(function () {
 	var barChart = BarChart("raphael-bar-chart-container");
 	
-	var values = [50,150,250,350];
+
 	
-	$(values).each(function(i, val) {
-		setTimeout(function () { barChart.drawBar(i, val); }, i * 100);
-	});
+	barChart.addValues([50,150,250,350]);
 
 
 });
