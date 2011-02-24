@@ -1,22 +1,40 @@
-
-$(function () {
+var barChart = (function () {
+	
+	var paper;
 	var chartWidth = 600;
 	var chartHeight = 400;
 	var margin = 10;
-	var r = Raphael("raphael-bar-chart-container", chartWidth, chartHeight);
 	var width = 135;
+	
+	var init = function () {
+		paper = Raphael("raphael-bar-chart-container", chartWidth, chartHeight);
+	}
 	
 	var drawBar = function (index, height) {
 		var x = margin + (width + margin) * index;
-		r.rect(x, chartHeight - margin, width, 1).attr({stroke: "none", fill: "270-rgba(55,152,199,1)-rgba(70,195,255,.5)"})
-		.hover( function () { this.animate( {"fill": "270-rgb(101,3,96)-rgb(211,6,201)"} ) }, function () { this.animate( {"fill": "270-rgba(55,152,199,1)-rgba(70,195,255,.5)"} ) })
-		.animate({height: height, y: chartHeight - margin - height}, 1500, "elastic")
-	}
+		paper.rect(x, chartHeight - margin, width, 1)
+		.attr({stroke: "none", fill: "270-rgba(55,152,199,1)-rgba(70,195,255,.5)"})
+		.hover( function () { this.animate( {"fill": "270-rgb(101,3,96)-rgb(211,6,201)"} ); }, function () { this.animate( {"fill": "270-rgba(55,152,199,1)-rgba(70,195,255,.5)"} ); })
+		.animate({height: height, y: chartHeight - margin - height}, 1500, "elastic");
+	};
 	
-	drawBar(0, 50);
-	setTimeout( function () { drawBar(1, 150) }, 100);
-	setTimeout( function () { drawBar(2, 250) }, 200);
-	setTimeout( function () { drawBar(3, 350) }, 300);
+	return {
+		init: init,
+		drawBar: drawBar
+	};
+}());
+
+
+$(function () {
+	barChart.init();
+	
+	var values = [50,150,250,350];
+	
+	$(values).each(function(i, val) {
+		setTimeout(function () { barChart.drawBar(i, val); }, i * 100);
+	});
+
+
 });
 
 /* gRaphaël */
