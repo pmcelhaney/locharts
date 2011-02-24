@@ -1,8 +1,9 @@
 var BarChart = function (container) {
 	
-	var paper = Raphael(container, chartWidth, chartHeight);;
+	
 	var chartWidth = 600;
 	var chartHeight = 400;
+	var paper = Raphael(container, chartWidth, chartHeight);
 	var margin = 10;
 	var width = 135;
 	

@@ -13,6 +13,7 @@
 <script src="lib/raphael/g.dot.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/raphael/g.bar.js" type="text/javascript" charset="utf-8"></script>
 <script src="raphael-charts.js" type="text/javascript" charset="utf-8"></script>
+<script src="jquery.ui.ally.barchart.js" type="text/javascript" charset="utf-8"></script>
 
 <style type="text/css" media="screen">
 	.chart-container {
@@ -22,6 +23,12 @@
 	}
 </style>
 
+<script type="text/javascript" charset="utf-8">
+	$( function () {
+		$('#raphael-bar-chart-widget-container').allyBarChart().allyBarChart('addValues', [50,150,250,350]);
+	});
+</script>
+
 </head>
 
 <body>
@@ -29,6 +36,11 @@
 	
 <h1>Ally Charts</h1>	
 
+<h2>Raphaël Bar Chart - Widget</h2>
+
+<p>Converting the chart into a jQuery UI widget</p>
+
+<div id="raphael-bar-chart-widget-container" class="chart-container"></div>
 
 <h2>Raphaël Bar Chart</h2>
 
@@ -39,7 +51,7 @@
 <h2>gRaphaël  Bar Chart</h2>
 
 <p><a href="http://raphaeljs.com/" title="gRaphaël—JavaScript Library">gRaphaël</a>  is a library built on top of <a href="http://raphaeljs.com/" title="Raphaël—JavaScript Library">Raphaël</a>. It's not documented at all by the author, although 
-<a href="https://github.com/kennyshen/g.raphael">kennyshen</a> has started some documentation</a>. The API is not
+<a href="https://github.com/kennyshen/g.raphael">kennyshen</a> has started some documentation. The API is not
 great, with lots of functions that have several parameters that take parameter objects instead. I do like Raphaël,
 and gRaphaël at least shows the promise of the plugin API.</p> 
 
