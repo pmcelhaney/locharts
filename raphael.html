@@ -25,14 +25,15 @@
 		var drawBar = function (index, height) {
 			var x = margin + (width + margin) * index;
 			var y = chartHeight - margin - height;
-			r.rect(x, y, width, height).attr({stroke: "#ccf", fill: "270-#ccf-#009"})
-			.hover(function () { this.animate( {"stroke": "#009"}, 100 )}, function () { this.animate( {"stroke": "#ccf"}, 100)});
+			r.rect(x, chartHeight - margin, width, 1).attr({stroke: "none", fill: "270-rgba(55,152,199,1)-rgba(70,195,255,.5)"})
+			.hover( function () { this.animate( {"fill": "270-rgb(101,3,96)-rgb(211,6,201)"} ) }, function () { this.animate( {"fill": "270-rgba(55,152,199,1)-rgba(70,195,255,.5)"} ) })
+			.animate({height: height, y: chartHeight - margin - height}, 1500, "elastic")
 		}
 		
 		drawBar(0, 50);
-		drawBar(1, 150);
-		drawBar(2, 250);
-		drawBar(3, 350);
+		setTimeout( function () { drawBar(1, 150) }, 100);
+		setTimeout( function () { drawBar(2, 250) }, 200);
+		setTimeout( function () { drawBar(3, 350) }, 300);
 	});
 	
 	/* gRaphaël */
@@ -61,6 +62,8 @@
 
 
 <h2>Raphaël Bar Chart</h2>
+
+<p>The animations might be a little over the top, but I'm just experimenting to see what can be done.</p>
 
 <div id="raphael-bar-chart-container" class="chart-container"></div>
 
