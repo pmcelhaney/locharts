@@ -1,6 +1,6 @@
-var BarChart = function () {
+var BarChart = function (container) {
 	
-	var paper = Raphael("raphael-bar-chart-container", chartWidth, chartHeight);;
+	var paper = Raphael(container, chartWidth, chartHeight);;
 	var chartWidth = 600;
 	var chartHeight = 400;
 	var margin = 10;
@@ -22,7 +22,7 @@ var BarChart = function () {
 
 
 $(function () {
-	var barChart = BarChart();
+	var barChart = BarChart("raphael-bar-chart-container");
 	
 	var values = [50,150,250,350];
 	
