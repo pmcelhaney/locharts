@@ -27,7 +27,7 @@
 <script type="text/javascript" charset="utf-8">
 	
 	$( function () {
-		$('#raphael-polygraph-widget-container').allyPolyGraph();
+		$('#raphael-polygraph-widget-container').allyPolyGraph({ width: 600, height: 400, Point: { color: 'red' } }).allyPolyGraph('addSeries', [5,15,25,35]);
 	});
 	
 	$( function () {
