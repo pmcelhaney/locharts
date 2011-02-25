@@ -15,7 +15,46 @@
 	Point.prototype = 
 	{
 		print: function () {
-			return '(' + this.index + ',' + this.value + ')';
+			return '(' + this.index + ',' + this.value + ') ' + (this.color || 'no color');
+		}
+	};
+	
+	var Series = function () {
+		var hidden = "private";
+		
+	};
+    Series.prototype = {
+		points: [],
+		addPoint: function (point) {
+			this.points.push(point);
+		},
+		print: function () {
+			return $(this.points).map(function () { return this.print(); }).toArray();
+		},
+	    draw: function () {
+			var margin = 10;
+			var barWidth = 135;
+			
+			var chartWidth = 600;
+			var chartHeight = 400;
+			
+			var paper = this.paper;
+			var series = this;
+			$(this.points).each(function (i) {
+				var height = chartHeight * this.value/40;
+				paper.rect(margin + (barWidth + margin) * this.index, chartHeight - margin, barWidth, 1)
+				.attr( { stroke: "none", fill: "270-rgba(55,152,199,1)-rgba(70,195,255,.5)" } )
+				.hover( function () { series.onMouseOver(this, i) }, function () { series.onMouseOut(this, i)  })
+				.animate( { height: height, y: chartHeight - margin - height }, 1500, "elastic" );
+			});
+		},
+		
+		onMouseOver: function (element, index) {
+			element.animate( {"fill": "270-rgb(101,3,96)-rgb(211,6,201)"} );	
+		},
+		
+		onMouseOut: function (element, index) {
+			element.animate( {"fill": "270-rgba(55,152,199,1)-rgba(70,195,255,.5)"} ); 
 		}
 	};
 		
@@ -31,12 +70,24 @@
 		
 		addSeries: function (data) {
 			var options = this.options;
+			var series = new Series();
+			series.paper = this._paper;
 			$(data).each(function (i) {
 				var point = new Point();
 				point.index = i;
 				point.value = this;
-				console.log(point.print() + ' ' + point.color);
-			})
+				series.addPoint(point);
+			});
+			console.log(series.print());
+			
+			series.draw();
+			/* 
+			   1. create each Point() and add it to the series.
+			   2. call series.draw();
+			      - series.draw() will ask the chart how tall and wide it is, and determine the coordinates
+			        for the point
+			      - then series.draw() will draw a rectangle from the point to the bottom of the chart
+			*/
 		}
 		
 
@@ -52,7 +103,6 @@
     - mouseOut()
     - textLabel()
     - hoverLabel()
-    - draw() 
 
    Chart 
      - xAxis : typically an CategoryAxis
@@ -62,12 +112,15 @@
      - margin()
      - plotWidth()
      - plotHeight()
+     - plotTop()
+     - plotLeft()
      - getCoordinatesForPoint(point)
      - eachSeries()
      - addSeries()
 
    Series : BarSeries, AreaSeries, LineSeries, etc.
-     - points()
+     - addPoint()
+     - eachPoint()
      - draw()
 
    Axis(x_or_y)
