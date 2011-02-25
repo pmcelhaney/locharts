@@ -11,6 +11,29 @@
 
 (function( $, Rapahel, undefined ) {
 	
+	
+	var PlotArea = function (width, height, marginTop, marginRight, marginBottom, marginLeft) {
+		this.marginTop = marginTop === undefined ? 10 : marginTop;
+		this.marginRight = marginRight === undefined ? this.marginTop : marginRight;
+		this.marginBottom = marginBottom === undefined ? this.marginTop : marginBottom;
+		this.marginLeft = marginLeft === undefined ? this.marginRight : marginLeft;
+		this.width = width - this.marginLeft - this.marginRight;
+		this.height = this.marginTop - this.marginBottom;
+	};
+	
+	
+	var Axis = function (plotArea, orientation) {
+		this.plotArea = plotArea;
+		this.orientation = orientation === "x" ? "x" : "y";
+	};
+	
+	Axis.prototype = {
+		labels: function () { return []; },
+		min: function() { return 0; },
+		max: function() { return 0; }
+	};
+	
+	
 	var Point = function () {};
 	Point.prototype = 
 	{
@@ -19,9 +42,9 @@
 		}
 	};
 	
-	var Series = function () {
-		var hidden = "private";
-		
+	var Series = function (xAxis, yAxis) {
+		this.xAxis = xAxis;
+		this.yAxis = yAxis;
 	};
     Series.prototype = {
 		points: [],
@@ -31,20 +54,23 @@
 		print: function () {
 			return $(this.points).map(function () { return this.print(); }).toArray();
 		},
-	    draw: function () {
+		
+	    draw: function (xAxis, yAxis) {
 			var margin = 10;
 			var barWidth = 135;
 			
-			var chartWidth = 600;
-			var chartHeight = 400;
+			var chartWidth = 600; // xAxis.length()
+			var chartHeight = 400; // yAxis.length()
 			
 			var paper = this.paper;
 			var series = this;
 			$(this.points).each(function (i) {
 				var height = chartHeight * this.value/40;
+				// x = xAxis.getCoordinate(i);
+				// y = yAxis.getCoordinate(height);
 				paper.rect(margin + (barWidth + margin) * this.index, chartHeight - margin, barWidth, 1)
 				.attr( { stroke: "none", fill: "270-rgba(55,152,199,1)-rgba(70,195,255,.5)" } )
-				.hover( function () { series.onMouseOver(this, i) }, function () { series.onMouseOut(this, i)  })
+				.hover( function () { series.onMouseOver(this, i); }, function () { series.onMouseOut(this, i);  })
 				.animate( { height: height, y: chartHeight - margin - height }, 1500, "elastic" );
 			});
 		},
@@ -78,18 +104,9 @@
 				point.value = this;
 				series.addPoint(point);
 			});
-			console.log(series.print());
 			
 			series.draw();
-			/* 
-			   1. create each Point() and add it to the series.
-			   2. call series.draw();
-			      - series.draw() will ask the chart how tall and wide it is, and determine the coordinates
-			        for the point
-			      - then series.draw() will draw a rectangle from the point to the bottom of the chart
-			*/
 		}
-		
 
 	});
 	
