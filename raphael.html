@@ -14,6 +14,7 @@
 <script src="lib/raphael/g.bar.js" type="text/javascript" charset="utf-8"></script>
 <script src="raphael-charts.js" type="text/javascript" charset="utf-8"></script>
 <script src="jquery.ui.ally.barchart.js" type="text/javascript" charset="utf-8"></script>
+<script src="jquery.ui.ally.polygraph.js" type="text/javascript" charset="utf-8"></script>
 
 <style type="text/css" media="screen">
 	.chart-container {
@@ -24,6 +25,11 @@
 </style>
 
 <script type="text/javascript" charset="utf-8">
+	
+	$( function () {
+		$('#raphael-polygraph-widget-container').allyPolyGraph();
+	});
+	
 	$( function () {
 		$('#raphael-bar-chart-widget-container').allyBarChart().allyBarChart('addValues', [5,15,25,35]);
 	});
@@ -44,6 +50,13 @@
 		
 	
 <h1>Ally Charts</h1>	
+
+
+<h2>Raphaël Bar Chart - PolyGraph</h2>
+
+<p>Trying to build an extensible API based on what I've learned so far.</p>
+
+<div id="raphael-polygraph-widget-container" class="chart-container"></div>
 
 <h2>Raphaël Bar Chart - Widget</h2>
 
