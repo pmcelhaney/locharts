@@ -1,6 +1,12 @@
+floating label appears on hover | id:1d8ca04e038b961364e6ecc2d59e5d32b0e330ca
+y-axis has labels | id:21a1f9b3de407f430b13e464242cf1c5bdf9ff9b
 Bars are drawn with animation and a little bounce | id:3632b3882b31eee20dbc271db641eb8f56c969c9
 rename from highcharts to charts | id:3643413f68fa946998ccbca1a347dbf17490ee2c
 Width and height can be set programatically | id:3f7e965f7fa3686d858299e6681ac1f48b4bb0b5
+x-axis has labels | id:49a2af0df66bf7437fdaf84a3d789d8410830a9a
+floating label animates from one point to another | id:4e779c043c23ff8e8e811c6adb0ea45c85ab648c
+START OVER with blank widget and implement one story at a time | id:a331cab365d370fcb3dcd7cc9b67342df3bc91c7
 Static bar graph with marked x and y axes and three points | id:d68ec526b5a7f7552c8fbb486413eb76a8824bf1
+Label appears at the top of each bar | id:ea3de18da9251b9535537589dd4b675b7dce103f
 Series values can be added programmatically | id:f3a8f3a0c86592f41e8bb042cf195b4cd9a2f79c
 Bar graph has gradients and roughly matches Ally intrest charts | id:f7e4dfa2d1d2c48c4ce6ad47db6212ddc1375534

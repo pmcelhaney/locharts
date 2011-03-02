@@ -45,10 +45,13 @@
 			var chartHeight = this.options.chartHeight;
 			var chartWidth = this.options.chartWidth;
 			var options = this.options;
-			this._paper.rect(margin + (barWidth + margin) * index, chartHeight - margin, barWidth, 1)
+			var bottom = chartHeight - margin;
+			var x = margin + (barWidth + margin) * index;
+			var y = bottom - height;
+			this._paper.rect(x, chartHeight - margin, barWidth, 1)
 			.attr( { stroke: "none", fill: "270-rgba(55,152,199,1)-rgba(70,195,255,.5)" } )
 			.hover( options.point.onMouseOver, options.point.onMouseOut)
-			.animate( { height: height, y: chartHeight - margin - height }, 1500, "elastic" );
+			.animate( { height: height, y: y }, 1500, "elastic" );
 		},
 
 		addValues: function (values) {

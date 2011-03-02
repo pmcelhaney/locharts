@@ -105,8 +105,11 @@
 				series.addPoint(point);
 			});
 			
-			series.draw();
-		}
+			series.draw(this.xAxis, this.yAxis);
+		},
+		
+		xAxis: null,
+		yAxis: null
 
 	});
 	
