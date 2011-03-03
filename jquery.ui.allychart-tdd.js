@@ -32,7 +32,7 @@
 			var yAxis = this.yAxis;
 			return $(this.options.values).map(
 				function () {
-					return yAxis.mapValue(this);
+					return { y: yAxis.mapValue(this) };
 				}
 			).toArray();
 			
