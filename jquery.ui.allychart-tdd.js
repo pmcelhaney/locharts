@@ -17,19 +17,19 @@
 		mapValue: function (value) {
 			return this.start + this.scale() * (value - this.min);
 		}
-	}
+	};
 	
 	
 	
 	$.widget("ui.allyChart", {		
 		_create: function() {	
-			var yAxis = this.options.yAxis;
-			yAxis.start = this.options.height;
-			yAxis.end = 0;
-			$.extend(this.options.yAxis, Axis);
+			this.yAxis = this.options.yAxis;
+			this.yAxis.start = this.options.height;
+			this.yAxis.end = 0;
+			$.extend(this.yAxis, Axis);
 		},
 		points: function () {
-			var yAxis = this.options.yAxis;
+			var yAxis = this.yAxis;
 			return $(this.options.values).map(
 				function () {
 					return yAxis.mapValue(this);
