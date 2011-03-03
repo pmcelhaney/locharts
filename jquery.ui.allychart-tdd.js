@@ -9,13 +9,28 @@
 (function( $, Rapahel, undefined ) {
 	
 	$.widget("ui.allyChart", {		
-		_create: function() {			
+		_create: function() {	
+			var yAxis = this.options.yAxis;
+			yAxis.length = function () {
+				return this.max - this.min;
+			};
+			yAxis.start = this.options.height;
+			yAxis.end = 0;
+			yAxis.scale = function () {
+				return (this.end - this.start) / this.length();
+			};
+			yAxis.mapValue = function (value) {
+				return this.start + this.scale() * (value - this.min);
+			};
 		},
 		points: function () {
-			var yAxisSize = this.options.yAxis.max - this.options.yAxis.min;
-			var yScale = this.options.height / yAxisSize;
-			var y = this.options.height - (yScale * (this.options.values[0] - this.options.yAxis.min));
-			return [y];
+			var yAxis = this.options.yAxis;
+			return $(this.options.values).map(
+				function () {
+					return yAxis.mapValue(this);
+				}
+			).toArray();
+			
 		}
 	});
 	
