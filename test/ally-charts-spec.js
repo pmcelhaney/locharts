@@ -1,9 +1,9 @@
 describe("Grid", function() {
-	
-	it("should not exist yet", function () {
-		expect(1).toEqual(2);
-	});
 
+	it("should create an object", function() {
+		var grid = Grid();
+		expect(typeof grid).toEqual("object");
+	});
 	
 });
 
