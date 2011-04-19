@@ -1,0 +1,46 @@
+A brush applies a series of data to a paper using a graph to get the coordinates. 
+
+paper = Raphael();
+
+grid = Grid({ width: 800, height: 600, margin: [ 50, 50, 50, 50 ], yMin: 0, yMax: 100, xLabels: ['Animal', 'Vegetable', 'Mineral'] })
+
+for each brushType:
+	brush = brushes[brushType](paper, grid);
+	brush.stroke(data);
+
+A brush can draw bars or lines or labels or floating bubbles or whatever. A complete chart will be composed by many brushes. 
+
+A chart will read its options and data to create the grid and paper. It will then create brushes and call stroke() on each one.
+
+AllyChartWidget:
+	- should pass a proper grid to a mock brush
+	- should pass a proper paper to a mock brush
+	- should pass the data to a mock brush
+	- should loop and do the above with three mock brushes
+Grid:
+	- easiest to test, no dependencies 
+	- xForIndex(i), yForIndex(i)
+	- xForValue(v), yForValue(v)
+	- columnWidth(), rowHeight()
+Brush:
+	- depends on grid, paper, which will both be mocked for testing
+	- should call the right methods on paper to draw bars, labels, or whatever it does
+	
+	
+	
+1. Create Grid.
+2. Create Widget that sets up a very simple Paper and Grid and passes them to each brush.
+3. Create each of the brushes. 	
+
+
+
+$('div').allyChart({
+	data: [10, 20, 40],
+	brushes: [
+		'bar',
+		'x-axis-labels',
+		'y-axis-units',
+		'floating-labels',
+		function(paper, grid) { return { stroke: function(data) { ... } }; }
+	]
+});
