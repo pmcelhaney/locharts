@@ -19,6 +19,19 @@ describe("Grid", function() {
 		
 		expect(Grid({ width: 160, xLabels: ['one', 'two'], marginLeft: 20, marginRight: 20 }).xForIndex(0)).toEqual(60);
 	});
+	
+	it("should know the y-coordinate for a given value (keep in mind that the origin is in the top left corner)", function() {
+		expect(Grid().yForValue(0)).toEqual(960);
+		
+		expect(Grid().yForValue(0.75)).toEqual(960/4);
+		
+		expect(Grid({ height: 60, yMaxValue: 100 }).yForValue(50)).toEqual(30);
+		
+		expect(Grid({ height: 30, yMinValue: 100, yMaxValue: 190 }).yForValue(130)).toEqual(20);
+		
+		
+		expect(Grid({ height: 60, marginBottom: 10, marginTop: 10 }).yForValue(0.75)).toEqual(20);
+	});
 });
 
 
