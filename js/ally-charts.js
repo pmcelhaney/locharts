@@ -48,6 +48,22 @@ window.Grid = function (options) {
 		
 		xLabelForIndex: function (i) {
 			return options.xLabels[i] ;
+		},
+		
+		width: function () {
+			return width;
+		},
+		
+		height: function () {
+			return height;
+		},
+		
+		yMinValue: function () {
+			return yMinValue;
+		},
+		
+		yMaxValue: function () {
+			return yMaxValue;
 		}
 	};
 };

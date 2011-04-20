@@ -50,11 +50,23 @@ describe("Grid", function() {
 	});
 	
 	
-	it("should know the labels of its columsn", function () {
+	it("should know the labels of its columns", function () {
 		var grid = Grid({ xLabels: ['one', 'two', 'three'] });
 		expect(grid.xLabelForIndex(0)).toEqual('one');
 		expect(grid.xLabelForIndex(2)).toEqual('three');
 		expect(grid.xLabelForIndex(3)).toBe(undefined);
+	});
+	
+	it("should know the width and height", function () {
+		var grid = Grid({ width: 800, height: 600, marginLeft: 10, marginRight: 90, marginTop: 150, marginBottom: 50 });
+		expect(grid.width()).toEqual(700);
+		expect(grid.height()).toEqual(400);
+	});
+	
+	it("should know the max and min values", function () {
+		var grid = Grid({ yMinValue: 100, yMaxValue: 400 });
+		expect(grid.yMinValue()).toEqual(100);
+		expect(grid.yMaxValue()).toEqual(400);
 	});
 	
 });
