@@ -1,10 +1,8 @@
 describe("Grid", function() {
 /*
-- xForIndex(i), yForIndex(i)
-- xForValue(v), yForValue(v)
-- columnWidth(), rowHeight()
-- yForTopEdge(), yForBottomEdge()
-- xForLeftEdge(), xForRightEdge()
+- yForIndex(i)
+- xForValue(v)
+- rowHeight()
 */
 	
 	it("should know the x-coordinate for a given index", function () {
@@ -29,16 +27,11 @@ describe("Grid", function() {
 	});
 	
 	
-	it("should know the y-coordinate for a given value (keep in mind that the origin is in the top left corner)", function() {
+	it("should know the y-coordinate for a given value (keep in mind that y increases as it goes down)", function() {
 		expect(Grid().yForValue(0)).toEqual(960);
-		
 		expect(Grid().yForValue(0.75)).toEqual(960/4);
-		
 		expect(Grid({ height: 60, yMaxValue: 100 }).yForValue(50)).toEqual(30);
-		
-		expect(Grid({ height: 30, yMinValue: 100, yMaxValue: 190 }).yForValue(130)).toEqual(20);
-		
-		
+		expect(Grid({ height: 30, yMinValue: 100, yMaxValue: 190 }).yForValue(130)).toEqual(20);		
 		expect(Grid({ height: 60, marginBottom: 10, marginTop: 10 }).yForValue(0.75)).toEqual(20);
 	});
 	
@@ -46,14 +39,11 @@ describe("Grid", function() {
 	it("should know where the edges of the graph are", function() {
 		expect(Grid().yForTopEdge()).toEqual(0);
 		expect(Grid().yForBottomEdge()).toEqual(960);
-		
 		expect(Grid({ height: 500, marginTop: 100, marginBottom: 50 }).yForTopEdge()).toEqual(100);
 		expect(Grid({ height: 500, marginTop: 100, marginBottom: 50 }).yForBottomEdge()).toEqual(450);
 		
-		
 		expect(Grid().xForLeftEdge()).toEqual(0);
 		expect(Grid().xForRightEdge()).toEqual(960);
-		
 		expect(Grid({ width: 500, marginLeft: 100, marginRight: 50 }).xForLeftEdge()).toEqual(100);
 		expect(Grid({ width: 500, marginLeft: 100, marginRight: 50 }).xForRightEdge()).toEqual(450);
 	});
