@@ -8,6 +8,8 @@ window.Grid = function (options) {
 	var width = ( options.width || 960 ) - marginLeft - marginRight;
 	var height = ( options.height || 960 ) - marginBottom - marginTop;
 	
+	var xLabels = options.xLabels || [];
+	
 	var columnCount = ( options.xLabels && options.xLabels.length ) || 1;
 	
 	var yMinValue = options.yMinValue || 0;
@@ -42,6 +44,10 @@ window.Grid = function (options) {
 
 		columnWidth: function () {
 			return width / columnCount;
+		},
+		
+		xLabelForIndex: function (i) {
+			return options.xLabels[i] ;
 		}
 	};
 };

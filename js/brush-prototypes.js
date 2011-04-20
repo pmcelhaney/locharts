@@ -11,7 +11,7 @@ bars = function (paper, grid, data) {
 
 xAxis = function (paper, grid, data) {
 	$(data).each(function (i) {
-		paper.text(grid.xForIndex(i), grid.yForBottomEdge() + 10, this);
+		paper.text(grid.xForIndex(i), grid.yForBottomEdge() + 10, grid.xLabelForIndex(i));
 	});
 };
 

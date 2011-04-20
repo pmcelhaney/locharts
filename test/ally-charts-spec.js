@@ -3,6 +3,7 @@ describe("Grid", function() {
 - yForIndex(i)
 - xForValue(v)
 - rowHeight()
+- xLabelForIndex(i)
 */
 	
 	it("should know the x-coordinate for a given index", function () {
@@ -48,6 +49,13 @@ describe("Grid", function() {
 		expect(Grid({ width: 500, marginLeft: 100, marginRight: 50 }).xForRightEdge()).toEqual(450);
 	});
 	
+	
+	it("should know the labels of its columsn", function () {
+		var grid = Grid({ xLabels: ['one', 'two', 'three'] });
+		expect(grid.xLabelForIndex(0)).toEqual('one');
+		expect(grid.xLabelForIndex(2)).toEqual('three');
+		expect(grid.xLabelForIndex(3)).toBe(undefined);
+	});
 	
 });
 
