@@ -10,14 +10,14 @@ describe("Grid", function() {
 		
 		expect(Grid({ width: 60 }).xForIndex(0)).toEqual(30);
 				
-		expect(Grid({ width: 60, xLabels: ['one', 'two'] }).xForIndex(0)).toEqual(20);
-		expect(Grid({ width: 60, xLabels: ['one', 'two'] }).xForIndex(1)).toEqual(40);
+		expect(Grid({ width: 60, xLabels: ['one', 'two'] }).xForIndex(0)).toEqual(15);
+		expect(Grid({ width: 60, xLabels: ['one', 'two'] }).xForIndex(1)).toEqual(45);
 		
-		expect(Grid({ width: 60, xLabels: ['one', 'two', 'three'] }).xForIndex(0)).toEqual(15);
+		expect(Grid({ width: 60, xLabels: ['one', 'two', 'three'] }).xForIndex(0)).toEqual(10);
 		expect(Grid({ width: 60, xLabels: ['one', 'two', 'three'] }).xForIndex(1)).toEqual(30);
-		expect(Grid({ width: 60, xLabels: ['one', 'two', 'three'] }).xForIndex(2)).toEqual(45);
+		expect(Grid({ width: 60, xLabels: ['one', 'two', 'three'] }).xForIndex(2)).toEqual(50);
 		
-		expect(Grid({ width: 160, xLabels: ['one', 'two'], marginLeft: 20, marginRight: 20 }).xForIndex(0)).toEqual(60);
+		expect(Grid({ width: 160, xLabels: ['one', 'two'], marginLeft: 20, marginRight: 20 }).xForIndex(0)).toEqual(50);
 	});
 	
 	it("should know the width of each column", function () {

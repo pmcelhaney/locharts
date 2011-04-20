@@ -16,7 +16,7 @@ window.Grid = function (options) {
 	
 	return {
 		xForIndex: function (i) {
-			return (i+1) * width/(columnCount+1) + marginLeft;
+			return (i+0.5) * width/(columnCount) + marginLeft;
 		},
 		
 		yForValue: function (value) {
@@ -45,4 +45,6 @@ window.Grid = function (options) {
 		}
 	};
 };
+
+
 
