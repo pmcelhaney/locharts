@@ -20,8 +20,18 @@ window.Grid = function (options) {
 		},
 		
 		yForValue: function (value) {
-			return (height + marginTop) - (value - yMinValue) * ( height / (yMaxValue - yMinValue) );
+			return this.yForBottomEdge() - (value - yMinValue) * ( height / (yMaxValue - yMinValue) );
 		},
+		
+		yForTopEdge: function () {
+			return marginTop;
+		},
+		
+		yForBottomEdge: function () {
+			return marginTop + height;
+		},
+		
+		
 		
 		columnWidth: function () {
 			return width / columnCount;

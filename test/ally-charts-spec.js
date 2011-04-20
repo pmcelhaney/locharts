@@ -43,6 +43,16 @@ describe("Grid", function() {
 	});
 	
 	
+	it("should know where the edges of the graph are", function() {
+		expect(Grid().yForTopEdge()).toEqual(0);
+		expect(Grid().yForBottomEdge()).toEqual(960);
+		
+		expect(Grid({ height: 500, marginTop: 100, marginBottom: 50 }).yForTopEdge()).toEqual(100);
+
+		expect(Grid({ height: 500, marginTop: 100, marginBottom: 50 }).yForBottomEdge()).toEqual(450);
+	});
+	
+	
 });
 
 
