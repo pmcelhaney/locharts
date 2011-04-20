@@ -1,3 +1,18 @@
+A couple of quick crazy ideas.
+
+1. layerQueue: allow a layer to add other layers through a function call, e.g. this.addLayer('some other layer');
+2. Maybe a layer returns an array of the objects it created so they can be removed later.
+3. Maybe a layer really wants to be an object, with methods for create(), remove(), and... event handlers?
+
+Hmm, I'm not liking all this inter-layer communication. They should be able to announce events and listen for events, but
+have no direct communications. And the queue idea is cool, but it might make layers too hard to use. The widget maker should
+know exactly what layers are going in, even though it's tedious.
+
+Another way to make composable layers is to have the layers built with private functions. The public layers would make calls
+to whatever private functions are needed to build their parts.
+
+----
+
 A brush applies a series of data to a paper using a graph to get the coordinates. 
 
 paper = Raphael();
