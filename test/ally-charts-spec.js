@@ -3,6 +3,8 @@ describe("Grid", function() {
 - xForIndex(i), yForIndex(i)
 - xForValue(v), yForValue(v)
 - columnWidth(), rowHeight()
+- yForTopEdge(), yForBottomEdge()
+- xForLeftEdge(), xForRightEdge()
 */
 	
 	it("should know the x-coordinate for a given index", function () {
