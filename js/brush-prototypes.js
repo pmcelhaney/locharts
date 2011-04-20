@@ -32,9 +32,9 @@ var layers = {
 	}
 },
 
-'y-axis markers': function (paper, grid, data) {
+'y-axis markers': function (paper, grid, data, numberOfRows) {
 	var i, y;
-	var roughIncrement = Math.round( ( grid.yMaxValue() - grid.yMinValue() ) / 5);
+	var roughIncrement = Math.round( ( grid.yMaxValue() - grid.yMinValue() ) / (numberOfRows || 5));
 	var roundNumber = Math.pow(10, (Math.floor(Math.log(roughIncrement) / Math.LN10)) );
 	var increment = roughIncrement - (roughIncrement % roundNumber);
 	for (i = Math.floor(grid.yMinValue()); i < grid.yMaxValue() ; i += increment) {
@@ -70,11 +70,20 @@ $(function() {
 		marginRight: 10
 	});
 
-	var layersToInclude = ["borders", "y-axis markers", "x-axis label separators",  "x-axis labels",  "bars", "values above points"  ];
+	var layersToInclude = ["borders", ["y-axis markers", 4], "x-axis label separators",  "x-axis labels",  "bars", "values above points"];
 	
 	
 	$.each(layersToInclude, function () {
-		layers[this](paper, grid, data);
+		var options = [];
+		var arguments = [paper, grid, data];
+		if ($.isArray(this)) {
+			layer = layers[this[0]];
+			arguments.push(this.slice(1));
+		} else {
+			layer = layers[this];
+		}
+	
+		layer.apply(null, arguments);
 	});
 	
 
