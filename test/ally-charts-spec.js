@@ -48,8 +48,14 @@ describe("Grid", function() {
 		expect(Grid().yForBottomEdge()).toEqual(960);
 		
 		expect(Grid({ height: 500, marginTop: 100, marginBottom: 50 }).yForTopEdge()).toEqual(100);
-
 		expect(Grid({ height: 500, marginTop: 100, marginBottom: 50 }).yForBottomEdge()).toEqual(450);
+		
+		
+		expect(Grid().xForLeftEdge()).toEqual(0);
+		expect(Grid().xForRightEdge()).toEqual(960);
+		
+		expect(Grid({ width: 500, marginLeft: 100, marginRight: 50 }).xForLeftEdge()).toEqual(100);
+		expect(Grid({ width: 500, marginLeft: 100, marginRight: 50 }).xForRightEdge()).toEqual(450);
 	});
 	
 	

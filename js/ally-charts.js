@@ -23,6 +23,15 @@ window.Grid = function (options) {
 			return this.yForBottomEdge() - (value - yMinValue) * ( height / (yMaxValue - yMinValue) );
 		},
 		
+		xForLeftEdge: function () {
+			return marginLeft;
+		},
+		
+		xForRightEdge: function () {
+			return marginLeft + width;
+		},
+		
+		
 		yForTopEdge: function () {
 			return marginTop;
 		},
@@ -30,9 +39,7 @@ window.Grid = function (options) {
 		yForBottomEdge: function () {
 			return marginTop + height;
 		},
-		
-		
-		
+
 		columnWidth: function () {
 			return width / columnCount;
 		}
