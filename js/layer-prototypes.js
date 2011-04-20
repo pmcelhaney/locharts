@@ -1,7 +1,9 @@
 var layers = {
 
-'bars' : function (paper, grid, data) {
-	$(data).each(function (i) {
+'bars' : function () {
+	var grid = this.grid;
+	var paper = this.paper;
+	$(this.data).each(function (i) {
 		var width = grid.columnWidth() * 0.8;
 		var left = grid.xForIndex(i) - (width / 2); 
 		var top = grid.yForValue(this);
@@ -11,28 +13,36 @@ var layers = {
 	});
 },
 
-'x-axis labels': function (paper, grid, data) {
-	$(data).each(function (i) {
+'x-axis labels': function () {
+	var paper = this.paper;
+	var grid = this.grid;
+	$(this.data).each(function (i) {
 		paper.text(grid.xForIndex(i), grid.yForBottomEdge() + 10, grid.xLabelForIndex(i));
 	});
 },
 
-'values above points': function (paper, grid, data) {
-	$(data).each(function (i) {
+'values above points': function () {
+	var paper = this.paper;
+	var grid = this.grid;
+	$(this.data).each(function (i) {
 		paper.text(grid.xForIndex(i), grid.yForValue(this) - 10, this);
 	});
 },
 
-'x-axis label separators': function (paper, grid, data) {
+'x-axis label separators': function () {
+	var paper = this.paper;
+	var grid = this.grid;
 	var i;
-	for (i = 1; i < data.length; i++) {
+	for (i = 1; i < this.data.length; i++) {
 		var x = 0.5 + Math.round(grid.xForIndex(i) - grid.columnWidth() / 2);
 		var y = 0.5 + grid.yForBottomEdge();
 		paper.path('M' + x + ' ' + y + 'L' + x + ' ' + (y+10) );
 	}
 },
 
-'y-axis markers': function (paper, grid, data, numberOfRows) {
+'y-axis markers': function (numberOfRows) {
+	var paper = this.paper;
+	var grid = this.grid;
 	var i, y;
 	var roughIncrement = Math.round( ( grid.yMaxValue() - grid.yMinValue() ) / (numberOfRows || 5));
 	var roundNumber = Math.pow(10, (Math.floor(Math.log(roughIncrement) / Math.LN10)) );
@@ -48,21 +58,26 @@ var layers = {
 
 
 
-'borders': function (paper, grid) {
-	paper.rect(grid.xForLeftEdge() + 0.5, grid.yForTopEdge() + 0.5, grid.width(), grid.height());
+'borders': function () {
+	this.paper.rect(this.grid.xForLeftEdge() + 0.5, this.grid.yForTopEdge() + 0.5, this.grid.width(), this.grid.height());
 }
 
 };
 
 $(function() {
-	var data = [100, 142, 40, 151];
 	
-	var paper = Raphael(50, 100, 600, 400);
-	var grid = Grid({
+	
+	var chart = {
+		data: [100, 142, 40, 151],
+		paper: Raphael(50, 100, 600, 400)
+	};
+	
+	
+	chart.grid = Grid({
 		width: 600, 
 		height: 400, 
 		yMinValue: 0, 
-		yMaxValue: Math.max.apply(null, data) * 1.1, 
+		yMaxValue: Math.max.apply(null, chart.data) * 1.1, 
 		xLabels: ['Jan', 'Feb', 'Mar', 'Apr'],
 		marginBottom: 20,
 		marginTop: 10,
@@ -70,12 +85,11 @@ $(function() {
 		marginRight: 10
 	});
 
+
 	var layersToInclude = ["borders", ["y-axis markers", 4], "x-axis label separators",  "x-axis labels",  "bars", "values above points"];
 	
-	
 	$.each(layersToInclude, function () {
-		var options = [];
-		var arguments = [paper, grid, data];
+		var arguments = [];
 		if ($.isArray(this)) {
 			layer = layers[this[0]];
 			arguments.push(this.slice(1));
@@ -83,10 +97,7 @@ $(function() {
 			layer = layers[this];
 		}
 	
-		layer.apply(null, arguments);
+		layer.apply(chart, arguments);
 	});
-	
-
-		
 	
 });
