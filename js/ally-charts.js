@@ -21,6 +21,10 @@ window.Grid = function (options) {
 		
 		yForValue: function (value) {
 			return (height + marginTop) - (value - yMinValue) * ( height / (yMaxValue - yMinValue) );
+		},
+		
+		columnWidth: function () {
+			return width / columnCount;
 		}
 	};
 };
