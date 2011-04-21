@@ -111,14 +111,12 @@ describe("Chart Widget", function() {
 	        require({baseUrl: "/"}, ["js/chart"], function(){
                 loaded = true;
 				$('<div id="testDiv" style="width: 600px; height:400px;"></div>').chart({
-					layers: [mockLayer]
+					layers: [mockLayer],
+					data: [10, 20, 50]
 				});
 	        });
 	        return loaded;
 		}, "RequireJS to load the Chart module", 100);	
-		
-
-
 	});
 	
 	
@@ -130,6 +128,10 @@ describe("Chart Widget", function() {
 	it("should create a grid with the right height and width", function () {
 		expect(grid.width).toEqual(600);
 		expect(grid.height).toEqual(400);
+	});
+	
+	it("should set the yMaxValue to 110% of the highest value in the data", function () {
+		expect(grid.yMaxValue).toEqual(55);
 	});
 });
 
