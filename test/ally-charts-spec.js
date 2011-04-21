@@ -5,8 +5,21 @@ describe("Grid", function() {
 - rowHeight()
 - xLabelForIndex(i)
 */
-	
+	var Grid;
+
+	beforeEach(function () {
+		waitsFor( function () {
+			var loaded = false;
+	        require({baseUrl: "/"}, ["js/grid"], function(G){
+				Grid = G;
+                loaded = true;
+	        });
+	        return loaded;
+		}, "RequireJS to load the Grid module");		
+	});
+
 	it("should know the x-coordinate for a given index", function () {
+		
 		expect(Grid().xForIndex(0)).toEqual(480);
 		
 		expect(Grid({ width: 60 }).xForIndex(0)).toEqual(30);

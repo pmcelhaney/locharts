@@ -1,4 +1,4 @@
-define(['layers', 'js/ally-charts.js', 'lib/raphael/raphael.js'], function (layers) {
+define(['layers', 'grid', 'lib/raphael/raphael.js'], function (layers, Grid) {
 	$(function() {
 
 		var chart = {
