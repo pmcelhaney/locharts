@@ -93,27 +93,43 @@ describe("Chart Widget", function() {
 - xLabelForIndex(i)
 */
 	var mockLayerWasCalled = false;
+	var gird;
 	var mockLayer = function () {
+		grid = this.grid;
 		mockLayerWasCalled = true;
 	};
+
+	define("grid", function () {
+		return function (options) {
+			return options;
+		};
+	});
 
 	beforeEach(function () {
 		waitsFor( function () {
 			var loaded = false;
 	        require({baseUrl: "/"}, ["js/chart"], function(){
                 loaded = true;
+				$('<div id="testDiv" style="width: 600px; height:400px;"></div>').chart({
+					layers: [mockLayer]
+				});
 	        });
 	        return loaded;
-		}, "RequireJS to load the Chart module", 100);		
+		}, "RequireJS to load the Chart module", 100);	
+		
+
+
 	});
 	
 	
 	
 	it("should call the mock layer", function () {
-		$('<div></div>').chart({
-			layers: [mockLayer]
-		});
 		expect(mockLayerWasCalled).toBe(true);
+	});
+	
+	it("should create a grid with the right height and width", function () {
+		expect(grid.width).toEqual(600);
+		expect(grid.height).toEqual(400);
 	});
 });
 
