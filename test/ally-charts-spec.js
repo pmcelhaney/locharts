@@ -85,3 +85,35 @@ describe("Grid", function() {
 });
 
 
+describe("Chart Widget", function() {
+/*
+- yForIndex(i)
+- xForValue(v)
+- rowHeight()
+- xLabelForIndex(i)
+*/
+	var mockLayerWasCalled = false;
+	var mockLayer = function () {
+		mockLayerWasCalled = true;
+	};
+
+	beforeEach(function () {
+		waitsFor( function () {
+			var loaded = false;
+	        require({baseUrl: "/"}, ["js/chart"], function(){
+                loaded = true;
+	        });
+	        return loaded;
+		}, "RequireJS to load the Chart module", 100);		
+	});
+	
+	
+	
+	it("should call the mock layer", function () {
+		$('<div></div>').chart({
+			layers: [mockLayer]
+		});
+		expect(mockLayerWasCalled).toBe(true);
+	});
+});
+
