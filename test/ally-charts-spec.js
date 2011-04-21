@@ -1,3 +1,4 @@
+
 describe("Grid", function() {
 /*
 - yForIndex(i)
@@ -108,11 +109,17 @@ describe("Chart Widget", function() {
 	beforeEach(function () {
 		waitsFor( function () {
 			var loaded = false;
-	        require({baseUrl: "/"}, ["js/chart"], function(){
+	        require({ baseUrl: "/", urlArgs: "bust=" +  (new Date()).getTime() }, ["js/chart"], function(){
                 loaded = true;
 				$('<div id="testDiv" style="width: 600px; height:400px;"></div>').chart({
 					layers: [mockLayer],
-					data: [10, 20, 50]
+					data: [10, 20, 50],
+					yMinValue: 5, 
+					xLabels: ['Jan', 'Feb', 'Mar'],
+					marginTop: 10,
+					marginRight: 20,
+					marginBottom: 30,
+					marginLeft: 40
 				});
 	        });
 	        return loaded;
@@ -132,6 +139,17 @@ describe("Chart Widget", function() {
 	
 	it("should set the yMaxValue to 110% of the highest value in the data", function () {
 		expect(grid.yMaxValue).toEqual(55);
+	});
+	
+	it("should pass the yMinValue, xLabels, and margins to the grid", function () {
+		expect(grid.yMinValue).toEqual(5);
+		expect(grid.xLabels).toEqual(['Jan', 'Feb', 'Mar']);
+		expect(grid.marginTop).toEqual(10);
+		expect(grid.marginRight).toEqual(20);
+		expect(grid.marginBottom).toEqual(30);
+		expect(grid.marginLeft).toEqual(40);
+		expect(grid.marginLeft).toEqual(40);
+		
 	});
 });
 
