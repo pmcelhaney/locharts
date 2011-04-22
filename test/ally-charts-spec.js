@@ -94,7 +94,9 @@ describe("Chart Widget", function() {
 - xLabelForIndex(i)
 */
 	var mockLayerWasCalled = false;
-	var gird;
+	var grid;
+	var builtInLayers = {};
+	
 	var mockLayer = function () {
 		grid = this.grid;
 		mockLayerWasCalled = true;
@@ -104,6 +106,10 @@ describe("Chart Widget", function() {
 		return function (options) {
 			return options;
 		};
+	});
+
+	define("layers", function () {
+		return builtInLayers;
 	});
 
 	beforeEach(function () {
@@ -149,7 +155,45 @@ describe("Chart Widget", function() {
 		expect(grid.marginBottom).toEqual(30);
 		expect(grid.marginLeft).toEqual(40);
 		expect(grid.marginLeft).toEqual(40);
-		
 	});
+	
+	it("should apply each layer in order", function () {
+		var layers = [];
+		var Layer = function (name) {
+			return function () {
+				layers.push(name);
+			};
+		};
+		$('<div></div>').chart({
+			layers: [Layer('one'), Layer('two'), Layer('three')]
+		});
+		expect(layers).toEqual(['one', 'two', 'three']);
+	});
+	
+	it("should pass the options for a layer", function() {
+		var args;
+		var layer = function () {
+			args = Array.prototype.slice.apply(arguments);
+		};
+		$('<div></div>').chart({
+			layers: [ [layer, 'arg1', 'arg2'] ]
+		});
+		expect(args).toEqual(['arg1', 'arg2']);
+	});
+	
+	it("should recognize a built-in layer and skip a missing layer", function() {
+		builtInLayers['a built-in layer'] = function () {
+			args = Array.prototype.slice.apply(arguments);
+		};
+		
+		$('<div></div>').chart({
+			layers: [ 'a built-in layer', 'a missing layer', ['a built-in layer', 'foo', 'bar'] ]
+		});
+		
+		expect(args).toEqual(['foo', 'bar']);
+	});
+	
+
+
 });
 

@@ -1,4 +1,4 @@
-define(['grid'], function (Grid) {
+define(['grid', 'layers'], function (Grid, builtInLayers) {
 	$.fn.chart = function (options) {
 		var grid = Grid( {
 			width: this.width(),
@@ -13,6 +13,25 @@ define(['grid'], function (Grid) {
 			
 		});
 		
-		options.layers[0].apply({grid: grid});	
+		var layerContext = { 
+			grid: grid
+		};
+		
+		$.each(options.layers, function () {
+			var layer = this;
+			var layerFunc;
+			var args = [];
+			
+			if ( $.isArray(this) ) {
+				layer = this[0];
+				args = this.slice(1);	
+			} 
+			
+			layerFn = $.isFunction(layer) ? layer : builtInLayers[layer];
+			
+			if ( $.isFunction(layerFn) ) {			
+				layerFn.apply(layerContext, args);	
+			}
+		});	
 	};     
 });
