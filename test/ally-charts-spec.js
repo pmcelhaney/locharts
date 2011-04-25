@@ -95,9 +95,11 @@ describe("Chart Widget", function() {
 */
 	var mockLayerWasCalled = false;
 	var grid;
+	var data;
 	var builtInLayers = {};
 	
 	var mockLayer = function () {
+		data = this.data;
 		grid = this.grid;
 		mockLayerWasCalled = true;
 	};
@@ -144,6 +146,10 @@ describe("Chart Widget", function() {
 	
 	it("should call the mock layer", function () {
 		expect(mockLayerWasCalled).toBe(true);
+	});
+	
+	it("should make the data available to the layer", function () {
+		expect(data).toEqual([10, 20, 50]);
 	});
 	
 	it("should create a grid with the right height and width", function () {
@@ -238,6 +244,8 @@ describe("Chart Widget", function() {
 		expect(paper.width).toEqual(600);
 		expect(paper.height).toEqual(400);
 	});
+
+
 
 });
 

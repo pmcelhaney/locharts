@@ -15,6 +15,7 @@ define(['grid', 'layers'], function (Grid, builtInLayers) {
 		
 		var layerContext = { 
 			grid: grid,
+			data: options.data,
 			paper: Raphael(this[0], this.width(), this.height())
 		};
 		

@@ -34,6 +34,7 @@ return {
 		var paper = this.paper;
 		var grid = this.grid;
 		var i;
+		console.log(this);
 		for (i = 1; i < this.data.length; i++) {
 			var x = 0.5 + Math.round(grid.xForIndex(i) - grid.columnWidth() / 2);
 			var y = 0.5 + grid.yForBottomEdge();
