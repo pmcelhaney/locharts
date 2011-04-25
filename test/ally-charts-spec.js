@@ -102,6 +102,12 @@ describe("Chart Widget", function() {
 		mockLayerWasCalled = true;
 	};
 
+	define("raphael", function () {
+		return {
+			paper: function (t) { return { target: t }; }
+		};
+	});
+
 	define("grid", function () {
 		return function (options) {
 			return options;
@@ -193,7 +199,22 @@ describe("Chart Widget", function() {
 		expect(args).toEqual(['foo', 'bar']);
 	});
 	
-
+	it("should create a paper on the target element", function() {
+		var paper;
+		var layer = function () {
+			paper = this.paper;
+		};
+		
+		
+		var element = $('<div></div');
+		
+		element.chart({
+			layers: [ layer ]
+		});
+		
+		expect(paper.target).toEqual(element[0]);
+		
+	});
 
 });
 
