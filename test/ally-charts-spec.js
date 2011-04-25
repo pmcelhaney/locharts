@@ -102,11 +102,13 @@ describe("Chart Widget", function() {
 		mockLayerWasCalled = true;
 	};
 
-	define("raphael", function () {
-		return {
-			paper: function (t) { return { target: t }; }
-		};
-	});
+	window.Raphael = function (t, w, h) { 
+		return { 
+			target: t,
+			width: w,
+			height: h 
+		}; 
+	};
 
 	define("grid", function () {
 		return function (options) {
@@ -199,6 +201,11 @@ describe("Chart Widget", function() {
 		expect(args).toEqual(['foo', 'bar']);
 	});
 	
+	
+	describe("the paper", function () {
+		
+		
+	});
 	it("should create a paper on the target element", function() {
 		var paper;
 		var layer = function () {
@@ -206,7 +213,7 @@ describe("Chart Widget", function() {
 		};
 		
 		
-		var element = $('<div></div');
+		var element = $('<div style="width: 600px; height: 400px"></div');
 		
 		element.chart({
 			layers: [ layer ]
@@ -214,6 +221,22 @@ describe("Chart Widget", function() {
 		
 		expect(paper.target).toEqual(element[0]);
 		
+	});
+	
+	it("should set the width and height of the paper", function () {
+		var paper;
+		var layer = function () {
+			paper = this.paper;
+		};
+
+		var element = $('<div style="width: 600px; height: 400px"></div');
+		
+		element.chart({
+			layers: [ layer ]
+		});
+		
+		expect(paper.width).toEqual(600);
+		expect(paper.height).toEqual(400);
 	});
 
 });

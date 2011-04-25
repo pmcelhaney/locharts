@@ -1,4 +1,4 @@
-define(['raphael', 'grid', 'layers'], function (raphael, Grid, builtInLayers) {
+define(['grid', 'layers'], function (Grid, builtInLayers) {
 	$.fn.chart = function (options) {
 		var grid = Grid( {
 			width: this.width(),
@@ -15,7 +15,7 @@ define(['raphael', 'grid', 'layers'], function (raphael, Grid, builtInLayers) {
 		
 		var layerContext = { 
 			grid: grid,
-			paper: raphael.paper(this[0])
+			paper: Raphael(this[0], this.width(), this.height())
 		};
 		
 		$.each(options.layers, function () {
