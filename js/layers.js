@@ -5,12 +5,18 @@ return {
 		var grid = this.grid;
 		var paper = this.paper;
 		$(this.data).each(function (i) {
+			var datum = this;
 			var width = grid.columnWidth() * 0.8;
 			var left = grid.xForIndex(i) - (width / 2); 
-			var top = grid.yForValue(this);
+			var top = grid.yForValue(datum);
 			var height = grid.yForBottomEdge() - top;
-			paper.rect(left + 0.5, top + 0.5, width, height).attr('fill', '#eee');
-		
+			var bar = paper.rect(left + 0.5, top + 0.5, width, height).attr('fill', '#eee');
+			bar.hover(function () {
+				$(paper).trigger('focusItem.chart', [i, datum]);
+				this.attr('fill', '#ddd');
+			}, function () {
+				this.attr('fill', '#eee');
+			});
 		});
 	},
 
@@ -34,7 +40,6 @@ return {
 		var paper = this.paper;
 		var grid = this.grid;
 		var i;
-		console.log(this);
 		for (i = 1; i < this.data.length; i++) {
 			var x = 0.5 + Math.round(grid.xForIndex(i) - grid.columnWidth() / 2);
 			var y = 0.5 + grid.yForBottomEdge();
@@ -58,10 +63,18 @@ return {
 		}
 	},
 
-
-
 	'borders': function () {
 		this.paper.rect(this.grid.xForLeftEdge() + 0.5, this.grid.yForTopEdge() + 0.5, this.grid.width(), this.grid.height());
+	},
+	
+
+	'bubble': function () {
+		var bubble = this.paper.rect(this.grid.xForIndex(0) - 29.5, this.grid.yForValue(this.data[0]) - 60.5, 60, 40, 10).attr('fill', '#fff');
+		var grid = this.grid;
+		var data = this.data;
+		$(this.paper).bind('focusItem.chart', function (event, index, datum) {
+			bubble.animate({x: grid.xForIndex(index) - 29.5, y: grid.yForValue(datum) - 60.5 }, 300, "<>");
+		});
 	}
 
 };
