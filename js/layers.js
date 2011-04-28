@@ -1,4 +1,9 @@
 define(function () {
+var GRADIENTS = {
+	BLUE: '270-rgba(55,152,199,1)-rgba(70,195,255,.5)',
+	PURPLE: '270-rgb(101,3,96)-rgb(211,6,201)'
+};
+
 
 return {
 	'bars' : function () {
@@ -10,12 +15,12 @@ return {
 			var left = grid.xForIndex(i) - (width / 2); 
 			var top = grid.yForValue(datum);
 			var height = grid.yForBottomEdge() - top;
-			var bar = paper.rect(left + 0.5, top + 0.5, width, height).attr('fill', '#eee');
+			var bar = paper.rect(left + 0.5, top + 0.5, width, height).attr('fill', GRADIENTS.BLUE).attr('stroke-width', 0);
 			bar.hover(function () {
 				$(paper).trigger('focusItem.chart', [i, datum]);
-				this.attr('fill', '#ddd');
+				this.attr('fill', GRADIENTS.PURPLE);
 			}, function () {
-				this.attr('fill', '#eee');
+				this.attr('fill', GRADIENTS.BLUE);
 			});
 		});
 	},
@@ -80,5 +85,4 @@ return {
 };
 
 });
-
 
