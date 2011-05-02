@@ -84,16 +84,44 @@ return {
 	
 
 	'bubble': function () {
+		var grid = this.grid;
+		var data = this.data;
 		var width = 100;
 		var height = 40;
-		var bubble = this.paper.rect(this.grid.xForIndex(0) - width / 2 + 0.5, this.grid.yForValue(this.data[0]) - height - 20.5, width, height, 5)
+		
+		var bubblePosition = function (i) {
+			return {
+				x: grid.xForIndex(i) - width / 2 + 0.5,
+				y: grid.yForValue(data[i]) - height - 20.5
+			};
+		};
+		
+		var textPosition = function (i) {
+			return {
+				x: grid.xForIndex(i) - width / 2 + 10.5,
+				y: grid.yForValue(data[i]) - height
+			};
+		};
+		
+		var textContent = function (i) {
+			return data[i].valueOf() + " widgets\nsold this month.";
+		};
+		
+		var bubble = this.paper.rect(bubblePosition(0).x, bubblePosition(0).y, width, height, 5)
 			.attr('fill', '#fff')
 			.attr('stroke', COLORS.LINES)
 			.attr('stroke-width', 2);
-		var grid = this.grid;
-		var data = this.data;
+		var text = this.paper.text(textPosition(0).x, textPosition(0).y, textContent(0)).attr("text-anchor", "start");
+		
+	
+		
 		$(this.paper).bind('focusDatum.chart', function (event, index, datum) {
-			bubble.animate({x: grid.xForIndex(index) - width / 2 + 0.5, y: grid.yForValue(datum) - height - 20.5 }, 300, "<>");
+			text.animate( textPosition(index), 200, "<", function () {
+				this.attr('text', textContent(index));
+			});
+			bubble.animate(bubblePosition(index), 200, "<");
+				
+			
 		});
 	}
 

@@ -42,7 +42,7 @@ in order, so in the case of overlap, the layers toward the end will appear on to
 
 ## Layer Options
 
-A layer can have options, which are specified with an array. The first item in the array is a reference to the 
+A layer can have options, which are specified with by wrapping the layer reference in an array. The first item in the array is a reference to the 
 layer, and everything following is an option. Let's give this chart a thick red border and change the font to 
 Verdana.
 

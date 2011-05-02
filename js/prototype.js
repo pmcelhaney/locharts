@@ -5,7 +5,7 @@ define(['chart'], function () {
 			layers: ["borders", ["y-axis markers", 4], "x-axis label separators",  "x-axis labels",  "bars", "values above points", "bubble"],
 			xLabels: ['Jan', 'Feb', 'Mar', 'Apr'],
 			marginBottom: 20,
-			marginTop: 10,
+			marginTop: 40,
 			marginLeft: 100,
 			marginRight: 10
 		});
