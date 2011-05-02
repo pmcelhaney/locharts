@@ -50,6 +50,11 @@ describe("Grid", function() {
 		expect(Grid({ height: 60, marginBottom: 10, marginTop: 10 }).yForValue(0.75)).toEqual(20);
 	});
 	
+	it("should return whole numbers", function () {
+		expect(Grid({ width: 99, xLabels: [0,1,2] }).xForIndex(1)).toEqual(50);
+		expect(Grid({ height: 59 }).yForValue(0.75)).toEqual(15);
+	});
+	
 	
 	it("should know where the edges of the graph are", function() {
 		expect(Grid().yForTopEdge()).toEqual(0);

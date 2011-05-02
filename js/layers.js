@@ -1,6 +1,6 @@
 define(function () {
 var GRADIENTS = {
-	BLUE: '270-rgba(55,152,199,0.1)-rgba(70,195,255,0.1)',
+	BLUE: '270-rgb(55,152,199)-rgb(70,195,255)',
 	PURPLE: '270-rgb(101,3,96)-rgb(211,6,201)'
 };
 
@@ -22,12 +22,12 @@ return {
 			var left = grid.xForIndex(i) - (width / 2); 
 			var top = grid.yForValue(datum);
 			var height = grid.yForBottomEdge() - top;
-			var bar = paper.rect(left + 0.5, top + 0.5, width, height).attr('fill', GRADIENTS.BLUE).attr('stroke-width', 0).attr('fill-opacity', 0.5);
+			var bar = paper.rect(left + 0.5, top + 0.5, width, height).attr('fill', GRADIENTS.BLUE).attr('stroke-width', 0).attr('fill-opacity', 0.8);
 			bar.hover(function () {
 				$(paper).trigger('focusDatum.chart', [i, datum]);
 				this.attr('fill', GRADIENTS.PURPLE).attr('fill-opacity', 1);
 			}, function () {
-				this.attr('fill', GRADIENTS.BLUE).attr('fill-opacity', 0.5);
+				this.attr('fill', GRADIENTS.BLUE).attr('fill-opacity', 0.8);
 			});
 		});
 	},
@@ -69,6 +69,7 @@ return {
 		for (i = Math.floor(grid.yMinValue()); i < grid.yMaxValue() ; i += increment) {
 			if (i > grid.yMinValue()) {
 				y = 0.5 + grid.yForValue(i);
+				console.log(y);
 				paper.path('M' + (grid.xForLeftEdge() + 0.5) + ' ' + y + 'L' + (grid.xForRightEdge() + 0.5) + ' ' + y ).attr('stroke', COLORS.LINES).attr('z-index', 0);
 				paper.text(grid.xForLeftEdge() + 0.5 - 5, grid.yForValue(i), i + '').attr('text-anchor', 'end').attr('font', FONT).attr('fill', COLORS.TEXT);
 			}
@@ -104,7 +105,7 @@ return {
 		};
 		
 		var textContent = function (i) {
-			return data[i].valueOf() + " widgets\nsold this month.";
+			return 'In ' + grid.xLabelForIndex(i) + ', ' + data[i].valueOf() + "\nwidgets were sold.";
 		};
 		
 		var bubble = this.paper.rect(bubblePosition(0).x, bubblePosition(0).y, width, height, 5)

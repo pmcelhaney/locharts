@@ -19,11 +19,11 @@ define(function () {
 	
 		return {
 			xForIndex: function (i) {
-				return (i+0.5) * width/(columnCount) + marginLeft;
+				return Math.round( ( i+0.5 ) * width/(columnCount) + marginLeft );
 			},
 		
 			yForValue: function (value) {
-				return this.yForBottomEdge() - (value - yMinValue) * ( height / (yMaxValue - yMinValue) );
+				return Math.round( this.yForBottomEdge() - (value - yMinValue) * ( height / (yMaxValue - yMinValue) ) );
 			},
 		
 			xForLeftEdge: function () {
