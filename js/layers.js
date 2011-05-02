@@ -24,7 +24,7 @@ return {
 			var height = grid.yForBottomEdge() - top;
 			var bar = paper.rect(left + 0.5, top + 0.5, width, height).attr('fill', GRADIENTS.BLUE).attr('stroke-width', 0).attr('fill-opacity', 0.5);
 			bar.hover(function () {
-				$(paper).trigger('focusItem.chart', [i, datum]);
+				$(paper).trigger('focusDatum.chart', [i, datum]);
 				this.attr('fill', GRADIENTS.PURPLE).attr('fill-opacity', 1);
 			}, function () {
 				this.attr('fill', GRADIENTS.BLUE).attr('fill-opacity', 0.5);
@@ -92,7 +92,7 @@ return {
 			.attr('stroke-width', 2);
 		var grid = this.grid;
 		var data = this.data;
-		$(this.paper).bind('focusItem.chart', function (event, index, datum) {
+		$(this.paper).bind('focusDatum.chart', function (event, index, datum) {
 			bubble.animate({x: grid.xForIndex(index) - width / 2 + 0.5, y: grid.yForValue(datum) - height - 20.5 }, 300, "<>");
 		});
 	}
