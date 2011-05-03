@@ -18,7 +18,7 @@ return {
 		var paper = this.paper;
 		$(this.data).each(function (i) {
 			var datum = this;
-			var width = grid.columnWidth() * 0.8;
+			var width = grid.columnWidth() * 0.5;
 			var left = grid.xForIndex(i) - (width / 2); 
 			var top = grid.yForValue(datum);
 			var height = grid.yForBottomEdge() - top;
@@ -59,7 +59,8 @@ return {
 		}
 	},
 
-	'y-axis markers': function (numberOfRows) {
+	'y-axis markers': function (numberOfRows, formatter) {
+		var formatter = formatter || (function (n) { return n; }); 
 		var paper = this.paper;
 		var grid = this.grid;
 		var i, y;
@@ -70,7 +71,7 @@ return {
 			if (i > grid.yMinValue()) {
 				y = 0.5 + grid.yForValue(i);
 				paper.path('M' + (grid.xForLeftEdge() + 0.5) + ' ' + y + 'L' + (grid.xForRightEdge() + 0.5) + ' ' + y ).attr('stroke', COLORS.LINES).attr('z-index', 0);
-				paper.text(grid.xForLeftEdge() + 0.5 - 5, grid.yForValue(i), i + '').attr('text-anchor', 'end').attr('font', FONT).attr('fill', COLORS.TEXT);
+				paper.text(grid.xForLeftEdge() + 0.5 - 5, grid.yForValue(i), formatter(i)).attr('text-anchor', 'end').attr('font', FONT).attr('fill', COLORS.TEXT);
 			}
 		}
 	},
@@ -86,7 +87,7 @@ return {
 	'bubble': function () {
 		var grid = this.grid;
 		var data = this.data;
-		var width = 100;
+		var width = 130;
 		var height = 40;
 		
 		var bubblePosition = function (i) {
@@ -104,7 +105,7 @@ return {
 		};
 		
 		var textContent = function (i) {
-			return 'In ' + grid.xLabelForIndex(i) + ', ' + data[i].valueOf() + "\nwidgets were sold.";
+			return grid.xLabelForIndex(i) + '\nEarnings: ' + data[i].toString();
 		};
 		
 		var bubble = this.paper.rect(bubblePosition(0).x, bubblePosition(0).y, width, height, 5)
