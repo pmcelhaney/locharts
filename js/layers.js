@@ -69,7 +69,6 @@ return {
 		for (i = Math.floor(grid.yMinValue()); i < grid.yMaxValue() ; i += increment) {
 			if (i > grid.yMinValue()) {
 				y = 0.5 + grid.yForValue(i);
-				console.log(y);
 				paper.path('M' + (grid.xForLeftEdge() + 0.5) + ' ' + y + 'L' + (grid.xForRightEdge() + 0.5) + ' ' + y ).attr('stroke', COLORS.LINES).attr('z-index', 0);
 				paper.text(grid.xForLeftEdge() + 0.5 - 5, grid.yForValue(i), i + '').attr('text-anchor', 'end').attr('font', FONT).attr('fill', COLORS.TEXT);
 			}
