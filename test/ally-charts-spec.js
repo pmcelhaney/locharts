@@ -88,6 +88,44 @@ describe("Grid", function() {
 		expect(grid.yMaxValue()).toEqual(400);
 	});
 	
+	it("should return black as the default color", function () {
+		var grid = Grid();
+		expect(grid.color(0)).toEqual('#000');
+		expect(grid.color(1)).toEqual('#000');
+		expect(grid.color(5)).toEqual('#000');
+	});
+	
+	it("should return the correct color", function () {
+		var grid = Grid({colors: ['#aaa', '#bbb', '#ccc']});
+		expect(grid.color(0)).toEqual('#aaa');
+		expect(grid.color(1)).toEqual('#bbb');
+		expect(grid.color(2)).toEqual('#ccc');
+		expect(grid.color(3)).toEqual('#aaa');
+	});
+	
+	it("should return the correct fillColor", function () {
+		var grid = Grid({fillColors: ['#aaa', '#bbb', '#ccc']});
+		expect(grid.fillColor(0)).toEqual('#aaa');
+		expect(grid.fillColor(1)).toEqual('#bbb');
+		expect(grid.fillColor(2)).toEqual('#ccc');
+		expect(grid.fillColor(3)).toEqual('#aaa');
+	});
+	
+	it("should return the correct gradients", function () {
+		var grid = Grid({gradients: ['270-#aaa-#bbb', '270-#bbb-#ccc', '270-#ccc-#ddd']});
+		expect(grid.gradient(0)).toEqual('270-#aaa-#bbb');
+		expect(grid.gradient(1)).toEqual('270-#bbb-#ccc');
+		expect(grid.gradient(2)).toEqual('270-#ccc-#ddd');
+		expect(grid.gradient(3)).toEqual('270-#aaa-#bbb');
+	});
+	
+	
+	it("should fall through gradient -> fillColor -> color", function () {
+		expect( Grid({fillColors: ['#f00']}).gradient(0)  ).toEqual('#f00');
+		expect( Grid({colors:     ['#c00']}).gradient(0)  ).toEqual('#c00');
+		expect( Grid({colors:     ['#b00']}).fillColor(0) ).toEqual('#b00');
+	});
+	
 });
 
 
@@ -140,7 +178,11 @@ describe("Chart Widget", function() {
 					marginTop: 10,
 					marginRight: 20,
 					marginBottom: 30,
-					marginLeft: 40
+					marginLeft: 40,
+					colors: ['#aaa', '#bbb'],
+					fillColors: ['#111', '#222'],
+					gradients: ['0-#aaa-#bbb', '0-#111-#222']
+					
 				});
 	        });
 	        return loaded;
@@ -166,7 +208,7 @@ describe("Chart Widget", function() {
 		expect(grid.yMaxValue).toEqual(55);
 	});
 	
-	it("should pass the yMinValue, xLabels, and margins to the grid", function () {
+	it("should pass the yMinValue, xLabels, margins, and colors to the grid", function () {
 		expect(grid.yMinValue).toEqual(5);
 		expect(grid.xLabels).toEqual(['Jan', 'Feb', 'Mar']);
 		expect(grid.marginTop).toEqual(10);
@@ -174,6 +216,10 @@ describe("Chart Widget", function() {
 		expect(grid.marginBottom).toEqual(30);
 		expect(grid.marginLeft).toEqual(40);
 		expect(grid.marginLeft).toEqual(40);
+		expect(grid.colors).toEqual(['#aaa', '#bbb']);
+		expect(grid.fillColors).toEqual(['#111', '#222']);
+		expect(grid.gradients).toEqual(['0-#aaa-#bbb', '0-#111-#222']);
+
 	});
 	
 	it("should apply each layer in order", function () {
@@ -240,6 +286,7 @@ describe("Chart Widget", function() {
 		});
 	
 	});
+	
 
 
 

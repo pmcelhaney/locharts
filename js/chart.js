@@ -9,8 +9,10 @@ define(['grid', 'layers'], function (Grid, builtInLayers) {
 			marginRight: options.marginRight,
 			marginBottom: options.marginBottom,
 			marginLeft: options.marginLeft,
-			xLabels: options.xLabels
-			
+			xLabels: options.xLabels,
+			colors: options.colors,
+			fillColors: options.fillColors,
+			gradients: options.gradients
 		});
 		
 		var layerContext = { 

@@ -16,6 +16,11 @@ define(function () {
 		var yMinValue = options.yMinValue || 0;
 		var yMaxValue = options.yMaxValue || 1;
 	
+		var colors = options.colors || ['#000']; 
+		
+		var fillColors = options.fillColors || colors; 
+		
+		var gradients = options.gradients || fillColors;
 	
 		return {
 			xForIndex: function (i) {
@@ -65,6 +70,18 @@ define(function () {
 		
 			yMaxValue: function () {
 				return yMaxValue;
+			},
+			
+			color: function ( i ) {
+				return colors[ i % colors.length ];
+			},
+			
+			fillColor: function ( i ) {
+				return fillColors[ i % fillColors.length ];
+			},
+			
+			gradient: function ( i ) {
+				return gradients[ i % gradients.length ];
 			}
 		};
 	};
