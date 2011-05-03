@@ -215,39 +215,39 @@ describe("Chart Widget", function() {
 	
 	describe("the paper", function () {
 		
-		
-	});
-	it("should create a paper on the target element", function() {
-		var paper;
-		var layer = function () {
-			paper = this.paper;
-		};
+		it("should be added to the target element", function() {
+			var paper;
+			var layer = function () {
+				paper = this.paper;
+			};
 		
 		
-		var element = $('<div style="width: 600px; height: 400px"></div');
+			var element = $('<div style="width: 600px; height: 400px"></div');
 		
-		element.chart({
-			layers: [ layer ]
+			element.chart({
+				layers: [ layer ]
+			});
+		
+			expect(paper.target).toEqual(element[0]);
+		
 		});
-		
-		expect(paper.target).toEqual(element[0]);
-		
-	});
 	
-	it("should set the width and height of the paper", function () {
-		var paper;
-		var layer = function () {
-			paper = this.paper;
-		};
+		it("should have the width and height of the target element", function () {
+			var paper;
+			var layer = function () {
+				paper = this.paper;
+			};
 
-		var element = $('<div style="width: 600px; height: 400px"></div');
+			var element = $('<div style="width: 600px; height: 400px"></div');
 		
-		element.chart({
-			layers: [ layer ]
+			element.chart({
+				layers: [ layer ]
+			});
+		
+			expect(paper.width).toEqual(600);
+			expect(paper.height).toEqual(400);
 		});
-		
-		expect(paper.width).toEqual(600);
-		expect(paper.height).toEqual(400);
+	
 	});
 
 

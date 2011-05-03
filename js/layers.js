@@ -12,7 +12,6 @@ var COLORS = {
 
 var FONT = 'Verdana, Sans-Serif';
 
-
 return {
 	'bars' : function () {
 		var grid = this.grid;
@@ -130,13 +129,12 @@ return {
 	'lines': function () {
 		var paper = this.paper;
 		var grid = this.grid;
-		var path = 'M' + grid.xForIndex(0) + ' ' + grid.yForValue(this.data[0]);
+		var path = 'M' + ( grid.xForIndex(0) + 0.5 ) + ' ' + grid.yForValue(this.data[0]);
 		$(this.data).each(function (i) {
 			if (i > 0) {
-				path += 'L' + grid.xForIndex(i) + ' ' + grid.yForValue(this);
+				path += 'L' + ( grid.xForIndex(i) + 0.5 ) + ' ' + ( grid.yForValue(this) + 0.5 );
 			}
 		});
-		console.log(path);
 		paper.path(path);
 	},
 	
