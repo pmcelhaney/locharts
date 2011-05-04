@@ -218,6 +218,20 @@ describe("Chart Widget", function() {
 		expect(data).toEqual([ [10, 20, 50] ]);
 	});
 	
+	it("should wrap one-dimensional data in an array", function () {
+		var data;
+		var layer = function () {
+			data = this.data;
+		};
+		
+		$('<div></div>').chart({
+			layers: [ [layer] ],
+			data: [2, 4, 6, 8]
+		});
+		
+		expect(data).toEqual([ [2, 4, 6, 8 ] ]);
+	});
+	
 	it("should create a grid with the right height and width", function () {
 		expect(grid.width).toEqual(600);
 		expect(grid.height).toEqual(400);
