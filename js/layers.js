@@ -12,7 +12,7 @@ return {
 	'bars' : function () {
 		var grid = this.grid;
 		var paper = this.paper;
-		$(this.data).each(function (i) {
+		$(this.data[0]).each(function (i) {
 			var datum = this;
 			var width = grid.columnWidth() * 0.5;
 			var left = grid.xForIndex(i) - (width / 2); 
@@ -31,7 +31,7 @@ return {
 	'x-axis labels': function () {
 		var paper = this.paper;
 		var grid = this.grid;
-		$(this.data).each(function (i) {
+		$(this.data[0]).each(function (i) {
 			paper.text(grid.xForIndex(i), grid.yForBottomEdge() + 10, grid.xLabelForIndex(i)).attr('fill', COLORS.TEXT);
 		});
 	},
@@ -39,7 +39,7 @@ return {
 	'values above points': function () {
 		var paper = this.paper;
 		var grid = this.grid;
-		$(this.data).each(function (i) {
+		$(this.data[0]).each(function (i) {
 			paper.text(grid.xForIndex(i), grid.yForValue(this) - 10, this).attr('font', FONT).attr('fill', COLORS.TEXT);
 		});
 	},
@@ -48,7 +48,7 @@ return {
 		var paper = this.paper;
 		var grid = this.grid;
 		var i;
-		for (i = 1; i < this.data.length; i++) {
+		for (i = 1; i < this.data[0].length; i++) {
 			var x = 0.5 + Math.round(grid.xForIndex(i) - grid.columnWidth() / 2);
 			var y = 0.5 + grid.yForBottomEdge();
 			paper.path('M' + x + ' ' + y + 'L' + x + ' ' + (y+5) ).attr('stroke', COLORS.LINES);
@@ -89,19 +89,19 @@ return {
 		var bubblePosition = function (i) {
 			return {
 				x: grid.xForIndex(i) - width / 2 + 0.5,
-				y: grid.yForValue(data[i]) - height - 20.5
+				y: grid.yForValue(data[0][i]) - height - 20.5
 			};
 		};
 		
 		var textPosition = function (i) {
 			return {
 				x: grid.xForIndex(i) - width / 2 + 10.5,
-				y: grid.yForValue(data[i]) - height
+				y: grid.yForValue(data[0][i]) - height
 			};
 		};
 		
 		var textContent = function (i) {
-			return grid.xLabelForIndex(i) + '\nEarnings: ' + data[i].toString();
+			return grid.xLabelForIndex(i) + '\nEarnings: ' + data[0][i].toString();
 		};
 		
 		var bubble = this.paper.rect(bubblePosition(0).x, bubblePosition(0).y, width, height, 5)
@@ -125,8 +125,8 @@ return {
 	'lines': function () {
 		var paper = this.paper;
 		var grid = this.grid;
-		var path = 'M' + ( grid.xForIndex(0) + 0.5 ) + ' ' + grid.yForValue(this.data[0]);
-		$(this.data).each(function (i) {
+		var path = 'M' + ( grid.xForIndex(0) + 0.5 ) + ' ' + grid.yForValue(this.data[0][0]);
+		$(this.data[0]).each(function (i) {
 			if (i > 0) {
 				path += 'L' + ( grid.xForIndex(i) + 0.5 ) + ' ' + ( grid.yForValue(this) + 0.5 );
 			}

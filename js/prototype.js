@@ -10,7 +10,7 @@ define(['chart', 'Money'], function (chart, Money) {
 
 	$(function() {
 		$('#bar').chart({
-			data: [Money(50598.54), Money(51204.25), Money(51817.21), Money(52437.51)],
+			data: [ [Money(50598.54), Money(51204.25), Money(51817.21), Money(52437.51)] ],
 			layers: [
 				"borders", 
 				["y-axis markers", 6, Money], 
@@ -32,7 +32,7 @@ define(['chart', 'Money'], function (chart, Money) {
 		
 		
 		$('#line').chart({
-			data: [Money(50598.54), Money(51204.25), Money(51817.21), Money(52437.51)],
+			data: [ [Money(50598.54), Money(51204.25), Money(51817.21), Money(52437.51)] ],
 			layers: [
 				"borders", 
 				["y-axis markers", 6, Money], 
