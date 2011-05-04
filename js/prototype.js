@@ -51,6 +51,7 @@ define(['chart', 'Money'], function (chart, Money) {
 		
 		
 		$('#area').chart({
+			edgeToEdge: true,
 			data: [Money(100), Money(250), Money(550), Money(1000)],
 			layers: [
 				"borders", 
@@ -64,7 +65,7 @@ define(['chart', 'Money'], function (chart, Money) {
 			marginBottom: 20,
 			marginTop: 40,
 			marginLeft: 100,
-			marginRight: 10,
+			marginRight: 50,
 			fillColors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
 		});
 

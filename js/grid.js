@@ -22,9 +22,15 @@ define(function () {
 
 		var gradients = options.gradients || fillColors;
 	
+		var edgeToEdge = !!options.edgeToEdge;
+	
 		return {
 			xForIndex: function (i) {
-				return Math.round( ( i+0.5 ) * width/(columnCount) + marginLeft );
+				if (edgeToEdge) {
+					return Math.round( i * width/(columnCount-1) + marginLeft );
+				} else {
+					return Math.round( ( i+0.5 ) * width/(columnCount) + marginLeft );
+				}
 			},
 		
 			yForValue: function (value) {

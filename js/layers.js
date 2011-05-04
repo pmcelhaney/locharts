@@ -146,13 +146,13 @@ return {
 		var paper = this.paper;
 		var grid = this.grid;
 
-		var path = 'M' + ( grid.xForIndex(0) + 0.5 ) + ' ' + grid.yForValue(0);
+		var path = 'M' + ( grid.xForIndex(0) + 0.5 ) + ' ' + grid.yForBottomEdge();
 		$(this.data).each(function (i) {
 			path += 'L' + (grid.xForIndex(i) + 0.5) + ' ' + (grid.yForValue(this) + 0.5);
 		});
-		path += 'L' + ( grid.xForIndex(this.data.length - 1) + 0.5 ) + ' ' + grid.yForValue(0);
+		path += 'L' + ( grid.xForIndex(this.data.length - 1) + 0.5 ) + ' ' + grid.yForBottomEdge();
 		path += 'Z';
-		paper.path(path).attr({ fill: grid.fillColor(0), stroke: grid.color(0) });
+		paper.path(path).attr({ fill: grid.fillColor(0), 'stroke-width': 0 });
 	}
 
 };

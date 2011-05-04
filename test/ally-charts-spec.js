@@ -19,7 +19,7 @@ describe("Grid", function() {
 		}, "RequireJS to load the Grid module");		
 	});
 
-	it("should know the x-coordinate for a given index", function () {
+	it("should know the x-coordinate for a given index when edgeToEdge is false", function () {
 		
 		expect(Grid().xForIndex(0)).toEqual(480);
 		
@@ -33,6 +33,24 @@ describe("Grid", function() {
 		expect(Grid({ width: 60, xLabels: ['one', 'two', 'three'] }).xForIndex(2)).toEqual(50);
 		
 		expect(Grid({ width: 160, xLabels: ['one', 'two'], marginLeft: 20, marginRight: 20 }).xForIndex(0)).toEqual(50);
+	});
+	
+	
+	it("should know the x-coordinate for a given index when edgeToEdge is true", function () {
+					
+		var fourItemGrid = Grid({ edgeToEdge: true, width: 60, xLabels: ['one', 'two', 'three', 'four'] });		
+		var threeItemGrid = Grid({ edgeToEdge: true, width: 60, xLabels: ['one', 'two', 'three'] });	
+						
+		expect(fourItemGrid.xForIndex(0)).toEqual(0);
+		expect(fourItemGrid.xForIndex(1)).toEqual(20);
+		expect(fourItemGrid.xForIndex(2)).toEqual(40);
+		expect(fourItemGrid.xForIndex(3)).toEqual(60);
+		
+		expect(threeItemGrid.xForIndex(0)).toEqual(0);
+		expect(threeItemGrid.xForIndex(1)).toEqual(30);
+		expect(threeItemGrid.xForIndex(2)).toEqual(60);
+		
+		expect(Grid({ edgeToEdge: true, width: 160, xLabels: ['one', 'two'], marginLeft: 20, marginRight: 20 }).xForIndex(0)).toEqual(20);
 	});
 	
 	it("should know the width of each column", function () {
@@ -181,7 +199,8 @@ describe("Chart Widget", function() {
 					marginLeft: 40,
 					colors: ['#aaa', '#bbb'],
 					fillColors: ['#111', '#222'],
-					gradients: ['0-#aaa-#bbb', '0-#111-#222']
+					gradients: ['0-#aaa-#bbb', '0-#111-#222'],
+					edgeToEdge: true
 					
 				});
 	        });
@@ -219,7 +238,7 @@ describe("Chart Widget", function() {
 		expect(grid.colors).toEqual(['#aaa', '#bbb']);
 		expect(grid.fillColors).toEqual(['#111', '#222']);
 		expect(grid.gradients).toEqual(['0-#aaa-#bbb', '0-#111-#222']);
-
+		expect(grid.edgeToEdge).toBeTruthy();
 	});
 	
 	it("should apply each layer in order", function () {

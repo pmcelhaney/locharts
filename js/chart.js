@@ -12,7 +12,8 @@ define(['grid', 'layers'], function (Grid, builtInLayers) {
 			xLabels: options.xLabels,
 			colors: options.colors,
 			fillColors: options.fillColors,
-			gradients: options.gradients
+			gradients: options.gradients,
+			edgeToEdge: options.edgeToEdge
 		});
 		
 		var layerContext = { 
