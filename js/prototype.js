@@ -26,7 +26,7 @@ define(['chart', 'Money'], function (chart, Money) {
 			marginLeft: 100,
 			marginRight: 10,
 		
-			gradients: ['270-rgb(55,152,199)-rgb(70,195,255)' /*blue*/, '270-rgb(101,3,96)-rgb(211,6,201)'/*purple*/],
+			gradients: ['270-rgb(55,152,199)-rgb(70,195,255)' /*blue*/, '270-rgb(101,3,96)-rgb(211,6,201)'/*purple*/]
 			
 		});
 		
@@ -46,13 +46,17 @@ define(['chart', 'Money'], function (chart, Money) {
 			marginTop: 40,
 			marginLeft: 100,
 			marginRight: 10,
-			fillColors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
+			fillColors: ['rgb(55,152,199)', 'rgb(101,3,96)']
 		});
 		
 		
 		$('#area').chart({
 			edgeToEdge: true,
-			data: [Money(100), Money(250), Money(550), Money(1000)],
+			data: [ 
+				[Money(100), Money(250), Money(550), Money(1000)],
+				[Money(100), Money(250), Money(700), Money(1300)],
+				[Money(100), Money(280), Money(900), Money(1900)]
+			],
 			layers: [
 				"borders", 
 				["y-axis markers", 6, Money], 
@@ -66,7 +70,7 @@ define(['chart', 'Money'], function (chart, Money) {
 			marginTop: 40,
 			marginLeft: 100,
 			marginRight: 50,
-			fillColors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
+			fillColors: ['rgb(55,152,199)', 'rgb(101,3,96)']
 		});
 
 	});

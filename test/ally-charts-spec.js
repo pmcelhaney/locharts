@@ -190,7 +190,7 @@ describe("Chart Widget", function() {
                 loaded = true;
 				$('<div id="testDiv" style="width: 600px; height:400px;"></div>').chart({
 					layers: [mockLayer],
-					data: [10, 20, 50],
+					data: [ [10, 20, 50] ],
 					yMinValue: 5, 
 					xLabels: ['Jan', 'Feb', 'Mar'],
 					marginTop: 10,
@@ -215,7 +215,7 @@ describe("Chart Widget", function() {
 	});
 	
 	it("should make the data available to the layer", function () {
-		expect(data).toEqual([10, 20, 50]);
+		expect(data).toEqual([ [10, 20, 50] ]);
 	});
 	
 	it("should create a grid with the right height and width", function () {

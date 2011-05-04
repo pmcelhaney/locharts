@@ -137,22 +137,29 @@ return {
 	'dots': function () {
 		var paper = this.paper;
 		var grid = this.grid;
-		$(this.data).each(function (i) {
-			paper.circle(grid.xForIndex(i), grid.yForValue(this), 5).attr('stroke-width', 0).attr('fill', grid.fillColor(0));
+		$(this.data).each(function (seriesIndex, series) {
+			$(series).each(function (i) {
+				paper.circle(grid.xForIndex(i), grid.yForValue(this), 5).attr('stroke-width', 0).attr('fill', grid.fillColor(seriesIndex));
+			});
 		});
 	},
 	
 	'area': function () {
 		var paper = this.paper;
 		var grid = this.grid;
+		
+		$(this.data.reverse()).each(function (seriesIndex, series) {
 
-		var path = 'M' + ( grid.xForIndex(0) + 0.5 ) + ' ' + grid.yForBottomEdge();
-		$(this.data).each(function (i) {
-			path += 'L' + (grid.xForIndex(i) + 0.5) + ' ' + (grid.yForValue(this) + 0.5);
+			var path = 'M' + ( grid.xForIndex(0) + 0.5 ) + ' ' + grid.yForBottomEdge();
+			$(series).each(function (i) {
+				path += 'L' + (grid.xForIndex(i) + 0.5) + ' ' + (grid.yForValue(this) + 0.5);
+			});
+			path += 'L' + ( grid.xForIndex(series.length - 1) + 0.5 ) + ' ' + grid.yForBottomEdge();
+			path += 'Z';
+			paper.path(path).attr({ fill: grid.fillColor(seriesIndex),'stroke-width': 0  });
 		});
-		path += 'L' + ( grid.xForIndex(this.data.length - 1) + 0.5 ) + ' ' + grid.yForBottomEdge();
-		path += 'Z';
-		paper.path(path).attr({ fill: grid.fillColor(0), 'stroke-width': 0 });
+		
+		this.data.reverse();
 	}
 
 };
