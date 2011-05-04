@@ -19,7 +19,7 @@ define(function () {
 		var colors = options.colors || ['#000']; 
 		
 		var fillColors = options.fillColors || colors; 
-		
+
 		var gradients = options.gradients || fillColors;
 	
 		return {
