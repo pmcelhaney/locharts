@@ -42,9 +42,9 @@ in order, so in the case of overlap, the layers toward the end will appear on to
 
 ## Layer Options
 
-A layer can have options, which are specified with by wrapping the layer reference in an array. The first item in the array is a reference to the 
-layer, and everything following is an option. Let's give this chart a thick red border and change the font to 
-Verdana.
+A layer can have options, which are specified with by wrapping the layer reference in an array. The first item in the 
+array is a reference to the layer, and everything following is an option. Let's give this chart a thick red border and 
+change the font to Verdana.
 
 	$('#red-ogre').chart({
 		data: [100, 142, 40, 151],
@@ -71,7 +71,7 @@ var <strong>loggingLayer</strong> = function () {
 	this.console.log("This is my custom layer. It doesn't draw anything. Sit tight -- we'll get there.");
 };
 
-$('#little-schemer').chart({
+$('#little-lisper').chart({
 	data: [100, 142, 40, 151],
 	layers: [
 			['borders', 'red', 3], 
@@ -85,14 +85,18 @@ $('#little-schemer').chart({
 </pre>
 
 
-
 The function will be called in the context of an object that four fields. The layer 
 collaborates with these fields to draw something on the chart.
 
-* **this.data:** The array of data passed into the widget.
-* **this.paper:** The Raphael object on which to draw.
-* **this.grid:** An object with helper functions to map data points to Raphael coordinates.
-* **this.console:** Records log messages and prints to window.console when available. 
+* **this.data** is the array of data passed into the widget. Actually, it's an array of arrays, 
+  where each inner array represents a series of values. If your chart only has one series, you can pass 
+  a single array (e.g. `[10,20,30]`) and it will automatically be wrapped (e.g. `[[10,20,30]]`).
+  The values within each series can be numbers or objects that implement the `valueOf()` function.
+* **this.paper** is the Raphael object used to do the drawing. See the Raphael API reference 
+  for more information.
+* **this.grid** contains helper functions like `xForLeftEdge()` and `yForValue()` that can be
+  used to map the chart's dimensions and data to paper coordinates.
+* **this.console** records log messages and pipes to window.console when it's available. 
 
 <pre>
 var layerThatPrintsDataInTheMiddleOfTheChart = function () {
@@ -108,8 +112,8 @@ draw objects on the **paper**.
 var blueCircles = function () {
 	var paper = this.paper;
 	var grid = this.grid;
-	$(this.data).each( function (i) {
-		paper.circle( grid.xForIndex(i), grid.yForValue(this), 5 ).attr( 'fill', '#009' );
+	$(this.data[0]).each( function (i, v) {
+		paper.circle( grid.xForIndex(i), grid.yForValue(v), 5 ).attr( 'fill', '#009' );
 	});
 }
 </pre>
@@ -120,8 +124,8 @@ Remember that a layer can also have parameters. Those parameters are simply pass
 var circles = function ( <strong>color</strong> ) {
 	var paper = this.paper;
 	var grid = this.grid;
-	$(this.data).each( function (i) {
-		paper.circle( grid.xForIndex(i), grid.yForValue(this), 5 ).attr( 'fill', <strong>color</strong> );
+	$(this.data).each( function (i, v) {
+		paper.circle( grid.xForIndex(i), grid.yForValue(v), 5 ).attr( 'fill', <strong>color</strong> );
 	});
 }
 
@@ -146,18 +150,18 @@ Some layers are interactive, e.g. a bar changes color in response to hover, or c
 more information. These effects can be achieved through the Raphael API and aren't specifically covered here.
 
 Sometimes one layer needs to communicate with another. For example, the High Yield CD calculator chart has 
-an information bubble that floats between the different bars as the mouse overs over them. The bars, which
+an information bubble that floats between the different bars as the mouse hovers over them. The bars, which
 are on one layer, need to signal the bubble, which is on another layer, to move when the mouse hovers over
 them. 
 
 Layers can't and shouldn't communicate directly with each other. Instead, the bar layer fires a jQuery event 
-when the mouse enters one of the bars. The bubble layer listens for that event and springs into action when
-required.
+when the mouse enters one of the bars. The bubble layer listens for that event and springs into action.
 
-The following standardized events are provided:
+The following standardized events are provided. You should use one of these if it makes sense, but feel free
+to use your own custom events.
 
-* **focusDatum** is triggered when a particular datum is brought into focus, e.g. the mouse hovers over second 
-  bar representing 142 widgets. The focusDatum event has two arguments, the datum's index (1) and the
+* **focusDatum** should be triggered when a particular datum is brought into focus, e.g. the mouse hovers over 
+  second bar representing 142 widgets. The focusDatum event has two arguments, the datum's index (1) and the
   datum itself (142). **blurDatum** is the opposite of focusDatum.
 
 * **selectDatum** and **deselectDatum** are the same as focusDatum and blurDatum and are used to indicate that
