@@ -6,6 +6,11 @@
 <meta charset="utf-8" />
 <title>Ally Charts</title>
 
+<style type="text/css" media="screen">
+	body {
+		font-family: Verdana, Helvetica, Arial, Sans-serif;
+	}
+</style>
 
 <script type="text/javascript" charset="utf-8" src="lib/jquery-1.4.2.js"></script>
 <script type="text/javascript" charset="utf-8" src="lib/jquery-ui-1.8.custom.js"></script>
@@ -26,17 +31,28 @@
 
 <h1>Ally Charts</h1>		
 
+<p>This is a work in progress. See the <a href="readme.md">documentation</a> and the <a href="test/SpecRunner.html">unit tests</a>.</p>
+
 <div id="banner"></div>
 <div id="limit">
 <div id="article">
 	
-<div id="bar" style="width: 800px; height: 400px"></div>	
 	
+<h2>Bar Chart</h2>
+<p>As seen on <a href="http://www.ally.com/bank/high-yield-cd/#tabs=calculator" title="High Yield CDs: Certificate of Deposit Rates - CD High Interest Rates | Ally Financial">CD calculators</a>.</p>
+<div id="bar" style="width: 800px; height: 400px"></div>	
+
+<h2>Line Graph</h2>
+
 <div id="line" style="width: 800px; height: 400px"></div>	
 
-
+<h2>Area Graph</h2>
 <div id="area" style="width: 800px; height: 400px"></div>	
 
+
+<h2>Differential Area</h2>
+<p>Building up to satisfy the requirements of the <a href="http://www-sit1.ally.com/bank/raise-your-rate-cd/#tabs=calculator" title="Raise Your Rate CD: Raise Your Rate CD - Compare Bank Accounts | Ally Financial">4-year Raise-Your-Rate calculator</a>. The biggest piece that's missing is
+allowing the x-axis to be a timeline rather than a list of equidistant labels.</p>
 <div id="differential-area" style="width: 800px; height: 400px"></div>	
 
 	<!-- <div id="local"></div> -->

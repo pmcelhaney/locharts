@@ -89,7 +89,7 @@ define(['chart', 'Money'], function (chart, Money) {
 				"lines",
 				"dots"
 			],
-			xLabels: ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)'],
+			xLabels: ['Deposit', 'First Rate Increase', 'Second Rate Increase', 'Final Balance'],
 			marginBottom: 20,
 			marginTop: 40,
 			marginLeft: 100,

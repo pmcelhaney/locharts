@@ -11,7 +11,7 @@ describe("Grid", function() {
 	beforeEach(function () {
 		waitsFor( function () {
 			var loaded = false;
-	        require({baseUrl: "/"}, ["js/grid"], function(G){
+	        require({baseUrl: "../"}, ["js/grid"], function(G){
 				Grid = G;
                 loaded = true;
 	        });
@@ -186,7 +186,7 @@ describe("Chart Widget", function() {
 	beforeEach(function () {
 		waitsFor( function () {
 			var loaded = false;
-	        require({ baseUrl: "/", urlArgs: "bust=" +  (new Date()).getTime() }, ["js/chart"], function(){
+	        require({ baseUrl: "../", urlArgs: "bust=" +  (new Date()).getTime() }, ["js/chart"], function(){
                 loaded = true;
 				$('<div id="testDiv" style="width: 600px; height:400px;"></div>').chart({
 					layers: [mockLayer],
