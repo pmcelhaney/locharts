@@ -170,15 +170,14 @@ return {
 		var paper = this.paper;
 		var grid = this.grid;
 		var data = this.data;		
+		var previousY = grid.yForBottomEdge();
 				
-		$(data).each(function (seriesIndex, series) {
-			var path = 'M' + ( grid.xForIndex(0) + 0.5 ) + ' ' + grid.yForBottomEdge();
-			$(series).each(function (i) {
-				path += 'L' + (grid.xForIndex(i) + 0.5) + ' ' + (grid.yForValue(this) + 0.5);
-			});
-			path += 'L' + ( grid.xForIndex(series.length - 1) + 0.5 ) + ' ' + grid.yForBottomEdge();
+		$(data).each(function (i) {
+			var path = 'M' + ( grid.xForIndex(i) + 0.5 ) + ' ' + ( grid.yForValue(data[i][i]) + 0.5 );
+			path += 'L' + (grid.xForIndex(data.length) + 0.5) + ' ' + (grid.yForValue(data[i][data.length]) + 0.5);
+			path += 'L' + ( grid.xForIndex(data.length) + 0.5 ) + ' ' + (grid.yForValue(data[Math.max(0, i-1)][data.length]) + 0.5);
 			path += 'Z';
-			paper.path(path).attr({ fill: grid.fillColor(seriesIndex), stroke: grid.color(seriesIndex), 'stroke-width': 0, opacity: 0.4  });
+			paper.path(path).attr({  fill: grid.fillColor(i),  'stroke-width': 0, opacity: 0.4  });
 		});
 		
 	}

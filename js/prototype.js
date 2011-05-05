@@ -53,9 +53,9 @@ define(['chart', 'Money'], function (chart, Money) {
 		$('#area').chart({
 			edgeToEdge: true,
 			data: [ 
-				[Money(100), Money(250), Money(550), Money(1000)],
-				[Money(100), Money(250), Money(700), Money(1300)],
-				[Money(100), Money(280), Money(900), Money(1900)]
+				[Money(100), Money(200), Money(300), Money(400)],
+				[Money(100), Money(200), Money(400), Money(600)],
+				[Money(100), Money(200), Money(400), Money(800)]
 			],
 			layers: [
 				"borders", 
@@ -76,9 +76,9 @@ define(['chart', 'Money'], function (chart, Money) {
 		$('#differential-area').chart({
 			edgeToEdge: true,
 			data: [ 
-				[Money(100), Money(250), Money(550), Money(1000)],
-				[Money(100), Money(250), Money(700), Money(1300)],
-				[Money(100), Money(280), Money(900), Money(1900)]
+				[Money(100), Money(200), Money(300), Money(400)],
+				[Money(100), Money(200), Money(400), Money(600)],
+				[Money(100), Money(200), Money(400), Money(800)]
 			],
 			layers: [
 				"borders", 
