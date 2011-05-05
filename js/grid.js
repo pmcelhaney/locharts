@@ -22,11 +22,18 @@ define(function () {
 
 		var gradients = options.gradients || fillColors;
 	
-		var edgeToEdge = !!options.edgeToEdge;
-	
+		var edgeToEdge = options.edgeToEdge || options.xValues;
+		
+		var xValues = options.xValues;
+		
 		return {
 			xForIndex: function (i) {
-				if (edgeToEdge) {
+				var min, max;
+				if (xValues) {
+					min = Math.min.apply(null, xValues);
+					max = Math.max.apply(null, xValues);
+					return Math.round( this.xForLeftEdge() + (xValues[i] - min) * ( width / (max - min) ) );
+				} else if (edgeToEdge) {
 					return Math.round( i * width/(columnCount-1) + marginLeft );
 				} else {
 					return Math.round( ( i+0.5 ) * width/(columnCount) + marginLeft );

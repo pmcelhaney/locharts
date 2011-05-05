@@ -53,6 +53,25 @@ describe("Grid", function() {
 		expect(Grid({ edgeToEdge: true, width: 160, xLabels: ['one', 'two'], marginLeft: 20, marginRight: 20 }).xForIndex(0)).toEqual(20);
 	});
 	
+	
+	it("should know the x-coordinate for a given index when xValues are used", function () {
+					
+		var constantGrid = Grid({ xValues: [0, 2, 4, 6], width: 60 });		
+		var variableGrid = Grid({ xValues: [0, 20, 25, 60], width: 60 });	
+						
+		expect(constantGrid.xForIndex(0)).toEqual(0);
+		expect(constantGrid.xForIndex(1)).toEqual(20);
+		expect(constantGrid.xForIndex(2)).toEqual(40);
+		expect(constantGrid.xForIndex(3)).toEqual(60);
+		
+		expect(variableGrid.xForIndex(0)).toEqual(0);
+		expect(variableGrid.xForIndex(1)).toEqual(20);
+		expect(variableGrid.xForIndex(2)).toEqual(25);
+		expect(variableGrid.xForIndex(3)).toEqual(60);
+		
+		expect(Grid({ edgeToEdge: true, width: 160, xValues: [1, 2], marginLeft: 20, marginRight: 20 }).xForIndex(0)).toEqual(20);
+	});
+	
 	it("should know the width of each column", function () {
 		expect(Grid({ width: 60, xLabels: ['one'] }).columnWidth()).toEqual(60);
 		expect(Grid({ width: 60, xLabels: ['one', 'two'] }).columnWidth()).toEqual(30);
