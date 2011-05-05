@@ -1,7 +1,8 @@
-# Chart Widget
+Chart Widget
+============
 
-## Hello World
-
+Hello World
+-----------
 The chart widget provides an easy way to draw attractive and highly customizable charts. It uses Raphael, a
 a JavaScript drawing API for SVG (or VRML in IE6-8). The plugin takes several options, but only one,
 data, is required. This very simple example will draw a bar chart with four data points.
@@ -11,7 +12,8 @@ data, is required. This very simple example will draw a bar chart with four data
 	});
 
 
-## Margins
+Margins
+-------
 
 A margin is defined as the space between the edge of the chart and the plot area. The x and y axis lines
 are drawn between the margins and the plot area. Margins can be specified as individual options: marginTop, 
@@ -28,7 +30,8 @@ to a chart that is 800&times;600 will reduce the plot area to 700&times;500.
 		marginLeft: 40
 	});
 
-## Layers
+Layers
+------
 
 Charts are like ogres -- they have layers. Every element on the chart, whether it's a bar or a line or a label or 
 even an axis marker, is part of a layer. Customizing a chart begins with specifying what layers it should use. Let's
@@ -40,7 +43,8 @@ in order, so in the case of overlap, the layers toward the end will appear on to
 		layers: ["borders", "y-axis markers", "x-axis label separators",  "x-axis labels",  "bars"]
 	});
 
-## Layer Options
+Layer Options
+-------------
 
 A layer can have options, which are specified with by wrapping the layer reference in an array. The first item in the 
 array is a reference to the layer, and everything following is an option. Let's give this chart a thick red border and 
@@ -58,7 +62,8 @@ change the font to Verdana.
 	});
 	
 	
-## Custom Layers
+Custom Layers
+-------------
 
 You aren't limited to the built-in layers. You can also define your own. 
 
@@ -144,7 +149,8 @@ $('#red-circles').chart({
 
 
 
-## Communication Between Layers
+Communication Between Layers
+----------------------------
 
 Some layers are interactive, e.g. a bar changes color in response to hover, or clicking a label reveals
 more information. These effects can be achieved through the Raphael API and aren't specifically covered here.
@@ -168,7 +174,7 @@ to use your own custom events.
   an item is selected. The difference between focusing and selecting hasn't yet been clearly defined. This is
   just a placeholder.
 
-See layers.js for examples of how jQuery events can be used to communicate between layers.
+See [layers.js](js/layers.js) for examples of how jQuery events can be used to communicate between layers.
 
 
 
