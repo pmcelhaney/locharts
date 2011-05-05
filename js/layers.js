@@ -125,8 +125,9 @@ return {
 	'lines': function () {
 		var paper = this.paper;
 		var grid = this.grid;
+		var data = $.extend([], this.data).reverse();
 		
-		$(this.data).each(function (seriesIndex, series) {
+		$(data).each(function (seriesIndex, series) {
 			var path = 'M' + ( grid.xForIndex(0) + 0.5 ) + ' ' + grid.yForValue(series[0]);
 			$(series).each(function (i) {
 				if (i > 0) {
@@ -141,7 +142,9 @@ return {
 	'dots': function () {
 		var paper = this.paper;
 		var grid = this.grid;
-		$(this.data).each(function (seriesIndex, series) {
+		var data = $.extend([], this.data).reverse();
+		
+		$(data).each(function (seriesIndex, series) {
 			$(series).each(function (i) {
 				paper.circle(grid.xForIndex(i), grid.yForValue(this), 5).attr('stroke-width', 0).attr('fill', grid.color(seriesIndex));
 			});
@@ -151,8 +154,9 @@ return {
 	'area': function () {
 		var paper = this.paper;
 		var grid = this.grid;
+		var data = $.extend([], this.data).reverse();
 		
-		$(this.data.reverse()).each(function (seriesIndex, series) {
+		$(data).each(function (seriesIndex, series) {
 
 			var path = 'M' + ( grid.xForIndex(0) + 0.5 ) + ' ' + grid.yForBottomEdge();
 			$(series).each(function (i) {
@@ -163,7 +167,7 @@ return {
 			paper.path(path).attr({ fill: grid.fillColor(seriesIndex),'stroke-width': 0  });
 		});
 		
-		this.data.reverse();
+		data;
 	},
 	
 	'differential area': function () {
