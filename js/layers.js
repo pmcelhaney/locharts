@@ -125,13 +125,17 @@ return {
 	'lines': function () {
 		var paper = this.paper;
 		var grid = this.grid;
-		var path = 'M' + ( grid.xForIndex(0) + 0.5 ) + ' ' + grid.yForValue(this.data[0][0]);
-		$(this.data[0]).each(function (i) {
-			if (i > 0) {
-				path += 'L' + ( grid.xForIndex(i) + 0.5 ) + ' ' + ( grid.yForValue(this) + 0.5 );
-			}
+		
+		$(this.data).each(function (seriesIndex, series) {
+			var path = 'M' + ( grid.xForIndex(0) + 0.5 ) + ' ' + grid.yForValue(series[0]);
+			$(series).each(function (i) {
+				if (i > 0) {
+					path += 'L' + ( grid.xForIndex(i) + 0.5 ) + ' ' + ( grid.yForValue(this) + 0.5 );
+				}
+			});
+			paper.path(path).attr('stroke', grid.color(seriesIndex));
 		});
-		paper.path(path);
+		
 	},
 	
 	'dots': function () {
@@ -139,7 +143,7 @@ return {
 		var grid = this.grid;
 		$(this.data).each(function (seriesIndex, series) {
 			$(series).each(function (i) {
-				paper.circle(grid.xForIndex(i), grid.yForValue(this), 5).attr('stroke-width', 0).attr('fill', grid.fillColor(seriesIndex));
+				paper.circle(grid.xForIndex(i), grid.yForValue(this), 5).attr('stroke-width', 0).attr('fill', grid.color(seriesIndex));
 			});
 		});
 	},
@@ -160,7 +164,25 @@ return {
 		});
 		
 		this.data.reverse();
+	},
+	
+	'differential area': function () {
+		var paper = this.paper;
+		var grid = this.grid;
+		var data = this.data;		
+				
+		$(data).each(function (seriesIndex, series) {
+			var path = 'M' + ( grid.xForIndex(0) + 0.5 ) + ' ' + grid.yForBottomEdge();
+			$(series).each(function (i) {
+				path += 'L' + (grid.xForIndex(i) + 0.5) + ' ' + (grid.yForValue(this) + 0.5);
+			});
+			path += 'L' + ( grid.xForIndex(series.length - 1) + 0.5 ) + ' ' + grid.yForBottomEdge();
+			path += 'Z';
+			paper.path(path).attr({ fill: grid.fillColor(seriesIndex), stroke: grid.color(seriesIndex), 'stroke-width': 0, opacity: 0.4  });
+		});
+		
 	}
+	
 
 };
 

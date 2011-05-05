@@ -70,9 +70,36 @@ define(['chart', 'Money'], function (chart, Money) {
 			marginTop: 40,
 			marginLeft: 100,
 			marginRight: 50,
-			fillColors: ['rgb(55,152,199)', 'rgb(101,3,96)']
+			colors: ['rgb(55,152,199)', 'rgb(101,3,96)']
+		});
+		
+		$('#differential-area').chart({
+			edgeToEdge: true,
+			data: [ 
+				[Money(100), Money(250), Money(550), Money(1000)],
+				[Money(100), Money(250), Money(700), Money(1300)],
+				[Money(100), Money(280), Money(900), Money(1900)]
+			],
+			layers: [
+				"borders", 
+				["y-axis markers", 6, Money], 
+				"x-axis label separators",  
+				"x-axis labels",  
+				"differential area",
+				"lines",
+				"dots"
+			],
+			xLabels: ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)'],
+			marginBottom: 20,
+			marginTop: 40,
+			marginLeft: 100,
+			marginRight: 50,
+			colors: ["rgb(31,124,166)","rgb(233,126,0)", "rgb(82,182,101)"],
+			fillColors: ["rgb(255,255,255)","rgba(136,211,245)", "rgba(44,18,98)"]
 		});
 
 	});
 });
+
+
 
