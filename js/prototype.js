@@ -90,6 +90,7 @@ define(['chart', 'Money'], function (chart, Money) {
 				"dots"
 			],
 			xLabels: ['Deposit', 'First Rate Increase', 'Second Rate Increase', 'Final Balance'],
+			xValues: [new Date(2010, 0, 1).getTime(), new Date(2010, 5, 1).getTime(), new Date(2011, 2, 1).getTime(), new Date(2012, 0, 1).getTime()],
 			marginBottom: 20,
 			marginTop: 40,
 			marginLeft: 100,

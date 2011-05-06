@@ -212,6 +212,7 @@ describe("Chart Widget", function() {
 					data: [ [10, 20, 50] ],
 					yMinValue: 5, 
 					xLabels: ['Jan', 'Feb', 'Mar'],
+					xValues: [1,2,3],
 					marginTop: 10,
 					marginRight: 20,
 					marginBottom: 30,
@@ -263,6 +264,7 @@ describe("Chart Widget", function() {
 	it("should pass the yMinValue, xLabels, margins, and colors to the grid", function () {
 		expect(grid.yMinValue).toEqual(5);
 		expect(grid.xLabels).toEqual(['Jan', 'Feb', 'Mar']);
+		expect(grid.xValues).toEqual([1,2,3]);
 		expect(grid.marginTop).toEqual(10);
 		expect(grid.marginRight).toEqual(20);
 		expect(grid.marginBottom).toEqual(30);
@@ -272,6 +274,7 @@ describe("Chart Widget", function() {
 		expect(grid.fillColors).toEqual(['#111', '#222']);
 		expect(grid.gradients).toEqual(['0-#aaa-#bbb', '0-#111-#222']);
 		expect(grid.edgeToEdge).toBeTruthy();
+		
 	});
 	
 	it("should apply each layer in order", function () {

@@ -34,7 +34,8 @@ define(['grid', 'layers'], function (Grid, builtInLayers) {
 			colors: options.colors,
 			fillColors: options.fillColors,
 			gradients: options.gradients,
-			edgeToEdge: options.edgeToEdge
+			edgeToEdge: options.edgeToEdge,
+			xValues: options.xValues
 		});
 		
 	
