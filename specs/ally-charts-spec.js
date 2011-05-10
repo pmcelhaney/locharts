@@ -1,3 +1,4 @@
+define(function () {
 
 describe("Grid", function() {
 /*
@@ -342,8 +343,8 @@ describe("Chart Widget", function() {
 	
 	});
 	
-
-
+});
 
 });
+
 
