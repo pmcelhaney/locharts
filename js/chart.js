@@ -1,4 +1,4 @@
-define(['grid', 'layers'], function (Grid, builtInLayers) {
+define(['./grid', './layers'], function (Grid, builtInLayers) {
 	$.fn.chart = function (options) {
 		
 		var dataMax = function (data) {
@@ -21,7 +21,7 @@ define(['grid', 'layers'], function (Grid, builtInLayers) {
 			
 		};
 		
-		var grid = Grid( {
+		var grid = (options.Grid || Grid)( {
 			width: this.width(),
 			height: this.height(),
 			yMinValue: options.yMinValue,

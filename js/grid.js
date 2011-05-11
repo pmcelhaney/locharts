@@ -1,4 +1,5 @@
 define(function () {
+
 	return function (options) {
 		var options = options || {};
 		var marginLeft = options.marginLeft || 0;

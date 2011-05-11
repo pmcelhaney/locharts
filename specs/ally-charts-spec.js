@@ -1,15 +1,8 @@
 
-define("grid", function () {
-    return function (options) {
-        return options;
-    };
-});
 
-define("layers", function () {
-    return {};
-});
+define(['js/layers', 'js/chart', './grid-spec'], function (builtInLayers) {
 
-define(['js/chart', './grid-spec'], function () {
+    
 
     describe("Chart Widget", function() {
     /*
@@ -19,14 +12,8 @@ define(['js/chart', './grid-spec'], function () {
     - xLabelForIndex(i)
     */
         var mockLayerWasCalled = false;
-        var grid;
-        var data;
-    
-        var mockLayer = function () {
-            data = this.data;
-            grid = this.grid;
-            mockLayerWasCalled = true;
-        };
+
+
 
         window.Raphael = function (t, w, h) { 
             return { 
@@ -36,11 +23,67 @@ define(['js/chart', './grid-spec'], function () {
             }; 
         };
 
+        it("should make the data available to the layer", function () {
+            var data;
+            var layer = function () {
+                 data = this.data;
+            };
 
-        beforeEach(function () {
-  
-            $('<div id="testDiv" style="width: 600px; height:400px;"></div>').chart({
-                layers: [mockLayer],
+            $('<div></div>').chart({
+                 layers: [ layer ],
+                 data: [ [2, 4, 6, 8] ]
+            });
+            
+            expect(data).toEqual([ [2, 4, 6, 8] ]);
+        });
+    
+        it("should wrap one-dimensional data in an array", function () {
+            var data;
+            var layer = function () {
+                data = this.data;
+            };
+        
+            $('<div></div>').chart({
+                layers: [ layer ],
+                data: [2, 4, 6, 8]
+            });
+        
+            expect(data).toEqual([ [2, 4, 6, 8 ] ]);
+        });
+    
+        it("should create a grid with the right height and width", function () {
+            var grid;
+            $('<div style="width: 600px; height: 400px"></div>').chart({
+                    layers: [],
+                    data: [],
+                    Grid: function (options) { grid = options; }
+            });      
+            expect(grid.width).toEqual(600);
+            expect(grid.height).toEqual(400);
+        });
+    
+        it("should set the yMaxValue to 110% of the highest value in the data", function () {
+            var grid;
+            $('<div></div>').chart({
+                    layers: [],
+                    data: [10,20,30,40,50],
+                    Grid: function (options) { grid = options; }
+            });
+            expect(grid.yMaxValue).toEqual(55);
+        });
+    
+        it("should pass the yMinValue, xLabels, margins, and colors to the grid", function () {
+            var grid;
+            $('<div></div>').chart({
+                
+                Grid: function (options) { return options; },
+
+                layers: [
+                    function () {
+                        grid = this.grid;
+                    }
+                ],
+            
                 data: [ [10, 20, 50] ],
                 yMinValue: 5, 
                 xLabels: ['Jan', 'Feb', 'Mar'],
@@ -53,44 +96,10 @@ define(['js/chart', './grid-spec'], function () {
                 fillColors: ['#111', '#222'],
                 gradients: ['0-#aaa-#bbb', '0-#111-#222'],
                 edgeToEdge: true
+                
             });
-
-        });
-    
-    
-    
-        it("should call the mock layer", function () {
-            expect(mockLayerWasCalled).toBe(true);
-        });
-    
-        it("should make the data available to the layer", function () {
-            expect(data).toEqual([ [10, 20, 50] ]);
-        });
-    
-        it("should wrap one-dimensional data in an array", function () {
-            var data;
-            var layer = function () {
-                data = this.data;
-            };
-        
-            $('<div></div>').chart({
-                layers: [ [layer] ],
-                data: [2, 4, 6, 8]
-            });
-        
-            expect(data).toEqual([ [2, 4, 6, 8 ] ]);
-        });
-    
-        it("should create a grid with the right height and width", function () {
-            expect(grid.width).toEqual(600);
-            expect(grid.height).toEqual(400);
-        });
-    
-        it("should set the yMaxValue to 110% of the highest value in the data", function () {
-            expect(grid.yMaxValue).toEqual(55);
-        });
-    
-        it("should pass the yMinValue, xLabels, margins, and colors to the grid", function () {
+            
+          
             expect(grid.yMinValue).toEqual(5);
             expect(grid.xLabels).toEqual(['Jan', 'Feb', 'Mar']);
             expect(grid.xValues).toEqual([1,2,3]);
@@ -131,7 +140,7 @@ define(['js/chart', './grid-spec'], function () {
         });
     
         it("should recognize a built-in layer and skip a missing layer", function() {
-            require('layers')['a built-in layer'] = function () {
+            require('js/layers')['a built-in layer'] = function () {
                 args = Array.prototype.slice.apply(arguments);
             };
         
