@@ -1,4 +1,4 @@
-define(['specs/grid'], function () {
+define(['./grid'], function () {
 
     describe("Chart Widget", function() {
     /*
@@ -39,7 +39,7 @@ define(['specs/grid'], function () {
         beforeEach(function () {
             waitsFor( function () {
                 var loaded = false;
-                require({ baseUrl: "../", urlArgs: "bust=" +  (new Date()).getTime() }, ["js/chart"], function(){
+                require(["js/chart"], function(){
                     loaded = true;
                     $('<div id="testDiv" style="width: 600px; height:400px;"></div>').chart({
                         layers: [mockLayer],
