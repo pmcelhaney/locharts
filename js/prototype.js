@@ -75,11 +75,14 @@ define(['chart', 'Money'], function (chart, Money) {
 		
 		$('#differential-area').chart({
 			edgeToEdge: true,
-			data: [ 
-				[Money(100), Money(200), Money(300), Money(400)],
-				[Money(100), Money(200), Money(400), Money(600)],
-				[Money(100), Money(200), Money(400), Money(800)]
-			],
+            data: $('#raise-your-rate-data').find('tbody tr').map(
+                function () { 
+                    return [ 
+                        $(this).find('td').map(function () { 
+                            return Money(parseInt($(this).text(), 10)) 
+                        }).toArray() 
+                    ] 
+                } ).toArray(),
 			layers: [
 				"borders", 
 				["y-axis markers", 6, Money], 
@@ -89,14 +92,16 @@ define(['chart', 'Money'], function (chart, Money) {
 				"lines",
 				"dots"
 			],
-			xLabels: ['Deposit', 'First Rate Increase', 'Second Rate Increase', 'Final Balance'],
-			xValues: [new Date(2010, 0, 1).getTime(), new Date(2010, 5, 1).getTime(), new Date(2011, 2, 1).getTime(), new Date(2012, 0, 1).getTime()],
+			xLabels: ['Deposit'].concat($('#raise-your-rate-data').find('tbody tr').find('th:eq(0)').map(function () { return $(this).text(); }).toArray()),
+			xValues: $('#raise-your-rate-data').find('thead th:gt(1)').map(function () { return new Date($(this).text()).getTime(); }).toArray(),
 			marginBottom: 20,
 			marginTop: 40,
 			marginLeft: 100,
 			marginRight: 50,
 			colors: ["rgb(31,124,166)","rgb(233,126,0)", "rgb(82,182,101)"],
-			fillColors: ["rgb(255,255,255)","rgba(136,211,245)", "rgba(44,18,98)"]
+			fillColors: ["rgb(255,255,255)","rgba(136,211,245)", "rgba(44,18,98)"],
+			yMinValue: 49000,
+			yMaxValue: 56000
 		});
 
 	});
