@@ -1,4 +1,4 @@
-define(function() {
+define(['js/Grid'], function(Grid) {
     describe("Grid", function() {
     /*
     - yForIndex(i)
@@ -6,18 +6,7 @@ define(function() {
     - rowHeight()
     - xLabelForIndex(i)
     */
-        var Grid;
 
-        beforeEach(function () {
-            waitsFor( function () {
-                var loaded = false;
-                require({baseUrl: "../"}, ["js/grid"], function(G){
-                    Grid = G;
-                    loaded = true;
-                });
-                return loaded;
-            }, "RequireJS to load the Grid module");        
-        });
 
         it("should know the x-coordinate for a given index when edgeToEdge is false", function () {
         

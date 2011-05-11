@@ -1,5 +1,4 @@
-var builtInLayers = {};
-    
+
 define("grid", function () {
     return function (options) {
         return options;
@@ -7,10 +6,10 @@ define("grid", function () {
 });
 
 define("layers", function () {
-    return builtInLayers;
+    return {};
 });
 
-define(['./grid-spec'], function () {
+define(['js/chart', './grid-spec'], function () {
 
     describe("Chart Widget", function() {
     /*
@@ -22,7 +21,6 @@ define(['./grid-spec'], function () {
         var mockLayerWasCalled = false;
         var grid;
         var data;
-    
     
         var mockLayer = function () {
             data = this.data;
@@ -40,29 +38,23 @@ define(['./grid-spec'], function () {
 
 
         beforeEach(function () {
-            waitsFor( function () {
-                var loaded = false;
-                require(["js/chart"], function(){
-                    loaded = true;
-                    $('<div id="testDiv" style="width: 600px; height:400px;"></div>').chart({
-                        layers: [mockLayer],
-                        data: [ [10, 20, 50] ],
-                        yMinValue: 5, 
-                        xLabels: ['Jan', 'Feb', 'Mar'],
-                        xValues: [1,2,3],
-                        marginTop: 10,
-                        marginRight: 20,
-                        marginBottom: 30,
-                        marginLeft: 40,
-                        colors: ['#aaa', '#bbb'],
-                        fillColors: ['#111', '#222'],
-                        gradients: ['0-#aaa-#bbb', '0-#111-#222'],
-                        edgeToEdge: true
-                    
-                    });
-                });
-                return loaded;
-            }, "RequireJS to load the Chart module", 100);    
+  
+            $('<div id="testDiv" style="width: 600px; height:400px;"></div>').chart({
+                layers: [mockLayer],
+                data: [ [10, 20, 50] ],
+                yMinValue: 5, 
+                xLabels: ['Jan', 'Feb', 'Mar'],
+                xValues: [1,2,3],
+                marginTop: 10,
+                marginRight: 20,
+                marginBottom: 30,
+                marginLeft: 40,
+                colors: ['#aaa', '#bbb'],
+                fillColors: ['#111', '#222'],
+                gradients: ['0-#aaa-#bbb', '0-#111-#222'],
+                edgeToEdge: true
+            });
+
         });
     
     
@@ -139,7 +131,7 @@ define(['./grid-spec'], function () {
         });
     
         it("should recognize a built-in layer and skip a missing layer", function() {
-            builtInLayers['a built-in layer'] = function () {
+            require('layers')['a built-in layer'] = function () {
                 args = Array.prototype.slice.apply(arguments);
             };
         
