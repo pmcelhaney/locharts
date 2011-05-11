@@ -1,4 +1,16 @@
-define(['./grid'], function () {
+var builtInLayers = {};
+    
+define("grid", function () {
+    return function (options) {
+        return options;
+    };
+});
+
+define("layers", function () {
+    return builtInLayers;
+});
+
+define(['./grid-spec'], function () {
 
     describe("Chart Widget", function() {
     /*
@@ -10,7 +22,7 @@ define(['./grid'], function () {
         var mockLayerWasCalled = false;
         var grid;
         var data;
-        var builtInLayers = {};
+    
     
         var mockLayer = function () {
             data = this.data;
@@ -26,15 +38,6 @@ define(['./grid'], function () {
             }; 
         };
 
-        define("grid", function () {
-            return function (options) {
-                return options;
-            };
-        });
-
-        define("layers", function () {
-            return builtInLayers;
-        });
 
         beforeEach(function () {
             waitsFor( function () {
