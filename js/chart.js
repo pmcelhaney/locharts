@@ -48,7 +48,8 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
 		var layerContext = { 
 			grid: grid,
 			data: data,
-			paper: Raphael(this[0], this.width(), this.height())
+			paper: Raphael(this[0], this.width(), this.height()),
+			element: this[0]
 		};
 		
 		$.each(options.layers, function () {

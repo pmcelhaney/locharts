@@ -28,12 +28,26 @@ define(['js/layers', 'js/chart', './grid-spec'], function (builtInLayers) {
                  data = this.data;
             };
 
-            $('<div></div>').chart({
+            $('div').chart({
                  layers: [ layer ],
                  data: [ [2, 4, 6, 8] ]
             });
             
             expect(data).toEqual([ [2, 4, 6, 8] ]);
+        });
+        
+        it("should make the container element available to the layer", function () {
+            var element;
+            var layer = function () {
+                 element = this.element;
+            };
+
+            $('<div id="parentElement"></div>').chart({
+                 layers: [ layer ],
+                 data: [ [2, 4, 6, 8] ]
+            });
+            
+            expect(element.id).toEqual('parentElement');
         });
     
         it("should wrap one-dimensional data in an array", function () {

@@ -95,8 +95,8 @@ return {
 		
 		var textPosition = function (i) {
 			return {
-				x: grid.xForIndex(i) - width / 2 + 10.5,
-				y: grid.yForValue(data[0][i]) - height
+				left: grid.xForIndex(i) - width / 2 + 0.5,
+				top: grid.yForValue(data[0][i]) - height - 20.5
 			};
 		};
 		
@@ -110,15 +110,18 @@ return {
 			.attr('fill', '#fff')
 			.attr('stroke', COLORS.LINES)
 			.attr('stroke-width', 2);
-		var text = this.paper.text(textPosition(0).x, textPosition(0).y, textContent(0, data[0][0])).attr("text-anchor", "start");
 		
+		var text = $('<div id="text"></div>')
+		    .appendTo(this.element)
+		    .css({ width: width-10, height: height-10, padding: '5px', position: 'absolute', top: textPosition(0).top, left: textPosition(0).left, 'font-size': '10px' })
+		    .html(textContent(0, data[0][0]));
 	
 		
 		$(this.paper).bind('focusDatum.chart', function (event, index, datum) {
-			text.animate( textPosition(index), 200, "<", function () {
-				this.attr('text', textContent(index, datum));
-			});
-			bubble.animate(bubblePosition(index), 200, "<");
+	        text.animate( textPosition(index), 200, "linear", function () {
+	             $(this).html(textContent(index, datum));
+	        });
+			bubble.animate(bubblePosition(index), 200);
 				
 			
 		});

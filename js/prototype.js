@@ -20,7 +20,7 @@ define(['chart', 'Money'], function (chart, Money) {
 				["x-axis labels", ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)']], 
 				"bars", 
 				"values above points", 
-				["bubble", function (i, value) { return labels[i] + '\nEarnings: ' + value.toString(); }]
+				["bubble", function (i, value) { return labels[i] + '<br>Earnings: ' + value.toString(); }]
 			],
 			marginBottom: 20,
 			marginTop: 40,
@@ -89,7 +89,8 @@ define(['chart', 'Money'], function (chart, Money) {
 				["x-axis labels", ['Deposit'].concat($('#raise-your-rate-data').find('tbody tr').find('th:eq(0)').map(function () { return $(this).text(); }).toArray())],  
 				"differential area",
 				"lines",
-				"dots"
+				"dots",
+				["bubble", function (i) { return "1st rate: 1.95%<br>Date: Jul 2010"; }]
 			],
 			xValues: $('#raise-your-rate-data').find('thead th:gt(1)').map(function () { return new Date($(this).text()).getTime(); }).toArray(),
 			marginBottom: 20,
