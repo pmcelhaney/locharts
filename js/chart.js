@@ -1,6 +1,8 @@
 define(['./grid', './layers'], function (Grid, builtInLayers) {
 	$.fn.chart = function (options) {
 		
+		var data = ( options.data && $.isArray( options.data[0] ) ) ? options.data : [options.data];
+		
 		var dataMax = function (data) {
 			
 			if (data === undefined) {
@@ -30,13 +32,14 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
 			marginRight: options.marginRight,
 			marginBottom: options.marginBottom,
 			marginLeft: options.marginLeft,
-			xLabels: options.xLabels,
 			colors: options.colors,
 			fillColors: options.fillColors,
 			gradients: options.gradients,
 			edgeToEdge: options.edgeToEdge,
-			xValues: options.xValues
+			xValues: options.xValues,
+			columnCount: data && data[0] ? data[0].length : undefined
 		});
+
 		
 	
 		
@@ -44,7 +47,7 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
 		
 		var layerContext = { 
 			grid: grid,
-			data: ( options.data && $.isArray( options.data[0] ) ) ? options.data : [options.data],
+			data: data,
 			paper: Raphael(this[0], this.width(), this.height())
 		};
 		

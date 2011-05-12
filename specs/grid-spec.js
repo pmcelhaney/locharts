@@ -4,7 +4,6 @@ define(['js/grid'], function(Grid) {
     - yForIndex(i)
     - xForValue(v)
     - rowHeight()
-    - xLabelForIndex(i)
     */
 
 
@@ -14,21 +13,21 @@ define(['js/grid'], function(Grid) {
         
             expect(Grid({ width: 60 }).xForIndex(0)).toEqual(30);
                 
-            expect(Grid({ width: 60, xLabels: ['one', 'two'] }).xForIndex(0)).toEqual(15);
-            expect(Grid({ width: 60, xLabels: ['one', 'two'] }).xForIndex(1)).toEqual(45);
+            expect(Grid({ width: 60, columnCount: 2 }).xForIndex(0)).toEqual(15);
+            expect(Grid({ width: 60, columnCount: 2 }).xForIndex(1)).toEqual(45);
         
-            expect(Grid({ width: 60, xLabels: ['one', 'two', 'three'] }).xForIndex(0)).toEqual(10);
-            expect(Grid({ width: 60, xLabels: ['one', 'two', 'three'] }).xForIndex(1)).toEqual(30);
-            expect(Grid({ width: 60, xLabels: ['one', 'two', 'three'] }).xForIndex(2)).toEqual(50);
+            expect(Grid({ width: 60, columnCount: 3 }).xForIndex(0)).toEqual(10);
+            expect(Grid({ width: 60, columnCount: 3 }).xForIndex(1)).toEqual(30);
+            expect(Grid({ width: 60, columnCount: 3 }).xForIndex(2)).toEqual(50);
         
-            expect(Grid({ width: 160, xLabels: ['one', 'two'], marginLeft: 20, marginRight: 20 }).xForIndex(0)).toEqual(50);
+            expect(Grid({ width: 160, columnCount: 2, marginLeft: 20, marginRight: 20 }).xForIndex(0)).toEqual(50);
         });
     
     
         it("should know the x-coordinate for a given index when edgeToEdge is true", function () {
                     
-            var fourItemGrid = Grid({ edgeToEdge: true, width: 60, xLabels: ['one', 'two', 'three', 'four'] });        
-            var threeItemGrid = Grid({ edgeToEdge: true, width: 60, xLabels: ['one', 'two', 'three'] });    
+            var fourItemGrid = Grid({ edgeToEdge: true, width: 60, columnCount: 4 });        
+            var threeItemGrid = Grid({ edgeToEdge: true, width: 60, columnCount: 3 });    
                         
             expect(fourItemGrid.xForIndex(0)).toEqual(0);
             expect(fourItemGrid.xForIndex(1)).toEqual(20);
@@ -39,7 +38,7 @@ define(['js/grid'], function(Grid) {
             expect(threeItemGrid.xForIndex(1)).toEqual(30);
             expect(threeItemGrid.xForIndex(2)).toEqual(60);
         
-            expect(Grid({ edgeToEdge: true, width: 160, xLabels: ['one', 'two'], marginLeft: 20, marginRight: 20 }).xForIndex(0)).toEqual(20);
+            expect(Grid({ edgeToEdge: true, width: 160, columnCount: 2, marginLeft: 20, marginRight: 20 }).xForIndex(0)).toEqual(20);
         });
     
     
@@ -62,9 +61,9 @@ define(['js/grid'], function(Grid) {
         });
     
         it("should know the width of each column", function () {
-            expect(Grid({ width: 60, xLabels: ['one'] }).columnWidth()).toEqual(60);
-            expect(Grid({ width: 60, xLabels: ['one', 'two'] }).columnWidth()).toEqual(30);
-            expect(Grid({ width: 200, xLabels: ['one', 'two', 'three'], marginLeft: 30, marginRight: 20 }).columnWidth()).toEqual(50);
+            expect(Grid({ width: 60, columnCount: 1 }).columnWidth()).toEqual(60);
+            expect(Grid({ width: 60, columnCount: 2 }).columnWidth()).toEqual(30);
+            expect(Grid({ width: 200, columnCount: 3, marginLeft: 30, marginRight: 20 }).columnWidth()).toEqual(50);
         });
     
     
@@ -77,7 +76,7 @@ define(['js/grid'], function(Grid) {
         });
     
         it("should return whole numbers", function () {
-            expect(Grid({ width: 99, xLabels: [0,1,2] }).xForIndex(1)).toEqual(50);
+            expect(Grid({ width: 99, columnCount: 3 }).xForIndex(1)).toEqual(50);
             expect(Grid({ height: 59 }).yForValue(0.75)).toEqual(15);
         });
     
@@ -95,12 +94,7 @@ define(['js/grid'], function(Grid) {
         });
     
     
-        it("should know the labels of its columns", function () {
-            var grid = Grid({ xLabels: ['one', 'two', 'three'] });
-            expect(grid.xLabelForIndex(0)).toEqual('one');
-            expect(grid.xLabelForIndex(2)).toEqual('three');
-            expect(grid.xLabelForIndex(3)).toBe(undefined);
-        });
+
     
         it("should know the width and height", function () {
             var grid = Grid({ width: 800, height: 600, marginLeft: 10, marginRight: 90, marginTop: 150, marginBottom: 50 });

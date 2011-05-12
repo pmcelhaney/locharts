@@ -9,18 +9,19 @@ define(['chart', 'Money'], function (chart, Money) {
 
 
 	$(function() {
+	    var labels = ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)'];
+	    
 		$('#bar').chart({
 			data: [Money(50598.54), Money(51204.25), Money(51817.21), Money(52437.51)],
 			layers: [
 				"borders", 
 				["y-axis markers", 6, Money], 
 				"x-axis label separators",  
-				"x-axis labels",  
+				["x-axis labels", ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)']], 
 				"bars", 
 				"values above points", 
-				"bubble"
+				["bubble", function (i, value) { return labels[i] + '\nEarnings: ' + value.toString(); }]
 			],
-			xLabels: ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)'],
 			marginBottom: 20,
 			marginTop: 40,
 			marginLeft: 100,
@@ -37,11 +38,10 @@ define(['chart', 'Money'], function (chart, Money) {
 				"borders", 
 				["y-axis markers", 6, Money], 
 				"x-axis label separators",  
-				"x-axis labels",  
+				["x-axis labels", ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)']],   
 				"lines",
 				"dots"
 			],
-			xLabels: ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)'],
 			marginBottom: 20,
 			marginTop: 40,
 			marginLeft: 100,
@@ -61,11 +61,10 @@ define(['chart', 'Money'], function (chart, Money) {
 				"borders", 
 				["y-axis markers", 6, Money], 
 				"x-axis label separators",  
-				"x-axis labels",  
+				["x-axis labels", ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)']],  
 				"area",
 				"dots"
 			],
-			xLabels: ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)'],
 			marginBottom: 20,
 			marginTop: 40,
 			marginLeft: 100,
@@ -79,20 +78,19 @@ define(['chart', 'Money'], function (chart, Money) {
                 function () { 
                     return [ 
                         $(this).find('td').map(function () { 
-                            return Money(parseInt($(this).text(), 10)) 
-                        }).toArray() 
-                    ] 
+                            return Money(parseInt($(this).text(), 10)); 
+                        }).toArray()
+                    ]; 
                 } ).toArray(),
 			layers: [
 				"borders", 
 				["y-axis markers", 6, Money], 
 				"x-axis label separators",  
-				"x-axis labels",  
+				["x-axis labels", ['Deposit'].concat($('#raise-your-rate-data').find('tbody tr').find('th:eq(0)').map(function () { return $(this).text(); }).toArray())],  
 				"differential area",
 				"lines",
 				"dots"
 			],
-			xLabels: ['Deposit'].concat($('#raise-your-rate-data').find('tbody tr').find('th:eq(0)').map(function () { return $(this).text(); }).toArray()),
 			xValues: $('#raise-your-rate-data').find('thead th:gt(1)').map(function () { return new Date($(this).text()).getTime(); }).toArray(),
 			marginBottom: 20,
 			marginTop: 40,

@@ -9,7 +9,6 @@ define(['js/layers', 'js/chart', './grid-spec'], function (builtInLayers) {
     - yForIndex(i)
     - xForValue(v)
     - rowHeight()
-    - xLabelForIndex(i)
     */
         var mockLayerWasCalled = false;
 
@@ -72,7 +71,7 @@ define(['js/layers', 'js/chart', './grid-spec'], function (builtInLayers) {
             expect(grid.yMaxValue).toEqual(55);
         });
     
-        it("should pass the yMinValue, xLabels, margins, and colors to the grid", function () {
+        it("should pass the yMinValue,  margins, and colors to the grid", function () {
             var grid;
             $('<div></div>').chart({
                 
@@ -86,7 +85,6 @@ define(['js/layers', 'js/chart', './grid-spec'], function (builtInLayers) {
             
                 data: [ [10, 20, 50] ],
                 yMinValue: 5, 
-                xLabels: ['Jan', 'Feb', 'Mar'],
                 xValues: [1,2,3],
                 marginTop: 10,
                 marginRight: 20,
@@ -101,7 +99,6 @@ define(['js/layers', 'js/chart', './grid-spec'], function (builtInLayers) {
             
           
             expect(grid.yMinValue).toEqual(5);
-            expect(grid.xLabels).toEqual(['Jan', 'Feb', 'Mar']);
             expect(grid.xValues).toEqual([1,2,3]);
             expect(grid.marginTop).toEqual(10);
             expect(grid.marginRight).toEqual(20);
@@ -114,6 +111,28 @@ define(['js/layers', 'js/chart', './grid-spec'], function (builtInLayers) {
             expect(grid.edgeToEdge).toBeTruthy();
         
         });
+        
+        it("should pass the columnCount to the grid", function () {
+            var grid;
+            $('<div></div>').chart({
+                
+                Grid: function (options) { return options; },
+
+                layers: [
+                    function () {
+                        grid = this.grid;
+                    }
+                ],
+            
+                data: [ [10, 20, 50] ]
+                
+            });
+            
+          
+            expect(grid.columnCount).toEqual(3);
+        
+        });
+        
     
         it("should apply each layer in order", function () {
             var layers = [];

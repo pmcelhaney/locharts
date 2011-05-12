@@ -28,11 +28,11 @@ return {
 		});
 	},
 
-	'x-axis labels': function () {
+	'x-axis labels': function (labels) {
 		var paper = this.paper;
 		var grid = this.grid;
 		$(this.data[0]).each(function (i) {
-			paper.text(grid.xForIndex(i), grid.yForBottomEdge() + 10, grid.xLabelForIndex(i)).attr('fill', COLORS.TEXT);
+			paper.text(grid.xForIndex(i), grid.yForBottomEdge() + 10, labels[i]).attr('fill', COLORS.TEXT);
 		});
 	},
 
@@ -80,7 +80,7 @@ return {
 	},
 	
 
-	'bubble': function () {
+	'bubble': function (textContent) {
 		var grid = this.grid;
 		var data = this.data;
 		var width = 130;
@@ -100,21 +100,23 @@ return {
 			};
 		};
 		
-		var textContent = function (i) {
-			return grid.xLabelForIndex(i) + '\nEarnings: ' + data[0][i].toString();
+		var textContent = textContent || function (i, value) {
+			return i + ': ' + value.toString();
 		};
+		
+
 		
 		var bubble = this.paper.rect(bubblePosition(0).x, bubblePosition(0).y, width, height, 5)
 			.attr('fill', '#fff')
 			.attr('stroke', COLORS.LINES)
 			.attr('stroke-width', 2);
-		var text = this.paper.text(textPosition(0).x, textPosition(0).y, textContent(0)).attr("text-anchor", "start");
+		var text = this.paper.text(textPosition(0).x, textPosition(0).y, textContent(0, data[0][0])).attr("text-anchor", "start");
 		
 	
 		
 		$(this.paper).bind('focusDatum.chart', function (event, index, datum) {
 			text.animate( textPosition(index), 200, "<", function () {
-				this.attr('text', textContent(index));
+				this.attr('text', textContent(index, datum));
 			});
 			bubble.animate(bubblePosition(index), 200, "<");
 				
