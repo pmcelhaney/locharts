@@ -70,6 +70,10 @@ define(function () {
 			width: function () {
 				return width;
 			},
+			
+			outerWidth: function () {
+				return options.width;
+			},
 		
 			height: function () {
 				return height;

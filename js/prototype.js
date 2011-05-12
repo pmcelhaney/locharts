@@ -91,7 +91,7 @@ define(['chart', 'Money'], function (chart, Money) {
 				"lines",
 				"dots",
 				["bubble", function (i) { return "1st rate: 1.95%<br>Date: Jul 2010"; }],
-				"hotspots"
+				"column hotspots"
 			],
 			xValues: $('#raise-your-rate-data').find('thead th:gt(1)').map(function () { return new Date($(this).text()).getTime(); }).toArray(),
 			marginBottom: 20,

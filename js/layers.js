@@ -197,6 +197,33 @@ return {
     			});
     		});
 		});
+	},
+	
+	'column hotspots': function () {
+	    var paper = this.paper;
+		var grid = this.grid;
+		var data = this.data;
+		
+
+        var lastX = 0;
+    	$(data[data.length-1]).each(function (i, datum) {
+    	    var thisX = grid.xForIndex(i);
+    	    var leftX = thisX - (thisX - lastX) / 2;
+    	    var rightX = thisX + ( ( grid.xForIndex(i+1) || grid.outerWidth() ) - thisX ) / 2; 
+    	    lastX = thisX;
+    		paper.rect(leftX, grid.yForTopEdge(), (rightX - leftX), grid.height())
+    		    .attr('fill', '#000')
+    		    .attr('fill-opacity', 0)
+    		    .attr('stroke-width', 0)
+    		    .attr('zIndex', 100)
+    		    .hover(function () {
+                   // this.attr('fill-opacity', 0.5);
+    			    $(paper).trigger('focusDatum.chart', [i, datum]);
+    		    }, function() {
+                   // this.attr('fill-opacity', 0.1);
+    		    });
+    	});
+
 	}
 	
 
