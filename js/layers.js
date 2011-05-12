@@ -86,17 +86,17 @@ return {
 		var width = 130;
 		var height = 40;
 		
-		var bubblePosition = function (i) {
+		var bubblePosition = function (i, datum) {
 			return {
 				x: grid.xForIndex(i) - width / 2 + 0.5,
-				y: grid.yForValue(data[0][i]) - height - 20.5
+				y: grid.yForValue(datum) - height - 20.5
 			};
 		};
 		
-		var textPosition = function (i) {
+		var textPosition = function (i, datum) {
 			return {
 				left: grid.xForIndex(i) - width / 2 + 0.5,
-				top: grid.yForValue(data[0][i]) - height - 20.5
+				top: grid.yForValue(datum) - height - 20.5
 			};
 		};
 		
@@ -106,22 +106,22 @@ return {
 		
 
 		
-		var bubble = this.paper.rect(bubblePosition(0).x, bubblePosition(0).y, width, height, 5)
+		var bubble = this.paper.rect(bubblePosition(0,  data[0][0]).x, bubblePosition(0,  data[0][0]).y, width, height, 5)
 			.attr('fill', '#fff')
 			.attr('stroke', COLORS.LINES)
 			.attr('stroke-width', 2);
 		
 		var text = $('<div id="text"></div>')
 		    .appendTo(this.element)
-		    .css({ width: width-10, height: height-10, padding: '5px', position: 'absolute', top: textPosition(0).top, left: textPosition(0).left, 'font-size': '10px' })
+		    .css({ width: width-10, height: height-10, padding: '5px', position: 'absolute', top: textPosition(0, data[0][0]).top, left: textPosition(0,  data[0][0]).left, 'font-size': '10px' })
 		    .html(textContent(0, data[0][0]));
 	
 		
 		$(this.paper).bind('focusDatum.chart', function (event, index, datum) {
-	        text.animate( textPosition(index), 200, "linear", function () {
+	        text.animate( textPosition(index, datum), 200, "linear", function () {
 	             $(this).html(textContent(index, datum));
 	        });
-			bubble.animate(bubblePosition(index), 200);
+			bubble.animate(bubblePosition(index, datum), 200);
 				
 			
 		});
@@ -189,6 +189,30 @@ return {
 			paper.path(path).attr({  fill: grid.fillColor(i),  'stroke-width': 0, opacity: 0.4  });
 		});
 		
+	},
+	
+	'hotspots': function () {
+	    var paper = this.paper;
+		var grid = this.grid;
+		var data = $.extend([], this.data).reverse();
+		
+		$([50, 35, 20]).each(function(_, radius) {
+		    $(data).each(function (seriesIndex, series) {
+    			$(series).each(function (i, datum) {
+    				paper.circle(grid.xForIndex(i), grid.yForValue(this), radius)
+    				    .attr('fill', '#000')
+    				    .attr('fill-opacity', 0)
+    				    .attr('stroke-width', 0)
+    				    .attr('zIndex', 100)
+    				    .hover(function () {
+    				      //  this.attr('fill-opacity', 0.5);
+        				    $(paper).trigger('focusDatum.chart', [i, datum]);
+        			    }, function() {
+        			      //  this.attr('fill-opacity', 0.1);
+        			    });
+    			});
+    		});
+		});
 	}
 	
 
