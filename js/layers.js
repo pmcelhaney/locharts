@@ -86,13 +86,7 @@ return {
 		var width = 130;
 		var height = 40;
 		
-		var bubblePosition = function (i, datum) {
-			return {
-				x: grid.xForIndex(i) - width / 2 + 0.5,
-				y: grid.yForValue(datum) - height - 20.5
-			};
-		};
-		
+
 		var textPosition = function (i, datum) {
 			return {
 				left: grid.xForIndex(i) - width / 2 + 0.5,
@@ -104,16 +98,9 @@ return {
 			return i + ': ' + value.toString();
 		};
 		
-
-		
-		var bubble = this.paper.rect(bubblePosition(0,  data[0][0]).x, bubblePosition(0,  data[0][0]).y, width, height, 5)
-			.attr('fill', '#fff')
-			.attr('stroke', COLORS.LINES)
-			.attr('stroke-width', 2);
-		
 		var text = $('<div id="text"></div>')
 		    .appendTo(this.element)
-		    .css({ width: width-10, height: height-10, padding: '5px', position: 'absolute', top: textPosition(0, data[0][0]).top, left: textPosition(0,  data[0][0]).left, 'font-size': '10px' })
+		    .css({ border: '2px solid ' + COLORS.LINES, 'border-radius': '5px', background: '#fff', width: width-10, height: height-10, padding: '5px', position: 'absolute', top: textPosition(0, data[0][0]).top, left: textPosition(0,  data[0][0]).left, 'font-size': '10px' })
 		    .html(textContent(0, data[0][0]));
 	
 		
@@ -121,9 +108,6 @@ return {
 	        text.animate( textPosition(index, datum), 200, "linear", function () {
 	             $(this).html(textContent(index, datum));
 	        });
-			bubble.animate(bubblePosition(index, datum), 200);
-				
-			
 		});
 	},
 	
@@ -196,7 +180,7 @@ return {
 		var grid = this.grid;
 		var data = $.extend([], this.data).reverse();
 		
-		$([50, 35, 20]).each(function(_, radius) {
+		$([50, 35, 20]).each(function(rIndex, radius) {
 		    $(data).each(function (seriesIndex, series) {
     			$(series).each(function (i, datum) {
     				paper.circle(grid.xForIndex(i), grid.yForValue(this), radius)
