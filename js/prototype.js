@@ -127,9 +127,9 @@ define(['chart', 'Money'], function (chart, Money) {
 		    var lastClose = 100;
 		    for (i = 0; i<n; i++) {
 		        day = TradingDay();
-		        day.open = lastClose;
-		        day.high = lastClose + Math.random() * 20;
-		        day.low  = lastClose - Math.random() * 20;
+		        day.open = lastClose + Math.sqrt(Math.random() * 20) - Math.sqrt(Math.random() * 20);
+		        day.high = lastClose + Math.sqrt(Math.random() * 500);
+		        day.low  = Math.max(0.5, lastClose - Math.sqrt(Math.random() * 500));
 		        day.close = day.low + Math.random() * (day.high - day.low);
 		        tradingDays.push(day);
 		        lastClose = day.close;
