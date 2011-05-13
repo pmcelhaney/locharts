@@ -115,18 +115,37 @@ define(['chart', 'Money'], function (chart, Money) {
 		        low: l,
 		        open: o,
 		        close: c,
-		        valueOf: function () { return c; }		        
+		        valueOf: function () { return this.close; }      
 		    };
 		};
 		
 		
+		var randomTradingDays = function (n) {
+		    var i;
+		    var tradingDays = [];
+		    var day;
+		    var lastClose = 100;
+		    for (i = 0; i<n; i++) {
+		        day = TradingDay();
+		        day.open = lastClose;
+		        day.high = lastClose + Math.random() * 20;
+		        day.low  = lastClose - Math.random() * 20;
+		        day.close = day.low + Math.random() * (day.high - day.low);
+		        tradingDays.push(day);
+		        lastClose = day.close;
+		        
+		    }
+		    
+		    return tradingDays;
+		};
+
+		
 		$('#candlestick').chart({
-			data: [TradingDay(60, 100, 50, 75), TradingDay(75, 90, 70, 85), TradingDay(85, 115, 70, 100), TradingDay(100, 150, 80, 120)],
+			data: randomTradingDays(50),
 			layers: [
 				"borders", 
 				["y-axis markers", 6, Money], 
 				"x-axis label separators",  
-				["x-axis labels", ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)']],   
 				"candlestick"			
 			],
 			marginBottom: 20,
