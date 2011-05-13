@@ -100,12 +100,13 @@ return {
 		
 		var text = $('<div id="text"></div>')
 		    .appendTo(this.element)
-		    .css({ border: '2px solid ' + COLORS.LINES, 'border-radius': '5px', background: '#fff', width: width-10, height: height-10, padding: '5px', position: 'absolute', top: textPosition(0, data[0][0]).top, left: textPosition(0,  data[0][0]).left, 'font-size': '10px' })
+		    .css({ border: '2px solid ' + grid.color(0), 'border-radius': '5px', background: '#fff', width: width-10, height: height-10, padding: '5px', position: 'absolute', top: textPosition(0, data[0][0]).top, left: textPosition(0,  data[0][0]).left, 'font-size': '10px' })
 		    .html(textContent(0, data[0][0]));
 	
 		
 		$(this.paper).bind('focusDatum.chart', function (event, index, datum) {
 	        text.animate( textPosition(index, datum), 200, "linear", function () {
+	             $(this).css('border-color', grid.color(index));
 	             $(this).html(textContent(index, datum));
 	        });
 		});
@@ -123,7 +124,8 @@ return {
 					path += 'L' + ( grid.xForIndex(i) + 0.5 ) + ' ' + ( grid.yForValue(this) + 0.5 );
 				}
 			});
-			paper.path(path).attr('stroke', grid.color(seriesIndex));
+			console.log(data.length);
+			paper.path(path).attr('stroke', grid.color(data.length - 1 - seriesIndex));
 		});
 		
 	},
@@ -135,7 +137,7 @@ return {
 		
 		$(data).each(function (seriesIndex, series) {
 			$(series).each(function (i) {
-				paper.circle(grid.xForIndex(i), grid.yForValue(this), 5).attr('stroke-width', 0).attr('fill', grid.color(seriesIndex));
+				paper.circle(grid.xForIndex(i), grid.yForValue(this), 5).attr('stroke-width', 0).attr('fill', grid.color(data.length - 1 - seriesIndex));
 			});
 		});
 	},

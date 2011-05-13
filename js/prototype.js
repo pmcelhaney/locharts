@@ -72,6 +72,8 @@ define(['chart', 'Money'], function (chart, Money) {
 			colors: ['rgb(55,152,199)', 'rgb(101,3,96)']
 		});
 		
+		
+		var labels =
 		$('#differential-area').chart({
 			edgeToEdge: true,
             data: $('#raise-your-rate-data').find('tbody tr').map(
@@ -90,7 +92,9 @@ define(['chart', 'Money'], function (chart, Money) {
 				"differential area",
 				"lines",
 				"dots",
-				["bubble", function (i) { return "1st rate: 1.95%<br>Date: Jul 2010"; }],
+				["bubble", function (i) { 
+				    return (i == 3 ? 'Final balance' : ['1st', '2nd', '3rd'][i] + ' rate: ' + $('#raise-your-rate-data tbody tr').eq(i).find('th:eq(1)').text() + '%') + '<br>Date: ' + $('#raise-your-rate-data thead th').eq(i+2).text(); 
+				}],
 				"column hotspots"
 			],
 			xValues: $('#raise-your-rate-data').find('thead th:gt(1)').map(function () { return new Date($(this).text()).getTime(); }).toArray(),
@@ -98,7 +102,7 @@ define(['chart', 'Money'], function (chart, Money) {
 			marginTop: 40,
 			marginLeft: 100,
 			marginRight: 50,
-			colors: ["rgb(31,124,166)","rgb(233,126,0)", "rgb(82,182,101)"],
+            colors: ["rgb(82,182,101)","rgb(233,126,0)","rgb(31,124,166)", "rgb(127,127,127)"],
 			fillColors: ["rgb(255,255,255)","rgba(136,211,245)", "rgba(44,18,98)"],
 			yMinValue: 49000,
 			yMaxValue: 56000
