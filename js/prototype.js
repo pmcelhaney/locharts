@@ -73,7 +73,6 @@ define(['chart', 'Money'], function (chart, Money) {
 		});
 		
 		
-		var labels =
 		$('#differential-area').chart({
 			edgeToEdge: true,
             data: $('#raise-your-rate-data').find('tbody tr').map(
@@ -106,6 +105,35 @@ define(['chart', 'Money'], function (chart, Money) {
 			fillColors: ["rgb(255,255,255)","rgba(136,211,245)", "rgba(44,18,98)"],
 			yMinValue: 49000,
 			yMaxValue: 56000
+		});
+		
+		
+		var TradingDay = function (o, h, l, c) {
+		    
+		    return {
+		        high: h,
+		        low: l,
+		        open: o,
+		        close: c,
+		        valueOf: function () { return c; }		        
+		    };
+		};
+		
+		
+		$('#candlestick').chart({
+			data: [TradingDay(60, 100, 50, 75), TradingDay(75, 90, 70, 85), TradingDay(85, 115, 70, 100), TradingDay(100, 150, 80, 120)],
+			layers: [
+				"borders", 
+				["y-axis markers", 6, Money], 
+				"x-axis label separators",  
+				["x-axis labels", ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)']],   
+				"candlestick"			
+			],
+			marginBottom: 20,
+			marginTop: 40,
+			marginLeft: 100,
+			marginRight: 10,
+			fillColors: ['rgb(55,152,199)', 'rgb(101,3,96)']
 		});
 
 	});
