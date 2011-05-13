@@ -68,5 +68,9 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
 				layerFn.apply(layerContext, args);	
 			}
 		});	
+		
+		return this;
 	};     
+	
+	
 });

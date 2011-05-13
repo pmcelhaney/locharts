@@ -12,31 +12,32 @@ var FONT = 'Verdana, Sans-Serif';
 var formatDate = function(d) {
 	var twoDigits = function(n) {
 		return n > 9 ? n : '0' + n;
-	}
+	};
 	if (!d.getMonth) {
 		return d;
 	}
 	return twoDigits(d.getMonth() + 1) + '/' + twoDigits(d.getDate()) + '/' + d.getFullYear();		
-}
+};
 
 
 
 return {
-	'bars' : function () {
+	'bars' : function (widthFactor, opacity) {
+	    var opacity = opacity || 0.8;
 		var grid = this.grid;
 		var paper = this.paper;
 		$(this.data[0]).each(function (i) {
 			var datum = this;
-			var width = grid.columnWidth() * 0.5;
-			var left = grid.xForIndex(i) - (width / 2); 
+			var width = Math.floor((grid.xForIndex(i+1) - grid.xForIndex(i)) * (widthFactor || 0.5));
+			var left = Math.floor(grid.xForIndex(i) - (width / 2)); 
 			var top = grid.yForValue(datum);
 			var height = grid.yForBottomEdge() - top;
-			var bar = paper.rect(left + 0.5, top + 0.5, width, height).attr('fill', grid.gradient(0)).attr('stroke-width', 0).attr('fill-opacity', 0.8);
+			var bar = paper.rect(left + 0.5, top + 0.5, width, height).attr('fill', grid.gradient(0)).attr('stroke-width', 0).attr('fill-opacity', opacity);
 			bar.hover(function () {
 				$(paper).trigger('focusDatum.chart', [i, datum]);
 				this.attr('fill', grid.gradient(1)).attr('fill-opacity', 1);
 			}, function () {
-				this.attr('fill', grid.gradient(0)).attr('fill-opacity', 0.8);
+				this.attr('fill', grid.gradient(0)).attr('fill-opacity', opacity);
 			});
 		});
 	},

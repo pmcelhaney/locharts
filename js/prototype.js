@@ -108,7 +108,7 @@ define(['chart', 'Money'], function (chart, Money) {
 		});
 		
 		
-		var TradingDay = function (o, h, l, c, d) {
+		var TradingDay = function (v, o, h, l, c, d) {
 		    
 		    return {
 		        high: h,
@@ -116,7 +116,8 @@ define(['chart', 'Money'], function (chart, Money) {
 		        open: o,
 		        close: c,
 		        date: d,
-		        valueOf: function () { return this.close; }      
+		        volume: v,
+		        valueOf: function () { return this.volume; }      
 		    };
 		};
 		
@@ -134,6 +135,7 @@ define(['chart', 'Money'], function (chart, Money) {
 		        day.low  = Math.max(0.5, lastClose - Math.pow(1 + Math.random() * 0.5, 3));
 		        day.close = day.low + Math.random() * (day.high - day.low);
 		        day.date = new Date(previousDate.getTime() + 24 * 60 * 60 * 1000);
+		        day.volume = 1000 + Math.sqrt(Math.random() * 50000 * 50000);
 		        tradingDays.push(day);
 		        previousDate = day.date;
 		        lastClose = day.close;
@@ -161,8 +163,23 @@ define(['chart', 'Money'], function (chart, Money) {
 			fillColors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
 			yMaxValue: Math.max.apply(null, $(data).map(function () { return this.high; } ).toArray()) + 1,
 			yMinValue: Math.min.apply(null, $(data).map(function () { return this.low; } ).toArray()) - 1
+		})
+		
+		.after('<div></div>').find('+div').css({width: $('#candlestick').width(), height: $('#candlestick').height() / 2})
+        .chart({
+			data: data,
+			layers: [
+				"borders", 
+				["y-axis markers", 6], 
+				"x-axis static dates",  
+				["bars", 1]			
+			],
+			marginBottom: 20,
+			marginTop: 40,
+			marginLeft: 100,
+			marginRight: 10,
+			fillColors: ['rgb(55,152,199)', 'rgb(101,3,96)']
 		});
-
 
 	});
 });
