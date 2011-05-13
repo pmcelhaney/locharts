@@ -8,6 +8,19 @@ var COLORS = {
 
 var FONT = 'Verdana, Sans-Serif';
 
+
+var formatDate = function(d) {
+	var twoDigits = function(n) {
+		return n > 9 ? n : '0' + n;
+	}
+	if (!d.getMonth) {
+		return d;
+	}
+	return twoDigits(d.getMonth() + 1) + '/' + twoDigits(d.getDate()) + '/' + d.getFullYear();		
+}
+
+
+
 return {
 	'bars' : function () {
 		var grid = this.grid;
@@ -257,10 +270,25 @@ return {
 				//this.attr('fill', grid.gradient(0)).attr('fill-opacity', 0.8);
 			});
 		});
+	},
+	
+	
+	'x-axis static dates': function () {
+		var paper = this.paper;
+		var grid = this.grid;
+		var i;
+		var labels = ['Jan 2011', 'Feb 2011', 'Mar 2011', 'Apr 2011'];
+		var index;
+		for (i=0; i<4; i++) {
+		    index = Math.round((i + 0.5) * this.data[0].length / 4);
+			paper.text(grid.xForIndex(index), grid.yForBottomEdge() + 10.5, formatDate(this.data[0][index].date)).attr('text-anchor', 'middle').attr('font', FONT).attr('fill', COLORS.TEXT);
+		
+		}
 	}
 	
-
 };
+
+
 
 });
 

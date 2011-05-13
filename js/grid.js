@@ -87,6 +87,14 @@ define(function () {
 				return yMaxValue;
 			},
 			
+			xMinValue: function () {
+				return xMinValue;
+			},
+		
+			xMaxValue: function () {
+				return xMaxValue;
+			},
+			
 			color: function ( i ) {
 				return colors[ i % colors.length ];
 			},

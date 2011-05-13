@@ -108,13 +108,14 @@ define(['chart', 'Money'], function (chart, Money) {
 		});
 		
 		
-		var TradingDay = function (o, h, l, c) {
+		var TradingDay = function (o, h, l, c, d) {
 		    
 		    return {
 		        high: h,
 		        low: l,
 		        open: o,
 		        close: c,
+		        date: d,
 		        valueOf: function () { return this.close; }      
 		    };
 		};
@@ -125,13 +126,16 @@ define(['chart', 'Money'], function (chart, Money) {
 		    var tradingDays = [];
 		    var day;
 		    var lastClose = 100;
+		    var previousDate = new Date(2011,01,01);
 		    for (i = 0; i<n; i++) {
 		        day = TradingDay();
 		        day.open = lastClose + Math.sqrt(Math.random() * 20) - Math.sqrt(Math.random() * 20);
 		        day.high = lastClose + Math.sqrt(Math.random() * 500);
 		        day.low  = Math.max(0.5, lastClose - Math.sqrt(Math.random() * 500));
 		        day.close = day.low + Math.random() * (day.high - day.low);
+		        day.date = new Date(previousDate.getTime() + 24 * 60 * 60 * 1000);
 		        tradingDays.push(day);
+		        previousDate = day.date;
 		        lastClose = day.close;
 		        
 		    }
@@ -141,11 +145,11 @@ define(['chart', 'Money'], function (chart, Money) {
 
 		
 		$('#candlestick').chart({
-			data: randomTradingDays(50),
+			data: randomTradingDays(88),
 			layers: [
 				"borders", 
 				["y-axis markers", 6, Money], 
-				"x-axis label separators",  
+				"x-axis static dates",  
 				"candlestick"			
 			],
 			marginBottom: 20,
