@@ -117,7 +117,7 @@ define(['chart', 'Money'], function (chart, Money) {
 		        close: c,
 		        date: d,
 		        volume: v,
-		        valueOf: function () { return this.volume; }      
+		        valueOf: function () { return this.close; }      
 		    };
 		};
 		
@@ -153,10 +153,11 @@ define(['chart', 'Money'], function (chart, Money) {
 			layers: [
 				"borders", 
 				["y-axis markers", 6, Money], 
-				"x-axis static dates",  
-				"candlestick"			
+				"candlestick",
+				"hover dots",
+				"column hotspots"
 			],
-			marginBottom: 20,
+			marginBottom: 0,
 			marginTop: 40,
 			marginLeft: 100,
 			marginRight: 10,
@@ -167,7 +168,7 @@ define(['chart', 'Money'], function (chart, Money) {
 		
 		.after('<div></div>').find('+div').css({width: $('#candlestick').width(), height: $('#candlestick').height() / 2})
         .chart({
-			data: data,
+			data: $(data).map(function () { return { date: this.date, volume: this.volume, valueOf: function () { return this.volume } }; } ).toArray(),
 			layers: [
 				"borders", 
 				["y-axis markers", 6], 
@@ -175,7 +176,7 @@ define(['chart', 'Money'], function (chart, Money) {
 				["bars", 1]			
 			],
 			marginBottom: 20,
-			marginTop: 40,
+			marginTop: 0,
 			marginLeft: 100,
 			marginRight: 10,
 			fillColors: ['rgb(55,152,199)', 'rgb(101,3,96)']

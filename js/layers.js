@@ -232,10 +232,10 @@ return {
     		    .attr('stroke-width', 0)
     		    .attr('zIndex', 100)
     		    .hover(function () {
-                   // this.attr('fill-opacity', 0.5);
+                  // this.attr('fill-opacity', 0.5);
     			    $(paper).trigger('focusDatum.chart', [i, datum]);
     		    }, function() {
-                   // this.attr('fill-opacity', 0.1);
+                  // this.attr('fill-opacity', 0.1);
     		    });
     	});
 
@@ -285,6 +285,27 @@ return {
 			paper.text(grid.xForIndex(index), grid.yForBottomEdge() + 10.5, formatDate(this.data[0][index].date)).attr('text-anchor', 'middle').attr('font', FONT).attr('fill', COLORS.TEXT);
 		
 		}
+	},
+	
+	'hover dots': function () {
+		var paper = this.paper;
+		var grid = this.grid;
+		var data = $.extend([], this.data).reverse();
+		
+		
+		var dot = paper.circle(0, 0, grid.columnWidth() / 2).attr('stroke-width', 0).attr('fill', grid.color(0));
+        
+		$(this.paper).bind('focusDatum.chart', function (event, index, datum) {
+	        dot.attr({cx: grid.xForIndex(index), cy: grid.yForValue(datum) });
+		});
+		
+		/*
+		$(data).each(function (seriesIndex, series) {
+			$(series).each(function (i) {
+				paper.circle(grid.xForIndex(i), grid.yForValue(this), 5).attr('stroke-width', 0).attr('fill', grid.color(data.length - 1 - seriesIndex));
+			});
+		});
+		*/
 	}
 	
 };
