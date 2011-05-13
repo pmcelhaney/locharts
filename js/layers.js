@@ -249,7 +249,7 @@ return {
 			var width = grid.columnWidth() / 2;
 			var left = grid.xForIndex(i) - (width / 2); 
 			var top = grid.yForValue( Math.max(datum.open, datum.close) );
-			var height = grid.yForValue( Math.min(datum.open, datum.close) ) - top;
+			var height = Math.max(1, grid.yForValue( Math.min(datum.open, datum.close) ) - top);
 			
 			
 			var lineWidth = 1;
