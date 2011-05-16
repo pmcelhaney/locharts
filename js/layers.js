@@ -6,7 +6,6 @@ var COLORS = {
 	TEXT: '#645050'
 };
 
-var FONT = 'Verdana, Sans-Serif';
 
 
 var formatDate = function(d) {
@@ -54,7 +53,7 @@ return {
 		var paper = this.paper;
 		var grid = this.grid;
 		$(this.data[0]).each(function (i) {
-			paper.text(grid.xForIndex(i), grid.yForValue(this) - 10, this).attr('font', FONT).attr('fill', COLORS.TEXT);
+			paper.text(grid.xForIndex(i), grid.yForValue(this) - 10, this).attr('fill', COLORS.TEXT);
 		});
 	},
 
@@ -81,7 +80,7 @@ return {
 			if (i > grid.yMinValue()) {
 				y = 0.5 + grid.yForValue(i);
 				paper.path('M' + (grid.xForLeftEdge() + 0.5) + ' ' + y + 'L' + (grid.xForRightEdge() + 0.5) + ' ' + y ).attr('stroke', COLORS.LINES).attr('z-index', 0);
-				paper.text(grid.xForLeftEdge() + 0.5 - 5, grid.yForValue(i), formatter(i)).attr('text-anchor', 'end').attr('font', FONT).attr('fill', COLORS.TEXT);
+				paper.text(grid.xForLeftEdge() + 0.5 - 5, grid.yForValue(i), formatter(i)).attr('text-anchor', 'end').attr('fill', COLORS.TEXT);
 			}
 		}
 	},
@@ -282,7 +281,7 @@ return {
 		var index;
 		for (i=0; i<4; i++) {
 		    index = Math.round((i + 0.5) * this.data[0].length / 4);
-			paper.text(grid.xForIndex(index), grid.yForBottomEdge() + 10.5, formatDate(this.data[0][index].date)).attr('text-anchor', 'middle').attr('font', FONT).attr('fill', COLORS.TEXT);
+			paper.text(grid.xForIndex(index), grid.yForBottomEdge() + 10.5, formatDate(this.data[0][index].date)).attr('text-anchor', 'middle').attr('fill', COLORS.TEXT);
 		
 		}
 	},
