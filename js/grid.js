@@ -78,6 +78,10 @@ define(function () {
 			height: function () {
 				return height;
 			},
+			
+			outerHeight: function () {
+				return options.height;
+			},
 		
 			yMinValue: function () {
 				return yMinValue;

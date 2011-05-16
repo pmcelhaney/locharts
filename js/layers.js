@@ -26,6 +26,7 @@ return {
 		var grid = this.grid;
 		var paper = this.paper;
 		var eventTarget = this.eventTarget;
+		var bars = [];
 		$(this.data[0]).each(function (i) {
 			var datum = this;
 			var width = Math.floor((grid.xForIndex(i+1) - grid.xForIndex(i)) * (widthFactor || 0.5));
@@ -35,9 +36,19 @@ return {
 			var bar = paper.rect(left + 0.5, top + 0.5, width, height).attr('fill', grid.gradient(0)).attr('stroke-width', 0).attr('fill-opacity', opacity);
 			bar.hover(function () {
 				$(eventTarget).trigger('focusDatum.chart', [i, datum]);
-				this.attr('fill', grid.gradient(1)).attr('fill-opacity', 1);
+			//	this.attr('fill', grid.gradient(1)).attr('fill-opacity', 1);
 			}, function () {
-				this.attr('fill', grid.gradient(0)).attr('fill-opacity', opacity);
+			    $(eventTarget).trigger('blurDatum.chart', [i, datum]);
+			//	this.attr('fill', grid.gradient(0)).attr('fill-opacity', opacity);
+			});
+			bars[i] = bar;
+			
+			$(eventTarget).bind('focusDatum.chart', function (event, i, datum) {
+			    bars[i].attr('fill', grid.gradient(1)).attr('fill-opacity', 1);
+			});
+			
+			$(eventTarget).bind('blurDatum.chart', function (event, i, datum) {
+			    bars[i].attr('fill', grid.gradient(0)).attr('fill-opacity', opacity);
 			});
 		});
 	},
@@ -228,7 +239,7 @@ return {
     	    var leftX = thisX - (thisX - lastX) / 2;
     	    var rightX = thisX + ( ( grid.xForIndex(i+1) || grid.outerWidth() ) - thisX ) / 2; 
     	    lastX = thisX;
-    		paper.rect(leftX, grid.yForTopEdge(), (rightX - leftX), grid.height())
+    		paper.rect(leftX, 0, (rightX - leftX), grid.outerHeight())
     		    .attr('fill', '#000')
     		    .attr('fill-opacity', 0)
     		    .attr('stroke-width', 0)
@@ -237,6 +248,7 @@ return {
                   // this.attr('fill-opacity', 0.5);
     			    $(eventTarget).trigger('focusDatum.chart', [i, datum]);
     		    }, function() {
+    		        $(eventTarget).trigger('blurDatum.chart', [i, datum]);
                   // this.attr('fill-opacity', 0.1);
     		    });
     	});
@@ -294,9 +306,9 @@ return {
 		var paper = this.paper;
 		var grid = this.grid;
 		var data = this.data;
+		console.log(grid.color(0));
 		
-		
-		var dot = paper.circle(0, 0, grid.columnWidth() / 2).attr('stroke-width', 0).attr('fill', grid.color(0));
+		var dot = paper.circle(0, 0, grid.columnWidth() / 2).attr('stroke-width', 0).attr('fill', grid.color(1));
         
 		$(this.eventTarget).bind('focusDatum.chart', function (event, index, datum) {
 	        dot.attr({cx: grid.xForIndex(index), cy: grid.yForValue(data[0][index]) });

@@ -161,7 +161,7 @@ define(['chart', 'Money'], function (chart, Money) {
 			marginTop: 40,
 			marginLeft: 100,
 			marginRight: 10,
-			fillColors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
+			colors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
 			yMaxValue: Math.max.apply(null, $(data).map(function () { return this.high; } ).toArray()) + 1,
 			yMinValue: Math.min.apply(null, $(data).map(function () { return this.low; } ).toArray()) - 1,
 			eventTarget: '#candlestick'
@@ -174,13 +174,14 @@ define(['chart', 'Money'], function (chart, Money) {
 				"borders", 
 				["y-axis markers", 6], 
 				"x-axis static dates",  
-				["bars", 1]			
+				["bars", 1],
+				"column hotspots"			
 			],
 			marginBottom: 20,
 			marginTop: 0,
 			marginLeft: 100,
 			marginRight: 10,
-			fillColors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
+			colors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
 			eventTarget: '#candlestick'
 		});
 
