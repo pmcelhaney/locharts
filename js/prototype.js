@@ -132,7 +132,7 @@ define(['chart', 'Money'], function (chart, Money) {
 		        day = TradingDay();
 		        day.open = lastClose + ( Math.pow(1 + Math.random(), 2) - Math.pow(1 + Math.random(), 2) ) / 10;
 		        day.high = lastClose + Math.pow(1 + Math.random() * 0.5, 3);
-		        day.low  = Math.max(0.5, lastClose - Math.pow(1 + Math.random() * 0.5, 3));
+		        day.low  = Math.max(Math.random(), lastClose - Math.pow(1 + Math.random() * 0.5, 3));
 		        day.close = day.low + Math.random() * (day.high - day.low);
 		        day.date = new Date(previousDate.getTime() + 24 * 60 * 60 * 1000 * (previousDate.getDay() == 6 ? 3 : 1));
 			    day.volume = 1000 + Math.round( Math.sqrt(Math.random() * 50000 * 50000) );
@@ -145,7 +145,8 @@ define(['chart', 'Money'], function (chart, Money) {
 		    return tradingDays;
 		};
 
-		var data = randomTradingDays(90);
+        var allData = randomTradingDays(500);
+		var data = allData.splice(-90);
 		
 		
 		$('#candlestick').chart({
@@ -213,8 +214,6 @@ define(['chart', 'Money'], function (chart, Money) {
            $('#daily-stock-details .high p').text(datum.high.toFixed(2));
            $('#daily-stock-details .low p').text(datum.low.toFixed(2));
         });
-
-
 
 	});
 });
