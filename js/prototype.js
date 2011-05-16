@@ -127,15 +127,15 @@ define(['chart', 'Money'], function (chart, Money) {
 		    var tradingDays = [];
 		    var day;
 		    var lastClose = 30;
-		    var previousDate = new Date(2011,01,01);
+		    var previousDate = new Date(2010,01,04);
 		    for (i = 0; i<n; i++) {
 		        day = TradingDay();
 		        day.open = lastClose + ( Math.pow(1 + Math.random(), 2) - Math.pow(1 + Math.random(), 2) ) / 10;
 		        day.high = lastClose + Math.pow(1 + Math.random() * 0.5, 3);
 		        day.low  = Math.max(0.5, lastClose - Math.pow(1 + Math.random() * 0.5, 3));
 		        day.close = day.low + Math.random() * (day.high - day.low);
-		        day.date = new Date(previousDate.getTime() + 24 * 60 * 60 * 1000);
-		        day.volume = 1000 + Math.round( Math.sqrt(Math.random() * 50000 * 50000) );
+		        day.date = new Date(previousDate.getTime() + 24 * 60 * 60 * 1000 * (previousDate.getDay() == 6 ? 3 : 1));
+			    day.volume = 1000 + Math.round( Math.sqrt(Math.random() * 50000 * 50000) );
 		        tradingDays.push(day);
 		        previousDate = day.date;
 		        lastClose = day.close;
@@ -169,7 +169,15 @@ define(['chart', 'Money'], function (chart, Money) {
 		
 		.after('<div></div>').find('+div').css({width: $('#candlestick').width(), height: $('#candlestick').height() / 3})
         .chart({
-			data: $(data).map(function () { return { date: this.date, volume: this.volume, valueOf: function () { return this.volume; } }; } ).toArray(),
+			data: $(data).map(function () { return { 
+			    date: this.date, 
+			    volume: this.volume, 
+			    open: this.open,
+			    close: this.close,
+			    high: this.high,
+			    low: this.low,
+			    valueOf: function () { return this.volume; } 
+			}; } ).toArray(),
 			layers: [
 				"borders", 
 				["y-axis markers", 3], 
