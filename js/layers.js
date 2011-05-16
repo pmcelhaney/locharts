@@ -25,6 +25,7 @@ return {
 	    var opacity = opacity || 0.8;
 		var grid = this.grid;
 		var paper = this.paper;
+		var eventTarget = this.eventTarget;
 		$(this.data[0]).each(function (i) {
 			var datum = this;
 			var width = Math.floor((grid.xForIndex(i+1) - grid.xForIndex(i)) * (widthFactor || 0.5));
@@ -33,7 +34,7 @@ return {
 			var height = grid.yForBottomEdge() - top;
 			var bar = paper.rect(left + 0.5, top + 0.5, width, height).attr('fill', grid.gradient(0)).attr('stroke-width', 0).attr('fill-opacity', opacity);
 			bar.hover(function () {
-				$(paper).trigger('focusDatum.chart', [i, datum]);
+				$(eventTarget).trigger('focusDatum.chart', [i, datum]);
 				this.attr('fill', grid.gradient(1)).attr('fill-opacity', 1);
 			}, function () {
 				this.attr('fill', grid.gradient(0)).attr('fill-opacity', opacity);
@@ -117,7 +118,7 @@ return {
 		    .html(textContent(0, data[0][0]));
 	
 		
-		$(this.paper).bind('focusDatum.chart', function (event, index, datum) {
+		$(this.eventTarget).bind('focusDatum.chart', function (event, index, datum) {
 	        text.animate( textPosition(index, datum), 200, "linear", function () {
 	             $(this).css('border-color', grid.color(index));
 	             $(this).html(textContent(index, datum));
@@ -191,6 +192,7 @@ return {
 	
 	'hotspots': function () {
 	    var paper = this.paper;
+	    var eventTarget = this.eventTarget;
 		var grid = this.grid;
 		var data = $.extend([], this.data).reverse();
 		
@@ -204,7 +206,7 @@ return {
     				    .attr('zIndex', 100)
     				    .hover(function () {
     				      //  this.attr('fill-opacity', 0.5);
-        				    $(paper).trigger('focusDatum.chart', [i, datum]);
+        				    $(eventTarget).trigger('focusDatum.chart', [i, datum]);
         			    }, function() {
         			      //  this.attr('fill-opacity', 0.1);
         			    });
@@ -217,6 +219,7 @@ return {
 	    var paper = this.paper;
 		var grid = this.grid;
 		var data = this.data;
+		var eventTarget = this.eventTarget;
 		
 
         var lastX = 0;
@@ -232,7 +235,7 @@ return {
     		    .attr('zIndex', 100)
     		    .hover(function () {
                   // this.attr('fill-opacity', 0.5);
-    			    $(paper).trigger('focusDatum.chart', [i, datum]);
+    			    $(eventTarget).trigger('focusDatum.chart', [i, datum]);
     		    }, function() {
                   // this.attr('fill-opacity', 0.1);
     		    });
@@ -244,6 +247,7 @@ return {
 	'candlestick' : function () {
 		var grid = this.grid;
 		var paper = this.paper;
+		var eventTarget = this.eventTarget;
 		$(this.data[0]).each(function (i) {
 			var datum = this;
 			var width = grid.columnWidth() / 2;
@@ -264,7 +268,7 @@ return {
 			
 			
 			bar.hover(function () {
-				$(paper).trigger('focusDatum.chart', [i, datum]);
+				$(eventTarget).trigger('focusDatum.chart', [i, datum]);
 				//this.attr('fill', grid.gradient(1)).attr('fill-opacity', 1);
 			}, function () {
 				//this.attr('fill', grid.gradient(0)).attr('fill-opacity', 0.8);
@@ -289,22 +293,16 @@ return {
 	'hover dots': function () {
 		var paper = this.paper;
 		var grid = this.grid;
-		var data = $.extend([], this.data).reverse();
+		var data = this.data;
 		
 		
 		var dot = paper.circle(0, 0, grid.columnWidth() / 2).attr('stroke-width', 0).attr('fill', grid.color(0));
         
-		$(this.paper).bind('focusDatum.chart', function (event, index, datum) {
-	        dot.attr({cx: grid.xForIndex(index), cy: grid.yForValue(datum) });
+		$(this.eventTarget).bind('focusDatum.chart', function (event, index, datum) {
+	        dot.attr({cx: grid.xForIndex(index), cy: grid.yForValue(data[0][index]) });
 		});
 		
-		/*
-		$(data).each(function (seriesIndex, series) {
-			$(series).each(function (i) {
-				paper.circle(grid.xForIndex(i), grid.yForValue(this), 5).attr('stroke-width', 0).attr('fill', grid.color(data.length - 1 - seriesIndex));
-			});
-		});
-		*/
+	
 	}
 	
 };

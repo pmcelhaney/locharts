@@ -4,14 +4,16 @@ define(function () {
 		var left = parts[0];
 		var right = parts[1];
 		var result = "";
-		
+        var i;
+        
 		for (i=0; i<left.length; i++) { 
 			if ((left.length - i) % 3 === 0 && i != 0) { 
-				result += ","; 
+			    result += ","; 
 			} 
-			result += left[i];  
+			result += left.charAt(i);
 		}
 	
+    
 		return result + '.' + right;	
 	};
 	

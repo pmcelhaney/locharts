@@ -49,7 +49,8 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
 			grid: grid,
 			data: data,
 			paper: Raphael(this[0], this.width(), this.height()),
-			element: this[0]
+			element: this[0],
+			eventTarget: options.eventTarget || this
 		};
 		
 		$.each(options.layers, function () {

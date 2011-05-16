@@ -163,12 +163,13 @@ define(['chart', 'Money'], function (chart, Money) {
 			marginRight: 10,
 			fillColors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
 			yMaxValue: Math.max.apply(null, $(data).map(function () { return this.high; } ).toArray()) + 1,
-			yMinValue: Math.min.apply(null, $(data).map(function () { return this.low; } ).toArray()) - 1
+			yMinValue: Math.min.apply(null, $(data).map(function () { return this.low; } ).toArray()) - 1,
+			eventTarget: '#candlestick'
 		})
 		
 		.after('<div></div>').find('+div').css({width: $('#candlestick').width(), height: $('#candlestick').height() / 2})
         .chart({
-			data: $(data).map(function () { return { date: this.date, volume: this.volume, valueOf: function () { return this.volume } }; } ).toArray(),
+			data: $(data).map(function () { return { date: this.date, volume: this.volume, valueOf: function () { return this.volume; } }; } ).toArray(),
 			layers: [
 				"borders", 
 				["y-axis markers", 6], 
@@ -179,7 +180,8 @@ define(['chart', 'Money'], function (chart, Money) {
 			marginTop: 0,
 			marginLeft: 100,
 			marginRight: 10,
-			fillColors: ['rgb(55,152,199)', 'rgb(101,3,96)']
+			fillColors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
+			eventTarget: '#candlestick'
 		});
 
 	});

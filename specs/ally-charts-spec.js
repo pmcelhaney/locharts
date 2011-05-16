@@ -1,6 +1,6 @@
 
 
-define(['js/layers', 'js/chart', './grid-spec'], function (builtInLayers) {
+define(['js/layers', 'js/chart', './grid-spec', './money-spec'], function (builtInLayers) {
 
     
 
@@ -49,6 +49,21 @@ define(['js/layers', 'js/chart', './grid-spec'], function (builtInLayers) {
             
             expect(element.id).toEqual('parentElement');
         });
+        
+        it("should make the eventTarget available to the layer", function () {
+            var eventTarget;
+            var layer = function () {
+                 eventTarget = this.eventTarget;
+            };
+
+            $('<div id="parentElement"></div>').chart({
+                 layers: [ layer ],
+                 data: [ [2, 4, 6, 8] ],
+                 eventTarget: '#target'
+            });
+            
+            expect(eventTarget).toEqual('#target');
+        });
     
         it("should wrap one-dimensional data in an array", function () {
             var data;
@@ -85,7 +100,7 @@ define(['js/layers', 'js/chart', './grid-spec'], function (builtInLayers) {
             expect(grid.yMaxValue).toEqual(55);
         });
     
-        it("should pass the yMinValue,  margins, and colors to the grid", function () {
+        it("should pass the yMinValue,  margins, and colors, and other options to the grid", function () {
             var grid;
             $('<div></div>').chart({
                 
