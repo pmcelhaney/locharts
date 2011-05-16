@@ -306,14 +306,14 @@ return {
 		var paper = this.paper;
 		var grid = this.grid;
 		var data = this.data;
-		console.log(grid.color(0));
 		
-		var dot = paper.circle(0, 0, grid.columnWidth() / 2).attr('stroke-width', 0).attr('fill', grid.color(1));
+		var dot = paper.circle(-100, -100, grid.columnWidth() / 2).attr('stroke-width', 0).attr('fill', grid.color(1));
         
 		$(this.eventTarget).bind('focusDatum.chart', function (event, index, datum) {
 	        dot.attr({cx: grid.xForIndex(index), cy: grid.yForValue(data[0][index]) });
 		});
 		
+
 	
 	}
 	

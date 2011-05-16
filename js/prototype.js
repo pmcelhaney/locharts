@@ -135,7 +135,7 @@ define(['chart', 'Money'], function (chart, Money) {
 		        day.low  = Math.max(0.5, lastClose - Math.pow(1 + Math.random() * 0.5, 3));
 		        day.close = day.low + Math.random() * (day.high - day.low);
 		        day.date = new Date(previousDate.getTime() + 24 * 60 * 60 * 1000);
-		        day.volume = 1000 + Math.sqrt(Math.random() * 50000 * 50000);
+		        day.volume = 1000 + Math.round( Math.sqrt(Math.random() * 50000 * 50000) );
 		        tradingDays.push(day);
 		        previousDate = day.date;
 		        lastClose = day.close;
@@ -157,8 +157,8 @@ define(['chart', 'Money'], function (chart, Money) {
 				"hover dots",
 				"column hotspots"
 			],
-			marginBottom: 0,
-			marginTop: 40,
+			marginBottom: 1,
+			marginTop: 10,
 			marginLeft: 100,
 			marginRight: 10,
 			colors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
@@ -167,23 +167,46 @@ define(['chart', 'Money'], function (chart, Money) {
 			eventTarget: '#candlestick'
 		})
 		
-		.after('<div></div>').find('+div').css({width: $('#candlestick').width(), height: $('#candlestick').height() / 2})
+		.after('<div></div>').find('+div').css({width: $('#candlestick').width(), height: $('#candlestick').height() / 3})
         .chart({
 			data: $(data).map(function () { return { date: this.date, volume: this.volume, valueOf: function () { return this.volume; } }; } ).toArray(),
 			layers: [
 				"borders", 
-				["y-axis markers", 6], 
+				["y-axis markers", 3], 
 				"x-axis static dates",  
 				["bars", 1],
 				"column hotspots"			
 			],
 			marginBottom: 20,
-			marginTop: 0,
+			marginTop: 10,
 			marginLeft: 100,
 			marginRight: 10,
 			colors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
 			eventTarget: '#candlestick'
 		});
+
+
+        var formatDate = function(d) {
+        	var twoDigits = function(n) {
+        		return n > 9 ? n : '0' + n;
+        	};
+        	if (!d.getMonth) {
+        		return d;
+        	}
+        	return twoDigits(d.getMonth() + 1) + '/' + twoDigits(d.getDate()) + '/' + d.getFullYear();		
+        };
+
+
+        $('#candlestick').bind('focusDatum.chart', function (event, index, datum) {
+           $('#daily-stock-details .date p').text(formatDate(datum.date));
+           $('#daily-stock-details .volume p').text(datum.volume);
+           $('#daily-stock-details .open p').text(datum.open.toFixed(2));
+           $('#daily-stock-details .close p').text(datum.close.toFixed(2));
+           $('#daily-stock-details .high p').text(datum.high.toFixed(2));
+           $('#daily-stock-details .low p').text(datum.low.toFixed(2));
+        });
+
+
 
 	});
 });
