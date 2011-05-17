@@ -311,7 +311,6 @@ return {
        
         
 		$(this.eventTarget).bind('focusDatum.chart', function (event, index, datum) {
-		     console.log(data[0][index]);
 	        dot.attr({cx: grid.xForIndex(index), cy: grid.yForValue(data[0][index]) });
 		});
 		

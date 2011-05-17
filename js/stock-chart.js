@@ -127,6 +127,9 @@ define(['chart', 'Money'], function (chart, Money) {
         
        // drawStockChart(data);
         
+        $('#candlestick').html('Loading...');
+        
+        
         var url = "http://query.yahooapis.com/v1/public/yql?";
         
         
@@ -140,7 +143,7 @@ define(['chart', 'Money'], function (chart, Money) {
           
           dataType: 'jsonp',
           success: function (data) {  
-              console.log(data.query.results.quote); 
+              $('#candlestick').html('');
               drawStockChart(
                   $(data.query.results.quote).map(function () { 
                       return { 

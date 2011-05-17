@@ -28,9 +28,10 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
         _create: function() {
     
             var options = this.options;
+          	
           	var data = ( options.data && $.isArray( options.data[0] ) ) ? options.data : [options.data];
 
-    		var grid = (options.Grid || Grid)( {
+    		this.grid = (options.Grid || Grid)( {
     			width: this.element.width(),
     			height: this.element.height(),
     			yMinValue: options.yMinValue,
@@ -47,15 +48,20 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
     			columnCount: data && data[0] ? data[0].length : undefined
     		});
 
-    		var layerContext = { 
-    			grid: grid,
+            this.draw(data);
+          
+        },
+        
+        draw: function (data) {
+            var layerContext = { 
+    			grid: this.grid,
     			data: data,
     			paper: Raphael(this.element[0], this.element.width(), this.element.height()),
     			element: this.element[0],
-    			eventTarget: options.eventTarget || this
+    			eventTarget: this.options.eventTarget || this
     		};
-
-    		$.each(options.layers, function () {
+            
+            $.each(this.options.layers, function () {
     			var layer = this;
     			var layerFunc;
     			var args = [];
@@ -71,8 +77,6 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
     				layerFn.apply(layerContext, args);	
     			}
     		});
-          
-          
         },
  
         _setOption: function(key, value) {
