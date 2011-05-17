@@ -48,6 +48,7 @@ return {
 			});
 			
 			$(eventTarget).bind('blurDatum.chart', function (event, i, datum) {
+			    console.log(bars.length);
 			    bars[i].attr('fill', grid.gradient(0)).attr('fill-opacity', opacity);
 			});
 		});

@@ -29,10 +29,16 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
         _create: function () {
             this.draw();
         },
-        draw: function() {
-    
+        draw: function(newData) {
+
+            if (this.paper) { this.remove(); }
+            
+            if (newData) this.options.data = newData;
+            
             var options = this.options;
+            
           	var data = ( options.data && $.isArray( options.data[0] ) ) ? options.data : [options.data];
+
 
     		var grid = (options.Grid || Grid)( {
     			width: this.element.width(),
@@ -50,11 +56,13 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
     			xValues: options.xValues,
     			columnCount: data && data[0] ? data[0].length : undefined
     		});
+    		
+    		this.paper = Raphael(this.element[0], this.element.width(), this.element.height());
 
     		var layerContext = { 
     			grid: grid,
     			data: data,
-    			paper: Raphael(this.element[0], this.element.width(), this.element.height()),
+    			paper: this.paper,
     			element: this.element[0],
     			eventTarget: options.eventTarget || this
     		};
@@ -83,8 +91,14 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
           // Use the _setOption method to respond to changes to options
           $.Widget.prototype._setOption.apply(this,arguments);
         },
+        
+        remove: function () {
+            this.paper.remove();
+            delete this.paper;
+        },
+        
         destroy: function() {
-          // Use the destroy method to reverse everything your plugin has applied
+          //delete this.paper;
           $.Widget.prototype.destroy.call(this);
         }
       });

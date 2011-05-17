@@ -173,6 +173,7 @@ define(['js/layers', 'js/chart', './grid-spec', './money-spec'], function (built
             $('<div></div>').chart({
                 layers: [Layer('one'), Layer('two'), Layer('three')]
             });
+            console.log(layers);
             expect(layers).toEqual(['one', 'two', 'three']);
         });
     
