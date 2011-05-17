@@ -25,13 +25,16 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
       $.widget("ally.chart", {
         // These options will be used as defaults
         options: {  },
-        _create: function() {
+        
+        _create: function () {
+            this.draw();
+        },
+        draw: function() {
     
             var options = this.options;
-          	
           	var data = ( options.data && $.isArray( options.data[0] ) ) ? options.data : [options.data];
 
-    		this.grid = (options.Grid || Grid)( {
+    		var grid = (options.Grid || Grid)( {
     			width: this.element.width(),
     			height: this.element.height(),
     			yMinValue: options.yMinValue,
@@ -48,20 +51,15 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
     			columnCount: data && data[0] ? data[0].length : undefined
     		});
 
-            this.draw(data);
-          
-        },
-        
-        draw: function (data) {
-            var layerContext = { 
-    			grid: this.grid,
+    		var layerContext = { 
+    			grid: grid,
     			data: data,
     			paper: Raphael(this.element[0], this.element.width(), this.element.height()),
     			element: this.element[0],
-    			eventTarget: this.options.eventTarget || this
+    			eventTarget: options.eventTarget || this
     		};
-            
-            $.each(this.options.layers, function () {
+
+    		$.each(options.layers, function () {
     			var layer = this;
     			var layerFunc;
     			var args = [];
@@ -77,6 +75,8 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
     				layerFn.apply(layerContext, args);	
     			}
     		});
+          
+          
         },
  
         _setOption: function(key, value) {
