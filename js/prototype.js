@@ -145,76 +145,117 @@ define(['chart', 'Money'], function (chart, Money) {
 		    return tradingDays;
 		};
 
-        var allData = randomTradingDays(500);
-		var data = allData.splice(-90);
+  
+       
 		
+		var drawStockChart = function (data) {
+
+    		$('#candlestick').chart({
+    			data: data,
+    			layers: [
+    				"borders", 
+    				["y-axis markers", 6, Money], 
+    				"candlestick",
+    				"hover dots",
+    				"column hotspots"
+    			],
+    			marginBottom: 1,
+    			marginTop: 10,
+    			marginLeft: 100,
+    			marginRight: 10,
+    			colors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
+    			yMaxValue: Math.max.apply(null, $(data).map(function () { return this.high; } ).toArray()) + 1,
+    			yMinValue: Math.min.apply(null, $(data).map(function () { return this.low; } ).toArray()) - 1,
+    			eventTarget: '#candlestick'
+    		})
 		
-		$('#candlestick').chart({
-			data: data,
-			layers: [
-				"borders", 
-				["y-axis markers", 6, Money], 
-				"candlestick",
-				"hover dots",
-				"column hotspots"
-			],
-			marginBottom: 1,
-			marginTop: 10,
-			marginLeft: 100,
-			marginRight: 10,
-			colors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
-			yMaxValue: Math.max.apply(null, $(data).map(function () { return this.high; } ).toArray()) + 1,
-			yMinValue: Math.min.apply(null, $(data).map(function () { return this.low; } ).toArray()) - 1,
-			eventTarget: '#candlestick'
-		})
-		
-		.after('<div></div>').find('+div').css({width: $('#candlestick').width(), height: $('#candlestick').height() / 3})
-        .chart({
-			data: $(data).map(function () { return { 
-			    date: this.date, 
-			    volume: this.volume, 
-			    open: this.open,
-			    close: this.close,
-			    high: this.high,
-			    low: this.low,
-			    valueOf: function () { return this.volume; } 
-			}; } ).toArray(),
-			layers: [
-				"borders", 
-				["y-axis markers", 3], 
-				"x-axis static dates",  
-				["bars", 1],
-				"column hotspots"			
-			],
-			marginBottom: 20,
-			marginTop: 10,
-			marginLeft: 100,
-			marginRight: 10,
-			colors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
-			eventTarget: '#candlestick'
-		});
+    		.after('<div></div>').find('+div').css({width: $('#candlestick').width(), height: $('#candlestick').height() / 3})
+            .chart({
+    			data: $(data).map(function () { return { 
+    			    date: this.date, 
+    			    volume: this.volume, 
+    			    open: this.open,
+    			    close: this.close,
+    			    high: this.high,
+    			    low: this.low,
+    			    valueOf: function () { return this.volume; } 
+    			}; } ).toArray(),
+    			layers: [
+    				"borders", 
+    				["y-axis markers", 3], 
+    				"x-axis static dates",  
+    				["bars", 1],
+    				"column hotspots"			
+    			],
+    			marginBottom: 20,
+    			marginTop: 10,
+    			marginLeft: 100,
+    			marginRight: 10,
+    			colors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
+    			eventTarget: '#candlestick'
+    		});
 
 
-        var formatDate = function(d) {
-        	var twoDigits = function(n) {
-        		return n > 9 ? n : '0' + n;
-        	};
-        	if (!d.getMonth) {
-        		return d;
-        	}
-        	return twoDigits(d.getMonth() + 1) + '/' + twoDigits(d.getDate()) + '/' + d.getFullYear();		
+            var formatDate = function(d) {
+            	var twoDigits = function(n) {
+            		return n > 9 ? n : '0' + n;
+            	};
+            	if (!d.getMonth) {
+            		return d;
+            	}
+            	return twoDigits(d.getMonth() + 1) + '/' + twoDigits(d.getDate()) + '/' + d.getFullYear();		
+            };
+
+
+            $('#candlestick').bind('focusDatum.chart', function (event, index, datum) {
+               $('#daily-stock-details .date p').text(formatDate(datum.date));
+               $('#daily-stock-details .volume p').text(datum.volume);
+               $('#daily-stock-details .open p').text(datum.open.toFixed(2));
+               $('#daily-stock-details .close p').text(datum.close.toFixed(2));
+               $('#daily-stock-details .high p').text(datum.high.toFixed(2));
+               $('#daily-stock-details .low p').text(datum.low.toFixed(2));
+            });
+
         };
-
-
-        $('#candlestick').bind('focusDatum.chart', function (event, index, datum) {
-           $('#daily-stock-details .date p').text(formatDate(datum.date));
-           $('#daily-stock-details .volume p').text(datum.volume);
-           $('#daily-stock-details .open p').text(datum.open.toFixed(2));
-           $('#daily-stock-details .close p').text(datum.close.toFixed(2));
-           $('#daily-stock-details .high p').text(datum.high.toFixed(2));
-           $('#daily-stock-details .low p').text(datum.low.toFixed(2));
+        
+        var allData = randomTradingDays(500);
+  		var data = allData.splice(-90);
+        
+       // drawStockChart(data);
+        
+        var url = "http://query.yahooapis.com/v1/public/yql?";
+        
+        
+        $.ajax({
+          url: 'http://query.yahooapis.com/v1/public/yql',
+          data: {
+            q: "select * from yahoo.finance.historicaldata where symbol = 'AAPL' and startDate ='2011-01-01' and endDate='2011-04-01'",
+            format: 'json',
+            env: 'http://datatables.org/alltables.env'          
+          },
+          
+          dataType: 'jsonp',
+          success: function (data) {  
+              console.log(data.query.results.quote); 
+              drawStockChart(
+                  $(data.query.results.quote).map(function () { 
+                      return { 
+                          date: this.Date, 
+                          volume: +this.Volume, 
+                          open: +this.Open,
+                          close: +this.Close,
+                          high: +this.High,
+                          low: +this.Low,
+                          valueOf: function () { return this.volume; } 
+      			      };
+                 }).toArray() 
+              ); 
+          }
         });
-
+        
+        
+            
+       
 	});
 });
 
