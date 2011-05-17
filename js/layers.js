@@ -308,8 +308,10 @@ return {
 		var data = this.data;
 		
 		var dot = paper.circle(-100, -100, Math.max(3, grid.columnWidth() / 2)).attr('stroke-width', 0).attr('fill', grid.color(1));
+       
         
 		$(this.eventTarget).bind('focusDatum.chart', function (event, index, datum) {
+		     console.log(data[0][index]);
 	        dot.attr({cx: grid.xForIndex(index), cy: grid.yForValue(data[0][index]) });
 		});
 		
