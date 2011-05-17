@@ -198,6 +198,9 @@ define(['js/layers', 'js/chart', './grid-spec', './money-spec'], function (built
         
             expect(args).toEqual(['foo', 'bar']);
         });
+        
+        
+        
     
     
         describe("the paper", function () {
