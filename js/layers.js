@@ -308,7 +308,7 @@ return {
 		var grid = this.grid;
 		var data = this.data;
 		
-		var dot = paper.circle(-100, -100, Math.max(3, grid.columnWidth() / 2)).attr('stroke-width', 0).attr('fill', grid.color(1));
+		var dot = paper.circle(-100, -100, Math.min(5, Math.max(3, grid.columnWidth() / 2))).attr('stroke-width', 0).attr('fill', grid.color(1));
        
         
 		$(this.eventTarget).bind('focusDatum.chart', function (event, index, datum) {
