@@ -119,52 +119,67 @@ define(['chart', 'Money'], function (chart, Money) {
 
         };
         
-        var data = randomTradingDays(500);
-        var volumeData = $(data).map(function () { return { 
-		    date: this.date, 
-		    volume: this.volume, 
-		    open: this.open,
-		    close: this.close,
-		    high: this.high,
-		    low: this.low,
-		    valueOf: function () { return this.volume; } 
-		}; } ).toArray();
-  		
+        var data, volumeData;
         
-       drawStockChart(data.slice(-90), volumeData.slice(-90));
+        //         var data = randomTradingDays(500);
+        //         var volumeData = $(data).map(function () { return { 
+        //     date: this.date, 
+        //     volume: this.volume, 
+        //     open: this.open,
+        //     close: this.close,
+        //     high: this.high,
+        //     low: this.low,
+        //     valueOf: function () { return this.volume; } 
+        // }; } ).toArray();
+        //          
         
-        // $('#candlestick').html('Loading...');
-        // 
-        // 
-        // var url = "http://query.yahooapis.com/v1/public/yql?";
-        // 
-        // 
-        // $.ajax({
-        //   url: 'http://query.yahooapis.com/v1/public/yql',
-        //   data: {
-        //     q: 'select * from yahoo.finance.historicaldata where symbol = "AAPL" and startDate ="2010-04-30" and endDate="2011-05-01" | sort(field="Date")',
-        //     format: 'json',
-        //     env: 'http://datatables.org/alltables.env'          
-        //   },
-        //   
-        //   dataType: 'jsonp',
-        //   success: function (data) {  
-        //       $('#candlestick').html('');
-        //       drawStockChart(
-        //           $(data.query.results.quote).map(function () { 
-        //               return { 
-        //                   date: this.Date, 
-        //                   volume: +this.Volume, 
-        //                   open: +this.Open,
-        //                   close: +this.Close,
-        //                   high: +this.High,
-        //                   low: +this.Low,
-        //                   valueOf: function () { return this.close; } 
-        //                        };
-        //          }).toArray() 
-        //       ); 
-        //   }
-        // });
+   
+        
+        $('#candlestick').html("Loading data from Yahoo... (on the live site it will be pre-cached and fast)");
+        
+        
+        var url = "http://query.yahooapis.com/v1/public/yql?";
+        
+        
+        $.ajax({
+          url: 'http://query.yahooapis.com/v1/public/yql',
+          data: {
+            q: 'select * from yahoo.finance.historicaldata where symbol = "AAPL" and startDate ="2010-05-18" and endDate="2011-05-17" | sort(field="Date")',
+            format: 'json',
+            env: 'http://datatables.org/alltables.env'          
+          },
+          
+          dataType: 'jsonp',
+          success: function (yqlData) {  
+              
+            data = $(yqlData.query.results.quote).map(function () { 
+                    return { 
+                        date: this.Date, 
+                        volume: +this.Volume, 
+                        open: +this.Open,
+                        close: +this.Close,
+                        high: +this.High,
+                        low: +this.Low,
+                        valueOf: function () { return this.close; } 
+                             };
+               }).toArray();
+               
+               
+             volumeData = $(data).map(function () { return { 
+                   date: this.date, 
+                   volume: this.volume, 
+                   open: this.open,
+                   close: this.close,
+                   high: this.high,
+                   low: this.low,
+                   valueOf: function () { return this.volume; } 
+              }; } ).toArray();
+              
+              
+              $('#candlestick').html('');
+              drawStockChart(data, volumeData); 
+          }
+        });
         
         
         $('#update-chart').click(function () {
