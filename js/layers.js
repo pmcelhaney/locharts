@@ -345,14 +345,19 @@ return {
 		var grid = this.grid;
 		var data = this.data;
 
-		var rect = this.paper.rect(grid.xForIndex(start) + 0.5, grid.yForTopEdge() + 0.5, grid.xForIndex(stop) - grid.xForIndex(start), grid.height());
-    	rect.attr('fill', '#000');
-        rect.attr('opacity', 0.5);
-    	rect.attr('stroke-width', 0);
+		var shadeBefore = this.paper.rect(grid.xForLeftEdge() + 0.5, grid.yForTopEdge() + 0.5, grid.xForIndex(start) - grid.xForLeftEdge(), grid.height());
+    	shadeBefore.attr('fill', '#000');
+        shadeBefore.attr('opacity', 0.5);
+    	shadeBefore.attr('stroke-width', 0);
  
+        var shadeAfter = this.paper.rect(grid.xForIndex(stop) + 0.5, grid.yForTopEdge() + 0.5, grid.xForRightEdge() - grid.xForIndex(stop), grid.height());
+       	shadeAfter.attr('fill', '#000');
+        shadeAfter.attr('opacity', 0.5);
+        shadeAfter.attr('stroke-width', 0);
+        
         
         var scrubIndexMoved = function (event, start, stop) {
-            rect.attr({ x: grid.xForIndex(start) + 0.5, width: grid.xForIndex(stop) - grid.xForIndex(start) });
+            shadeBefore.attr({ width: grid.xForIndex(start) - grid.xForLeftEdge() });
         };
 
  
