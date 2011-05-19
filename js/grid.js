@@ -59,7 +59,7 @@ define(function () {
 				else if (edgeToEdge) {
 					return Math.round( ratio * (columnCount-1) );
 				} else {
-					return Math.round( ratio * (columnCount) - 0.5 );
+					return Math.min( Math.round( ratio * (columnCount) - 0.5 ), columnCount - 1);
 				}
 			},
 		

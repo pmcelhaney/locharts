@@ -75,7 +75,7 @@ define(['js/grid'], function(Grid) {
               expect(Grid({ width: 60, columnCount: 3 }).indexForX(25)).toEqual(1);
               expect(Grid({ width: 60, columnCount: 3 }).indexForX(30)).toEqual(1);
               expect(Grid({ width: 60, columnCount: 3 }).indexForX(50)).toEqual(2);
-              expect(Grid({ width: 60, columnCount: 3 }).indexForX(59)).toEqual(2);
+              expect(Grid({ width: 60, columnCount: 3 }).indexForX(60)).toEqual(2);
 
               expect(Grid({ width: 160, columnCount: 2, marginLeft: 20, marginRight: 20 }).indexForX(50)).toEqual(0);
         });
