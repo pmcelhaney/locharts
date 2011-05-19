@@ -24,9 +24,7 @@ define(['js/layers', 'js/chart', './grid-spec', './money-spec'], function (built
 
         it("should make the data available to the layer", function () {
             var data;
-            var layer = function () {
-                 data = this.data;
-            };
+            var layer = { draw: function () { data = this.data; } };
 
             $('div').chart({
                  layers: [ layer ],
@@ -38,9 +36,7 @@ define(['js/layers', 'js/chart', './grid-spec', './money-spec'], function (built
         
         it("should make the container element available to the layer", function () {
             var element;
-            var layer = function () {
-                 element = this.element;
-            };
+            var layer = { draw: function () { element = this.element; } };
 
             $('<div id="parentElement"></div>').chart({
                  layers: [ layer ],
@@ -52,9 +48,7 @@ define(['js/layers', 'js/chart', './grid-spec', './money-spec'], function (built
         
         it("should make the eventTarget available to the layer", function () {
             var eventTarget;
-            var layer = function () {
-                 eventTarget = this.eventTarget;
-            };
+            var layer = { draw: function () { eventTarget = this.eventTarget; } };
 
             $('<div id="parentElement"></div>').chart({
                  layers: [ layer ],
@@ -67,9 +61,7 @@ define(['js/layers', 'js/chart', './grid-spec', './money-spec'], function (built
     
         it("should wrap one-dimensional data in an array", function () {
             var data;
-            var layer = function () {
-                data = this.data;
-            };
+            var layer = { draw: function () { data = this.data; } };
         
             $('<div></div>').chart({
                 layers: [ layer ],
@@ -107,9 +99,7 @@ define(['js/layers', 'js/chart', './grid-spec', './money-spec'], function (built
                 Grid: function (options) { return options; },
 
                 layers: [
-                    function () {
-                        grid = this.grid;
-                    }
+                    { draw: function () { grid = this.grid; } }
                 ],
             
                 data: [ [10, 20, 50] ],
@@ -148,8 +138,10 @@ define(['js/layers', 'js/chart', './grid-spec', './money-spec'], function (built
                 Grid: function (options) { return options; },
 
                 layers: [
-                    function () {
-                        grid = this.grid;
+                    { 
+                        draw: function () {
+                            grid = this.grid;
+                        }
                     }
                 ],
             
@@ -181,9 +173,12 @@ define(['js/layers', 'js/chart', './grid-spec', './money-spec'], function (built
     
         it("should pass the options for a layer", function() {
             var args;
-            var layer = function () {
-                args = Array.prototype.slice.apply(arguments);
-            };
+            var layer = {
+                draw: function () {
+                    args = Array.prototype.slice.apply(arguments);
+                }
+            };    
+                
             $('<div></div>').chart({
                 layers: [ [layer, 'arg1', 'arg2'] ]
             });
@@ -213,9 +208,7 @@ define(['js/layers', 'js/chart', './grid-spec', './money-spec'], function (built
         
         
             beforeEach(function () {
-                var layer = function () {
-                    paper = this.paper;
-                };
+                var layer = { draw: function () { paper = this.paper; } };
             
                 element.chart({
                     layers: [ layer ]
