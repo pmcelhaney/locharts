@@ -354,9 +354,9 @@ return {
  
         var leftHandle = this.paper.rect(grid.xForIndex(start) + 0.5 - 5, grid.yForTopEdge() + 0.5, 10, grid.height());
         leftHandle.attr('fill', '#000');
-        leftHandle.attr('opacity', 1);
+        leftHandle.attr('opacity', 0);
     	leftHandle.attr('stroke-width', 0);
-    	
+    	leftHandle.attr('cursor', 'ew-resize');
     	
     	leftHandle.drag(
     	    
@@ -380,6 +380,35 @@ return {
     	    
     	);
     	
+    	
+    	var rightHandle = this.paper.rect(grid.xForIndex(start) + 0.5 + selection.attr('width') - 5, grid.yForTopEdge() + 0.5, 10, grid.height());
+        rightHandle.attr('fill', '#000');
+        rightHandle.attr('opacity', 0);
+    	rightHandle.attr('stroke-width', 0);
+    	rightHandle.attr('cursor', 'ew-resize');
+    	
+
+        rightHandle.drag(
+    	    
+    	    function (dx, dy) {
+                this.attr({x: this.ox + dx });
+                selection.attr({width: selection.oWidth + dx });
+            },
+    	    
+    	    function () {
+    	        this.ox = this.attr("x");
+    	        selection.ox = selection.attr("x");
+    	        selection.oWidth = selection.attr("width");
+    	    },
+    	    
+            
+    	    function () {
+                $(eventTarget).trigger('selectedRangeChange.chart', [grid.indexForX(selection.attr('x')), grid.indexForX(selection.attr('x')) + selection.attr('width')]);
+            }
+    	    
+    	);
+
+    	
         
         var scrubIndexMoved = function (event, start, stop) {
             selection.attr({ x: grid.xForIndex(start) + 0.5, width: grid.xForIndex(stop) - grid.xForIndex(start) });
@@ -388,9 +417,9 @@ return {
  
         
         var onStart = function () {
-            console.log('dragging selection');
             this.ox = this.attr("x");
             leftHandle.ox = leftHandle.attr("x");
+            rightHandle.ox = rightHandle.attr("x");
         };
             
         var onMove = function (dx, dy) {
@@ -398,6 +427,7 @@ return {
             var max = grid.xForLeftEdge();
             this.attr({x: Math.max(max, Math.min( min, this.ox + dx ) ) });
             leftHandle.attr({x: Math.max(max, Math.min( min, leftHandle.ox + dx ) ) });
+            rightHandle.attr({x: Math.max(max + this.attr('width'), Math.min( min + this.attr('width'), rightHandle.ox + dx ) ) });
         };    
             
         var onEnd = function () {
