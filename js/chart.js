@@ -77,7 +77,7 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
     				args = this.slice(1);	
     			} 
 
-    			layerFn = $.isFunction(layer) ? layer : builtInLayers[layer];
+    			layerFn = layer.draw || ( $.isFunction(layer) ? layer : builtInLayers[layer] );
 
     			if ( $.isFunction(layerFn) ) {			
     				layerFn.apply(layerContext, args);	

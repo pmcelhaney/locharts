@@ -67,7 +67,7 @@ define(['chart', 'Money'], function (chart, Money) {
   
        
 		
-		var drawStockChart = function (data, volumeData) {
+		var drawStockChart = function (data, volumeData, allData) {
 
     		$('#candlestick').chart({
     			data: data,
@@ -104,6 +104,25 @@ define(['chart', 'Money'], function (chart, Money) {
     			marginRight: 10,
     			colors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
     			eventTarget: '#candlestick'
+    		})
+    		
+    		
+    		.after('<div></div>').find('+div').css({width: $('#candlestick').width(), height: $('#candlestick').height() / 6})
+    		.chart({
+    			data: data,
+    			layers: [
+    				"borders", 
+    				"area",
+    				"column hotspots"
+    			],
+    			marginBottom: 1,
+    			marginTop: 1,
+    			marginLeft: 100,
+    			marginRight: 10,
+    			colors: ['#ccc'],
+    			yMaxValue: Math.max.apply(null, $(data).map(function () { return this.high; } ).toArray()) + 1,
+    			yMinValue: Math.min.apply(null, $(data).map(function () { return this.low; } ).toArray()) - 1,
+    			eventTarget: '#candlestick'
     		});
 
 
@@ -121,7 +140,7 @@ define(['chart', 'Money'], function (chart, Money) {
 
         };
         
-        var data, volumeData;
+        var data, volumeData, allData;
         
         //         var data = randomTradingDays(500);
         //         var volumeData = $(data).map(function () { return { 
@@ -163,7 +182,7 @@ define(['chart', 'Money'], function (chart, Money) {
                         high: +this.High,
                         low: +this.Low,
                         valueOf: function () { return this.close; } 
-                             };
+                    };
                }).toArray();
                
                
@@ -179,7 +198,7 @@ define(['chart', 'Money'], function (chart, Money) {
               
               
               $('#candlestick').html('');
-              drawStockChart(data, volumeData); 
+              drawStockChart(data, volumeData, data); 
           }
         });
         
@@ -192,7 +211,6 @@ define(['chart', 'Money'], function (chart, Money) {
             
             
             $('#candlestick').bind('focusDatum.chart', function (event, index, datum) {
-                console.log('')
                $('#daily-stock-details .date p').text(formatDate(datum.date));
                $('#daily-stock-details .volume p').text(datum.volume);
                $('#daily-stock-details .open p').text(datum.open.toFixed(2));

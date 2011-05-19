@@ -166,9 +166,11 @@ define(['js/layers', 'js/chart', './grid-spec', './money-spec'], function (built
         it("should apply each layer in order", function () {
             var layers = [];
             var Layer = function (name) {
-                return function () {
-                    layers.push(name);
-                };
+                return {
+                    draw: function () {
+                        layers.push(name);
+                    }
+                };    
             };
             $('<div></div>').chart({
                 layers: [Layer('one'), Layer('two'), Layer('three')]
