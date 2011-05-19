@@ -236,7 +236,6 @@ define(['chart', 'Money'], function (chart, Money) {
           
           dataType: 'jsonp',
           success: function (data) {  
-              console.log(data.query.results.quote); 
               drawStockChart(
                   $(data.query.results.quote).map(function () { 
                       return { 
