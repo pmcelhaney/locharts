@@ -25,9 +25,9 @@ define(['chart', 'Money'], function (chart, Money) {
             day.open = lastClose + ( Math.pow(1 + Math.random(), 2) - Math.pow(1 + Math.random(), 2) ) / 10;
             day.high = lastClose + Math.pow(1 + Math.random() * 0.5, 3);
             day.low  = Math.max(Math.random(), lastClose - Math.pow(1 + Math.random() * 0.5, 3));
-            day.close = day.low + Math.random() * (day.high - day.low);
+            day.close = day.low + (Math.random() * 0.99 + 0.01 ) * (day.high - day.low); // Slightly biased to higher closes.
             day.date = new Date(previousDate.getTime() + 24 * 60 * 60 * 1000 * (previousDate.getDay() == 6 ? 3 : 1));
-    	    day.volume = 1000 + Math.round( Math.sqrt(Math.random() * 50000 * 50000) );
+    	    day.volume = 1000 * 1000 * 10.2 - 1000 * 1000 * 10 * Math.pow(Math.random(), 0.2);
             tradingDays.push(day);
             previousDate = day.date;
             lastClose = day.close;
