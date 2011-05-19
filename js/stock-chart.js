@@ -27,7 +27,7 @@ define(['chart', 'Money'], function (chart, Money) {
             day.low  = Math.max(Math.random(), lastClose - Math.pow(1 + Math.random() * 0.5, 3));
             day.close = day.low + (Math.random() * 0.99 + 0.01 ) * (day.high - day.low); // Slightly biased to higher closes.
             day.date = new Date(previousDate.getTime() + 24 * 60 * 60 * 1000 * (previousDate.getDay() == 6 ? 3 : 1));
-    	    day.volume = 1000 * 1000 * 10.2 - 1000 * 1000 * 10 * Math.pow(Math.random(), 0.2);
+    	    day.volume = Math.round( 1000 * 1000 * 10.2 - 1000 * 1000 * 10 * Math.pow(Math.random(), 0.2) );
             tradingDays.push(day);
             previousDate = day.date;
             lastClose = day.close;
@@ -149,21 +149,21 @@ define(['chart', 'Money'], function (chart, Money) {
     		})
     		
     		
-    		.after('<div></div>').find('+div').css({width: $('#candlestick').width(), height: $('#candlestick').height() / 6})
+    		.after('<div id="scrubber"></div>').find('+div').css({width: $('#candlestick').width(), height: $('#candlestick').height() / 6})
     		.chart({
-    			data: data,
+    			data: allData,
     			layers: [
     				"borders", 
-    				"area"
+    				"area",
+    				["scrubber", 409, 499]
     			],
     			marginBottom: 1,
     			marginTop: 1,
     			marginLeft: 100,
     			marginRight: 10,
-    			colors: ['#ccc'],
-    			yMaxValue: Math.max.apply(null, $(data).map(function () { return this.high; } ).toArray()) + 1,
-    			yMinValue: Math.min.apply(null, $(data).map(function () { return this.low; } ).toArray()) - 1,
-    			eventTarget: '#candlestick'
+    			colors: ['#ccc', 'rgb(101,3,96)'],
+    			yMaxValue: Math.max.apply(null, $(allData).map(function () { return this.high; } ).toArray()) + 1,
+    			yMinValue: Math.min.apply(null, $(allData).map(function () { return this.low; } ).toArray()) - 1    		
     		});
 
 
@@ -192,14 +192,15 @@ define(['chart', 'Money'], function (chart, Money) {
             
             
 
-        
-            var subset = data.slice( -$('#how-many-days').val() );
+            var days = +$('#how-many-days').val();
+            var subset = data.slice( -days );
             $('#candlestick').chart('option', 'yMaxValue', Math.max.apply(null, $(subset).map(function () { return this.high; } ).toArray()) + 1);
             $('#candlestick').chart('option', 'yMinValue', Math.min.apply(null, $(subset).map(function () { return this.low; } ).toArray()) - 1);
             $('#candlestick').chart('draw', subset);
             
             $('#candlestick+div').chart('draw', volumeData.slice( -$('#how-many-days').val() ) );
              
+            $('#scrubber').trigger('moveScrubIndex.chart', [ data.length - days - 1, data.length - 1 ]); 
         });
        
 	});

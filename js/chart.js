@@ -66,7 +66,7 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
     			data: data,
     			paper: this.paper,
     			element: this.element[0],
-    			eventTarget: options.eventTarget || this
+    			eventTarget: options.eventTarget || this.element
     		};
 
     		$.each(options.layers, function () {
@@ -98,7 +98,6 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
        
             $(this.layers).each(function () {
                  if ( this.remove ) {
-                     console.log('removing a layer', this)
                      this.remove(); 
                  }
             });

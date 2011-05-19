@@ -61,7 +61,6 @@ return {
         return {
 		    name: 'bars',
 		    remove: function () {
-		        console.log('removing bars');
 		        $(eventTarget).unbind('focusDatum.chart', barRecievesFocus);
         		$(eventTarget).unbind('blurDatum.chart', barLosesFocus);
 		    }  
@@ -339,6 +338,25 @@ return {
 		};
 
 	
+	},
+	
+	'scrubber': function (start, stop) {
+	    var paper = this.paper;
+		var grid = this.grid;
+		var data = this.data;
+
+		var rect = this.paper.rect(grid.xForIndex(start) + 0.5, grid.yForTopEdge() + 0.5, grid.xForIndex(stop) - grid.xForIndex(start), grid.height());
+    	rect.attr('fill', '#000');
+        rect.attr('opacity', 0.5);
+    	rect.attr('stroke-width', 0);
+ 
+        
+        var scrubIndexMoved = function (event, start, stop) {
+            rect.attr({ x: grid.xForIndex(start) + 0.5, width: grid.xForIndex(stop) - grid.xForIndex(start) });
+        };
+
+ 
+        $(this.eventTarget).bind('moveScrubIndex.chart', scrubIndexMoved);
 	}
 	
 };
