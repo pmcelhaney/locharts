@@ -18,7 +18,8 @@ define(['js/layers', 'js/chart', './grid-spec', './money-spec'], function (built
             return { 
                 target: t,
                 width: w,
-                height: h 
+                height: h,
+                remove: function () {} 
             }; 
         };
 
@@ -200,7 +201,24 @@ define(['js/layers', 'js/chart', './grid-spec', './money-spec'], function (built
         });
         
         
-        
+        it("should remove each layer when the chart is removed", function () {
+            var removedLayers = [];
+            var Layer = function (name) {
+                return function () {
+                    return {
+                        remove: function() {
+                           removedLayers.push(name); 
+                        }
+                    };
+                };    
+            };
+            $('<div></div>').chart({
+                layers: [Layer('one'), Layer('two'), Layer('three')]
+            }).chart('remove');
+            
+            
+            expect(removedLayers).toEqual(['one', 'two', 'three']);
+        });
     
     
         describe("the paper", function () {

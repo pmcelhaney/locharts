@@ -58,7 +58,9 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
     		});
     		
     		this.paper = Raphael(this.element[0], this.element.width(), this.element.height());
-
+            
+            var layers = this.layers = [];
+            
     		var layerContext = { 
     			grid: grid,
     			data: data,
@@ -80,7 +82,7 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
     			layerFn =  $.isFunction(layer) ? layer : builtInLayers[layer] ;
 
     			if ( $.isFunction(layerFn) ) {			
-    				layerFn.apply(layerContext, args);	
+    				layers.push ( layerFn.apply(layerContext, args) );	
     			}
     		});
           
@@ -93,11 +95,15 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
         },
         
         remove: function () {
+            $(this.layers).each(function () { this.remove && this.remove(); });
+            
             this.paper.remove();
             delete this.paper;
         },
+
         
         destroy: function() {
+           
           //delete this.paper;
           $.Widget.prototype.destroy.call(this);
         }
