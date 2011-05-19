@@ -345,16 +345,33 @@ return {
 		var grid = this.grid;
 		var data = this.data;
 
-		var rect = this.paper.rect(grid.xForIndex(start) + 0.5, grid.yForTopEdge() + 0.5, grid.xForIndex(stop) - grid.xForIndex(start), grid.height());
-    	rect.attr('fill', '#000');
-        rect.attr('opacity', 0.5);
-    	rect.attr('stroke-width', 0);
+		var selection = this.paper.rect(grid.xForIndex(start) + 0.5, grid.yForTopEdge() + 0.5, grid.xForIndex(stop) - grid.xForIndex(start), grid.height());
+    	selection.attr('fill', '#000');
+        selection.attr('opacity', 0.5);
+    	selection.attr('stroke-width', 0);
  
         
         var scrubIndexMoved = function (event, start, stop) {
-            rect.attr({ x: grid.xForIndex(start) + 0.5, width: grid.xForIndex(stop) - grid.xForIndex(start) });
+            selection.attr({ x: grid.xForIndex(start) + 0.5, width: grid.xForIndex(stop) - grid.xForIndex(start) });
         };
-
+        
+ 
+        
+        var onStart = function () {
+            this.ox = this.attr("x");
+        };
+            
+        var onMove = function (dx, dy) {
+            var min = grid.xForRightEdge() - this.attr('width');
+            var max = grid.xForLeftEdge();
+            this.attr({x: Math.max(max, Math.min( min, this.ox + dx ) ) });
+        };    
+            
+        var onEnd = function () {
+            console.log('The selected range was changed to ' + this.attr('x') + ' - ' + ( this.attr('x') + this.attr('width') ) );
+        };
+        
+        selection.drag(onMove, onStart, onEnd);
  
         $(this.eventTarget).bind('moveScrubIndex.chart', scrubIndexMoved);
 	}

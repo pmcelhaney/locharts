@@ -39,6 +39,25 @@ define(function () {
 					return Math.round( ( i+0.5 ) * width/(columnCount) + marginLeft );
 				}
 			},
+			
+			indexForX: function (x) {
+			    var ratio =  (x - this.xForLeftEdge()) / width;
+			    
+			    if (xValues) {
+			        var i = 0;
+			        var min = 0;
+			        for (i = 0; i < xValues.length; i++) {
+			            if ( this.xForIndex(i) == x) {
+			                return i;
+			            }
+			        }
+			    }
+				else if (edgeToEdge) {
+					return ratio * (columnCount-1) ;
+				} else {
+					return ratio * (columnCount) - 0.5;
+				}
+			},
 		
 			yForValue: function (value) {
 				return Math.round( this.yForBottomEdge() - (value - yMinValue) * ( height / (yMaxValue - yMinValue) ) );

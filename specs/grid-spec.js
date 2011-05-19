@@ -60,6 +60,60 @@ define(['js/grid'], function(Grid) {
             expect(Grid({ edgeToEdge: true, width: 160, xValues: [1, 2], marginLeft: 20, marginRight: 20 }).xForIndex(0)).toEqual(20);
         });
     
+    
+        it("should know the index for a given x-coordinate", function () {
+
+              expect(Grid().xForIndex(0)).toEqual(480);
+
+              expect(Grid({ width: 60 }).xForIndex(0)).toEqual(30);
+
+              expect(Grid({ width: 60, columnCount: 2 }).indexForX(15)).toEqual(0);
+              expect(Grid({ width: 60, columnCount: 2 }).indexForX(45)).toEqual(1);
+
+              expect(Grid({ width: 60, columnCount: 3 }).indexForX(10)).toEqual(0);
+              expect(Grid({ width: 60, columnCount: 3 }).indexForX(30)).toEqual(1);
+              expect(Grid({ width: 60, columnCount: 3 }).indexForX(50)).toEqual(2);
+
+              expect(Grid({ width: 160, columnCount: 2, marginLeft: 20, marginRight: 20 }).indexForX(50)).toEqual(0);
+        });
+    
+    
+        it("should know the index for a given x-coordinate when edgeToEdge is true", function () {
+                    
+            var fourItemGrid = Grid({ edgeToEdge: true, width: 60, columnCount: 4 });        
+            var threeItemGrid = Grid({ edgeToEdge: true, width: 60, columnCount: 3 });    
+                        
+            expect(fourItemGrid.indexForX(0)).toEqual(0);
+            expect(fourItemGrid.indexForX(20)).toEqual(1);
+            expect(fourItemGrid.indexForX(40)).toEqual(2);
+            expect(fourItemGrid.indexForX(60)).toEqual(3);
+        
+            expect(threeItemGrid.indexForX(0)).toEqual(0);
+            expect(threeItemGrid.indexForX(30)).toEqual(1);
+            expect(threeItemGrid.indexForX(60)).toEqual(2);
+        
+            expect(Grid({ edgeToEdge: true, width: 160, columnCount: 2, marginLeft: 20, marginRight: 20 }).indexForX(20)).toEqual(0);
+        });
+    
+        it("should know the index for a given x-coordinate when xValues are used", function () {
+                    
+            var constantGrid = Grid({ xValues: [0, 2, 4, 6], width: 60 });        
+            var variableGrid = Grid({ xValues: [0, 20, 25, 60], width: 60 });    
+                        
+            expect(constantGrid.indexForX(0)).toEqual(0);
+            expect(constantGrid.indexForX(20)).toEqual(1);
+            expect(constantGrid.indexForX(40)).toEqual(2);
+            expect(constantGrid.indexForX(60)).toEqual(3);
+        
+            expect(variableGrid.indexForX(0)).toEqual(0);
+            expect(variableGrid.indexForX(20)).toEqual(1);
+            expect(variableGrid.indexForX(25)).toEqual(2);
+            expect(variableGrid.indexForX(60)).toEqual(3);
+        
+            expect(Grid({ edgeToEdge: true, width: 160, xValues: [1, 2], marginLeft: 20, marginRight: 20 }).indexForX(20)).toEqual(0);
+        });
+    
+    
         it("should know the width of each column", function () {
             expect(Grid({ width: 60, columnCount: 1 }).columnWidth()).toEqual(60);
             expect(Grid({ width: 60, columnCount: 2 }).columnWidth()).toEqual(30);
