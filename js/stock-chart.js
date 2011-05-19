@@ -203,6 +203,17 @@ define(['chart', 'Money'], function (chart, Money) {
             $('#scrubber').trigger('moveScrubIndex.chart', [ data.length - days - 1, data.length - 1 ]); 
         });
        
+        $('#scrubber').bind('selectedRangeChange.chart', function (event, start, end) {
+ 
+            
+            var subset = data.slice( start, end+1 );
+            $('#candlestick').chart('option', 'yMaxValue', Math.max.apply(null, $(subset).map(function () { return this.high; } ).toArray()) + 1);
+            $('#candlestick').chart('option', 'yMinValue', Math.min.apply(null, $(subset).map(function () { return this.low; } ).toArray()) - 1);
+            $('#candlestick').chart('draw', subset);
+            
+            $('#candlestick+div').chart('draw', volumeData.slice( start, end+1 ) );
+        });
+       
 	});
 });
 

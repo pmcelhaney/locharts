@@ -344,6 +344,8 @@ return {
 	    var paper = this.paper;
 		var grid = this.grid;
 		var data = this.data;
+		var eventTarget = this.eventTarget;
+		
 
 		var selection = this.paper.rect(grid.xForIndex(start) + 0.5, grid.yForTopEdge() + 0.5, grid.xForIndex(stop) - grid.xForIndex(start), grid.height());
     	selection.attr('fill', '#000');
@@ -369,6 +371,7 @@ return {
             
         var onEnd = function () {
             console.log('The selected range was changed to ' + grid.indexForX(this.attr('x')) + ' - ' + grid.indexForX( this.attr('x') + this.attr('width') ) );
+            $(eventTarget).trigger('selectedRangeChange.chart', [grid.indexForX(this.attr('x')), grid.indexForX(this.attr('x')) + this.attr('width')]);
         };
         
         selection.drag(onMove, onStart, onEnd);
