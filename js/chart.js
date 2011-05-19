@@ -95,7 +95,13 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
         },
         
         remove: function () {
-            $(this.layers).each(function () { this.remove && this.remove(); });
+       
+            $(this.layers).each(function () {
+                 if ( this.remove ) {
+                     console.log('removing a layer', this)
+                     this.remove(); 
+                 }
+            });
             
             this.paper.remove();
             delete this.paper;

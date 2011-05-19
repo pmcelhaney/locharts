@@ -112,8 +112,7 @@ define(['chart', 'Money'], function (chart, Money) {
     			data: data,
     			layers: [
     				"borders", 
-    				"area",
-    				"column hotspots"
+    				"area"
     			],
     			marginBottom: 1,
     			marginTop: 1,
@@ -206,18 +205,10 @@ define(['chart', 'Money'], function (chart, Money) {
         $('#update-chart-form').submit(function (e) {
             e.preventDefault();
             
-            $('#candlestick').unbind('focusDatum.chart');
             $('#candlestick').unbind('blurDatum.chart');
             
             
-            $('#candlestick').bind('focusDatum.chart', function (event, index, datum) {
-               $('#daily-stock-details .date p').text(formatDate(datum.date));
-               $('#daily-stock-details .volume p').text(datum.volume);
-               $('#daily-stock-details .open p').text(datum.open.toFixed(2));
-               $('#daily-stock-details .close p').text(datum.close.toFixed(2));
-               $('#daily-stock-details .high p').text(datum.high.toFixed(2));
-               $('#daily-stock-details .low p').text(datum.low.toFixed(2));
-            });
+
         
             var subset = data.slice( -$('#how-many-days').val() );
             $('#candlestick').chart('option', 'yMaxValue', Math.max.apply(null, $(subset).map(function () { return this.high; } ).toArray()) + 1);
