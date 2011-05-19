@@ -368,7 +368,7 @@ return {
         };    
             
         var onEnd = function () {
-            console.log('The selected range was changed to ' + this.attr('x') + ' - ' + ( this.attr('x') + this.attr('width') ) );
+            console.log('The selected range was changed to ' + grid.indexForX(this.attr('x')) + ' - ' + grid.indexForX( this.attr('x') + this.attr('width') ) );
         };
         
         selection.drag(onMove, onStart, onEnd);

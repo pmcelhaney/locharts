@@ -50,12 +50,16 @@ define(function () {
 			            if ( this.xForIndex(i) == x) {
 			                return i;
 			            }
+			            if ( this.xForIndex(i) > x) {
+			                return ( i > 0 && this.xForIndex(i) - x > x - this.xForIndex(i-1) ) ? i-1 : i; 
+			            } 
 			        }
+			        return xValues.length - 1;
 			    }
 				else if (edgeToEdge) {
-					return ratio * (columnCount-1) ;
+					return Math.round( ratio * (columnCount-1) );
 				} else {
-					return ratio * (columnCount) - 0.5;
+					return Math.round( ratio * (columnCount) - 0.5 );
 				}
 			},
 		

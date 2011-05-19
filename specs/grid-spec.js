@@ -70,9 +70,12 @@ define(['js/grid'], function(Grid) {
               expect(Grid({ width: 60, columnCount: 2 }).indexForX(15)).toEqual(0);
               expect(Grid({ width: 60, columnCount: 2 }).indexForX(45)).toEqual(1);
 
+              expect(Grid({ width: 60, columnCount: 3 }).indexForX(5)).toEqual(0);
               expect(Grid({ width: 60, columnCount: 3 }).indexForX(10)).toEqual(0);
+              expect(Grid({ width: 60, columnCount: 3 }).indexForX(25)).toEqual(1);
               expect(Grid({ width: 60, columnCount: 3 }).indexForX(30)).toEqual(1);
               expect(Grid({ width: 60, columnCount: 3 }).indexForX(50)).toEqual(2);
+              expect(Grid({ width: 60, columnCount: 3 }).indexForX(59)).toEqual(2);
 
               expect(Grid({ width: 160, columnCount: 2, marginLeft: 20, marginRight: 20 }).indexForX(50)).toEqual(0);
         });
@@ -85,7 +88,10 @@ define(['js/grid'], function(Grid) {
                         
             expect(fourItemGrid.indexForX(0)).toEqual(0);
             expect(fourItemGrid.indexForX(20)).toEqual(1);
+            expect(fourItemGrid.indexForX(22)).toEqual(1);
             expect(fourItemGrid.indexForX(40)).toEqual(2);
+            expect(fourItemGrid.indexForX(44)).toEqual(2);
+            expect(fourItemGrid.indexForX(51)).toEqual(3);
             expect(fourItemGrid.indexForX(60)).toEqual(3);
         
             expect(threeItemGrid.indexForX(0)).toEqual(0);
@@ -107,8 +113,12 @@ define(['js/grid'], function(Grid) {
         
             expect(variableGrid.indexForX(0)).toEqual(0);
             expect(variableGrid.indexForX(20)).toEqual(1);
+            expect(variableGrid.indexForX(24)).toEqual(2);
             expect(variableGrid.indexForX(25)).toEqual(2);
+            expect(variableGrid.indexForX(26)).toEqual(2);
+            expect(variableGrid.indexForX(58)).toEqual(3);
             expect(variableGrid.indexForX(60)).toEqual(3);
+            expect(variableGrid.indexForX(62)).toEqual(3);
         
             expect(Grid({ edgeToEdge: true, width: 160, xValues: [1, 2], marginLeft: 20, marginRight: 20 }).indexForX(20)).toEqual(0);
         });
