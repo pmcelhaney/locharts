@@ -352,6 +352,34 @@ return {
         selection.attr('opacity', 0.5);
     	selection.attr('stroke-width', 0);
  
+        var leftHandle = this.paper.rect(grid.xForIndex(start) + 0.5 - 5, grid.yForTopEdge() + 0.5, 10, grid.height());
+        leftHandle.attr('fill', '#000');
+        leftHandle.attr('opacity', 1);
+    	leftHandle.attr('stroke-width', 0);
+    	
+    	
+    	leftHandle.drag(
+    	    
+    	    function (dx, dy) {
+                var min = grid.xForRightEdge() - this.attr('width');
+                var max = grid.xForLeftEdge();
+                this.attr({x: this.ox + dx });
+                selection.attr({x: Math.max(max, Math.min( min, selection.ox + dx ) ), width: selection.oWidth - dx });
+            },
+    	    
+    	    function () {
+    	        this.ox = this.attr("x");
+    	        selection.ox = selection.attr("x");
+    	        selection.oWidth = selection.attr("width");
+    	    },
+    	    
+            
+    	    function () {
+                $(eventTarget).trigger('selectedRangeChange.chart', [grid.indexForX(selection.attr('x')), grid.indexForX(selection.attr('x')) + selection.attr('width')]);
+            }
+    	    
+    	);
+    	
         
         var scrubIndexMoved = function (event, start, stop) {
             selection.attr({ x: grid.xForIndex(start) + 0.5, width: grid.xForIndex(stop) - grid.xForIndex(start) });
@@ -360,17 +388,19 @@ return {
  
         
         var onStart = function () {
+            console.log('dragging selection');
             this.ox = this.attr("x");
+            leftHandle.ox = leftHandle.attr("x");
         };
             
         var onMove = function (dx, dy) {
             var min = grid.xForRightEdge() - this.attr('width');
             var max = grid.xForLeftEdge();
             this.attr({x: Math.max(max, Math.min( min, this.ox + dx ) ) });
+            leftHandle.attr({x: Math.max(max, Math.min( min, leftHandle.ox + dx ) ) });
         };    
             
         var onEnd = function () {
-            console.log('The selected range was changed to ' + grid.indexForX(this.attr('x')) + ' - ' + grid.indexForX( this.attr('x') + this.attr('width') ) );
             $(eventTarget).trigger('selectedRangeChange.chart', [grid.indexForX(this.attr('x')), grid.indexForX(this.attr('x')) + this.attr('width')]);
         };
         
