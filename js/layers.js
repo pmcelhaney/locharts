@@ -346,6 +346,17 @@ return {
 		var data = this.data;
 		var eventTarget = this.eventTarget;
 		
+		
+		var clickArea = this.paper.rect(grid.xForLeftEdge(), grid.yForTopEdge(), grid.width(), grid.height());
+		clickArea.attr('fill', '#fff');
+        clickArea.attr('opacity', 0);
+    	clickArea.attr('stroke-width', 0);
+		clickArea.click(function (e) { 
+		    selection.attr('x', Math.min( Math.max(e.x - selection.attr('width') / 2, grid.xForLeftEdge() ), grid.xForRightEdge() - selection.attr('width') ) );
+		    leftHandle.attr('x', selection.attr('x') - 5);
+		    rightHandle.attr('x', selection.attr('x') + selection.attr('width') - 5);
+		    $(eventTarget).trigger('selectedRangeChange.chart', [grid.indexForX(selection.attr('x')), grid.indexForX(selection.attr('x')) + selection.attr('width')]);
+		});
 
 		var selection = this.paper.rect(grid.xForIndex(start) + 0.5, grid.yForTopEdge() + 0.5, grid.xForIndex(stop) - grid.xForIndex(start), grid.height());
     	selection.attr('fill', '#000');
