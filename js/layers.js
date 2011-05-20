@@ -416,25 +416,28 @@ return {
         
  
         
-        var onStart = function () {
-            this.ox = this.attr("x");
-            leftHandle.ox = leftHandle.attr("x");
-            rightHandle.ox = rightHandle.attr("x");
-        };
-            
-        var onMove = function (dx, dy) {
-            var min = grid.xForRightEdge() - this.attr('width');
-            var max = grid.xForLeftEdge();
-            this.attr({x: Math.max(max, Math.min( min, this.ox + dx ) ) });
-            leftHandle.attr({x: Math.max(max, Math.min( min, leftHandle.ox + dx ) ) });
-            rightHandle.attr({x: Math.max(max + this.attr('width'), Math.min( min + this.attr('width'), rightHandle.ox + dx ) ) });
-        };    
-            
-        var onEnd = function () {
-            $(eventTarget).trigger('selectedRangeChange.chart', [grid.indexForX(this.attr('x')), grid.indexForX(this.attr('x')) + this.attr('width')]);
-        };
+
         
-        selection.drag(onMove, onStart, onEnd);
+        selection.drag(
+            function (dx, dy) {
+                var min = grid.xForRightEdge() - this.attr('width');
+                var max = grid.xForLeftEdge();
+                this.attr({x: Math.max(max, Math.min( min, this.ox + dx ) ) });
+                leftHandle.attr({x: Math.max(max, Math.min( min, leftHandle.ox + dx ) ) });
+                rightHandle.attr({x: Math.max(max + this.attr('width'), Math.min( min + this.attr('width'), rightHandle.ox + dx ) ) });
+            },
+            
+            function () {
+                this.ox = this.attr("x");
+                leftHandle.ox = leftHandle.attr("x");
+                rightHandle.ox = rightHandle.attr("x");
+            },
+            
+            function () {
+                $(eventTarget).trigger('selectedRangeChange.chart', [grid.indexForX(this.attr('x')), grid.indexForX(this.attr('x')) + this.attr('width')]);
+            }
+            
+        );
  
         $(this.eventTarget).bind('moveScrubIndex.chart', scrubIndexMoved);
 	}
