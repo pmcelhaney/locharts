@@ -149,7 +149,7 @@ define(['chart', 'Money'], function (chart, Money) {
     		})
     		
     		
-    		.after('<div id="scrubber"></div>').find('+div').css({width: $('#candlestick').width(), height: $('#candlestick').height() / 6})
+    		.after('<div id="scrubber"></div>').find('+div').css({width: $('#candlestick').width(), height: $('#candlestick').height() / 8})
     		.chart({
     			data: allData,
     			layers: [

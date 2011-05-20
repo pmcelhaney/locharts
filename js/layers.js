@@ -29,7 +29,7 @@ return {
 		var bars = [];
 		$(this.data[0]).each(function (i) {
 			var datum = this;
-			var width = Math.floor((grid.xForIndex(i+1) - grid.xForIndex(i)) * (widthFactor || 0.5));
+			var width = Math.round( grid.columnWidth() * (widthFactor || 0.5) );
 			var left = Math.floor(grid.xForIndex(i) - (width / 2)); 
 			var top = grid.yForValue(datum);
 			var height = grid.yForBottomEdge() - top;
@@ -277,7 +277,7 @@ return {
 		var eventTarget = this.eventTarget;
 		$(this.data[0]).each(function (i) {
 			var datum = this;
-			var width = grid.columnWidth() / 2;
+			var width = Math.round(grid.columnWidth() / 2);
 			var left = grid.xForIndex(i) - (width / 2); 
 			var top = grid.yForValue( Math.max(datum.open, datum.close) );
 			var height = Math.max(1, grid.yForValue( Math.min(datum.open, datum.close) ) - top);
