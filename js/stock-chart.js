@@ -137,7 +137,7 @@ define(['chart', 'Money'], function (chart, Money) {
     				"borders", 
     				["y-axis markers", 3, function (n) { return n / 1000 / 1000 + 'm'; }], 
     				"x-axis static dates",  
-    				["bars", 1],
+    				["bars", 0.5],
     				"column hotspots"			
     			],
     			marginBottom: 20,
