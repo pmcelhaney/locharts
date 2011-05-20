@@ -353,7 +353,7 @@ return {
     	selection.attr('stroke-width', 0);
  
         var leftHandle = this.paper.rect(grid.xForIndex(start) + 0.5 - 5, grid.yForTopEdge() + 0.5, 10, grid.height());
-        leftHandle.attr('fill', '#000');
+        leftHandle.attr('fill', '#00f');
         leftHandle.attr('opacity', 0);
     	leftHandle.attr('stroke-width', 0);
     	leftHandle.attr('cursor', 'ew-resize');
@@ -361,10 +361,10 @@ return {
     	leftHandle.drag(
     	    
     	    function (dx, dy) {
-                var min = grid.xForRightEdge() - this.attr('width');
-                var max = grid.xForLeftEdge();
-                this.attr({x: this.ox + dx });
-                selection.attr({x: Math.max(max, Math.min( min, selection.ox + dx ) ), width: selection.oWidth - dx });
+                var boundDx = Math.max(dx, grid.xForLeftEdge() - selection.ox);
+                boundDx = Math.min(boundDx, selection.oWidth - 12);
+                this.attr({x: this.ox + boundDx });
+                selection.attr({x: selection.ox + boundDx, width: selection.oWidth - boundDx });
             },
     	    
     	    function () {
@@ -382,7 +382,7 @@ return {
     	
     	
     	var rightHandle = this.paper.rect(grid.xForIndex(start) + 0.5 + selection.attr('width') - 5, grid.yForTopEdge() + 0.5, 10, grid.height());
-        rightHandle.attr('fill', '#000');
+        rightHandle.attr('fill', '#f00');
         rightHandle.attr('opacity', 0);
     	rightHandle.attr('stroke-width', 0);
     	rightHandle.attr('cursor', 'ew-resize');
@@ -391,8 +391,10 @@ return {
         rightHandle.drag(
     	    
     	    function (dx, dy) {
-                this.attr({x: this.ox + dx });
-                selection.attr({width: selection.oWidth + dx });
+    	        var boundDx = Math.max(dx, 12 - selection.oWidth );
+                boundDx = Math.min(boundDx, grid.xForRightEdge() - selection.oWidth - selection.ox);
+                this.attr({x: this.ox + boundDx });
+                selection.attr({width: selection.oWidth + boundDx });
             },
     	    
     	    function () {
