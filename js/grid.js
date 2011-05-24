@@ -64,6 +64,7 @@ define(function () {
 			},
 		
 			yForValue: function (value) {
+			    if (isNaN(value)) return 0;
 				return Math.round( this.yForBottomEdge() - (value - yMinValue) * ( height / (yMaxValue - yMinValue) ) );
 			},
 		
