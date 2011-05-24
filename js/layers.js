@@ -260,13 +260,14 @@ return {
     		    .attr('stroke-width', 0)
     		    .attr('zIndex', 100)
     		    .hover(function () {
-                  // this.attr('fill-opacity', 0.5);
+                    // this.attr('fill-opacity', 0.5);
     			    $(eventTarget).trigger('focusDatum.chart', [i, datum]);
     		    }, function() {
     		        $(eventTarget).trigger('blurDatum.chart', [i, datum]);
                   // this.attr('fill-opacity', 0.1);
     		    });
     	});
+    	
 
 	},
 	
@@ -328,11 +329,13 @@ return {
 	        dot.attr({cx: grid.xForIndex(index), cy: grid.yForValue(data[0][index]) });
 		};
 		
-		$(this.eventTarget).bind('focusDatum.chart', moveDot);
+		var target = $(this.eventTarget);
+		
+		target.bind('focusDatum.chart.hoverDots', moveDot);
 		
 		return {
 		    remove: function () {
-		        $(this.eventTarget).unbind('focusDatum.chart', moveDot);
+		        target.unbind('focusDatum.chart.hoverDots');
 		    }
 		    
 		};
