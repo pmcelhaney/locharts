@@ -4,7 +4,7 @@ Chart Widget
 Hello World
 -----------
 The chart widget provides an easy way to draw attractive and highly customizable charts. It uses Raphael, a
-a JavaScript drawing API for SVG (or VRML in IE6-8). The plugin takes several options, but only one,
+a JavaScript drawing API for SVG (or VML in IE6-8). The plugin takes several options, but only one,
 data, is required. This very simple example will draw a bar chart with four data points.
 
 	$('#hello').chart({
@@ -101,7 +101,8 @@ collaborates with these fields to draw something on the chart.
   for more information.
 * **this.grid** contains helper functions like `xForLeftEdge()` and `yForValue()` that can be
   used to map the chart's dimensions and data to paper coordinates.
-* **this.console** records log messages and pipes to window.console when it's available. 
+* **this.element** is a reference to the DOM element in which the chart is placed.
+* **this.eventTarget** is the scope to which jQuery custom events should be bound. By default, this.eventTarget === this.element.
 
 <pre>
 var layerThatPrintsDataInTheMiddleOfTheChart = function () {
@@ -146,6 +147,26 @@ $('#red-circles').chart({
 		]
 });
 </pre>
+
+If the layer returns an object containing a function named remove(), the chart widget will automatically call
+the remove method when the layer is removed. A remove method is useful for clean-up work such as unbinding 
+events. There's typically no need to clean up DOM objects added under this.target when `$().chart('remove')`
+is called.
+
+<pre>
+var messyLayer = function () {
+	$(this.eventTarget).bind('focusDatum.chart.messyLayer', function () { ... });
+	
+	return {
+		remove: function () {
+			$(this.eventTarget).unbind('focusDatum.chart.messyLayer');
+		}
+	}
+}	
+</pre>
+
+
+
 
 
 
