@@ -27,13 +27,14 @@ return {
 		var paper = this.paper;
 		var eventTarget = this.eventTarget;
 		var bars = [];
+		var fillColor = grid.gradient(0);
 		$(this.data[0]).each(function (i) {
 			var datum = this;
 			var width = Math.round( grid.columnWidth() * (widthFactor || 0.5) );
 			var left = Math.floor(grid.xForIndex(i) - (width / 2)); 
 			var top = grid.yForValue(datum);
 			var height = grid.yForBottomEdge() - top;
-			var bar = paper.rect(left + 0.5, top + 0.5, width, height).attr('fill', grid.gradient(0)).attr('stroke-width', 0).attr('fill-opacity', opacity);
+			var bar = paper.rect(left + 0.5, top + 0.5, width, height).attr({ 'fill': fillColor, 'stroke-width': 0, 'fill-opacity': opacity });
 			bar.hover(function () {
 				$(eventTarget).trigger('focusDatum.chart', [i, datum]);
 			//	this.attr('fill', grid.gradient(1)).attr('fill-opacity', 1);
@@ -241,13 +242,30 @@ return {
 	},
 	
 	'column hotspots': function () {
-	    return;
 	    
 	    var paper = this.paper;
 		var grid = this.grid;
 		var data = this.data;
 		var eventTarget = this.eventTarget;
-		
+	
+	    var oldColumnIndex;
+	    
+	    this.paper.rect(grid.xForLeftEdge(), grid.yForTopEdge(), grid.width(), grid.height())
+	        .attr('fill', '#000')
+	        .attr('fill-opacity', 0)
+		    .attr('stroke-width', 0).mousemove(function (e) {
+	            newColumnIndex = grid.indexForX(event.x);
+	            if (newColumnIndex !== oldColumnIndex) {
+	             
+	                $(eventTarget).trigger('focusDatum.chart', [newColumnIndex, data[data.length-1][newColumnIndex]]);
+	                
+	                if (oldColumnIndex !== undefined) {
+	                   $(eventTarget).trigger('blurDatum.chart', [oldColumnIndex, data[data.length-1][oldColumnIndex]]);
+	                }
+	                
+	                oldColumnIndex = newColumnIndex;
+	            }  
+	        });
 
         var lastX = 0;
     	$(data[data.length-1]).each(function (i, datum) {
@@ -255,7 +273,7 @@ return {
     	    var leftX = thisX - (thisX - lastX) / 2;
     	    var rightX = thisX + ( ( grid.xForIndex(i+1) || grid.outerWidth() ) - thisX ) / 2; 
     	    lastX = thisX;
-    		paper.rect(leftX, 0, (rightX - leftX), grid.outerHeight())
+    		/*paper.rect(leftX, 0, (rightX - leftX), grid.outerHeight())
     		    .attr('fill', '#000')
     		    .attr('fill-opacity', 0)
     		    .attr('stroke-width', 0)
@@ -266,7 +284,7 @@ return {
     		    }, function() {
     		        $(eventTarget).trigger('blurDatum.chart', [i, datum]);
                   // this.attr('fill-opacity', 0.1);
-    		    });
+    		    });*/
     	});
     	
 

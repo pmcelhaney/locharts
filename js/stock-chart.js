@@ -9,7 +9,8 @@ define(['chart', 'Money'], function (chart, Money) {
             close: c,
             date: d,
             volume: v,
-            valueOf: function () { return this.close; }      
+            valueOf: function () { return this.close; },
+            xValueOf: function () { return this.close; }      
         };
     };
 
@@ -74,7 +75,8 @@ define(['chart', 'Money'], function (chart, Money) {
                             close: +this.Close,
                             high: +this.High,
                             low: +this.Low,
-                            valueOf: function () { return this.close; } 
+                            valueOf: function () { return this.close; }, 
+                            xValueOf: function () { return this.close; }
                         };
                     }).toArray();
                     volumeData = $(data).map(function () { 
@@ -85,7 +87,8 @@ define(['chart', 'Money'], function (chart, Money) {
                             close: this.close,
                             high: this.high,
                             low: this.low,
-                            valueOf: function () { return this.volume; } 
+                            valueOf: function () { return this.volume; },
+                            xValueOf: function () { return this.volume; }
                         }; 
                     } ).toArray();
                     $('#candlestick').html('');
@@ -103,7 +106,8 @@ define(['chart', 'Money'], function (chart, Money) {
                 close: this.close,
                 high: this.high,
                 low: this.low,
-                valueOf: function () { return this.volume; } 
+                valueOf: function () { return this.volume; },
+                xValueOf: function () { return this.volume; }
             }; } ).toArray();
             
             drawStockChart(data.slice(-90), volumeData.slice(-90), data); 
