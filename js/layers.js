@@ -188,16 +188,15 @@ return {
 		
 		$(data).each(function (seriesIndex, series) {
 
-			var path = 'M' + ( grid.xForIndex(0) + 0.5 ) + ' ' + grid.yForBottomEdge();
+			var path = ['M', ( grid.xForIndex(0) + 0.5 ), ' ', grid.yForBottomEdge()];
 			$(series).each(function (i) {
-				path += 'L' + (grid.xForIndex(i) + 0.5) + ' ' + (grid.yForValue(this) + 0.5);
+				path.push('L', (grid.xForIndex(i) + 0.5), ' ', (grid.yForValue(this) + 0.5));
 			});
-			path += 'L' + ( grid.xForIndex(series.length - 1) + 0.5 ) + ' ' + grid.yForBottomEdge();
-			path += 'Z';
-			paper.path(path).attr({ fill: grid.fillColor(seriesIndex),'stroke-width': 0  });
+			path.push('L',  ( grid.xForIndex(series.length - 1) + 0.5 ),  ' ',  grid.yForBottomEdge());
+			path.push('Z');
+			paper.path(path.join('')).attr({ fill: grid.fillColor(seriesIndex),'stroke-width': 0  });
 		});
 		
-		data;
 	},
 	
 	'differential area': function () {
@@ -242,6 +241,8 @@ return {
 	},
 	
 	'column hotspots': function () {
+	    return;
+	    
 	    var paper = this.paper;
 		var grid = this.grid;
 		var data = this.data;

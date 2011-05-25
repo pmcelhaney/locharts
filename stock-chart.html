@@ -11,6 +11,10 @@
 	body {
 		font-family: Verdana, Helvetica, Arial, Sans-serif;
 	}
+	
+	#timer tr:hover {
+		background-color: #eee;
+	}
 </style>
 
 <script type="text/javascript" charset="utf-8" src="globals/jquery-1.4.2.js"></script>
@@ -18,6 +22,17 @@
 <script src="globals/raphael.js" type="text/javascript" charset="utf-8"></script>
 
 <script src="globals/require.js" type="text/javascript" charset="utf-8" data-main="js/stock-chart"></script>
+
+<script type="text/javascript" charset="utf-8">
+	var startTime = new Date();
+	var lastTime = startTime;
+	
+	var logTime = function (eventName) {
+		var thisTime = new Date();
+		$('#timer tbody').append('<tr><td>' + eventName + '</td><td>' +  (thisTime - lastTime ) + '</td><td>' + (thisTime - startTime ) +'</td></tr>');
+		lastTime = thisTime;
+	};
+</script>
 
 </head>
 
@@ -32,13 +47,13 @@
 <div id="limit">
 <div id="article">
 
-<h2>Default Chart from Thompson-Reuters</h2>
+<!-- <h2>Default Chart from Thompson-Reuters</h2>
 
 <img src="tr-chart.gif" width="579" height="335" alt="Tr Chart">
 
 
 <h2>Obviously Better Chart</h2>
-
+ -->
 
 <div id="candlestick" style="width: 800px; height: 400px; position: relative"></div>	
 
@@ -54,6 +69,15 @@
 </ul>	
 
 
+<table id="timer">
+	<thead>
+	<tr><th>Event</th><th>Time</th><th>Total</th></tr>
+	</thead>
+	<tbody>
+		
+	</tbody>
+
+</table>
 
 	
 

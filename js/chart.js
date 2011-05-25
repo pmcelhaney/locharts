@@ -81,8 +81,10 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
 
     			layerFn =  $.isFunction(layer) ? layer : builtInLayers[layer] ;
 
-    			if ( $.isFunction(layerFn) ) {			
+    			if ( $.isFunction(layerFn) ) {		
+    			    logTime('Adding layer: ' + this);		    	
     				layers.push ( layerFn.apply(layerContext, args) );	
+    				logTime('Done adding layer: ' + this);
     			}
     		});
           
