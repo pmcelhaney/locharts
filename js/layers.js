@@ -34,7 +34,7 @@ return {
 			var left = Math.floor(grid.xForIndex(i) - (width / 2)); 
 			var top = grid.yForValue(datum);
 			var height = grid.yForBottomEdge() - top;
-			var bar = paper.rect(left + 0.5, top + 0.5, width, height).attr({ 'fill': fillColor, 'stroke-width': 0, 'fill-opacity': opacity });
+			var bar = paper.rect(left + 0.5, top + 0.5, width, height).attr('fill', fillColor).attr('stroke-width', 0).attr('fill-opacity', opacity );
 			bar.hover(function () {
 				$(eventTarget).trigger('focusDatum.chart', [i, datum]);
 			//	this.attr('fill', grid.gradient(1)).attr('fill-opacity', 1);
