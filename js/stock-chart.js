@@ -194,17 +194,33 @@ define(['chart', 'Money'], function (chart, Money) {
             
             $('#candlestick').unbind('blurDatum.chart');
             
+            var parseDate = function (s) {
+                parts = s.split('-');
+                return new Date(+parts[0], +parts[1]-1, +parts[2]);
+            };
             
+            var startDate = parseDate($('#update-chart-form input[name=start]').val());
+            var endDate = parseDate($('#update-chart-form input[name=end]').val());
 
-            var days = +$('#how-many-days').val();
-            var subset = data.slice( -days );
+
+          
+            
+            var indexForDate = function (d) {
+                var i = 0;
+              
+                while (data[i++].date < d) {}
+                return i-1;
+            };
+            
+            
+            var subset = data.slice( indexForDate(startDate), indexForDate(endDate) + 1 );
             $('#candlestick').chart('option', 'yMaxValue', Math.max.apply(null, $(subset).map(function () { return this.high; } ).toArray()) + 1);
             $('#candlestick').chart('option', 'yMinValue', Math.min.apply(null, $(subset).map(function () { return this.low; } ).toArray()) - 1);
             $('#candlestick').chart('draw', subset);
             
-            $('#candlestick+div').chart('draw', volumeData.slice( -$('#how-many-days').val() ) );
+            $('#candlestick+div').chart('draw', volumeData.slice( indexForDate(startDate), indexForDate(endDate) + 1) );
              
-            $('#scrubber').trigger('moveScrubIndex.chart', [ data.length - days - 1, data.length - 1 ]); 
+            $('#scrubber').trigger('moveScrubIndex.chart', [ indexForDate(startDate), indexForDate(endDate) + 1  ]); 
         });
        
         $('#scrubber').bind('selectedRangeChange.chart', function (event, start, end) {
