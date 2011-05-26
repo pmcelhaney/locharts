@@ -27,23 +27,19 @@ return {
 		var paper = this.paper;
 		var eventTarget = this.eventTarget;
 		var bars = [];
-		var fillColor = grid.gradient(0);
+		
+	    var width = Math.round( grid.columnWidth() * (widthFactor || 0.5) );
+	    var fillColor = grid.gradient(0);
+	    var yForBottomEdge = grid.yForBottomEdge();
+	    
 		$(this.data[0]).each(function (i) {
 			var datum = this;
-			var width = Math.round( grid.columnWidth() * (widthFactor || 0.5) );
-			var left = Math.floor(grid.xForIndex(i) - (width / 2)); 
+
+			var left = Math.floor(grid.xForIndex(i) - width/2); 
 			var top = grid.yForValue(datum);
-			var height = grid.yForBottomEdge() - top;
-			var bar = paper.rect(left + 0.5, top + 0.5, width, height).attr('fill', fillColor).attr('stroke-width', 0).attr('fill-opacity', opacity );
-			bar.hover(function () {
-				$(eventTarget).trigger('focusDatum.chart', [i, datum]);
-			//	this.attr('fill', grid.gradient(1)).attr('fill-opacity', 1);
-			}, function () {
-			    $(eventTarget).trigger('blurDatum.chart', [i, datum]);
-			//	this.attr('fill', grid.gradient(0)).attr('fill-opacity', opacity);
-			});
+			var height = yForBottomEdge - top;
+			var bar = paper.rect(left + 0.5, top + 0.5, width, height).attr({ 'fill': fillColor, 'opacity': opacity, 'stroke-width': 0 });
 			bars[i] = bar;
-			
 		});
 
 
@@ -273,18 +269,6 @@ return {
     	    var leftX = thisX - (thisX - lastX) / 2;
     	    var rightX = thisX + ( ( grid.xForIndex(i+1) || grid.outerWidth() ) - thisX ) / 2; 
     	    lastX = thisX;
-    		/*paper.rect(leftX, 0, (rightX - leftX), grid.outerHeight())
-    		    .attr('fill', '#000')
-    		    .attr('fill-opacity', 0)
-    		    .attr('stroke-width', 0)
-    		    .attr('zIndex', 100)
-    		    .hover(function () {
-                    // this.attr('fill-opacity', 0.5);
-    			    $(eventTarget).trigger('focusDatum.chart', [i, datum]);
-    		    }, function() {
-    		        $(eventTarget).trigger('blurDatum.chart', [i, datum]);
-                  // this.attr('fill-opacity', 0.1);
-    		    });*/
     	});
     	
 
@@ -309,8 +293,8 @@ return {
             var lineHeight = grid.yForValue(datum.low) - lineTop;
 			
 		
-			var line = paper.rect(lineLeft + 0.5, lineTop + 0.5, lineWidth, lineHeight).attr('fill', grid.gradient(0)).attr('stroke-width', 0);
-            var bar = paper.rect(left + 0.5, top + 0.5, width, height).attr('fill', datum.open > datum.close ? grid.gradient(0) : '#fff' ).attr('stroke', grid.gradient(0)).attr('stroke-width', 1);
+			var line = paper.rect(lineLeft + 0.5, lineTop + 0.5, lineWidth, lineHeight).attr({ fill: grid.gradient(0), 'stroke-width': 0 });
+            var bar = paper.rect(left + 0.5, top + 0.5, width, height).attr({ fill: datum.open > datum.close ? grid.gradient(0) : '#fff', stroke: grid.gradient(0), 'stroke-width': 1 });
             
 			
 			
