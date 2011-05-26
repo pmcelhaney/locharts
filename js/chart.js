@@ -122,6 +122,8 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
         /* Ridiculous hack to work around jQuery 1.4 IE bug. $.extend() doesn't copy a custom valueOf() function,
         so we have to pass in a function called xValueOf() that gets copied to valueOf() */
         _fixValueOf: function () {
+            if (!this.options.data) return;
+            
             $( $.isArray(this.options.data[0]) ? this.options.data[0] : [ this.options.data ] ).each( function () { 
                   $(this).each(function () {
                       if(this.xValueOf) this.valueOf = this.xValueOf;

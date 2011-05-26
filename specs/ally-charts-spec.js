@@ -1,3 +1,8 @@
+window.logTime = function () {
+    setTimeout( function () { alert("Don't forget to remove calls to logTime()."); }, 1);
+    window.logTime = function () {};    
+};
+
 
 
 define(['js/layers', 'js/chart', './grid-spec', './money-spec'], function (builtInLayers) {
