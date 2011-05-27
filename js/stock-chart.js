@@ -9,8 +9,7 @@ define(['chart', 'Money'], function (chart, Money) {
             close: c,
             date: d,
             volume: v,
-            valueOf: function () { return this.close; },
-            xValueOf: function () { return this.close; }      
+            valueOf: function () { return this.close; }
         };
     };
 
@@ -81,8 +80,7 @@ define(['chart', 'Money'], function (chart, Money) {
                             close: +this.Close,
                             high: +this.High,
                             low: +this.Low,
-                            valueOf: function () { return this.close; }, 
-                            xValueOf: function () { return this.close; }
+                            valueOf: function () { return this.close; }
                         };
                     }).toArray();
                     volumeData = $(data).map(function () { 
@@ -93,8 +91,7 @@ define(['chart', 'Money'], function (chart, Money) {
                             close: this.close,
                             high: this.high,
                             low: this.low,
-                            valueOf: function () { return this.volume; },
-                            xValueOf: function () { return this.volume; }
+                            valueOf: function () { return this.volume; }
                         }; 
                     } ).toArray();
                     $('#candlestick').html('');
@@ -112,17 +109,20 @@ define(['chart', 'Money'], function (chart, Money) {
                 close: this.close,
                 high: this.high,
                 low: this.low,
-                valueOf: function () { return this.volume; },
-                xValueOf: function () { return this.volume; }
+                valueOf: function () { return this.volume; }
             }; } ).toArray();
             
             drawStockChart(data.slice(-90), volumeData.slice(-90), data); 
 		};
 		
+		var functionize = function (x) { 
+		    return function () { return x; };
+		};
+		
 		var drawStockChart = function (data, volumeData, allData) {
 
     		$('#candlestick').chart({
-    			data: data,
+    			data: functionize(data),
     			layers: [
     				"borders", 
     				["y-axis markers", 6, Money], 
@@ -142,7 +142,7 @@ define(['chart', 'Money'], function (chart, Money) {
 		
     		.after('<div></div>').find('+div').css({width: $('#candlestick').width(), height: $('#candlestick').height() / 3})
             .chart({
-    			data: volumeData,
+    			data: functionize(volumeData),
     			layers: [
     				"borders", 
     				["y-axis markers", 3, function (n) { return n / 1000 / 1000 + 'm'; }], 
@@ -161,7 +161,7 @@ define(['chart', 'Money'], function (chart, Money) {
     		
     		.after('<div id="scrubber"></div>').find('+div').css({width: $('#candlestick').width(), height: $('#candlestick').height() / 8})
     		.chart({
-    			data: allData,
+    			data: functionize(allData),
     			layers: [
     				"borders", 
     				"area",

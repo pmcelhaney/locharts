@@ -96,7 +96,8 @@ collaborates with these fields to draw something on the chart.
 * **this.data** is the array of data passed into the widget. Actually, it's an array of arrays, 
   where each inner array represents a series of values. If your chart only has one series, you can pass 
   a single array (e.g. `[10,20,30]`) and it will automatically be wrapped (e.g. `[[10,20,30]]`).
-  The values within each series can be numbers or objects that implement the `valueOf()` function.
+  The values within each series can be numbers or objects that [implement the `valueOf()` function](#valueOf).
+
 * **this.paper** is the Raphael object used to do the drawing. See the Raphael API reference 
   for more information.
 * **this.grid** contains helper functions like `xForLeftEdge()` and `yForValue()` that can be
@@ -196,6 +197,54 @@ to use your own custom events.
   just a placeholder.
 
 See [layers.js](js/layers.js) for examples of how jQuery events can be used to communicate between layers.
+
+
+Using valueOf() 
+---------------
+
+Sometimes it's useful to have more than one value per point on the graph, as with a candlestick chart that has
+prices for high, low, open, and close. Multiple values can be attached to each data point by using 
+objects instead of numbers. A layer that needs the individual values should know how to look the up. To
+maintain compatibility with layers that expecting each datum to be a number, the objects should implement
+the valueOf() function.
+
+<pre>
+var TradingDay = function (o, h, l, c) {
+    return {
+	    high: h,
+	    low: l,
+	    open: o,
+	    close: c
+	    valueOf: function () { return this.close; }
+	};
+};
+   
+
+$('#candlestick').chart(
+	data: [ TradingDay(100, 120, 90, 105), TradingDay(104, 119, 99, 117), TradingDay(117, 125, 110, 116) ],
+	layers: [
+		'y-axis markers', /* expects numbers only */
+	    'candlestick' /* expects objects with open, high, low, and close */
+	]
+);
+</pre>
+
+Note that with jQuery 1.4, the valueOf() function will get overwritten by the widget factory in IE7. To work 
+around that problem, wrap the data in a function call.
+
+<pre>
+$('#candlestick').chart(
+	data: <strong>function () {
+		return</strong> [ TradingDay(100, 120, 90, 105), TradingDay(104, 119, 99, 117), TradingDay(117, 125, 110, 116) ]<strong>;
+	}</strong>,
+	layers: [
+		'y-axis markers',
+	    'candlestick' 
+	]
+);
+</pre>
+
+
 
 
 

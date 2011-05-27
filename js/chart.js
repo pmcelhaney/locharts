@@ -27,9 +27,6 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
         options: {  },
         
         _create: function () {
-            
-            this._fixValueOf();
-  
             this.draw();
         },
         draw: function(newData) {
@@ -40,6 +37,9 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
             
             var options = this.options;
             
+            if ( $.isFunction(options.data) ) {
+                options.data = options.data();
+            }    
           	var data = ( options.data && $.isArray( options.data[0] ) ) ? options.data : [options.data];
 
 
@@ -115,19 +115,9 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
            
           //delete this.paper;
           $.Widget.prototype.destroy.call(this);
-        },
-        
-        /* Ridiculous hack to work around jQuery 1.4 IE bug. $.extend() doesn't copy a custom valueOf() function,
-        so we have to pass in a function called xValueOf() that gets copied to valueOf() */
-        _fixValueOf: function () {
-            if (!this.options.data) return;
-            
-            $( $.isArray(this.options.data[0]) ? this.options.data[0] : [ this.options.data ] ).each( function () { 
-                  $(this).each(function () {
-                      if(this.xValueOf) this.valueOf = this.xValueOf;
-                  });
-            });
         }
+        
+
       });
 	
 });

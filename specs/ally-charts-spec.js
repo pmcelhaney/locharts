@@ -42,6 +42,21 @@ define(['js/layers', 'js/chart', './grid-spec', './money-spec'], function (built
             expect(data).toEqual([ [2, 4, 6, 8] ]);
         });
         
+        it("should make the data available to the layer -- when the data is a function", function () {
+            var data;
+            var layer = function () {
+                 data = this.data;
+            };
+
+            $('div').chart({
+                 layers: [ layer ],
+                 data: function () { return  [2, 4, 6, 8]; }
+            });
+            
+            expect(data).toEqual([ [2, 4, 6, 8] ]);
+        });
+        
+        
         it("should make the container element available to the layer", function () {
             var element;
             var layer = function () {

@@ -1,2 +1,4 @@
+Sometimes the very first datapoint doesn't activate on hover. | id:09a2a5d5cbb4104a236fdc8ef215fee651ea1187
 Allow data to be a function so I work around the valueOf bug. | id:0c4adb3d932de95a190f50462fec0ae1cd487d90
 Try curl.js instead of require.js | id:99c6d6de3acbb52b966938b2844ac231ec7231eb
+The cursor doesn't change to ew on IE. | id:fa5aa647248bdbbe6701a4515644909ba06ce4c8
