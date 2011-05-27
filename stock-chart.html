@@ -23,16 +23,7 @@
 
 <script src="globals/require.js" type="text/javascript" charset="utf-8" data-main="js/stock-chart"></script>
 
-<script type="text/javascript" charset="utf-8">
-	var startTime = new Date();
-	var lastTime = startTime;
-	
-	var logTime = function (eventName) {
-		var thisTime = new Date();
-		$('#timer tbody').append('<tr><td>' + eventName + '</td><td>' +  (thisTime - lastTime ) + '</td><td>' + (thisTime - startTime ) +'</td></tr>');
-		lastTime = thisTime;
-	};
-</script>
+
 
 </head>
 
@@ -79,15 +70,7 @@
 </ul>	
 
 
-<table id="timer">
-	<thead>
-	<tr><th>Event</th><th>Time</th><th>Total</th></tr>
-	</thead>
-	<tbody>
-		
-	</tbody>
 
-</table>
 
 	
 
