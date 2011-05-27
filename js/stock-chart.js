@@ -39,14 +39,20 @@ define(['chart', 'Money'], function (chart, Money) {
     };
 
 
-    var formatDate = function(d) {
+    var formatDate = function(d, format) {
     	var twoDigits = function(n) {
     		return n > 9 ? n : '0' + n;
     	};
     	if (!d.getMonth) {
     		return d;
     	}
-    	return twoDigits(d.getMonth() + 1) + '/' + twoDigits(d.getDate()) + '/' + d.getFullYear();		
+    	
+    	
+    	if (format === 'yyyy-mm-dd') {
+    	    return d.getFullYear() + '-' + twoDigits(d.getMonth() + 1) + '-' + twoDigits(d.getDate())  ;		
+        } 
+        
+        return twoDigits(d.getMonth() + 1) + '/' + twoDigits(d.getDate()) + '/' + d.getFullYear();	
     };
     
 
@@ -232,6 +238,10 @@ define(['chart', 'Money'], function (chart, Money) {
             $('#candlestick').chart('draw', subset);
             
             $('#candlestick+div').chart('draw', volumeData.slice( start, end+1 ) );
+            
+            $('#update-chart-form input[name=start]').val(formatDate( subset[0].date, 'yyyy-mm-dd' ));
+            $('#update-chart-form input[name=end]').val(formatDate( subset.slice(-1)[0].date, 'yyyy-mm-dd' ));
+            
         });
        
 	});
