@@ -1,1 +1,2 @@
-Replace each loops on reversed data with simple backward counting for loops. | id:21f1056ed2c9ca273c042b5ff0cbda775efbd1b9
+Allow data to be a function so I work around the valueOf bug. | id:0c4adb3d932de95a190f50462fec0ae1cd487d90
+Update the dates in the form when they're changed in the scrubber. | id:dbe67c14f4e9ea10ac7de9698bf2df260fb8e113
