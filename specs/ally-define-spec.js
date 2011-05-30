@@ -1,6 +1,10 @@
 define(['js/ally-define.js'], function () {
 	
 	
+	
+	window.define.amd.dontReplaceAllyDefine = true;
+	
+	
 	describe("ALLY.define", function () {
 		it("should exist", function () {
 			expect(ALLY.define).toBeDefined();
@@ -68,7 +72,6 @@ define(['js/ally-define.js'], function () {
 		
 	});
 	
+	window.define.amd.dontReplaceAllyDefine = false;
 
-	
-	
 });

@@ -1,4 +1,4 @@
-define(function () {
+ALLY.define(function () {
 
 
 var COLORS = {

@@ -1,4 +1,4 @@
-define(function () {
+ALLY.define(function () {
 
 	return function (options) {
 		var options = options || {};

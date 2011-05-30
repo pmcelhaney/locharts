@@ -12,6 +12,8 @@
   <script src="globals/jquery-ui-1.8.custom.js" type="text/javascript" charset="utf-8"></script>
   
 <!-- include spec files here... -->
+
+  <script type="text/javascript" src="js/ally-define.js"></script>
   <script type="text/javascript" src="globals/require.js"></script>
 
 </head>
@@ -24,7 +26,7 @@ $(function () {
     var spec = window.location.search.replace('?', '');
     
     if (spec) {
-        require({urlArgs: "bust=" +  (new Date()).getTime()}, ['specs/' + spec], function () {
+        require({ urlArgs: "bust=" +  (new Date()).getTime()}, ['specs/' + spec], function () {
         	jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
         	jasmine.getEnv().execute();
         });

@@ -36,6 +36,11 @@ code a little simpler and more standardized.
 
 */
 ALLY.define = function (name, dependencies, fn) {
+	
+	if (window.define && define.amd && !define.amd.dontReplaceAllyDefine) {
+		return define(name, dependencies, fn);
+	}
+	
     var i;
     var args = [];
     for (i=0; i < dependencies.length; i++) {

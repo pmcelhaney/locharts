@@ -1,4 +1,4 @@
-define(function () {
+ALLY.define(function () {
 	var insertCommas = function (numberAsStringWithDecimal) {
 		var parts = numberAsStringWithDecimal.split(".");
 		var left = parts[0];
