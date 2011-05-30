@@ -44,7 +44,7 @@ ALLY.define = function (name, dependencies, fn) {
     var i;
     var args = [];
     for (i=0; i < dependencies.length; i++) {
-        args.push(ALLY[ dependencies[i] ]);
+        args.push(ALLY[ dependencies[i].split('/').slice(-1)[0] ]); 
     }
     ALLY[name] = fn.apply(this, args);
 };

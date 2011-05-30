@@ -72,6 +72,21 @@ define(['js/ally-define.js'], function () {
 		
 	});
 	
+	
+	describe("a module with depencency paths", function () {
+		var message = "I need noone.";
+		ALLY.mom = "Mommy";
+		ALLY.dad = "Daddy";
+
+		ALLY.define("dependent-module", ['./mom', './dad'], function (mom, dad) {
+			message = "I need " + mom + " and " + dad + ".";
+		});
+
+		it("should be called with its dependencies", function () {
+			expect(message).toEqual("I need Mommy and Daddy.");
+		});
+	});
+	
 	window.define.amd.dontReplaceAllyDefine = false;
 
 });
