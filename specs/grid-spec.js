@@ -1,4 +1,4 @@
-define(['js/grid'], function(Grid) {
+define(['grid'], function(Grid) {
     describe("Grid", function() {
     /*
     - yForIndex(i)

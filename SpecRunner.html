@@ -26,7 +26,7 @@ $(function () {
     var spec = window.location.search.replace('?', '');
     
     if (spec) {
-        require({ urlArgs: "bust=" +  (new Date()).getTime()}, ['specs/' + spec], function () {
+        require({baseUrl: 'js', paths: { specs: '../specs' }, urlArgs: "bust=" +  (new Date()).getTime()}, ['specs/' + spec], function () {
         	jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
         	jasmine.getEnv().execute();
         });
