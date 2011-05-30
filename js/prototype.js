@@ -1,4 +1,4 @@
-ALLY.define(['chart', 'Money'], function (chart, Money) {
+ALLY.define('prototype', ['chart', 'money'], function (chart, Money) {
 
 
 	var COLORS = {

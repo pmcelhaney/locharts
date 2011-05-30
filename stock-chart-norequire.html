@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+
+<meta charset="utf-8" />
+<title>Ally Charts</title>
+<link rel="stylesheet" href="stock.css" type="text/css" media="screen" charset="utf-8">
+
+<style type="text/css" media="screen">
+	body {
+		font-family: Verdana, Helvetica, Arial, Sans-serif;
+	}
+	
+	#timer tr:hover {
+		background-color: #eee;
+	}
+</style>
+
+<script type="text/javascript" charset="utf-8" src="globals/jquery-1.4.2.js"></script>
+<script type="text/javascript" charset="utf-8" src="globals/jquery-ui-1.8.custom.js"></script>
+<script src="globals/raphael.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="js/ally-define.js" type="text/javascript" charset="utf-8"></script>
+
+
+<script src="js/money.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/layers.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="js/grid.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="js/chart.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="js/stock-chart.js" type="text/javascript" charset="utf-8"></script> 
+
+
+
+</head>
+
+<body>
+	
+<div id="page">
+		
+<div id="header"></div>
+
+<div id="pusher">
+<div id="content">
+<div id="limit">
+<div id="article">
+
+<!-- <h2>Default Chart from Thompson-Reuters</h2>
+
+<img src="tr-chart.gif" width="579" height="335" alt="Tr Chart">
+
+
+<h2>Obviously Better Chart</h2>
+ -->
+
+
+<form id="update-chart-form">
+	Date range:
+	<input type="date" name="start" value="2011-01-02">
+	to 
+	<input type="date" name="end" value="2011-03-31">
+
+	<input type="submit" value="Update" >
+</form>
+
+<div id="candlestick" style="width: 800px; height: 400px; position: relative"></div>	
+
+
+<ul id="daily-stock-details">
+	<h3>Daily Stock Details</h3>
+	<li class="date"><h4>Date</h4><p></p></li>
+	<li class="volume"><h4>Volume</h4><p></p></li>
+	<li class="high"><h4>High</h4><p></p></li>
+	<li class="low"><h4>Low</h4><p></p></li>
+	<li class="open"><h4>Open</h4><p></p></li>
+	<li class="close"><h4>Close</h4><p></p></li>
+</ul>	
+
+
+
+
+	
+
+
+
+	<!-- <div id="local"></div> -->
+	<!-- <div id="serial"></div> -->
+</div><!-- #article -->
+
+<!-- <div id="aside"></div> -->
+
+</div><!-- /#limit -->
+
+<div id="nav">
+	<!-- <div id="widgets"></div> -->
+	<!-- <div id="breadcrumbs"></div> -->
+	<!-- <div id="global"></div> -->
+	<!-- <div id="universal"></div> -->
+	<!-- <div id="tools"></div> -->
+</div><!-- #nav -->
+
+</div><!-- /#content -->
+	
+</div><!-- /#pusher -->	
+
+<div id="footer">
+	<div id="footernav"></div>
+	<div id="affiliations"></div>
+	<div id="copyright"></div>
+	<div id="footnotes"></div>
+	<div id="disclaimers"></div>
+</div><!-- /#footer -->
+	
+<!-- <div id="visual1"></div>	 -->
+<!-- <div id="visual2"></div> -->
+<!-- <div id="visual3"></div> -->
+<!-- <div id="visual4"></div> -->
+	
+</div><!-- #/page -->	
+	
+</body>	
+</html>

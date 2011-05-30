@@ -1,4 +1,3 @@
 Sometimes the very first datapoint doesn't activate on hover. | id:09a2a5d5cbb4104a236fdc8ef215fee651ea1187
 add Convert spaces back to tabs. | id:88d208ea009758a7881c42e0519d226d737cc068
-Create ALLY.define() to ease in transistion to AMD | id:d6923bd6c1d1693c2d6bf8d8607ac4433a5983c4
 The cursor doesn't change to ew on IE. | id:fa5aa647248bdbbe6701a4515644909ba06ce4c8

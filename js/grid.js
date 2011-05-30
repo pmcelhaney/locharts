@@ -1,4 +1,4 @@
-ALLY.define(function () {
+ALLY.define('grid', [], function () {
 
 	return function (options) {
 		var options = options || {};

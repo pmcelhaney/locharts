@@ -1,4 +1,4 @@
-ALLY.define(['./grid', './layers'], function (Grid, builtInLayers) {
+ALLY.define('chart', ['./grid', './layers'], function (Grid, builtInLayers) {
 	
 	var dataMax = function (data) {
 

@@ -1,4 +1,4 @@
-ALLY.define(function () {
+ALLY.define('layers', [], function () {
 
 
 var COLORS = {
