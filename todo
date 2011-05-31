@@ -1,5 +1,3 @@
-Load chart initially with values in the form. | id:465262da2f157767152385a8077b181ea26ad9dc
 Select the last datapoint on load | id:6dc6002f708bd2a5864d0b64c8da092bda935acb
 Try delayedmousemove plugin for better performance in IE | id:6f6ab37a89c5f18ce842469d6e2acdc65d044957
-Wrap in a relatively positioned div automatically | id:7fd159cb6556441f8c5b1b75ca0d6969f0d1f86a
 The cursor doesn't change to ew on IE. | id:fa5aa647248bdbbe6701a4515644909ba06ce4c8

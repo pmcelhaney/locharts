@@ -101,7 +101,7 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 						}; 
 					} ).toArray();
 					$('#candlestick').html('');
-					drawStockChart(data.slice(-30), volumeData.slice(-30), data); 
+					drawStockChart(); 
 				}
 			});			   
 		};
@@ -118,17 +118,29 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 				valueOf: function () { return this.volume; }
 			}; } ).toArray();
 			
-			drawStockChart(data.slice(-30), volumeData.slice(-30), data); 
+			setTimeout( function () { drawStockChart(); }, 1); 
 		};
 		
 		var functionize = function (x) { 
 			return function () { return x; };
 		};
 		
-		var drawStockChart = function (data, volumeData, allData) {
+		var indexForDate = function (d) {
+			var i = 0;
+			while (data[i++].date < d) {}
+			return i-1;
+		};
+		
+		var drawStockChart = function () {
+
+			var startDate = parseDate($('#update-chart-form input[name=start]').val());
+			var endDate = parseDate($('#update-chart-form input[name=end]').val());
+
+			var subset = data.slice( indexForDate(startDate), indexForDate(endDate) + 1 );	
+			var volumeSubset = volumeData.slice( indexForDate(startDate), indexForDate(endDate) + 1 );	
 
 			$('#candlestick').chart({
-				data: functionize(data),
+				data: functionize(subset),
 				layers: [
 					"borders", 
 					["y-axis markers", 6, Money], 
@@ -141,14 +153,14 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 				marginLeft: 100,
 				marginRight: 10,
 				colors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
-				yMaxValue: Math.max.apply(null, $(data).map(function () { return this.high; } ).toArray()) + 1,
-				yMinValue: Math.min.apply(null, $(data).map(function () { return this.low; } ).toArray()) - 1,
+				yMaxValue: Math.max.apply(null, $(subset).map(function () { return this.high; } ).toArray()) + 1,
+				yMinValue: Math.min.apply(null, $(subset).map(function () { return this.low; } ).toArray()) - 1,
 				eventTarget: '#candlestick'
 			})
 		
 			.after('<div></div>').find('+div').css({width: $('#candlestick').width(), height: $('#candlestick').height() / 3, position: 'relative'})
 			.chart({
-				data: functionize(volumeData),
+				data: functionize(volumeSubset),
 				layers: [
 					"borders", 
 					["y-axis markers", 3, function (n) { return n / 1000 / 1000 + 'm'; }], 
@@ -167,23 +179,35 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 			
 			.after('<div id="scrubber"></div>').find('+div').css({width: $('#candlestick').width(), height: $('#candlestick').height() / 8})
 			.chart({
-				data: functionize(allData),
+				data: functionize(data),
 				layers: [
 					"borders", 
 					"area",
-					["scrubber", 469, 499]
+					["scrubber", indexForDate(startDate), indexForDate(endDate)]
 				],
 				marginBottom: 1,
 				marginTop: 1,
 				marginLeft: 100,
 				marginRight: 10,
 				colors: ['#ccc', 'rgb(101,3,96)'],
-				yMaxValue: Math.max.apply(null, $(allData).map(function () { return this.high; } ).toArray()) + 1,
-				yMinValue: Math.min.apply(null, $(allData).map(function () { return this.low; } ).toArray()) - 1			
+				yMaxValue: Math.max.apply(null, $(data).map(function () { return this.high; } ).toArray()) + 1,
+				yMinValue: Math.min.apply(null, $(data).map(function () { return this.low; } ).toArray()) - 1			
 			});
 
 
+			$('#scrubber').bind('selectedRangeChange.chart', function (event, start, end) {
 
+				var subset = data.slice( start, end+1 );
+				$('#candlestick').chart('option', 'yMaxValue', Math.max.apply(null, $(subset).map(function () { return this.high; } ).toArray()) + 1);
+				$('#candlestick').chart('option', 'yMinValue', Math.min.apply(null, $(subset).map(function () { return this.low; } ).toArray()) - 1);
+				$('#candlestick').chart('draw', subset);
+
+				$('#candlestick+div').chart('draw', volumeData.slice( start, end+1 ) );
+
+				$('#update-chart-form input[name=start]').val(formatDate( subset[0].date, 'yyyy-mm-dd' ));
+				$('#update-chart-form input[name=end]').val(formatDate( subset.slice(-1)[0].date, 'yyyy-mm-dd' ));
+
+			});
 
 
 			$('#candlestick').bind('focusDatum.chart', function (event, index, datum) {
@@ -194,6 +218,25 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 			   $('#daily-stock-details .high p').text(datum.high.toFixed(2));
 			   $('#daily-stock-details .low p').text(datum.low.toFixed(2));
 			});
+			
+			$('#update-chart-form').submit(function (e) {
+				e.preventDefault();
+
+				$('#candlestick').unbind('blurDatum.chart');
+
+				var startDate = parseDate($('#update-chart-form input[name=start]').val());
+				var endDate = parseDate($('#update-chart-form input[name=end]').val());
+
+				var subset = data.slice( indexForDate(startDate), indexForDate(endDate) + 1 );
+				$('#candlestick').chart('option', 'yMaxValue', Math.max.apply(null, $(subset).map(function () { return this.high; } ).toArray()) + 1);
+				$('#candlestick').chart('option', 'yMinValue', Math.min.apply(null, $(subset).map(function () { return this.low; } ).toArray()) - 1);
+				$('#candlestick').chart('draw', subset);
+
+				$('#candlestick+div').chart('draw', volumeData.slice( indexForDate(startDate), indexForDate(endDate) + 1) );
+
+				$('#scrubber').trigger('moveScrubIndex.chart', [ indexForDate(startDate), indexForDate(endDate) + 1	 ]); 
+			});
+			
 
 		};
 		
@@ -201,50 +244,9 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 		loadFromRandom();
 		//loadFromYahoo();
 		
-		$('#update-chart-form').submit(function (e) {
-			e.preventDefault();
-			
-			$('#candlestick').unbind('blurDatum.chart');
-			
-	
-			
-			var startDate = parseDate($('#update-chart-form input[name=start]').val());
-			var endDate = parseDate($('#update-chart-form input[name=end]').val());
 
+	   
 
-		  
-			
-			var indexForDate = function (d) {
-				var i = 0;
-			  
-				while (data[i++].date < d) {}
-				return i-1;
-			};
-			
-			
-			var subset = data.slice( indexForDate(startDate), indexForDate(endDate) + 1 );
-			$('#candlestick').chart('option', 'yMaxValue', Math.max.apply(null, $(subset).map(function () { return this.high; } ).toArray()) + 1);
-			$('#candlestick').chart('option', 'yMinValue', Math.min.apply(null, $(subset).map(function () { return this.low; } ).toArray()) - 1);
-			$('#candlestick').chart('draw', subset);
-			
-			$('#candlestick+div').chart('draw', volumeData.slice( indexForDate(startDate), indexForDate(endDate) + 1) );
-			 
-			$('#scrubber').trigger('moveScrubIndex.chart', [ indexForDate(startDate), indexForDate(endDate) + 1	 ]); 
-		});
-	   
-		$('#scrubber').bind('selectedRangeChange.chart', function (event, start, end) {
-			var subset = data.slice( start, end+1 );
-			$('#candlestick').chart('option', 'yMaxValue', Math.max.apply(null, $(subset).map(function () { return this.high; } ).toArray()) + 1);
-			$('#candlestick').chart('option', 'yMinValue', Math.min.apply(null, $(subset).map(function () { return this.low; } ).toArray()) - 1);
-			$('#candlestick').chart('draw', subset);
-			
-			$('#candlestick+div').chart('draw', volumeData.slice( start, end+1 ) );
-			
-			$('#update-chart-form input[name=start]').val(formatDate( subset[0].date, 'yyyy-mm-dd' ));
-			$('#update-chart-form input[name=end]').val(formatDate( subset.slice(-1)[0].date, 'yyyy-mm-dd' ));
-			
-		});
-	   
 	});
 });
 
