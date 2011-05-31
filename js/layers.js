@@ -250,21 +250,22 @@ return {
 		var data = this.data;
 		var eventTarget = this.eventTarget;
 		var container = this.container;
+		var containerOffsetLeft = $(container).offset().left;
 	
 		var oldColumnIndex;
 		
 		$('<div></div>')
 			.css({width: grid.width(), height: grid.height(), position: 'absolute', top: grid.yForTopEdge(), left: grid.xForLeftEdge()})
 			.mousemove(function (e) { 
-				newColumnIndex = grid.indexForX(e.pageX - $(container).offset().left);
+				newColumnIndex = grid.indexForX(e.pageX - containerOffsetLeft);
 				if (newColumnIndex !== oldColumnIndex) {
-
-					$(eventTarget).trigger('focusDatum.chart', [newColumnIndex, data[data.length-1][newColumnIndex]]);
-
+				 
+				 	$(eventTarget).trigger('focusDatum.chart', [newColumnIndex, data[data.length-1][newColumnIndex]]);
+			
 					if (oldColumnIndex !== undefined) {
 					   $(eventTarget).trigger('blurDatum.chart', [oldColumnIndex, data[data.length-1][oldColumnIndex]]);
 					}
-
+				
 					oldColumnIndex = newColumnIndex;
 				}
 			})
