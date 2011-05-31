@@ -77,7 +77,7 @@ return {
 		var paper = this.paper;
 		var grid = this.grid;
 		$(this.data[0]).each(function (i) {
-			paper.text(grid.xForIndex(i), grid.yForValue(this) - 10, this).attr('fill', COLORS.TEXT);
+			paper.text(grid.xForIndex(i), grid.yForValue(this) - 10, this).attr('fill', COLORS.TEXT);			
 		});
 	},
 
@@ -96,6 +96,7 @@ return {
 		var formatter = formatter || (function (n) { return n; }); 
 		var paper = this.paper;
 		var grid = this.grid;
+		var element = this.element;
 		var i, y;
 		var roughIncrement = Math.round( ( grid.yMaxValue() - grid.yMinValue() ) / (numberOfRows || 5));
 		var roundNumber = Math.pow(10, (Math.floor(Math.log(roughIncrement) / Math.LN10)) );
@@ -104,9 +105,14 @@ return {
 			if (i > grid.yMinValue()) {
 				y = 0.5 + grid.yForValue(i);
 				paper.path('M' + (grid.xForLeftEdge() + 0.5) + ' ' + y + 'L' + (grid.xForRightEdge() + 0.5) + ' ' + y ).attr('stroke', COLORS.LINES).attr('z-index', 0);
-				paper.text(grid.xForLeftEdge() + 0.5 - 5, grid.yForValue(i), formatter(i)).attr('text-anchor', 'end').attr('fill', COLORS.TEXT);
+				$('<span class="y-axis-label">' + formatter(i).toString() + '</span>').css({ position: 'absolute', left: grid.xForLeftEdge() - 105, top: grid.yForValue(i) - 7, width: '100px' }).appendTo(this.element);
 			}
 		}
+		return { 
+			remove: function () {
+				$(element).find('.y-axis-label').remove();
+			}
+		};
 	},
 
 	'borders': function () {
@@ -310,17 +316,21 @@ return {
 	},
 	
 	
-	'x-axis static dates': function () {
+	'x-axis date labels': function () {
 		var paper = this.paper;
 		var grid = this.grid;
 		var i;
-		var labels = ['Jan 2011', 'Feb 2011', 'Mar 2011', 'Apr 2011'];
 		var index;
+		var element = this.element;
 		for (i=0; i<4; i++) {
 			index = Math.round((i + 0.5) * this.data[0].length / 4);
-			paper.text(grid.xForIndex(index), grid.yForBottomEdge() + 10.5, formatDate(this.data[0][index].date)).attr('text-anchor', 'middle').attr('fill', COLORS.TEXT);
-		
+			$('<span class="x-axis-label">' + formatDate(this.data[0][index].date) + '</span>').css({ position: 'absolute', left: grid.xForIndex(index) - 50, top: grid.yForBottomEdge() + 5, width: '100px' }).appendTo(this.element);
 		}
+		return { 
+			remove: function () {
+				$(element).find('.x-axis-label').remove();
+			}
+		};
 	},
 	
 	'hover dots': function () {

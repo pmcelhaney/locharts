@@ -71,6 +71,7 @@ ALLY.define('chart', ['./grid', './layers'], function (Grid, builtInLayers) {
 				element: this.element[0],
 				eventTarget: options.eventTarget || this.element
 			};
+		
 
 			$.each(options.layers, function () {
 				var layer = this;
