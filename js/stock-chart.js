@@ -211,12 +211,12 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 
 
 			$('#candlestick').bind('focusDatum.chart', function (event, index, datum) {
-			   $('#daily-stock-details .date p').text(formatDate(datum.date));
-			   $('#daily-stock-details .volume p').text(datum.volume);
-			   $('#daily-stock-details .open p').text(datum.open.toFixed(2));
-			   $('#daily-stock-details .close p').text(datum.close.toFixed(2));
-			   $('#daily-stock-details .high p').text(datum.high.toFixed(2));
-			   $('#daily-stock-details .low p').text(datum.low.toFixed(2));
+			   $('#daily-stock-details td.date').text(formatDate(datum.date));
+			   $('#daily-stock-details td.volume').text(datum.volume);
+			   $('#daily-stock-details td.open').text(datum.open.toFixed(2));
+			   $('#daily-stock-details td.close').text(datum.close.toFixed(2));
+			   $('#daily-stock-details td.high').text(datum.high.toFixed(2));
+			   $('#daily-stock-details td.low').text(datum.low.toFixed(2));
 			});
 			
 			$('#update-chart-form').submit(function (e) {
