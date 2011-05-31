@@ -105,7 +105,7 @@ return {
 			if (i > grid.yMinValue()) {
 				y = 0.5 + grid.yForValue(i);
 				paper.path('M' + (grid.xForLeftEdge() + 0.5) + ' ' + y + 'L' + (grid.xForRightEdge() + 0.5) + ' ' + y ).attr('stroke', COLORS.LINES).attr('z-index', 0);
-				$('<span class="y-axis-label">' + formatter(i).toString() + '</span>').css({ position: 'absolute', left: grid.xForLeftEdge() - 105, top: grid.yForValue(i) - 7, width: '100px' }).appendTo(this.element);
+				$('<span class="y-axis-label">' + formatter(i).toString() + '</span>').css({ position: 'absolute', left: grid.xForLeftEdge() - 105, top: grid.yForValue(i) - 7, width: '100px' }).appendTo(this.container);
 			}
 		}
 		return { 
@@ -141,6 +141,7 @@ return {
 			return i + ': ' + value.toString();
 		};
 		
+		console.log(this.container);
 		var text = $('<div id="text"></div>')
 			.appendTo(this.element)
 			.css({ border: '2px solid ' + grid.color(0), 'border-radius': '5px', background: '#fff', width: width-10, height: height-10, padding: '5px', position: 'absolute', top: textPosition(0, data[0][0]).top, left: textPosition(0,	data[0][0]).left, 'font-size': '10px' })
@@ -148,6 +149,7 @@ return {
 	
 		
 		$(this.eventTarget).bind('focusDatum.chart', function (event, index, datum) {
+			console.log('moving bubble ' + index);
 			text.animate( textPosition(index, datum), 200, "linear", function () {
 				 $(this).css('border-color', grid.color(index));
 				 $(this).html(textContent(index, datum));
@@ -249,14 +251,14 @@ return {
 		var grid = this.grid;
 		var data = this.data;
 		var eventTarget = this.eventTarget;
-		var element = this.element;
+		var container = this.container;
 	
 		var oldColumnIndex;
 		
 		$('<div></div>')
 			.css({width: grid.width(), height: grid.height(), position: 'absolute', top: grid.yForTopEdge(), left: grid.xForLeftEdge()})
 			.mousemove(function (e) { 
-				newColumnIndex = grid.indexForX(e.pageX - $(element).offset().left);
+				newColumnIndex = grid.indexForX(e.pageX - $(container).offset().left);
 				if (newColumnIndex !== oldColumnIndex) {
 
 					$(eventTarget).trigger('focusDatum.chart', [newColumnIndex, data[data.length-1][newColumnIndex]]);
@@ -268,7 +270,7 @@ return {
 					oldColumnIndex = newColumnIndex;
 				}
 			})
-			.appendTo(element);
+			.appendTo(container);
 	
 
 		var lastX = 0;
@@ -326,7 +328,7 @@ return {
 		
 		for (i=0; i<howMany; i++) {
 			index = Math.floor((i + 0.5) * this.data[0].length / howMany);
-			$('<span class="x-axis-label">' + formatDate(this.data[0][index].date) + '</span>').css({ position: 'absolute', left: grid.xForIndex(index) - 50, top: grid.yForBottomEdge() + 5, width: '100px' }).appendTo(this.element);
+			$('<span class="x-axis-label">' + formatDate(this.data[0][index].date) + '</span>').css({ position: 'absolute', left: grid.xForIndex(index) - 50, top: grid.yForBottomEdge() + 5, width: '100px' }).appendTo(this.container);
 		}
 		return { 
 			remove: function () {

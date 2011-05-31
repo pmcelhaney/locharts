@@ -19,9 +19,9 @@ define(['layers', 'chart', './grid-spec', './ally-define-spec', './money-spec' ]
 
 
 
-		window.Raphael = function (t, w, h) { 
+		window.Raphael = function (c, w, h) { 
 			return { 
-				target: t,
+				container: c,
 				width: w,
 				height: h,
 				remove: function () {} 
@@ -57,7 +57,7 @@ define(['layers', 'chart', './grid-spec', './ally-define-spec', './money-spec' ]
 		});
 		
 		
-		it("should make the container element available to the layer", function () {
+		it("should make the target element available to the layer", function () {
 			var element;
 			var layer = function () {
 				 element = this.element;
@@ -69,6 +69,35 @@ define(['layers', 'chart', './grid-spec', './ally-define-spec', './money-spec' ]
 			});
 			
 			expect(element.id).toEqual('parentElement');
+		});
+		
+		
+		it("should make the container element available to the layer", function () {
+			var container;
+			var layer = function () {
+				 container = this.container;
+			};
+
+			var target = $('<div id="parentElement"></div>').chart({
+				 layers: [ layer ],
+				 data: [ [2, 4, 6, 8] ]
+			})[0];
+			
+			expect(container).toEqual(target.children[0]);
+		});
+		
+		it("should wrap in a relatively-positioned div", function () {
+			var element;
+			var layer = function () {
+				 element = this.element;
+			};
+			
+			var container = $('<div id="parentElement"></div>').chart({
+				 layers: [ layer ],
+				 data: [ [2, 4, 6, 8] ]
+			});
+			
+			expect(container.children().first().css('position')).toEqual('relative');
 		});
 		
 		it("should make the eventTarget available to the layer", function () {
@@ -258,8 +287,8 @@ define(['layers', 'chart', './grid-spec', './ally-define-spec', './money-spec' ]
 			
 			});
 		
-			it("should be added to the target element", function() {
-				expect(paper.target).toEqual(element[0]);
+			it("should be added to the relatively positioned wrapper inside the target element", function() {
+				expect(paper.container).toEqual(element[0].children[0]);
 			});
 	
 			it("should have the width and height of the target element", function () {

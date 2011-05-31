@@ -27,6 +27,7 @@ ALLY.define('chart', ['./grid', './layers'], function (Grid, builtInLayers) {
 		options: {	},
 		
 		_create: function () {
+			this.container = $('<div></div>').css('position', 'relative').appendTo(this.element[0])[0];
 			this.draw();
 		},
 		draw: function(newData) {
@@ -60,7 +61,7 @@ ALLY.define('chart', ['./grid', './layers'], function (Grid, builtInLayers) {
 				columnCount: data && data[0] ? data[0].length : undefined
 			});
 			
-			this.paper = Raphael(this.element[0], this.element.width(), this.element.height());
+			this.paper = Raphael(this.container, this.element.width(), this.element.height());
 			
 			var layers = this.layers = [];
 			
@@ -69,7 +70,8 @@ ALLY.define('chart', ['./grid', './layers'], function (Grid, builtInLayers) {
 				data: data,
 				paper: this.paper,
 				element: this.element[0],
-				eventTarget: options.eventTarget || this.element
+				container: this.container,
+				eventTarget: options.eventTarget || this.element[0]
 			};
 		
 

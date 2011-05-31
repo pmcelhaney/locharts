@@ -104,6 +104,8 @@ collaborates with these fields to draw something on the chart.
   used to map the chart's dimensions and data to paper coordinates.
 * **this.element** is a reference to the DOM element in which the chart is placed.
 * **this.eventTarget** is the scope to which jQuery custom events should be bound. By default, this.eventTarget === this.element.
+* **this.container** is a relatively-positioned div that contains the paper. It establishes a positioning
+  for HTML elements (e.g. text labels). 
 
 <pre>
 var layerThatPrintsDataInTheMiddleOfTheChart = function () {
