@@ -140,7 +140,7 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
     			eventTarget: '#candlestick'
     		})
 		
-    		.after('<div></div>').find('+div').css({width: $('#candlestick').width(), height: $('#candlestick').height() / 3})
+    		.after('<div></div>').find('+div').css({width: $('#candlestick').width(), height: $('#candlestick').height() / 3, position: 'relative'})
             .chart({
     			data: functionize(volumeData),
     			layers: [

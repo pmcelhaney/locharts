@@ -243,25 +243,27 @@ return {
 		var grid = this.grid;
 		var data = this.data;
 		var eventTarget = this.eventTarget;
+		var element = this.element;
 	
 	    var oldColumnIndex;
 	    
-	    this.paper.rect(grid.xForLeftEdge(), grid.yForTopEdge(), grid.width(), grid.height())
-	        .attr('fill', '#000')
-	        .attr('fill-opacity', 0)
-		    .attr('stroke-width', 0).mousemove(function (e) {
-	            newColumnIndex = grid.indexForX(event.x);
+		$('<div></div>')
+			.css({width: grid.width(), height: grid.height(), position: 'absolute', top: grid.yForTopEdge(), left: grid.xForLeftEdge()})
+			.mousemove(function (e) { 
+				newColumnIndex = grid.indexForX(e.pageX - $(element).offset().left);
 	            if (newColumnIndex !== oldColumnIndex) {
-	             
+
 	                $(eventTarget).trigger('focusDatum.chart', [newColumnIndex, data[data.length-1][newColumnIndex]]);
-	                
+
 	                if (oldColumnIndex !== undefined) {
 	                   $(eventTarget).trigger('blurDatum.chart', [oldColumnIndex, data[data.length-1][oldColumnIndex]]);
 	                }
-	                
+
 	                oldColumnIndex = newColumnIndex;
-	            }  
-	        });
+	            }
+		 	})
+			.appendTo(element);
+	
 
         var lastX = 0;
     	$(data[data.length-1]).each(function (i, datum) {
