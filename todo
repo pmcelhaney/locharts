@@ -1,3 +1,5 @@
-Select the last datapoint on load | id:6dc6002f708bd2a5864d0b64c8da092bda935acb
+add arrows to the scrubber so people can see how it works | id:44a8584f290a10953803f8578aa642bc5e4bf235
 Try delayedmousemove plugin for better performance in IE | id:6f6ab37a89c5f18ce842469d6e2acdc65d044957
+update current day dispaly to match comp | id:81fa448c1b4d71e0ba6c73f7bb25b984271629b5
+use form standard for date range form | id:a7d7b468aadb30aa258755cf61762a67eb33fe77
 The cursor doesn't change to ew on IE. | id:fa5aa647248bdbbe6701a4515644909ba06ce4c8

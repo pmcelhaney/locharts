@@ -1,12 +1,16 @@
+#candlestick {
+	width: 670px;
+	height: 220px;
+}
+
 #daily-stock-details {
 	position: relative;	   
-	height: 50px;
-	width: 599px;
+	width: 630px;
 	list-style: none;
-	padding: 0 45px;
-	margin: 0 0 0 100px;
-	background-color: #FBFBFB;
-	border: 1px solid #DCDFE3;
+	padding: 0;
+	margin: 0 0 0 40px;
+	border: 1px solid #DCDFE3; 
+	overflow: auto;
 }
 
 #daily-stock-details h3 {
@@ -15,19 +19,34 @@
 
 #daily-stock-details h4 {
 	font-size: 13px;
-	margin: 5px 0 0 0;
+	margin: 0;
+	text-align: left;
+	text-transform: lowercase;
+	background-color: white;
+	display: block;
+	width: 95px;
+	padding: 2px 0 2px 8px;
+	color: #645050;
+	border: 1px solid #DCDFE3;
+	
 }
 
 #daily-stock-details p {
 	font-size: 13px;
-	margin-top: 0;
+	margin: 0;
+	text-align: left;
+	color: #645050;
+	background-color: #E7F6FC;
+	width: 97px;
+	padding: 5px 0 5px 8px;
 }
+
 
 
 #daily-stock-details li {
 	float: left;
-	width: 99px;
-	text-align: center;
+	width: 105px;
+	margin: 0;
 }
 
 form {
@@ -46,10 +65,12 @@ form {
 
 .y-axis-label {
 	text-align: right;
+	color: #645050;
 }
 
 .x-axis-label {
 	text-align: center;
+	color: #645050;
 }
 
 

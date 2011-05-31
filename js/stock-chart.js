@@ -150,15 +150,15 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 				],
 				marginBottom: 1,
 				marginTop: 10,
-				marginLeft: 100,
-				marginRight: 10,
+				marginLeft: 40,
+				marginRight: 1,
 				colors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
 				yMaxValue: Math.max.apply(null, $(subset).map(function () { return this.high; } ).toArray()) + 1,
 				yMinValue: Math.min.apply(null, $(subset).map(function () { return this.low; } ).toArray()) - 1,
 				eventTarget: '#candlestick'
 			})
 		
-			.after('<div></div>').find('+div').css({width: $('#candlestick').width(), height: $('#candlestick').height() / 3, position: 'relative'})
+			.after('<div></div>').find('+div').css({width: $('#candlestick').width(), height: 100, position: 'relative'})
 			.chart({
 				data: functionize(volumeSubset),
 				layers: [
@@ -170,14 +170,14 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 				],
 				marginBottom: 20,
 				marginTop: 10,
-				marginLeft: 100,
-				marginRight: 10,
+				marginLeft: 40,
+				marginRight: 1,
 				colors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
 				eventTarget: '#candlestick'
 			})
 			
 			
-			.after('<div id="scrubber"></div>').find('+div').css({width: $('#candlestick').width(), height: $('#candlestick').height() / 8})
+			.after('<div id="scrubber"></div>').find('+div').css({width: $('#candlestick').width(), height: 50})
 			.chart({
 				data: functionize(data),
 				layers: [
@@ -187,8 +187,8 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 				],
 				marginBottom: 1,
 				marginTop: 1,
-				marginLeft: 100,
-				marginRight: 10,
+				marginLeft: 40,
+				marginRight: 1,
 				colors: ['#ccc', 'rgb(101,3,96)'],
 				yMaxValue: Math.max.apply(null, $(data).map(function () { return this.high; } ).toArray()) + 1,
 				yMinValue: Math.min.apply(null, $(data).map(function () { return this.low; } ).toArray()) - 1			
@@ -237,7 +237,7 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 				$('#scrubber').trigger('moveScrubIndex.chart', [ indexForDate(startDate), indexForDate(endDate) + 1	 ]); 
 			});
 			
-
+			$('#candlestick').trigger('focusDatum.chart', [subset.length-1, subset[subset.length-1]]);
 		};
 		
 
