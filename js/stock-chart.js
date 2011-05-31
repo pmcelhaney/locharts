@@ -112,7 +112,7 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
                 valueOf: function () { return this.volume; }
             }; } ).toArray();
             
-            drawStockChart(data.slice(-90), volumeData.slice(-90), data); 
+            drawStockChart(data.slice(-30), volumeData.slice(-30), data); 
 		};
 		
 		var functionize = function (x) { 
@@ -165,7 +165,7 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
     			layers: [
     				"borders", 
     				"area",
-    				["scrubber", 409, 499]
+    				["scrubber", 469, 499]
     			],
     			marginBottom: 1,
     			marginTop: 1,
