@@ -233,7 +233,6 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 		});
 	   
 		$('#scrubber').bind('selectedRangeChange.chart', function (event, start, end) {
-			console.log('receiving change');
 			var subset = data.slice( start, end+1 );
 			$('#candlestick').chart('option', 'yMaxValue', Math.max.apply(null, $(subset).map(function () { return this.high; } ).toArray()) + 1);
 			$('#candlestick').chart('option', 'yMinValue', Math.min.apply(null, $(subset).map(function () { return this.low; } ).toArray()) - 1);
