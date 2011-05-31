@@ -1,5 +1,10 @@
 ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 
+    var parseDate = function (s) {
+           parts = s.split('-');
+           return new Date(+parts[0], +parts[1]-1, +parts[2]);
+    };
+
     var TradingDay = function (v, o, h, l, c, d) {
 
         return {
@@ -74,7 +79,7 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
                 success: function (yqlData) {  
                     data = $(yqlData.query.results.quote).map(function () { 
                         return { 
-                            date: this.Date, 
+                            date: parseDate(this.date), 
                             volume: +this.Volume, 
                             open: +this.Open,
                             close: +this.Close,
@@ -83,6 +88,7 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
                             valueOf: function () { return this.close; }
                         };
                     }).toArray();
+
                     volumeData = $(data).map(function () { 
                         return { 
                             date: this.date, 
@@ -95,7 +101,7 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
                         }; 
                     } ).toArray();
                     $('#candlestick').html('');
-                    drawStockChart(data, volumeData, data);
+                    drawStockChart(data.slice(-30), volumeData.slice(-30), data); 
                 }
             });            
         };
@@ -200,10 +206,7 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
             
             $('#candlestick').unbind('blurDatum.chart');
             
-            var parseDate = function (s) {
-                parts = s.split('-');
-                return new Date(+parts[0], +parts[1]-1, +parts[2]);
-            };
+    
             
             var startDate = parseDate($('#update-chart-form input[name=start]').val());
             var endDate = parseDate($('#update-chart-form input[name=end]').val());
@@ -230,8 +233,7 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
         });
        
         $('#scrubber').bind('selectedRangeChange.chart', function (event, start, end) {
- 
-            
+ 			console.log('receiving change');
             var subset = data.slice( start, end+1 );
             $('#candlestick').chart('option', 'yMaxValue', Math.max.apply(null, $(subset).map(function () { return this.high; } ).toArray()) + 1);
             $('#candlestick').chart('option', 'yMinValue', Math.min.apply(null, $(subset).map(function () { return this.low; } ).toArray()) - 1);
