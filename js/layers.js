@@ -141,15 +141,13 @@ return {
 			return i + ': ' + value.toString();
 		};
 		
-		console.log(this.container);
 		var text = $('<div id="text"></div>')
-			.appendTo(this.element)
+			.appendTo(this.container)
 			.css({ border: '2px solid ' + grid.color(0), 'border-radius': '5px', background: '#fff', width: width-10, height: height-10, padding: '5px', position: 'absolute', top: textPosition(0, data[0][0]).top, left: textPosition(0,	data[0][0]).left, 'font-size': '10px' })
 			.html(textContent(0, data[0][0]));
 	
 		
 		$(this.eventTarget).bind('focusDatum.chart', function (event, index, datum) {
-			console.log('moving bubble ' + index);
 			text.animate( textPosition(index, datum), 200, "linear", function () {
 				 $(this).css('border-color', grid.color(index));
 				 $(this).html(textContent(index, datum));
