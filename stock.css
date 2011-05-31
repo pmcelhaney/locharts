@@ -1,37 +1,37 @@
 #daily-stock-details {
-    position: relative;    
-    height: 50px;
-    width: 599px;
-    list-style: none;
-    padding: 0 45px;
-    margin: 0 0 0 100px;
-    background-color: #FBFBFB;
-    border: 1px solid #DCDFE3;
+	position: relative;	   
+	height: 50px;
+	width: 599px;
+	list-style: none;
+	padding: 0 45px;
+	margin: 0 0 0 100px;
+	background-color: #FBFBFB;
+	border: 1px solid #DCDFE3;
 }
 
 #daily-stock-details h3 {
-    display: none;
+	display: none;
 }
 
 #daily-stock-details h4 {
-    font-size: 13px;
-    margin: 5px 0 0 0;
+	font-size: 13px;
+	margin: 5px 0 0 0;
 }
 
 #daily-stock-details p {
-    font-size: 13px;
-    margin-top: 0;
+	font-size: 13px;
+	margin-top: 0;
 }
 
 
 #daily-stock-details li {
-    float: left;
-    width: 99px;
-    text-align: center;
+	float: left;
+	width: 99px;
+	text-align: center;
 }
 
 form {
-    margin-top: 20px;
+	margin-top: 20px;
 }
 
 #article {

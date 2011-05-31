@@ -4,16 +4,16 @@ ALLY.define('money', [], function () {
 		var left = parts[0];
 		var right = parts[1];
 		var result = "";
-        var i;
-        
+		var i;
+		
 		for (i=0; i<left.length; i++) { 
 			if ((left.length - i) % 3 === 0 && i != 0) { 
-			    result += ","; 
+				result += ","; 
 			} 
 			result += left.charAt(i);
 		}
 	
-    
+	
 		return result + '.' + right;	
 	};
 	
@@ -23,7 +23,7 @@ ALLY.define('money', [], function () {
 		return Math.round( ( endDate - startDate ) / MILLISECONDS_IN_A_DAY ); 
 	};
 
-	var applyInterestBetweenStartAndEndDates =  function(principal, apr, startDate, endDate) {
+	var applyInterestBetweenStartAndEndDates =	function(principal, apr, startDate, endDate) {
 		return principal * Math.pow(1 + ((apr/100)/365), daysBetweenDates(startDate, endDate));
 	};
 	
@@ -41,7 +41,7 @@ ALLY.define('money', [], function () {
 		if (params.years) {
 			params.endDate = addYears(params.startDate, params.years);
 		}
-		 		
+				
 		var newBalance = applyInterestBetweenStartAndEndDates(principal, params.apr, params.startDate, params.endDate);
 	
 		return Money(newBalance - principal); 

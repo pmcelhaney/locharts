@@ -9,14 +9,14 @@ ALLY.define('examples', ['chart', 'money'], function (chart, Money) {
 
 
 	$(function() {
-	    var labels = ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)'];
-	    
+		var labels = ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)'];
+		
 		$('#bar').chart({
 			data: [Money(50598.54), Money(51204.25), Money(51817.21), Money(52437.51)],
 			layers: [
 				"borders", 
 				["y-axis markers", 6, Money], 
-				"x-axis label separators",  
+				"x-axis label separators",	
 				["x-axis labels", ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)']], 
 				"bars", 
 				"values above points", 
@@ -37,8 +37,8 @@ ALLY.define('examples', ['chart', 'money'], function (chart, Money) {
 			layers: [
 				"borders", 
 				["y-axis markers", 6, Money], 
-				"x-axis label separators",  
-				["x-axis labels", ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)']],   
+				"x-axis label separators",	
+				["x-axis labels", ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)']],	 
 				"lines",
 				"dots"
 			],
@@ -60,8 +60,8 @@ ALLY.define('examples', ['chart', 'money'], function (chart, Money) {
 			layers: [
 				"borders", 
 				["y-axis markers", 6, Money], 
-				"x-axis label separators",  
-				["x-axis labels", ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)']],  
+				"x-axis label separators",	
+				["x-axis labels", ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)']],	
 				"area",
 				"dots"
 			],
@@ -75,24 +75,24 @@ ALLY.define('examples', ['chart', 'money'], function (chart, Money) {
 		
 		$('#differential-area').chart({
 			edgeToEdge: true,
-            data: $('#raise-your-rate-data').find('tbody tr').map(
-                function () { 
-                    return [ 
-                        $(this).find('td').map(function () { 
-                            return Money(parseInt($(this).text(), 10)); 
-                        }).toArray()
-                    ]; 
-                } ).toArray(),
+			data: $('#raise-your-rate-data').find('tbody tr').map(
+				function () { 
+					return [ 
+						$(this).find('td').map(function () { 
+							return Money(parseInt($(this).text(), 10)); 
+						}).toArray()
+					]; 
+				} ).toArray(),
 			layers: [
 				"borders", 
 				["y-axis markers", 6, Money], 
-				"x-axis label separators",  
-				["x-axis labels", ['Deposit'].concat($('#raise-your-rate-data').find('tbody tr').find('th:eq(0)').map(function () { return $(this).text(); }).toArray())],  
+				"x-axis label separators",	
+				["x-axis labels", ['Deposit'].concat($('#raise-your-rate-data').find('tbody tr').find('th:eq(0)').map(function () { return $(this).text(); }).toArray())],	
 				"differential area",
 				"lines",
 				"dots",
 				["bubble", function (i) { 
-				    return (i == 3 ? 'Final balance' : ['1st', '2nd', '3rd'][i] + ' rate: ' + $('#raise-your-rate-data tbody tr').eq(i).find('th:eq(1)').text() + '%') + '<br>Date: ' + $('#raise-your-rate-data thead th').eq(i+2).text(); 
+					return (i == 3 ? 'Final balance' : ['1st', '2nd', '3rd'][i] + ' rate: ' + $('#raise-your-rate-data tbody tr').eq(i).find('th:eq(1)').text() + '%') + '<br>Date: ' + $('#raise-your-rate-data thead th').eq(i+2).text(); 
 				}],
 				"column hotspots"
 			],
@@ -101,7 +101,7 @@ ALLY.define('examples', ['chart', 'money'], function (chart, Money) {
 			marginTop: 40,
 			marginLeft: 100,
 			marginRight: 50,
-            colors: ["rgb(82,182,101)","rgb(233,126,0)","rgb(31,124,166)", "rgb(127,127,127)"],
+			colors: ["rgb(82,182,101)","rgb(233,126,0)","rgb(31,124,166)", "rgb(127,127,127)"],
 			fillColors: ["rgb(255,255,255)","rgba(136,211,245)", "rgba(44,18,98)"],
 			yMinValue: 49000,
 			yMaxValue: 56000
@@ -109,47 +109,47 @@ ALLY.define('examples', ['chart', 'money'], function (chart, Money) {
 		
 		
 		var TradingDay = function (v, o, h, l, c, d) {
-		    
-		    return {
-		        high: h,
-		        low: l,
-		        open: o,
-		        close: c,
-		        date: d,
-		        volume: v,
-		        valueOf: function () { return this.close; }      
-		    };
+			
+			return {
+				high: h,
+				low: l,
+				open: o,
+				close: c,
+				date: d,
+				volume: v,
+				valueOf: function () { return this.close; }		 
+			};
 		};
 		
 		
 		var randomTradingDays = function (n) {
-		    var i;
-		    var tradingDays = [];
-		    var day;
-		    var lastClose = 30;
-		    var previousDate = new Date(2010,01,04);
-		    for (i = 0; i<n; i++) {
-		        day = TradingDay();
-		        day.open = lastClose + ( Math.pow(1 + Math.random(), 2) - Math.pow(1 + Math.random(), 2) ) / 10;
-		        day.high = lastClose + Math.pow(1 + Math.random() * 0.5, 3);
-		        day.low  = Math.max(Math.random(), lastClose - Math.pow(1 + Math.random() * 0.5, 3));
-		        day.close = day.low + Math.random() * (day.high - day.low);
-		        day.date = new Date(previousDate.getTime() + 24 * 60 * 60 * 1000 * (previousDate.getDay() == 6 ? 3 : 1));
-			    day.volume = 1000 + Math.round( Math.sqrt(Math.random() * 50000 * 50000) );
-		        tradingDays.push(day);
-		        previousDate = day.date;
-		        lastClose = day.close;
-		        
-		    }
-		    
-		    return tradingDays;
+			var i;
+			var tradingDays = [];
+			var day;
+			var lastClose = 30;
+			var previousDate = new Date(2010,01,04);
+			for (i = 0; i<n; i++) {
+				day = TradingDay();
+				day.open = lastClose + ( Math.pow(1 + Math.random(), 2) - Math.pow(1 + Math.random(), 2) ) / 10;
+				day.high = lastClose + Math.pow(1 + Math.random() * 0.5, 3);
+				day.low	 = Math.max(Math.random(), lastClose - Math.pow(1 + Math.random() * 0.5, 3));
+				day.close = day.low + Math.random() * (day.high - day.low);
+				day.date = new Date(previousDate.getTime() + 24 * 60 * 60 * 1000 * (previousDate.getDay() == 6 ? 3 : 1));
+				day.volume = 1000 + Math.round( Math.sqrt(Math.random() * 50000 * 50000) );
+				tradingDays.push(day);
+				previousDate = day.date;
+				lastClose = day.close;
+				
+			}
+			
+			return tradingDays;
 		};
 
   
-       
+	   
 
-            
-       
+			
+	   
 	});
 });
 

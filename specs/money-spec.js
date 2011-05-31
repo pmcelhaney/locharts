@@ -1,5 +1,5 @@
 define(["money"], function(Money) {
-   	describe("Money", function () {
+	describe("Money", function () {
 		/* 
 			.calculateInterest({apr, years})
 			.plusInterest({apr, years})
@@ -44,5 +44,5 @@ define(["money"], function(Money) {
 		});
 	
 	}); 
-    
+	
 });

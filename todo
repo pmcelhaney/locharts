@@ -1,7 +1,6 @@
 Load chart initially with values in the form. | id:465262da2f157767152385a8077b181ea26ad9dc
 Try delayedmousemove plugin for better performance in IE | id:6f6ab37a89c5f18ce842469d6e2acdc65d044957
 Wrap in a relatively positioned div automatically | id:7fd159cb6556441f8c5b1b75ca0d6969f0d1f86a
-add Convert spaces back to tabs. | id:88d208ea009758a7881c42e0519d226d737cc068
 Improve dates on the x axis | id:9d42757d6ca71da2f51748927976e0a40dae678b
 change text to divs | id:d91edf2dab420cd94ab3f89289489bb9cbae18c7
 The cursor doesn't change to ew on IE. | id:fa5aa647248bdbbe6701a4515644909ba06ce4c8

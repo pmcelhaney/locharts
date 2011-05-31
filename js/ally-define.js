@@ -27,7 +27,7 @@ ALLY.define('car', ['wheels', 'engine'], function (wheels, engine)) {
 	// A whole bunch of code
 	
 
-	return { ... };	
+	return { ... }; 
 });
 
 This format will make it possible to later use an Asynchronous Module Definitions (AMD) loader
@@ -41,10 +41,10 @@ ALLY.define = function (name, dependencies, fn) {
 		return define(name, dependencies, fn);
 	}
 	
-    var i;
-    var args = [];
-    for (i=0; i < dependencies.length; i++) {
-        args.push(ALLY[ dependencies[i].split('/').slice(-1)[0] ]); 
-    }
-    ALLY[name] = fn.apply(this, args);
+	var i;
+	var args = [];
+	for (i=0; i < dependencies.length; i++) {
+		args.push(ALLY[ dependencies[i].split('/').slice(-1)[0] ]); 
+	}
+	ALLY[name] = fn.apply(this, args);
 };

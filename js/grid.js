@@ -41,21 +41,21 @@ ALLY.define('grid', [], function () {
 			},
 			
 			indexForX: function (x) {
-			    var ratio =  (x - this.xForLeftEdge()) / width;
-			    
-			    if (xValues) {
-			        var i = 0;
-			        var min = 0;
-			        for (i = 0; i < xValues.length; i++) {
-			            if ( this.xForIndex(i) == x) {
-			                return i;
-			            }
-			            if ( this.xForIndex(i) > x) {
-			                return ( i > 0 && this.xForIndex(i) - x > x - this.xForIndex(i-1) ) ? i-1 : i; 
-			            } 
-			        }
-			        return xValues.length - 1;
-			    }
+				var ratio =	 (x - this.xForLeftEdge()) / width;
+				
+				if (xValues) {
+					var i = 0;
+					var min = 0;
+					for (i = 0; i < xValues.length; i++) {
+						if ( this.xForIndex(i) == x) {
+							return i;
+						}
+						if ( this.xForIndex(i) > x) {
+							return ( i > 0 && this.xForIndex(i) - x > x - this.xForIndex(i-1) ) ? i-1 : i; 
+						} 
+					}
+					return xValues.length - 1;
+				}
 				else if (edgeToEdge) {
 					return Math.round( ratio * (columnCount-1) );
 				} else {
@@ -64,7 +64,7 @@ ALLY.define('grid', [], function () {
 			},
 		
 			yForValue: function (value) {
-			    if (isNaN(value)) return 0;
+				if (isNaN(value)) return 0;
 				return Math.round( this.yForBottomEdge() - (value - yMinValue) * ( height / (yMaxValue - yMinValue) ) );
 			},
 		
