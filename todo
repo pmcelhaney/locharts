@@ -1,5 +1,4 @@
 add arrows to the scrubber so people can see how it works | id:44a8584f290a10953803f8578aa642bc5e4bf235
-remove the opacity on the bars on the volume chart | id:66510d03033de6bb593fe899eb7274239f51afa5
 Try delayedmousemove plugin for better performance in IE | id:6f6ab37a89c5f18ce842469d6e2acdc65d044957
 Jumping from bar graph to candlestick and vice-versa can leave an extra bar highlighted | id:76bb20d9c665c283046a03833115bb67ed17d363
 update current day dispaly to match comp | id:81fa448c1b4d71e0ba6c73f7bb25b984271629b5

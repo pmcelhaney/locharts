@@ -165,7 +165,7 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 					"borders", 
 					["y-axis markers", 3, function (n) { return n / 1000 / 1000 + 'm'; }], 
 					"x-axis date labels",	
-					["bars", 0.5],
+					["bars", 0.5, 1],
 					"column hotspots"			
 				],
 				marginBottom: 20,
