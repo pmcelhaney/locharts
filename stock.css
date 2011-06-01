@@ -1,6 +1,49 @@
-#candlestick {
+#stock-filter-form {
 	width: 670px;
-	height: 220px;
+	position: relative;
+	height: 40px;
+}
+
+#stock-filter-form fieldset {
+	border: 0;
+}
+
+#stock-filter-form legend {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	font-weight: bold;
+}
+
+#stock-filter-form .absolute-position-wrapper {
+	position: absolute;
+	top: 10px;
+}
+
+#stock-filter-form .wrapper-from {
+	left: 75px;
+}
+
+#stock-filter-form .wrapper-to {
+	left: 250px;
+}
+
+#stock-filter-form .wrapper-filter {
+	left: 435px;
+	top: -3px;
+}
+
+#stock-filter-form .item {
+	width: 100px;
+}
+
+
+#stock-filter-form .control {
+	left: 55px;
+}
+
+#stock-filter-form label {
+	width: 50px;
 }
 
 #daily-stock-details {
@@ -14,40 +57,20 @@
 	display: none;
 }
 
+
+
 #daily-stock-details th {
-	font-size: 12px;
-	margin: 0;
-	text-align: left;
 	text-transform: lowercase;
-	background-color: white;
-	width: 95px;
-	padding: 2px 5px;
-	color: #645050;
-	border: 1px solid #DCDFE3;
-	
+	width: 105px;
 }
 
 #daily-stock-details td {
-	font-size: 12px;
-	margin: 0;
-	text-align: left;
-	color: #645050;
-	background-color: #E7F6FC;
-	width: 95px;
-	padding: 2px 5px;
-
+	width: 105px;
 }
 
-
-
-
-
-form {
-	margin-top: 20px;
-}
-
-#article {
-	padding: 0 50px;
+#candlestick {
+	width: 670px;
+	height: 220px;
 }
 
 .y-axis-label, .x-axis-label {

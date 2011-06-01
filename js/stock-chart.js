@@ -133,8 +133,8 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 		
 		var drawStockChart = function () {
 
-			var startDate = parseDate($('#update-chart-form input[name=start]').val());
-			var endDate = parseDate($('#update-chart-form input[name=end]').val());
+			var startDate = parseDate($('#stock-filter-form input[name=start]').val());
+			var endDate = parseDate($('#stock-filter-form input[name=end]').val());
 
 			var subset = data.slice( indexForDate(startDate), indexForDate(endDate) + 1 );	
 			var volumeSubset = volumeData.slice( indexForDate(startDate), indexForDate(endDate) + 1 );	
@@ -204,8 +204,8 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 
 				$('#candlestick+div').chart('draw', volumeData.slice( start, end+1 ) );
 
-				$('#update-chart-form input[name=start]').val(formatDate( subset[0].date, 'yyyy-mm-dd' ));
-				$('#update-chart-form input[name=end]').val(formatDate( subset.slice(-1)[0].date, 'yyyy-mm-dd' ));
+				$('#stock-filter-form input[name=start]').val(formatDate( subset[0].date, 'yyyy-mm-dd' ));
+				$('#stock-filter-form input[name=end]').val(formatDate( subset.slice(-1)[0].date, 'yyyy-mm-dd' ));
 
 			});
 
@@ -219,13 +219,13 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 			   $('#daily-stock-details td.low').text(datum.low.toFixed(2));
 			});
 			
-			$('#update-chart-form').submit(function (e) {
+			$('#stock-filter-form').submit(function (e) {
 				e.preventDefault();
 
 				$('#candlestick').unbind('blurDatum.chart');
 
-				var startDate = parseDate($('#update-chart-form input[name=start]').val());
-				var endDate = parseDate($('#update-chart-form input[name=end]').val());
+				var startDate = parseDate($('#stock-filter-form input[name=start]').val());
+				var endDate = parseDate($('#stock-filter-form input[name=end]').val());
 
 				var subset = data.slice( indexForDate(startDate), indexForDate(endDate) + 1 );
 				$('#candlestick').chart('option', 'yMaxValue', Math.max.apply(null, $(subset).map(function () { return this.high; } ).toArray()) + 1);

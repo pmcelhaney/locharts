@@ -17,7 +17,7 @@
 <link href="/files/pres/pc-tabs.css?1303454071" rel="stylesheet" type="text/css" media="screen" />
 <link href="/files/pres/rate-sprite.css?1303454092" rel="stylesheet" type="text/css" media="print, screen" />
 <link href="/files/pres/quirks-webkit.css?1303454083" rel="stylesheet" type="text/css" media="screen" />
-<link href="/files/pres/home.css?1304002561" rel="stylesheet" type="text/css" media="screen" />
+<link href="/files/pres/home.css?1304002561" rel="stylesheet" type="text/css" media="screen" /> 
 <!--[if gte IE 8]><link href="/files/pres/quirks8.css?1303455183" rel="stylesheet" type="text/css" media="print, screen" /><![endif]-->
 <!--[if lte IE 7]><link href="/files/pres/quirks7.css?1305217978" rel="stylesheet" type="text/css" media="print, screen" /><![endif]-->
 <!--[if lte IE 6]><link href="/files/pres/quirks6.css?1305217976" rel="stylesheet" type="text/css" media="print, screen" /><![endif]-->
@@ -60,13 +60,21 @@
 <script src="js/ally-define.js" type="text/javascript" charset="utf-8"></script>
 <script src="globals/require.js" type="text/javascript" charset="utf-8" data-main="js/stock-chart"></script>
 
-
+<!--[if lte IE 7]>
+<style type="text/css" media="screen">
+	#stock-filter-form label { 
+		left: -40px;
+	}
+</style>
+<![endif]-->
+	
 
 </head>
 
 <body>
 	
 <div id="page">
+<!--[if lte IE 7]><iframe id="jshistory-frame" src="/files/pres/images/logo.png" tabindex="-1" hidefocus="true"></iframe><![endif]-->
 		
 <div id="header"></div>
 
@@ -75,26 +83,49 @@
 <div id="limit">
 <div id="article">
 
-<!-- <h2>Default Chart from Thompson-Reuters</h2>
-
-<img src="tr-chart.gif" width="579" height="335" alt="Tr Chart">
 
 
-<h2>Obviously Better Chart</h2>
- -->
+<form id="stock-filter-form">
+	
+	
+	
+	
+	<fieldset>
+		<legend>Timeframe</legend>
+		
+		
+		<div class="absolute-position-wrapper wrapper-from">
+			<div class="item text required calendar">
+				<label for="startdate">From:</label>
+				<div class="control">
+					<input type="text" id="startdate" name="start"  value="2010-03-15" class="w080 hasDatepicker">
+				</div>
+			</div>
+		</div>
 
+		
+		<div class="absolute-position-wrapper wrapper-to">
+			<div id="stock-filter-control-to" class="item text required calendar">
+				<label for="enddate">To:</label>
+				<div class="control">
+					<input type="text" id="enddate" name="end"  value="2010-05-31"  class="w080 hasDatepicker">
+				</div>
+			</div>
+		</div>
 
-<form id="update-chart-form">
-	Date range:
-	<input type="date" name="start" value="2011-01-02">
-	to 
-	<input type="date" name="end" value="2011-03-31">
-
-	<input type="submit" value="Update" >
+		<div class="absolute-position-wrapper wrapper-filter">
+			<div id="stock-filter-control-button" class="btns">	
+				<input class="btn-link btn btn-submit"  type="submit" value="filter" hidefocus="true"/>
+			</div>
+		</div>
+	
+	</fieldset>
+	
 </form>
 
-<table id="daily-stock-details">
+<table id="daily-stock-details" class="stdtable zebra">
 	<caption>Daily Stock Details</caption>
+
 	<thead>
 		<tr>
 			<th>Date</th>
@@ -106,7 +137,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
+		<tr class="rowb">
 			<td class="date"></td>
 			<td class="volume"></td>
 			<td class="high"></td>
