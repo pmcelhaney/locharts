@@ -244,7 +244,6 @@ return {
 	},
 	
 	'column hotspots': function () {
-		
 		var paper = this.paper;
 		var grid = this.grid;
 		var data = this.data;
@@ -255,7 +254,7 @@ return {
 		var oldColumnIndex;
 		
 		$('<div></div>')
-			.css({width: grid.width(), height: grid.height(), position: 'absolute', top: grid.yForTopEdge(), left: grid.xForLeftEdge()})
+			.css({'background-color': '#fff', opacity: 0, width: grid.width(), height: grid.height(), position: 'absolute', top: grid.yForTopEdge(), left: grid.xForLeftEdge()})
 			.mousemove(function (e) { 
 				newColumnIndex = grid.indexForX(e.pageX - containerOffsetLeft);
 				if (newColumnIndex !== oldColumnIndex) {
