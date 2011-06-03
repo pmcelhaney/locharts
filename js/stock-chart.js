@@ -1,9 +1,5 @@
 ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 
-	var parseDate = function (s) {
-		   parts = s.split('-');
-		   return new Date(+parts[0], +parts[1]-1, +parts[2]);
-	};
 
 	var TradingDay = function (v, o, h, l, c, d) {
 
@@ -23,19 +19,19 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 		var i;
 		var tradingDays = [];
 		var day;
-		var lastClose = 30;
-		var previousDate = new Date(2010,01,04);
+		var lastOpen = 75;
+		var previousDate = new Date();
 		for (i = 0; i<n; i++) {
 			day = TradingDay();
-			day.open = lastClose + ( Math.pow(1 + Math.random(), 2) - Math.pow(1 + Math.random(), 2) ) / 10;
-			day.high = lastClose + Math.pow(1 + Math.random() * 0.5, 3);
-			day.low	 = Math.max(Math.random(), lastClose - Math.pow(1 + Math.random() * 0.5, 3));
-			day.close = day.low + (Math.random() * 0.99 + 0.01 ) * (day.high - day.low); // Slightly biased to higher closes.
-			day.date = new Date(previousDate.getTime() + 24 * 60 * 60 * 1000 * (previousDate.getDay() == 6 ? 3 : 1));
+			day.close = lastOpen + ( Math.pow(1 + Math.random(), 2) - Math.pow(1 + Math.random(), 2) ) / 10;
+			day.high = lastOpen + Math.pow(1 + Math.random() * 0.5, 3);
+			day.low	 = Math.max(Math.random(), lastOpen - Math.pow(1 + Math.random() * 0.5, 3));
+			day.open = day.low + (Math.random() * 0.99) * (day.high - day.low); // Slightly biased to lower opens (counting backward).
+			day.date = new Date(previousDate.getTime() - 24 * 60 * 60 * 1000 * (previousDate.getDay() == 1 ? 3 : 1));
 			day.volume = Math.round( 1000 * 1000 * 10.2 - 1000 * 1000 * 10 * Math.pow(Math.random(), 0.2) );
-			tradingDays.push(day);
+			tradingDays.unshift(day);
 			previousDate = day.date;
-			lastClose = day.close;
+			lastOpen = day.open;
 
 		}
 
@@ -43,19 +39,13 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 	};
 
 
-	var formatDate = function(d, format) {
+	var formatDate = function(d) {
 		var twoDigits = function(n) {
 			return n > 9 ? n : '0' + n;
 		};
 		if (!d.getMonth) {
 			return d;
 		}
-		
-		
-		if (format === 'yyyy-mm-dd') {
-			return d.getFullYear() + '-' + twoDigits(d.getMonth() + 1) + '-' + twoDigits(d.getDate())  ;		
-		} 
-		
 		return twoDigits(d.getMonth() + 1) + '/' + twoDigits(d.getDate()) + '/' + d.getFullYear();	
 	};
 	
@@ -63,9 +53,22 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 	
 
 	$(function() {
-		var data, volumeData;  
+
+		var form = $('#stock-filter-form');
+		var startDateField = $('input[name=start]', form);
+		var endDateField = $('input[name=end]', form);
+
+		var data = []; 
+		var volumeData = [];  
 
 		var loadFromYahoo = function () {
+			
+			var parseDate = function (s) {
+				   parts = s.split('/');
+				   return new Date(+parts[0], +parts[1]-1, +parts[2]);
+			};
+			
+			
 			$('#candlestick').html("Loading data from Yahoo... (on the live site it will be pre-cached and fast)");
 
 			$.ajax({
@@ -106,6 +109,25 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 			});			   
 		};
 		
+		var applyFormsMagic = function () {
+			// This is called when forms.js is loaded, before the modal form has loaded.
+			// So it needs to be called again.
+			forms.activateFocus(form);	
+
+			// I assume this is supposed to be called to initiate forms.js magic.
+			forms.clean(form);
+
+			// Turn on the datepickers.  
+			$('.item.calendar input', form).datepicker({ beforeShowDay: $.datepicker.noWeekends});
+		
+			
+		};
+		
+		
+		
+		
+		
+		
 		var loadFromRandom = function () {
 			data = randomTradingDays(500);
 			volumeData = $(data).map(function () { return { 
@@ -132,12 +154,16 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 		};
 		
 		var drawStockChart = function () {
-
-			var startDate = parseDate($('#stock-filter-form input[name=start]').val());
-			var endDate = parseDate($('#stock-filter-form input[name=end]').val());
-
-			var subset = data.slice( indexForDate(startDate), indexForDate(endDate) + 1 );	
-			var volumeSubset = volumeData.slice( indexForDate(startDate), indexForDate(endDate) + 1 );	
+			var subset = data.slice( -30 );	
+			var volumeSubset = volumeData.slice( -30 );	
+			var startDate = subset[0].date ;
+			var endDate =  subset.slice(-1)[0].date;
+			
+			startDateField.datepicker('setDate', startDate);
+			endDateField.datepicker('setDate', endDate);
+			
+			startDateField.add(endDateField).datepicker('option', 'minDate', data[0].date);
+			startDateField.add(endDateField).datepicker('option', 'maxDate', data.slice(-1)[0].date);
 
 			$('#candlestick').chart({
 				data: functionize(subset),
@@ -204,8 +230,8 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 
 				$('#candlestick+div').chart('draw', volumeData.slice( start, end+1 ) );
 
-				$('#stock-filter-form input[name=start]').val(formatDate( subset[0].date, 'yyyy-mm-dd' ));
-				$('#stock-filter-form input[name=end]').val(formatDate( subset.slice(-1)[0].date, 'yyyy-mm-dd' ));
+				startDateField.datepicker('setDate', subset[0].date );
+				endDateField.datepicker('setDate', subset.slice(-1)[0].date );
 
 			});
 
@@ -219,13 +245,24 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 			   $('#daily-stock-details td.low').text(datum.low.toFixed(2));
 			});
 			
-			$('#stock-filter-form').submit(function (e) {
+			$(startDateField).add(endDateField).bind('change.chart', function (e) {
 				e.preventDefault();
 
 				$('#candlestick').unbind('blurDatum.chart');
 
-				var startDate = parseDate($('#stock-filter-form input[name=start]').val());
-				var endDate = parseDate($('#stock-filter-form input[name=end]').val());
+				var startDate = startDateField.datepicker('getDate');
+				var endDate = endDateField.datepicker('getDate');
+				
+				var startDateWasChanged = (startDateField[0] === e.target);
+				
+				if (startDate > endDate) {
+					if (startDateWasChanged) {
+						endDateField.datepicker('setDate', endDate = startDate);
+					} else {
+						startDateField.datepicker('setDate', startDate = endDate);
+					}
+						
+				}
 
 				var subset = data.slice( indexForDate(startDate), indexForDate(endDate) + 1 );
 				$('#candlestick').chart('option', 'yMaxValue', Math.max.apply(null, $(subset).map(function () { return this.high; } ).toArray()) + 1);
@@ -235,17 +272,25 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 				$('#candlestick+div').chart('draw', volumeData.slice( indexForDate(startDate), indexForDate(endDate) + 1) );
 
 				$('#scrubber').trigger('moveScrubIndex.chart', [ indexForDate(startDate), indexForDate(endDate) + 1	 ]); 
+				
+		
+				var indexOfSelectedDate = startDateWasChanged ? 0 : subset.length - 1;
+				$('#candlestick').trigger('focusDatum.chart',  ( [ indexOfSelectedDate , subset[indexOfSelectedDate] ] ) );
+				
 			});
 			
-			$('#candlestick').trigger('focusDatum.chart', [subset.length-1, subset[subset.length-1]]);
+			$('#candlestick').trigger('focusDatum.chart', [subset.length-1, subset.slice(-1)[0] ]);
 		};
 		
+
+
+		applyFormsMagic();
 
 		loadFromRandom();
 		//loadFromYahoo();
 		
 
-	   
+
 
 	});
 });
