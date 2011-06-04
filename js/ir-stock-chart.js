@@ -310,7 +310,7 @@ var COLORS = {
 	TEXT: '#645050'
 };
 
-
+var oldColumnIndex;
 
 var formatDate = function(d) {
 	var twoDigits = function(n) {
@@ -429,19 +429,21 @@ return {
 		var eventTarget = this.eventTarget;
 		var container = this.container;
 		var containerOffsetLeft = $(container).offset().left;
-	
-		var oldColumnIndex;
-		
+			
+
 		$('<div></div>')
 			.css({'background-color': '#fff', opacity: 0, width: grid.width(), height: grid.height(), position: 'absolute', top: grid.yForTopEdge(), left: grid.xForLeftEdge()})
 			.mousemove(function (e) { 
+			
 				newColumnIndex = grid.indexForX(e.pageX - containerOffsetLeft);
 				if (newColumnIndex !== oldColumnIndex) {
 				 
-				 	$(eventTarget).trigger('focusDatum.chart', [newColumnIndex, data[data.length-1][newColumnIndex]]);
-			
+					
+					$(eventTarget).trigger('focusDatum.chart', [newColumnIndex, data[data.length-1][newColumnIndex]]);
+					
 					if (oldColumnIndex !== undefined) {
 					   $(eventTarget).trigger('blurDatum.chart', [oldColumnIndex, data[data.length-1][oldColumnIndex]]);
+					
 					}
 				
 					oldColumnIndex = newColumnIndex;
