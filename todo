@@ -3,4 +3,5 @@ Work around jQuery bug | id:29fc10b4dae8620a0ea1acc3d04cbd1c3438f162
 add arrows to the scrubber so people can see how it works | id:44a8584f290a10953803f8578aa642bc5e4bf235
 Try delayedmousemove plugin for better performance in IE | id:6f6ab37a89c5f18ce842469d6e2acdc65d044957
 Jumping from bar graph to candlestick and vice-versa can leave an extra bar highlighted | id:76bb20d9c665c283046a03833115bb67ed17d363
+Fix scrubber click to account for container offset. | id:f38b80e04e800c2bb8f2c9f2ef6447e16a3470af
 The cursor doesn't change to ew on IE. | id:fa5aa647248bdbbe6701a4515644909ba06ce4c8
