@@ -536,6 +536,7 @@ return {
 		var grid = this.grid;
 		var data = this.data;
 		var eventTarget = this.eventTarget;
+		var container = this.container;
 		
 		var announceChange = function () {
 			$(eventTarget).trigger('selectedRangeChange.chart', [grid.indexForX(selection.attr('x')), grid.indexForX(selection.attr('x')) + selection.attr('width')]);
@@ -556,7 +557,7 @@ return {
 		clickArea.attr('opacity', 0);
 		clickArea.attr('stroke-width', 0);
 		clickArea.click(function (e) { 
-			selection.attr('x', Math.min( Math.max(e.x - selection.attr('width') / 2, grid.xForLeftEdge() ), grid.xForRightEdge() - selection.attr('width') ) );
+			selection.attr('x', Math.min( Math.max(e.pageX - $(container).offset().left - selection.attr('width') / 2, grid.xForLeftEdge() ), grid.xForRightEdge() - selection.attr('width') ) );
 			leftHandle.attr('x', selection.attr('x') - 5);
 			rightHandle.attr('x', selection.attr('x') + selection.attr('width') - 5);
 			announceChange();
