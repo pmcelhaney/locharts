@@ -1,4 +1,4 @@
-ALLY.define('layers', [], function () {
+ALLY.define('chart-layers', [], function () {
 
 
 var COLORS = {
