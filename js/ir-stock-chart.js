@@ -865,13 +865,11 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 		var loadFromYahoo = function () {
 			
 			var parseDate = function (s) {
-				   parts = s.split('/');
+				   parts = s.split('-');
 				   return new Date(+parts[0], +parts[1]-1, +parts[2]);
 			};
 			
-			
-			$('#candlestick').html("Loading data from Yahoo... (on the live site it will be pre-cached and fast)");
-
+		
 			$.ajax({
 				url: 'http://query.yahooapis.com/v1/public/yql',
 				data: {
@@ -883,7 +881,7 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 				success: function (yqlData) {  
 					data = $(yqlData.query.results.quote).map(function () { 
 						return { 
-							date: parseDate(this.date), 
+							date: parseDate(this.Date), 
 							volume: +this.Volume, 
 							open: +this.Open,
 							close: +this.Close,
@@ -904,7 +902,6 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 							valueOf: function () { return this.volume; }
 						}; 
 					} ).toArray();
-					$('#candlestick').html('');
 					drawStockChart(); 
 				}
 			});			   
@@ -1087,8 +1084,8 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 
 		applyFormsMagic();
 
-		loadFromRandom();
-		//loadFromYahoo();
+		//loadFromRandom();
+		loadFromYahoo();
 		
 
 
