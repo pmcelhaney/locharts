@@ -801,7 +801,12 @@ This is where we get down to the actual business of implementing the stock chart
 
 ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 
+	if ($.support.svg === undefined) {
+		$.support.svg = window.SVGAngle || document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1");
+	}
+	
 
+	
 	var TradingDay = function (v, o, h, l, c, d) {
 
 		return {
@@ -982,7 +987,7 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 				eventTarget: '#candlestick'
 			})
 		
-			.after('<div></div>').find('+div').css({width: $('#candlestick').width(), height: 100, position: 'relative'})
+			.after('<div id="volume-bar-chart"></div>').find('+div').css({width: $('#candlestick').width(), height: 100, position: 'relative'})
 			.chart({
 				data: functionize(volumeSubset),
 				layers: [
@@ -998,25 +1003,27 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 				marginRight: 1,
 				colors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
 				eventTarget: '#candlestick'
-			})
-			
-			
-			.after('<div id="scrubber"></div>').find('+div').css({width: $('#candlestick').width(), height: 50})
-			.chart({
-				data: functionize(data),
-				layers: [
-					"borders", 
-					"area",
-					["scrubber", indexForDate(startDate), indexForDate(endDate)]
-				],
-				marginBottom: 1,
-				marginTop: 1,
-				marginLeft: 40,
-				marginRight: 1,
-				colors: ['#ccc', 'rgb(101,3,96)'],
-				yMaxValue: Math.max.apply(null, $(data).map(function () { return this.high; } ).toArray()) + 1,
-				yMinValue: Math.min.apply(null, $(data).map(function () { return this.low; } ).toArray()) - 1			
 			});
+			
+			
+			if ($.support.svg) {
+				$('#volume-bar-chart').after('<div id="scrubber"></div>').find('+div').css({width: $('#candlestick').width(), height: 50})
+				.chart({
+					data: functionize(data),
+					layers: [
+						"borders", 
+						"area",
+						["scrubber", indexForDate(startDate), indexForDate(endDate)]
+					],
+					marginBottom: 1,
+					marginTop: 1,
+					marginLeft: 40,
+					marginRight: 1,
+					colors: ['#ccc', 'rgb(101,3,96)'],
+					yMaxValue: Math.max.apply(null, $(data).map(function () { return this.high; } ).toArray()) + 1,
+					yMinValue: Math.min.apply(null, $(data).map(function () { return this.low; } ).toArray()) - 1			
+				});
+			}
 
 
 			$('#scrubber').bind('selectedRangeChange.chart', function (event, start, end) {
