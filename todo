@@ -3,4 +3,5 @@ ths are not aligned right in IE | id:3ac4d9847316378aec6d21a25d0f11589eb9a72c
 add arrows to the scrubber so people can see how it works | id:44a8584f290a10953803f8578aa642bc5e4bf235
 Try delayedmousemove plugin for better performance in IE | id:6f6ab37a89c5f18ce842469d6e2acdc65d044957
 Add the headers and current stock data | id:ce7aa580e2c2708f24db1fc53e96d19c7e699dfc
+Moving the scrubber doesn't change the end date on the graph | id:ef9a37c4398f63f95ca61031ba83e33fc0e3ac2d
 The cursor doesn't change to ew on IE. | id:fa5aa647248bdbbe6701a4515644909ba06ce4c8
