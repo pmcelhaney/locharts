@@ -1,0 +1,76 @@
+Investor Relations Stock Chart Functional Spec
+
+1 Timeframe Form
+    1.1 The timeframe form consists of two datepickers, labelled "From:" and "To:", 
+        specifying the first and last day of data to display, and a "filter" button.
+        1.1.1 The graph is updated as soon as either the From or To date is modified;
+              the filter button is non-functional.
+    1.2 The two dates are inclusive, e.g. a selection of 05/18/2011 to 05/20/2011  
+        includes the 18th, 19th and 20th May 2011.
+    1.3 The datepicker is constrained to weekdays. Weekends should be disabled.
+        1.3.1 Holidays MAY be disabled, but it's not a requirement.
+        1.3.2 Dates before the first data point or after the last should be disabled 
+              in the datepicker.
+        1.3.3 If a date is typed into the text field (rather than selected from the
+              datepicker), any valid date should be accepted, even if it's a weekend
+              or out of range.
+    1.4 The From date should always be less than or equal to the To date.
+        1.4.1 If the From date is changed to a date later than the To date, the To date 
+              should automatically be changed to equal the new From date. 
+        1.4.2 If the To date is changed to the a date earlier than the From date, the From 
+              date should change to match the new To date.
+    1.5 The range between From and To dates should always cover at least one data point.
+        1.5.1 If a From date that is later than the latest data point is entered, the From
+              date should be changed to match to To date.
+        1.5.2 If a To date that is earlier than the earliest data point is entered, the To
+	          date should be changed to match to From date.
+	    1.5.3 This rule supersedes 1.4 and 1.3.3.
+
+2 Candlestick Chart
+    2.1 The candlestick chart is a graphical representation of the high, low, open, and close
+        prices of the stock for each day over the range specified by the timeline form. It 
+        follows the conventions of a traditional candlestick chart, as described by Wikipedia:
+        http://en.wikipedia.org/wiki/Candlestick_chart
+        2.1 The x-axis marks the day. Up to five evenly-spaced dates are labelled on the x-axis.
+        2.2 The y-axis marks the price, and spans from just below the lowest displayed price to 
+            just above the highest displayed price.
+        2.3 For each day on the x axis, a thin vertical line segment is drawn between the point 
+            of the high price and the point of the low price.
+        2.4 A rectangle is drawn on top of the line segment, with its top and bottom edges at 
+            the points marking the the open and close price.
+            2.2.1 If the close price is higher than the open price the rectangle is open.
+            2.2.2 If the close price is lower than the open price, the rectangle is closed.
+        2.5 Beneath the candlestick chart, a smaller bar chart shows the volume for each 
+            trading day, with the same x-axis but a different y-axis (marking volume instead
+            or price).
+    2.2 Above the chart, a table displays the date, volume, high, low, open, and close 
+        for the highlighted day.
+        2.2.1 Initially, the last day is highlighted.
+        2.2.2 As the mouse hovers over each column in the chart, that day is highlighted.
+        2.2.3 A dot visually marks the close price of the highlighted day.
+        2.2.4 In the volume chart, the bar for the highlighted day changes to a different 
+              color.
+
+3 Scrubber Bar
+     3.1 Below the candlestick chart (including the volume chart) an area graph shows entire
+         history of the stock's closing price. 
+         3.1.1 The x-axis marks the trading day. It's not labelled.
+         3.1.2 The y-axis, also not labelled, spans from 0 to just above the highest price.
+     3.2 The area matching the currently selected timeframe is marked with a "scrubber" (currently
+         represented by a translucent rectangle).
+         3.1 The right and left edges of the scrubber can be grabbed with the mouse and dragged 
+             left and right, which changes the shape of the scrubber.
+         3.2 The entire scrubber can be moved left and right by dragging from the center.
+         3.3 A click on the scrub bar anywhere outside of the scrubber repositions the scrubber
+             so that it's centered on the point of click.
+         3.4 As the scrubber is moved or resized, the timeframe form is updated and the graph is
+             redrawn.
+         3.5 Likewise, as the timeframe form is changed, the scrubber is updated to match.
+
+4 Table View
+     4.1 When the table view is selected, the candlestick chart and scrubber bar are hidden, 
+         and a table displaying the date, volume, high, low, open, and close prices is 
+         displayed.
+     4.2 The data is sorted by date in descending order.
+     4.3 The segment of data displayed corresponds to the dates in the timeframe form.
+
