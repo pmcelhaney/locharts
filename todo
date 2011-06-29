@@ -1,7 +1,7 @@
-Write a functional spec | id:1cbf5aa36e77d5e25de7979dd793df9bf32759c2
+add list / chart view split button | id:0c235c7966faee6992c769f2c46726f778cacbc1
 ths are not aligned right in IE | id:3ac4d9847316378aec6d21a25d0f11589eb9a72c
-add arrows to the scrubber so people can see how it works | id:44a8584f290a10953803f8578aa642bc5e4bf235
-Try delayedmousemove plugin for better performance in IE | id:6f6ab37a89c5f18ce842469d6e2acdc65d044957
+add headers on the y axis labels | id:c28cd05ddd1aa51a3c059ff8264a67c4b2bedba2
 Populate the top table with Velocity | id:c6293380735f1254d41276818cfafc09a3c51efb
 Add the headers and current stock data | id:ce7aa580e2c2708f24db1fc53e96d19c7e699dfc
-The cursor doesn't change to ew on IE. | id:fa5aa647248bdbbe6701a4515644909ba06ce4c8
+add legend dejargonator | id:e1fa95db29ba25e6da7e545a048a8d5bb38aee4e
+remove the scrubber | id:e67c5dbece27801f76fcc5cfc5aca2d4169f804d
