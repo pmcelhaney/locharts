@@ -172,6 +172,13 @@ define(['grid'], function(Grid) {
 			expect(grid.yMaxValue()).toEqual(400);
 		});
 	
+	
+		it("should snap the max and min values to round numbers", function () {
+			var grid = Grid({ yMinValue: 101, yMaxValue: 399 });
+			expect(grid.yMinValue()).toEqual(100);
+			expect(grid.yMaxValue()).toEqual(400);
+		});
+	
 		it("should return black as the default color", function () {
 			var grid = Grid();
 			expect(grid.color(0)).toEqual('#000');
@@ -209,6 +216,8 @@ define(['grid'], function(Grid) {
 			expect( Grid({colors:	  ['#c00']}).gradient(0)  ).toEqual('#c00');
 			expect( Grid({colors:	  ['#b00']}).fillColor(0) ).toEqual('#b00');
 		});
+		
+
 	
 	});
 

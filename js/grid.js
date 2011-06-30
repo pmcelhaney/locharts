@@ -1,5 +1,16 @@
 ALLY.define('grid', [], function () {
 
+	var roundOutMinAndMax = function (min, max, size, precision) {
+	   var size = size || 60;
+	   var precision = precision || 2;
+	   var domain = max - min;
+	   var slice = Math.round(domain / size) || Math.pow(10, -precision - 1);
+	   return [ +(min - min % slice).toPrecision(precision), +(max + slice - ( max % slice || slice ) ).toPrecision(precision) ];
+
+	};
+	
+
+
 	return function (options) {
 		var options = options || {};
 		var marginLeft = options.marginLeft || 0;
@@ -13,8 +24,14 @@ ALLY.define('grid', [], function () {
 	
 		var columnCount = options.columnCount || 1;
 	
-		var yMinValue = options.yMinValue || 0;
-		var yMaxValue = options.yMaxValue || 1;
+		var roundedMinAndMax = roundOutMinAndMax(options.yMinValue || 0, options.yMaxValue || 1);
+		
+		var yMinValue = roundedMinAndMax[0];
+		var yMaxValue = roundedMinAndMax[1];
+		
+		
+		
+
 	
 		var colors = options.colors || ['#000']; 
 		
@@ -27,7 +44,7 @@ ALLY.define('grid', [], function () {
 		var xValues = options.xValues;
 		
 		return {
-			xForIndex: function (i) {
+			xForIndex: function (i) { 
 				var min, max;
 				if (xValues) {
 					min = Math.min.apply(null, xValues);
