@@ -1,5 +1,5 @@
 define(['grid'], function(Grid) {
-	describe("Grid", function() {
+	describe("Grid-Spec", function() {
 	/*
 	- yForIndex(i)
 	- xForValue(v)
@@ -8,7 +8,7 @@ define(['grid'], function(Grid) {
 
 
 		it("should know the x-coordinate for a given index when edgeToEdge is false", function () {
-		
+
 			expect(Grid().xForIndex(0)).toEqual(480);
 		
 			expect(Grid({ width: 60 }).xForIndex(0)).toEqual(30);
