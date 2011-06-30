@@ -111,16 +111,17 @@
 			</div>
 		</div>
 
-		<div class="absolute-position-wrapper wrapper-filter">
-			<div id="stock-filter-control-button" class="btns">	
-				<input class="btn-link btn btn-submit"  type="button" value="filter" hidefocus="true"/>
-			</div>
-		</div>
 	
 	</fieldset>
 	
-	<input type="button" id="show-table-view" value="table">
-	<input type="button" id="show-graph-view" value="graph">
+	<div>
+		<div id="stock-filter-control-button" class="btns">	
+			<input type="button" id="stock-chart-split-button" class="chart-selected" value="toggle chart / list view">
+		</div>
+	</div>
+	
+	
+
 	
 </form>
 
@@ -155,6 +156,9 @@
 
 <div id="candlestick"><img width="430" height="218" id="fallback-stock-chart" src="http://chart.corporate-ir.net/custom/ccbn-com/stockchart/chart.asp?symb=AAPL&style=453"></div>	
 
+<p id="stock-price-credit">Stock price information is provided by Yahoo! Market data delayed 20 minutes.</p>
+
+<div id="candlestick-chart-legend"><a>Candlestick chart legend</a></div>
 
 
 	<!-- <div id="local"></div> -->
