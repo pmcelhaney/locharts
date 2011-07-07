@@ -64,5 +64,4 @@ Investor Relations Stock Chart Functional Spec
          displayed.
      3.3 The data is sorted by date in descending order.
      3.4 The segment of data displayed corresponds to the dates in the timeframe form.
-     3.5 If more than 10 rows are to be displayed, the table is paginated, showing 10 rows at a time.
 
