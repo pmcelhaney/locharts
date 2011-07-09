@@ -1,6 +1,8 @@
-add list / chart view split button | id:0c235c7966faee6992c769f2c46726f778cacbc1
 ths are not aligned right in IE | id:3ac4d9847316378aec6d21a25d0f11589eb9a72c
-add headers on the y axis labels | id:c28cd05ddd1aa51a3c059ff8264a67c4b2bedba2
-Populate the top table with Velocity | id:c6293380735f1254d41276818cfafc09a3c51efb
-Add the headers and current stock data | id:ce7aa580e2c2708f24db1fc53e96d19c7e699dfc
+add proxy Yahoo feed through Tridion | id:8c19eda2c111e3fb82377a5ce0bbeffc46c85b2f
+add ac tracking when feed fails | id:b53839b0a3d798cd31e62bae24259609faaec5ea
+improve ids, classes, and selectors | id:c2ffac69a48257cc824f1afc9cde1b22ddb1682b
+Implement the % on percent changed | id:ce69ce67ff58b9cf2086ee667ca11c5f38c37947
+Prevent double-click on split button | id:dced8d1e47da06bdac1d499d43b53d9ff0cd791d
 add legend dejargonator | id:e1fa95db29ba25e6da7e545a048a8d5bb38aee4e
+add try proxying Mergent feed through Tridion | id:e44915f1d7fe85d7e1de39289d2b5932135b7213
