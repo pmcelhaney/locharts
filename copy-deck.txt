@@ -1,0 +1,1909 @@
+Ally Investor Relations Creative Copy - Draft
+UX Content Team
+
+Interactive Content Editor: Holly Rich
+Interactive Content Mgr.: John Brennan
+
+how to review this copy document
+Before you get started, here are a few tips on how to review copy from Ally’s UX Team.
+•	when editing your copy, use Comments
+•	Please provide strategic/legal problem and recommended solution in comments
+
+previous edits 
+Date Revised	Revised by	Changes Made
+6/6	HR	Consolidated sprint 1-3
+6/10	HR	Legal edit
+6/10	HR	Small grammatical fixes
+6/15	HR	Added Auto Securitization links, legal table on demand notes, 
+6/15	HR	Added legal copy to the securitization pages. Added intro line to Fixed income
+6/15	HR	Added legal to mortgage securitization
+6/15	HR	•	Subsidiary Financials page – changed “Ally Bank Call Reports” to “Ally Bank Financials”
+•	Demand Notes pages – changed “Investment Products” above table image to “Demand Notes:”
+•	Investor Contacts page – changed blue email addresses to black, changed “Investor Relations Contact Information” to “Investor Relations”, added a link to the form for Investor Relations, changed “Securitization Contact” to “Securitization”, changed “Corporate Bond Trustee Information” to “Corporate Bond Trustree”
+•	Securitization pages (auto & mortgage) – removed legal disclaimer copy
+6/16	HR	Added line under stock feed on landing page & stock info page
+Modified company profile copy
+6/17	HR	•	Company Overview not available copy (landing page & investor kit page)
+•	Stock feed not available (landing page & stock price info page)
+6/21	HR	•	Incorporated Scott’s comments
+6/22	HR	•	Added stock feed drop down copy 
+•	Deleted redundant ‘Investor Relations’ in contacts
+•	Made left nav securitization singular
+•	Added Other FAQ
+•	Removed legal disclaimer on Press Releases page
+6/27	HR	•	Add Non-hired NRSRO page
+•	Added new legal for Mortgage Securitization page
+•	Stock price info pg – showing “stock feed provided by” for all states & “line chart” to “list view”
+
+6/29	HR	•	Added Non-hired NRSRO to left nav
+•	Stock Price Info pg:
+o	Removed Update button 
+o	Added both Candlestick & List views
+o	Added Candlestick legend
+7/5	HR	•	Revised copy on NRSRO page
+7/6	HR	•	Revised copy on NRSRO page
+7/7	HR	Stock Price Information page:
+•	Added the stock table 
+•	Changed candlestick legend link copy
+•	Modified source copy 
+
+Goals of this Project (page/area of site/email/alert):
+•	Provide management’s vision of where the company is going along with a brief overview of the company profile or background 
+•	Provide key stakeholders (institutional investors, financial analysts, journalists) with information that will help them gain an understanding of the company’s financial performance 
+•	Keep in mind the secondary goal of the site copy – to reduce information requests to Investor Relations and the Corporate Communications team 
+•	Promotional or marketing-oriented spin is to be avoided in the Investor Relations content.  The copy should be professional/business like (dejargonators are not necessary for this audience) 
+
+ 
+
+
+***SPRINT 1***
+Investor Relations Landing Page
+
+***SPRINT 2*** 
+Financial Info > Earnings Releases
+Financial Info > Annual Reports
+Financial Info > SEC Filings
+Financial Info > Other Regulatory Filings 
+Financial Info > Subsidiary Financials
+Investor Kit
+Ally > Help > Investor Relations (http://www.ally.com/help/#tabs=investor-relations)
+Investor Contacts
+Email alerts
+
+
+***SPRINT 3*** 
+Events & Presentations
+Press Releases
+Fixed Income > Trust Preferred Securities
+Fixed Income > Preferred Stock
+Securitization > Auto Securitization
+Securitization > Auto Securitization Accept
+Securitization > Mortgage Securitization
+Securitization > Non-hired NRSRO
+Corporate Governance
+Shareholder Information > Stock Price Info
+Shareholder Information > Stock Transfer Agent
+Demand Notes
+ 
+
+
+
+
+
+***SPRINT 1***
+
+Investor Relations Landing Page
+
+[ALLY.COM STANDARD C-FRAME]
+ ally logo	                                                              [search ally.com] <<search>>  global | contact us | help | security
+ 
+[icon] print                [icon] text
+
+							
+
+[ALLY.COM STANDARD TOP NAV DAY 1]
+Ally Home [link to Ally Homepage] Our Company [link to Our Company menu]   Investor Relations [link to Investor Relations menu]    Media Center [link to Media page]  Careers [link to Our Careers page]     Giving Back [link to Giving Back page]   Ally Story [link to Ally Story page]   About Ally [link to About Ally page] 
+
+
+[INVESTOR RELATIONS LEFT NAV DAY 1]
+Investor Relations [link to Investor Relations Homepage] 
+Financial Information [links to Financial Information menu]   
+Earnings Releases [link to Earnings Release page] 
+Annual Reports [link to Annual Reports page] 
+SEC Filings [link to SEC Filings page]
+Other Regulatory Filings [link to Other Regulatory Filings page]
+Subsidiary Financials [link to Subsidiary Financials page]
+Events & Presentations [link to Events & Presentations page]
+Shareholder Information [link to Shareholder Information menu]
+Stock Price Info [link to Stock Price Information page]
+Stock Transfer Agent [link to Stock Transfer Agent page]
+Fixed Income [link to Fixed Income menu]
+Trust Preferred Securities [link to Trust Preferred Securities page]
+Preferred Stock [link to Preferred Stock page]
+Demand Notes [link to Demand Notes page]
+Securitization [link to Securitization menu]
+Auto Securitization [link to Auto Securitization page]
+Mortgage Securitization [link to Mortgage Securitization page]
+Non-hired NRSRO [link to Non-hired NRSRO page]
+Corporate Governance [link to Corporate Governance page]
+Press Releases [link to Press Releases page]
+
+
+[INVESTOR RELATIONS LEFT NAV TILE DAY 1]
+[H3] 
+Investor Tools 
+
+Investor Kit [link to Investor Kit page]
+Help & FAQs [link to FAQ Investor page]
+Investor Contacts [link to Investor Contacts page]
+
+
+[button]
+subscribe to email alerts
+
+
+[H1]
+Investor Relations
+
+[H2]
+Company Profile
+Ally Financial Inc. (NYSE: ALLY) is one of the world’s largest automotive financial services companies. The company offers a full suite of automotive financing products and services [links to www.ally.com/auto] in key markets around the world. 
+
+Ally Financial Facts
+•	Ally’s other business units include mortgage operations [links to www.gmacmortgage.com], commercial finance [links to www.allycf.com], and the company’s subsidiary, Ally Bank, which offers retail banking products [links to www.ally.com]
+•	Ally operates as a bank holding company
+•	More than 15 million consumers and dealers served worldwide 
+
+
+[pdf icon] Download Company Overview [links to Company Brochure] 
+
+[Company Overview PDF not available copy]
+Company Overview available soon
+
+View Operations Overview >> [links to www.ally.com/about/company-structure/operations/]
+
+[H2]
+Ally Financial Inc.
+
+[stock table fed-in stock content]
+
+[Copy]
+
+Stock information is provided by Thomson Reuters. Market data delayed at least 20 min.
+
+View Stock Price Information >> [links to Stock Price Information page]
+
+[PreIPO copy]
+Coming soon…
+Please check back for ALLY stock price information from NYSE.
+
+[No Feeds copy]
+Ally stock price information is currently unavailable.
+We apologize for any inconvenience. Please check back soon. 
+
+
+
+[H2]
+
+
+[H2]
+Investor Contacts
+
+Investor Relations 
+
+Ally Financial Inc.
+440 South Church Street
+Charlotte, NC 28202
+1-866-710-4623
+Investor.relations@ally.com [links to mailto:Investor.relations@ally.com]
+
+[H2]
+Common Stock Transfer Agent
+
+Computershare Investor Services
+P.O. Box 43078
+Providence, RI 02940-3078
+1-888-250-3985
+shareholder@computershare.com [links to mailto:shareholder@computershare.com]
+www.computershare.com [links to www.computershare.com]
+
+
+View Investor Contacts> [links to Investor Contact page]
+
+[H3]
+
+Press Releases
+[will either be top 2 from news feed or static content below]
+
+
+Get the latest news from Ally Financial
+
+View all Press Releases> [links to media.ally.com/]
+
+
+[H3]
+
+Ally Events
+[top 2 from news feed or use static content below]
+
+Find information about upcoming events.
+
+View all Events> [links to Events & Presentations page]
+
+[ALLY.COM STANDARD FOOTER]
+
+Ally Financial Inc. © 2009 - 2011    privacy | security | legal | site map | give feedback
+
+
+
+***SPRINT 2*** 
+
+Financial Info > Quarterly Earnings
+ 
+[ALLY.COM STANDARD C-FRAME]
+ ally logo	                                                              [search ally.com] <<search>>  global | contact us | help | security
+ 
+[icon] print                [icon] text
+
+							
+
+[ALLY.COM STANDARD TOP NAV DAY 1]
+Ally Home [link to Ally Homepage] Our Company [link to Our Company menu]   Investor Relations [link to Investor Relations menu]    Media Center [link to Media page]   Careers [link to Our Careers page]    Giving Back [link to Giving Back page]   Ally Story [link to Ally Story page]   About Ally [link to About Ally page] 
+
+
+
+[INVESTOR RELATIONS LEFT NAV DAY 1]
+Investor Relations [link to Investor Relations Homepage] 
+Financial Information [links to Financial Information menu]   
+Earnings Releases [link to Earnings Release page] 
+Annual Reports [link to Annual Reports page] 
+SEC Filings [link to SEC Filings page]
+Other Regulatory Filings [link to Other Regulatory Filings page]
+Subsidiary Financials [link to Subsidiary Financials page]
+Events & Presentations [link to Events & Presentations page]
+Shareholder Information [link to Shareholder Information menu]
+Stock Price Info [link to Stock Price Information page]
+Stock Transfer Agent [link to Stock Transfer Agent page]
+Fixed Income [link to Fixed Income menu]
+Trust Preferred Securities [link to Trust Preferred Securities page]
+Preferred Stock [link to Preferred Stock page]
+Demand Notes [link to Demand Notes page]
+Securitization [link to Securitization menu]
+Auto Securitization [link to Auto Securitization page]
+Mortgage Securitization [link to Mortgage Securitization page]
+Non-hired NRSRO [link to Non-hired NRSRO page]
+Corporate Governance [link to Corporate Governance page]
+Press Releases [link to Press Releases page]
+
+
+[INVESTOR RELATIONS LEFT NAV TILE DAY 1]
+[H3] 
+Investor Tools 
+
+Investor Kit [link to Investor Kit page]
+Help & FAQs [link to FAQ Investor page]
+Investor Contacts [link to Investor Contacts page]
+
+
+
+[H1]
+Investor Relations
+
+[H2]
+Earnings Releases
+
+[Legal disclaimer]
+
+The information that may be accessed above speaks only as of the particular date or dates indicated, and may have become out of date.  Ally Financial does not undertake any obligation to update any of the information presented.  The performance of Ally Financial is subject to risks and uncertainties, which are discussed more fully in our most recent Annual Report on Form 10-K, as well as any updates provided in subsequent reports filed with the Securities and Exchange Commission.  All information provided on this Investor Relations website is provided for informational purposes only, and does not constitute an offer to sell or the solicitation of an offer to buy any securities.
+
+
+[ALLY.COM STANDARD FOOTER]
+
+Ally Financial Inc. © 2009 - 2011    privacy | security | legal | site map | give feedback
+
+
+
+Financial Info > Annual Reports
+
+[ALLY.COM STANDARD C-FRAME]
+ ally logo	                                                              [search ally.com] <<search>>  global | contact us | help | security
+ 
+[icon] print                [icon] text
+
+							
+
+[ALLY.COM STANDARD TOP NAV DAY 1]
+Ally Home [link to Ally Homepage] Our Company [link to Our Company menu]   Investor Relations [link to Investor Relations menu]    Media Center [link to Media page]  Careers [link to Our Careers page]     Giving Back [link to Giving Back page]   Ally Story [link to Ally Story page]   About Ally [link to About Ally page] 
+
+
+
+[INVESTOR RELATIONS LEFT NAV DAY 1]
+Investor Relations [link to Investor Relations Homepage] 
+Financial Information [links to Financial Information menu]   
+Earnings Releases [link to Earnings Release page] 
+Annual Reports [link to Annual Reports page] 
+SEC Filings [link to SEC Filings page]
+Other Regulatory Filings [link to Other Regulatory Filings page]
+Subsidiary Financials [link to Subsidiary Financials page]
+Events & Presentations [link to Events & Presentations page]
+Shareholder Information [link to Shareholder Information menu]
+Stock Price Info [link to Stock Price Information page]
+Stock Transfer Agent [link to Stock Transfer Agent page]
+Fixed Income [link to Fixed Income menu]
+Trust Preferred Securities [link to Trust Preferred Securities page]
+Preferred Stock [link to Preferred Stock page]
+Demand Notes [link to Demand Notes page]
+Securitization [link to Securitization menu]
+Auto Securitization [link to Auto Securitization page]
+Mortgage Securitization [link to Mortgage Securitization page]
+Non-hired NRSRO [link to Non-hired NRSRO page]
+Corporate Governance [link to Corporate Governance page]
+Press Releases [link to Press Releases page]
+
+
+[INVESTOR RELATIONS LEFT NAV TILE DAY 1]
+[H3] 
+Investor Tools 
+
+Investor Kit [link to Investor Kit page]
+Help & FAQs [link to FAQ Investor page]
+Investor Contacts [link to Investor Contacts page]
+
+
+[H1]
+Investor Relations
+
+[H2]
+Annual Reports
+
+[pdf icon]  2010 10-K Annual Report [links to 2010_10K.pdf]
+[pdf icon]  2009 10-K Annual Report [links to 2009_10K.pdf]
+[pdf icon]  2008 10-K Annual Report (amended) [links to 2008_10K-A.pdf]
+[pdf icon]  2008 10-K Annual Report [links to 2008_10K.pdf]
+
+[Legal disclaimer]
+
+The information that may be accessed above speaks only as of the particular date or dates indicated, and may have become out of date.  Ally Financial does not undertake any obligation to update any of the information presented.  The performance of Ally Financial is subject to risks and uncertainties, which are discussed more fully in our most recent Annual Report on Form 10-K, as well as any updates provided in subsequent reports filed with the Securities and Exchange Commission.  All information provided on this Investor Relations website is provided for informational purposes only, and does not constitute an offer to sell or the solicitation of an offer to buy any securities.
+
+[ALLY.COM STANDARD FOOTER]
+
+Ally Financial Inc. © 2009 - 2011    privacy | security | legal | site map | give feedback
+
+
+
+
+Financial Info > SEC Filings
+
+[ALLY.COM STANDARD C-FRAME]
+ ally logo	                                                              [search ally.com] <<search>>  global | contact us | help | security
+ 
+[icon] print                [icon] text
+
+							
+
+[ALLY.COM STANDARD TOP NAV DAY 1]
+Ally Home [link to Ally Homepage] Our Company [link to Our Company menu]   Investor Relations [link to Investor Relations menu  Media Center [link to Media page]  ]   Careers [link to Our Careers page]      Giving Back [link to Giving Back page]   Ally Story [link to Ally Story page]   About Ally [link to About Ally page] 
+
+
+
+[INVESTOR RELATIONS LEFT NAV DAY 1]
+Investor Relations [link to Investor Relations Homepage] 
+Financial Information [links to Financial Information menu]   
+Earnings Releases [link to Earnings Release page] 
+Annual Reports [link to Annual Reports page] 
+SEC Filings [link to SEC Filings page]
+Other Regulatory Filings [link to Other Regulatory Filings page]
+Subsidiary Financials [link to Subsidiary Financials page]
+Events & Presentations [link to Events & Presentations page]
+Shareholder Information [link to Shareholder Information menu]
+Stock Price Info [link to Stock Price Information page]
+Stock Transfer Agent [link to Stock Transfer Agent page]
+Fixed Income [link to Fixed Income menu]
+Trust Preferred Securities [link to Trust Preferred Securities page]
+Preferred Stock [link to Preferred Stock page]
+Demand Notes [link to Demand Notes page]
+Securitization [link to Securitization menu]
+Auto Securitization [link to Auto Securitization page]
+Mortgage Securitization [link to Mortgage Securitization page]
+Non-hired NRSRO [link to Non-hired NRSRO page]
+Corporate Governance [link to Corporate Governance page]
+Press Releases [link to Press Releases page]
+
+
+[INVESTOR RELATIONS LEFT NAV TILE DAY 1]
+[H3] 
+Investor Tools 
+
+Investor Kit [link to Investor Kit page]
+Help & FAQs [link to FAQ Investor page]
+Investor Contacts [link to Investor Contacts page]
+
+
+[H1]
+Investor Relations
+
+[H2]
+SEC Filings
+
+
+[Legal disclaimer]
+
+The information that may be accessed above speaks only as of the particular date or dates indicated, and may have become out of date.  Ally Financial does not undertake any obligation to update any of the information presented.  The performance of Ally Financial is subject to risks and uncertainties, which are discussed more fully in our most recent Annual Report on Form 10-K, as well as any updates provided in subsequent reports filed with the Securities and Exchange Commission.  All information provided on this Investor Relations website is provided for informational purposes only, and does not constitute an offer to sell or the solicitation of an offer to buy any securities.
+
+
+[ALLY.COM STANDARD FOOTER]
+
+Ally Financial Inc. © 2009 - 2011    privacy | security | legal | site map | give feedback
+
+
+
+
+Financial Info > Other Regulatory Filings 
+
+[ALLY.COM STANDARD C-FRAME]
+ ally logo	                                                              [search ally.com] <<search>>  global | contact us | help | security
+ 
+[icon] print                [icon] text
+
+							
+
+[ALLY.COM STANDARD TOP NAV DAY 1]
+Ally Home [link to Ally Homepage] Our Company [link to Our Company menu]   Investor Relations [link to Investor Relations menu]      Media Center [link to Media page]  Careers [link to Our Careers page]   Giving Back [link to Giving Back page]   Ally Story [link to Ally Story page]   About Ally [link to About Ally page] 
+
+
+[INVESTOR RELATIONS LEFT NAV DAY 1]
+Investor Relations [link to Investor Relations Homepage] 
+Financial Information [links to Financial Information menu]   
+Earnings Releases [link to Earnings Release page] 
+Annual Reports [link to Annual Reports page] 
+SEC Filings [link to SEC Filings page]
+Other Regulatory Filings [link to Other Regulatory Filings page]
+Subsidiary Financials [link to Subsidiary Financials page]
+Events & Presentations [link to Events & Presentations page]
+Shareholder Information [link to Shareholder Information menu]
+Stock Price Info [link to Stock Price Information page]
+Stock Transfer Agent [link to Stock Transfer Agent page]
+Fixed Income [link to Fixed Income menu]
+Trust Preferred Securities [link to Trust Preferred Securities page]
+Preferred Stock [link to Preferred Stock page]
+Demand Notes [link to Demand Notes page]
+Securitization [link to Securitization menu]
+Auto Securitization [link to Auto Securitization page]
+Mortgage Securitization [link to Mortgage Securitization page]
+Non-hired NRSRO [link to Non-hired NRSRO page]
+Corporate Governance [link to Corporate Governance page]
+Press Releases [link to Press Releases page]
+
+
+[INVESTOR RELATIONS LEFT NAV TILE DAY 1]
+[H3] 
+Investor Tools 
+
+Investor Kit [link to Investor Kit page]
+Help & FAQs [link to FAQ Investor page]
+Investor Contacts [link to Investor Contacts page]
+
+
+
+[H1]
+Investor Relations
+
+[H2]
+Other Regulatory Filings
+
+
+[Copy]
+Current and historical quarterly financial reports submitted to the Federal Reserve are available. These reports include: 
+•	Balance sheets
+•	Income statements
+•	Supporting schedules
+•	Off balance-sheet items
+
+
+Ally Financial Inc. Performance Reports
+On the FFIEC website, view Ally Financial Bank Holding Company Reports (Y-9LP) [links to www.ffiec.gov].
+
+Ally Bank Call Reports 
+On the FDIC website, view Ally Bank Call Reports [links to www2.fdic.gov/Call_TFR_Rpts]. 
+
+
+
+[ALLY.COM STANDARD FOOTER]
+
+Ally Financial Inc. © 2009 - 2011    privacy | security | legal | site map | give feedback
+
+
+
+
+
+Financial Info > Subsidiary Financials
+
+[ALLY.COM STANDARD C-FRAME]
+ ally logo	                                                              [search ally.com] <<search>>  global | contact us | help | security
+ 
+[icon] print                [icon] text
+
+							
+
+[ALLY.COM STANDARD TOP NAV DAY 1]
+Ally Home [link to Ally Homepage] Our Company [link to Our Company menu]   Investor Relations [link to Investor Relations menu]       Media Center [link to Media page]  Careers [link to Our Careers page]  Giving Back [link to Giving Back page]   Ally Story [link to Ally Story page]   About Ally [link to About Ally page] 
+
+
+
+[INVESTOR RELATIONS LEFT NAV DAY 1]
+Investor Relations [link to Investor Relations Homepage] 
+Financial Information [links to Financial Information menu]   
+Earnings Releases [link to Earnings Release page] 
+Annual Reports [link to Annual Reports page] 
+SEC Filings [link to SEC Filings page]
+Other Regulatory Filings [link to Other Regulatory Filings page]
+Subsidiary Financials [link to Subsidiary Financials page]
+Events & Presentations [link to Events & Presentations page]
+Shareholder Information [link to Shareholder Information menu]
+Stock Price Info [link to Stock Price Information page]
+Stock Transfer Agent [link to Stock Transfer Agent page]
+Fixed Income [link to Fixed Income menu]
+Trust Preferred Securities [link to Trust Preferred Securities page]
+Preferred Stock [link to Preferred Stock page]
+Demand Notes [link to Demand Notes page]
+Securitization [link to Securitization menu]
+Auto Securitization [link to Auto Securitization page]
+Mortgage Securitization [link to Mortgage Securitization page]
+Non-hired NRSRO [link to Non-hired NRSRO page]
+Corporate Governance [link to Corporate Governance page]
+Press Releases [link to Press Releases page]
+
+[INVESTOR RELATIONS LEFT NAV TILE DAY 1]
+[H3] 
+Investor Tools 
+
+Investor Kit [link to Investor Kit page]
+Help & FAQs [link to FAQ Investor page]
+Investor Contacts [link to Investor Contacts page]
+
+
+[H1]
+Investor Relations
+
+[H3]
+Subsidiary Financials
+
+[Copy]
+Ally Bank 
+On the FDIC website, view Ally Bank Financials [links to www2.fdic.gov/Call_TFR_Rpts] including: 
+•	Balance sheets
+•	Income statements
+•	Supporting schedules
+•	Off balance-sheet items
+
+Ally Credit Canada Limited 
+Get financial filings, supporting schedules, and other Ally Credit Canada Reports [links to www.sedar.com] on the SEDAR website.   
+
+Motor Insurance Corporation
+See all statutory financials for Ally’s Motor Insurance Corporation [links to www.naic.org/store_home.htm] on the NAIC website. 
+
+
+
+[ALLY.COM STANDARD FOOTER]
+
+Ally Financial Inc. © 2009 - 2011    privacy | security | legal | site map | give feedback
+
+
+
+ 
+
+Investor Kit
+
+[ALLY.COM STANDARD C-FRAME]
+ ally logo	                                                              [search ally.com] <<search>>  global | contact us | help | security
+ 
+[icon] print                [icon] text
+
+							
+
+[ALLY.COM STANDARD TOP NAV DAY 1]
+Ally Home [link to Ally Homepage] Our Company [link to Our Company menu]   Investor Relations [link to Investor Relations menu  Media Center [link to Media page] ]    Careers [link to Our Careers page]      Giving Back [link to Giving Back page]   Ally Story [link to Ally Story page]   About Ally [link to About Ally page] 
+
+
+[INVESTOR RELATIONS LEFT NAV DAY 1]
+Investor Relations [link to Investor Relations Homepage] 
+Financial Information [links to Financial Information menu]   
+Earnings Releases [link to Earnings Release page] 
+Annual Reports [link to Annual Reports page] 
+SEC Filings [link to SEC Filings page]
+Other Regulatory Filings [link to Other Regulatory Filings page]
+Subsidiary Financials [link to Subsidiary Financials page]
+Events & Presentations [link to Events & Presentations page]
+Shareholder Information [link to Shareholder Information menu]
+Stock Price Info [link to Stock Price Information page]
+Stock Transfer Agent [link to Stock Transfer Agent page]
+Fixed Income [link to Fixed Income menu]
+Trust Preferred Securities [link to Trust Preferred Securities page]
+Preferred Stock [link to Preferred Stock page]
+Demand Notes [link to Demand Notes page]
+Securitization [link to Securitization menu]
+Auto Securitization [link to Auto Securitization page]
+Mortgage Securitization [link to Mortgage Securitization page]
+Non-hired NRSRO [link to Non-hired NRSRO page]
+Corporate Governance [link to Corporate Governance page]
+Press Releases [link to Press Releases page]
+
+
+[INVESTOR RELATIONS LEFT NAV TILE DAY 1]
+[H3] 
+Investor Tools 
+
+Investor Kit [link to Investor Kit page]
+Help & FAQs [link to FAQ Investor page]
+Investor Contacts [link to Investor Contacts page]
+
+
+
+[H1]
+Investor Relations
+
+[H2]
+Investor Kit
+
+
+[Copy]
+Get company information and financial data for Ally Financial Inc.:
+Company Overview (PDF) [links to company brochure]
+[Company Overview PDF not available copy]
+Company Overview available soon
+Annual Report [links to 2010_10K.pdf]
+SEC Filings [links to SEC Filings page]
+Quarterly Earnings [links to Earnings Releases page]
+
+[ALLY.COM STANDARD FOOTER]
+
+Ally Financial Inc. © 2009 - 2011    privacy | security | legal | site map | give feedback
+
+
+
+Ally > Help > Investor Relations
+
+
+[ALLY.COM STANDARD C-FRAME]
+ ally logo	                                                              [search ally.com] <<search>>  global | contact us | help | security
+ 
+[icon] print                [icon] text
+
+							
+
+[ALLY.COM STANDARD TOP NAV DAY 1]
+Ally Home [link to Ally Homepage] Our Company [link to Our Company menu]   Investor Relations [link to Investor Relations menu]       Media Center [link to Media page]  Careers [link to Our Careers page]  Giving Back [link to Giving Back page]   Ally Story [link to Ally Story page]   About Ally [link to About Ally page] 
+
+
+[INVESTOR RELATIONS LEFT NAV DAY 1]
+Investor Relations [link to Investor Relations Homepage] 
+Financial Information [links to Financial Information menu]   
+Earnings Releases [link to Earnings Release page] 
+Annual Reports [link to Annual Reports page] 
+SEC Filings [link to SEC Filings page]
+Other Regulatory Filings [link to Other Regulatory Filings page]
+Subsidiary Financials [link to Subsidiary Financials page]
+Events & Presentations [link to Events & Presentations page]
+Shareholder Information [link to Shareholder Information menu]
+Stock Price Info [link to Stock Price Information page]
+Stock Transfer Agent [link to Stock Transfer Agent page]
+Fixed Income [link to Fixed Income menu]
+Trust Preferred Securities [link to Trust Preferred Securities page]
+Preferred Stock [link to Preferred Stock page]
+Demand Notes [link to Demand Notes page]
+Securitization [link to Securitization menu]
+Auto Securitization [link to Auto Securitization page]
+Mortgage Securitization [link to Mortgage Securitization page]
+Non-hired NRSRO [link to Non-hired NRSRO page]
+Corporate Governance [link to Corporate Governance page]
+Press Releases [link to Press Releases page]
+
+
+[INVESTOR RELATIONS LEFT NAV TILE DAY 1]
+[H3] 
+Investor Tools 
+
+Investor Kit [link to Investor Kit page]
+Help & FAQs [link to FAQ Investor page]
+Investor Contacts [link to Investor Contacts page]
+
+[H2] 
+Top FAQs
+
+[Copy]
+What is the relationship between Ally Financial, Ally Bank and GMAC Inc.?
+GMAC has been renamed Ally Financial. The Ally brand was first introduced in May 2009 when GMAC Bank, Ally Financial’s wholly owned banking subsidiary, was renamed Ally Bank, member FDIC. The brand has resonated very well with customers, so we have leveraged the Ally brand for the broader organization.
+
+
+Who owns Ally Financial?
+View the ownership structure [links to http://media.ally.com/index.php?s=51]of Ally Financial in our Media Center.
+
+
+Who is Ally Financial?
+Ally Financial Inc. (formerly GMAC Inc.) is one of the world's largest automotive financial services companies.  The company offers a full suite of automotive financing products and services in key markets around the world.  Ally's other business units include mortgage operations and commercial finance, and the company's subsidiary, Ally Bank, a member FDIC, offers retail banking products.  Ally operates as a bank holding company. Start with our operations overview [links to http://www.ally.com/about/company-structure/operations/index.html].
+
+Where can I obtain Ally’s financial statements?
+Our financial statements are included in our quarterly and annual reports on Forms 10-Q and 10-K that are filed with the U.S. Securities and Exchange Commission. These documents are available at the SEC website [links to www.sec.gov] or on our SEC Filings page [links to SEC Filing page].
+
+
+What is Ally’s ticker symbol and what exchanges is Ally traded on?
+
+Ally’s common stock is traded on the New York Stock Exchange (NYX) under the ticker symbol [“ALLY”].
+
+Find information with respect to Ally’s preferred stock and other fixed income investments [links to Preferred Stock page]. 
+
+
+View Ally’s interactive Stock Price Chart [links to Stock Price Information page] with historical and trending data.
+
+How can I purchase shares of Ally Financial?
+Ally does not offer initial direct stock purchase.  Ally Investor Relations cannot authorize or facilitate a security trade. Please refer to your financial advisor or stock broker to express your interest in purchasing an Ally Financial security.
+
+[H2] 
+Other FAQs
+
+[Copy]
+Does Ally pay a dividend?
+At this time, Ally does not pay a dividend on its common stock.
+
+How can I sign up to receive email alerts containing new Ally information?
+You can sign up for Ally event and SEC filing alerts [links to Investor Relations Homepage]. You can also sign up [links to http://media.ally.com/index.php?s=42] for Ally news releases.
+
+When does Ally report earnings?
+Ally reports earnings quarterly.  Please refer to the Events & Presentations [links to Events & Presentations page] section of our website for information on any upcoming events.
+
+
+Where may I find information on Demand Notes?
+View the Demand Notes [links to Demand Notes page] section of our website. 
+
+When is Ally’s fiscal year end?
+Ally’s fiscal year end is December 31.
+
+What is the composition of the Ally Board of Directors? 
+For information about our current board members, please visit the Board of Directors [links to http://media.ally.com/index.php?s=52&item=124] section of our website.
+Who is Ally’s stock transfer agent and registrar?
+Ally’s stock transfer agent and registrar is Computershare.  You can contact Computershare at 1-888-250-3985, shareholder@computershare.com [opens preferred mail client] or by visiting their website at www.computershare.com [links to www.computershare.com].
+
+Where can I get information about upcoming Ally events?
+View the Events & Presentations [links to Events & Presentations page] section of our website.
+
+When was Ally incorporated?
+Ally was incorporated in February 1997 under the Delaware General Corporation Law and on January 1, 1998, merged with its predecessor, which was originally incorporated under New York Banking Law in 1919.     
+
+
+Who are Ally’s independent auditors?
+Ally’s independent registered accounting firm is Deloitte & Touche LLP.
+
+
+Where can I find Ally press releases?
+View the Media Center [links to http://media.ally.com/?] section of our website.
+
+
+[ALLY.COM STANDARD FOOTER]
+
+Ally Financial Inc. © 2009 - 2011    privacy | security | legal | site map | give feedback
+
+
+
+
+
+Investor Contacts
+
+[ALLY.COM STANDARD C-FRAME]
+ ally logo	                                                              [search ally.com] <<search>>  global | contact us | help | security
+ 
+[icon] print                [icon] text
+
+							
+
+[ALLY.COM STANDARD TOP NAV DAY 1]
+Ally Home [link to Ally Homepage] Our Company [link to Our Company menu]   Investor Relations [link to Investor Relations menu]      Media Center [link to Media page]  Careers [link to Our Careers page]    Giving Back [link to Giving Back page]   Ally Story [link to Ally Story page]   About Ally [link to About Ally page] 
+
+
+
+[INVESTOR RELATIONS LEFT NAV DAY 1]
+Investor Relations [link to Investor Relations Homepage] 
+Financial Information [links to Financial Information menu]   
+Earnings Releases [link to Earnings Release page] 
+Annual Reports [link to Annual Reports page] 
+SEC Filings [link to SEC Filings page]
+Other Regulatory Filings [link to Other Regulatory Filings page]
+Subsidiary Financials [link to Subsidiary Financials page]
+Events & Presentations [link to Events & Presentations page]
+Shareholder Information [link to Shareholder Information menu]
+Stock Price Info [link to Stock Price Information page]
+Stock Transfer Agent [link to Stock Transfer Agent page]
+Fixed Income [link to Fixed Income menu]
+Trust Preferred Securities [link to Trust Preferred Securities page]
+Preferred Stock [link to Preferred Stock page]
+Demand Notes [link to Demand Notes page]
+Securitization [link to Securitization menu]
+Auto Securitization [link to Auto Securitization page]
+Mortgage Securitization [link to Mortgage Securitization page]
+Non-hired NRSRO [link to Non-hired NRSRO page]
+Corporate Governance [link to Corporate Governance page]
+Press Releases [link to Press Releases page]
+
+
+[INVESTOR RELATIONS LEFT NAV TILE DAY 1]
+[H3] 
+Investor Tools 
+
+Investor Kit [link to Investor Kit page]
+Help & FAQs [link to FAQ Investor page]
+Investor Contacts [link to Investor Contacts page]
+
+
+
+[H1]
+Investor Relations
+
+[H2]
+Investor Contacts 
+
+[Copy]
+Please direct your inquiries to the investor contacts below. 
+
+Investor Relations 
+Ally Financial Inc.
+440 South Church Street
+Charlotte, NC 28202
+1-866-710-4623
+investor.relations@ally.com
+Email us [links to http://www.ally.com/contact-us/#tabs=investor-relations]
+
+Common Stock Transfer Agent
+Computershare Investor Services
+P.O. Box 43078
+Providence, RI 02940-3078
+1-888-250-3985
+shareholder@computershare.com
+ 
+Preferred Stock Transfer Agent
+BNY Mellon Shareowner Services
+1-800-288-9541
+www.bnymellon.com/shareowner [links to preferred mail client]
+
+Demand Notes Customer Service
+1-800-684-8823
+
+Mail correspondence and deposits to:
+Do not send cash.
+Ally Demand Notes 154-0510
+Bank of New York Mellon
+P.O. Box 535006
+Pittsburgh, PA 15253-5006
+
+Securitization 
+1-866-710-4623
+securitization@ally.com 
+
+Corporate Bond Trustee 
+Bank of New York Mellon
+1-800-254-2826
+corptrust@bnymellon.com 
+www.bnymellon.com [links to www.bynmellon.com]
+
+[ALLY.COM STANDARD FOOTER]
+
+Ally Financial Inc. © 2009 - 2011    privacy | security | legal | site map | give feedback
+
+
+
+
+Email Alerts - modal
+
+[Text link]
+subscribe to email alerts
+
+
+[H2]
+Subscribe to alerts for Ally Financial Inc. 
+
+[Copy]
+
+Your email address:
+
+[                  ]
+
+[] Event Alerts
+
+[] SEC Filing Alert
+
+[Button]
+
+<<subscribe>> [links to subscription confirmation]
+
+[Confirmation]
+
+[H2]
+Thank you
+
+[Copy]
+Your request to subscribe to the following list(s) has been submitted:
+
+[event/SEC filing alert] 
+
+An email with user validation has been sent to [email address]. To complete the process, please follow the instructions within the email.
+
+
+
+***SPRINT 3*** 
+
+Events & Presentations
+
+
+[ALLY.COM STANDARD C-FRAME]
+ ally logo	                                                              [search ally.com] <<search>>  global | contact us | help | security
+ 
+[icon] print                [icon] text
+
+							
+
+[ALLY.COM STANDARD TOP NAV DAY 1]
+Ally Home [link to Ally Homepage] Our Company [link to Our Company menu]   Investor Relations [link to Investor Relations menu]      Media Center [link to Media page]   Careers [link to Our Careers page]  Giving Back [link to Giving Back page]   Ally Story [link to Ally Story page]   About Ally [link to About Ally page] 
+
+
+
+[INVESTOR RELATIONS LEFT NAV DAY 1]
+Investor Relations [link to Investor Relations Homepage] 
+Financial Information [links to Financial Information menu]   
+Earnings Releases [link to Earnings Release page] 
+Annual Reports [link to Annual Reports page] 
+SEC Filings [link to SEC Filings page]
+Other Regulatory Filings [link to Other Regulatory Filings page]
+Subsidiary Financials [link to Subsidiary Financials page]
+Events & Presentations [link to Events & Presentations page]
+Shareholder Information [link to Shareholder Information menu]
+Stock Price Info [link to Stock Price Information page]
+Stock Transfer Agent [link to Stock Transfer Agent page]
+Fixed Income [link to Fixed Income menu]
+Trust Preferred Securities [link to Trust Preferred Securities page]
+Preferred Stock [link to Preferred Stock page]
+Demand Notes [link to Demand Notes page]
+Securitization [link to Securitization menu]
+Auto Securitization [link to Auto Securitization page]
+Mortgage Securitization [link to Mortgage Securitization page]
+Non-hired NRSRO [link to Non-hired NRSRO page]
+Corporate Governance [link to Corporate Governance page]
+Press Releases [link to Press Releases page]
+
+
+[INVESTOR RELATIONS LEFT NAV TILE DAY 1]
+[H3] 
+Investor Tools 
+
+Investor Kit [link to Investor Kit page]
+Help & FAQs [link to FAQ Investor page]
+Investor Contacts [link to Investor Contacts page]
+
+
+
+ 
+[H1]
+Investor Relations
+
+[H2]
+Events & Presentations
+
+[Event feeder]
+
+[Legal disclaimer]
+The information that may be accessed above speaks only as of the particular date or dates indicated, and may have become out of date.  Ally Financial does not undertake any obligation to update any of the information presented.  The performance of Ally Financial is subject to risks and uncertainties, which are discussed more fully in our most recent Annual Report on Form 10-K, as well as any updates provided in subsequent reports filed with the Securities and Exchange Commission.  All information provided on this Investor Relations website is provided for informational purposes only, and does not constitute an offer to sell or the solicitation of an offer to buy any securities.
+
+
+[ALLY.COM STANDARD FOOTER]
+
+Ally Financial Inc. © 2009 - 2011    privacy | security | legal | site map | give feedback
+
+
+
+
+Press Releases
+
+[ALLY.COM STANDARD C-FRAME]
+ ally logo	                                                              [search ally.com] <<search>>  global | contact us | help | security
+ 
+[icon] print                [icon] text
+
+							
+
+[ALLY.COM STANDARD TOP NAV DAY 1]
+Ally Home [link to Ally Homepage] Our Company [link to Our Company menu]   Investor Relations [link to Investor Relations menu]      Media Center [link to Media page]  Careers [link to Our Careers page]   Giving Back [link to Giving Back page]   Ally Story [link to Ally Story page]   About Ally [link to About Ally page] 
+
+
+
+[INVESTOR RELATIONS LEFT NAV DAY 1]
+Investor Relations [link to Investor Relations Homepage] 
+Financial Information [links to Financial Information menu]   
+Earnings Releases [link to Earnings Release page] 
+Annual Reports [link to Annual Reports page] 
+SEC Filings [link to SEC Filings page]
+Other Regulatory Filings [link to Other Regulatory Filings page]
+Subsidiary Financials [link to Subsidiary Financials page]
+Events & Presentations [link to Events & Presentations page]
+Shareholder Information [link to Shareholder Information menu]
+Stock Price Info [link to Stock Price Information page]
+Stock Transfer Agent [link to Stock Transfer Agent page]
+Fixed Income [link to Fixed Income menu]
+Trust Preferred Securities [link to Trust Preferred Securities page]
+Preferred Stock [link to Preferred Stock page]
+Demand Notes [link to Demand Notes page]
+Securitization [link to Securitization menu]
+Auto Securitization [link to Auto Securitization page]
+Mortgage Securitization [link to Mortgage Securitization page]
+Non-hired NRSRO [link to Non-hired NRSRO page]
+Corporate Governance [link to Corporate Governance page]
+Press Releases [link to Press Releases page]
+
+
+[INVESTOR RELATIONS LEFT NAV TILE DAY 1]
+[H3] 
+Investor Tools 
+
+Investor Kit [link to Investor Kit page]
+Help & FAQs [link to FAQ Investor page]
+Investor Contacts [link to Investor Contacts page]
+
+
+
+
+[H1]
+Investor Relations
+
+[H2]
+Press Releases
+
+
+[Event feeder 5 most recent]
+
+[Copy]
+
+View all Press Releases > [link to http://media.ally.com/?]
+
+
+[ALLY.COM STANDARD FOOTER]
+
+Ally Financial Inc. © 2009 - 2011    privacy | security | legal | site map | give feedback
+
+
+
+
+Fixed Income > Trust Preferred Securities
+
+[ALLY.COM STANDARD C-FRAME]
+ ally logo	                                                              [search ally.com] <<search>>  global | contact us | help | security
+ 
+[icon] print                [icon] text
+
+							
+
+[ALLY.COM STANDARD TOP NAV DAY 1]
+Ally Home [link to Ally Homepage] Our Company [link to Our Company menu]   Investor Relations [link to Investor Relations menu]      Media Center [link to Media page]  Careers [link to Our Careers page]   Giving Back [link to Giving Back page]   Ally Story [link to Ally Story page]   About Ally [link to About Ally page] 
+
+
+
+[INVESTOR RELATIONS LEFT NAV DAY 1]
+Investor Relations [link to Investor Relations Homepage] 
+Financial Information [links to Financial Information menu]   
+Earnings Releases [link to Earnings Release page] 
+Annual Reports [link to Annual Reports page] 
+SEC Filings [link to SEC Filings page]
+Other Regulatory Filings [link to Other Regulatory Filings page]
+Subsidiary Financials [link to Subsidiary Financials page]
+Events & Presentations [link to Events & Presentations page]
+Shareholder Information [link to Shareholder Information menu]
+Stock Price Info [link to Stock Price Information page]
+Stock Transfer Agent [link to Stock Transfer Agent page]
+Fixed Income [link to Fixed Income menu]
+Trust Preferred Securities [link to Trust Preferred Securities page]
+Preferred Stock [link to Preferred Stock page]
+Demand Notes [link to Demand Notes page]
+Securitization [link to Securitization menu]
+Auto Securitization [link to Auto Securitization page]
+Mortgage Securitization [link to Mortgage Securitization page]
+Non-hired NRSRO [link to Non-hired NRSRO page]
+Corporate Governance [link to Corporate Governance page]
+Press Releases [link to Press Releases page]
+
+
+[INVESTOR RELATIONS LEFT NAV TILE DAY 1]
+[H3] 
+Investor Tools 
+
+Investor Kit [link to Investor Kit page]
+Help & FAQs [link to FAQ Investor page]
+Investor Contacts [link to Investor Contacts page]
+
+
+
+
+[H1]
+Investor Relations
+
+[H2]
+Trust Preferred Securities
+
+[Copy]
+Ally Financial Inc. outstanding trust preferred securities 
+Name	Ticker	CUSIP	 Coupon	Liquidation Amount 
+($ millions)	Issue Date	Maturity Date	Distribution Dates
+Trust Preferred Securities, Series 2	ALLYPRA*	361860208	Fixed to Floating (8.125% through 15 Feb 2016; 3mL+ 5.785% thereafter)	$2,667	7 Mar 2011	15 Feb 2040**	Feb 15, May 15, Aug 15, Nov 15 
+
+* Listed on New York Stock Exchange
+** Reflects the maturity date of the related junior subordinated debentures
+
+
+Corporate Bond Trustee 
+Bank of New York Mellon
+1-800-254-2826
+corptrust@bnymellon.com  [link to preferred mail client]
+www.bnymellon.com  [link to www.bnymellon.com]
+
+[Legal disclaimer]
+
+The information included within these Fixed Income pages is provided for informational purposes only, and does not constitute an offer to sell or the solicitation of an offer to buy any securities.  An investment in securities involves risks and uncertainties, including those described in the offering materials relating to the securities.  Risks and uncertainties that could impact the company are discussed more fully in our most recent Annual Report on Form 10-K, as well as any updated provided in subsequent reports filed with the Securities and Exchange Commission.  Prospective investors should consult their own financial and legal advisors about risks associated with an investment in a particular issue of securities.   
+
+
+[ALLY.COM STANDARD FOOTER]
+
+Ally Financial Inc. © 2009 - 2011    privacy | security | legal | site map | give feedback
+
+
+
+Fixed Income > Preferred Stock
+
+[ALLY.COM STANDARD C-FRAME]
+ ally logo	                                                              [search ally.com] <<search>>  global | contact us | help | security
+ 
+[icon] print                [icon] text
+
+							
+
+[ALLY.COM STANDARD TOP NAV DAY 1]
+Ally Home [link to Ally Homepage] Our Company [link to Our Company menu]   Investor Relations [link to Investor Relations menu]       Media Center [link to Media page]  Careers [link to Our Careers page]  Giving Back [link to Giving Back page]   Ally Story [link to Ally Story page]   About Ally [link to About Ally page] 
+
+
+
+[INVESTOR RELATIONS LEFT NAV DAY 1]
+Investor Relations [link to Investor Relations Homepage] 
+Financial Information [links to Financial Information menu]   
+Earnings Releases [link to Earnings Release page] 
+Annual Reports [link to Annual Reports page] 
+SEC Filings [link to SEC Filings page]
+Other Regulatory Filings [link to Other Regulatory Filings page]
+Subsidiary Financials [link to Subsidiary Financials page]
+Events & Presentations [link to Events & Presentations page]
+Shareholder Information [link to Shareholder Information menu]
+Stock Price Info [link to Stock Price Information page]
+Stock Transfer Agent [link to Stock Transfer Agent page]
+Fixed Income [link to Fixed Income menu]
+Trust Preferred Securities [link to Trust Preferred Securities page]
+Preferred Stock [link to Preferred Stock page]
+Demand Notes [link to Demand Notes page]
+Securitization [link to Securitization menu]
+Auto Securitization [link to Auto Securitization page]
+Mortgage Securitization [link to Mortgage Securitization page]
+Non-hired NRSRO [link to Non-hired NRSRO page]
+Corporate Governance [link to Corporate Governance page]
+Press Releases [link to Press Releases page]
+
+
+[INVESTOR RELATIONS LEFT NAV TILE DAY 1]
+[H3] 
+Investor Tools 
+
+Investor Kit [link to Investor Kit page]
+Help & FAQs [link to FAQ Investor page]
+Investor Contacts [link to Investor Contacts page]
+
+
+
+
+[H1]
+Investor Relations
+
+[H2]
+Preferred Stock
+
+ [Copy]
+Ally Financial Inc. outstanding preferred stock
+Name	Ticker	CUSIP	Dividend	Liquidation Amount
+(in $ millions)	Issue Date	Maturity Date	Distribution Dates
+Preferred Stock, Series A	ALLYPRB*	
+02005N308
+	Fixed to Floating (8.500% through 15 May 2016; 3mL+ 6.243% thereafter)	$1,022	25 Mar 2011	Perpetual	Feb 15, May 15, Aug 15, Nov 15
+Cumulative Perpetual Preferred Stock, Series G	N/A	
+36186R209
+	7.000%	$2,577	15 Oct 2009	Perpetual	Feb 15, May 15, Aug 15, Nov 15
+
+* Listed on New York Stock Exchange
+
+
+
+Preferred Stock Transfer Agent
+BNY Mellon Shareowner Services
+1-800-288-9541
+www.bnymellon.com/shareowner [link to www.bnymellon.com/shareowner]
+ 
+[Legal disclaimer]
+
+The information included within these Fixed Income pages is provided for informational purposes only, and does not constitute an offer to sell or the solicitation of an offer to buy any securities.  An investment in securities involves risks and uncertainties, including those described in the offering materials relating to the securities.  Risks and uncertainties that could impact the company are discussed more fully in our most recent Annual Report on Form 10-K, as well as any updated provided in subsequent reports filed with the Securities and Exchange Commission.  Prospective investors should consult their own financial and legal advisors about risks associated with an investment in a particular issue of securities.   
+
+[ALLY.COM STANDARD FOOTER]
+
+Ally Financial Inc. © 2009 - 2011    privacy | security | legal | site map | give feedback
+
+
+
+Securitization > Auto Securitization
+
+[ALLY.COM STANDARD C-FRAME]
+ ally logo	                                                              [search ally.com] <<search>>  global | contact us | help | security
+ 
+[icon] print                [icon] text
+
+							
+
+[ALLY.COM STANDARD TOP NAV DAY 1]
+Ally Home [link to Ally Homepage] Our Company [link to Our Company menu]   Investor Relations [link to Investor Relations menu]       Media Center [link to Media page]  Careers [link to Our Careers page]  Giving Back [link to Giving Back page]   Ally Story [link to Ally Story page]   About Ally [link to About Ally page] 
+
+
+
+[INVESTOR RELATIONS LEFT NAV DAY 1]
+Investor Relations [link to Investor Relations Homepage] 
+Financial Information [links to Financial Information menu]   
+Earnings Releases [link to Earnings Release page] 
+Annual Reports [link to Annual Reports page] 
+SEC Filings [link to SEC Filings page]
+Other Regulatory Filings [link to Other Regulatory Filings page]
+Subsidiary Financials [link to Subsidiary Financials page]
+Events & Presentations [link to Events & Presentations page]
+Shareholder Information [link to Shareholder Information menu]
+Stock Price Info [link to Stock Price Information page]
+Stock Transfer Agent [link to Stock Transfer Agent page]
+Fixed Income [link to Fixed Income menu]
+Trust Preferred Securities [link to Trust Preferred Securities page]
+Preferred Stock [link to Preferred Stock page]
+Demand Notes [link to Demand Notes page]
+Securitization [link to Securitization menu]
+Auto Securitization [link to Auto Securitization page]
+Mortgage Securitization [link to Mortgage Securitization page]
+Non-hired NRSRO [link to Non-hired NRSRO page]
+Corporate Governance [link to Corporate Governance page]
+Press Releases [link to Press Releases page]
+
+
+[INVESTOR RELATIONS LEFT NAV TILE DAY 1]
+[H3] 
+Investor Tools 
+
+Investor Kit [link to Investor Kit page]
+Help & FAQs [link to FAQ Investor page]
+Investor Contacts [link to Investor Contacts page]
+
+
+
+[H1]
+Investor Relations
+
+[H2]
+Auto Securitization 
+The information provided in the following section pertains to securities backed by receivables serviced by Ally Financial. It is intended for the use of institutional and corporate investors, investment banking firms, securities dealers and brokers, securities research analysts and other interested parties located in the United States of America. Ally Financial reserves the right to amend or revise any information contained herein at any time without notification. Furthermore, Ally Financial assumes no responsibility for damages incurred in connection with the use of the information contained herein. These materials are provided for informational purposes only, and should not be construed as an offer to sell, purchase, or trade the related securities.
+
+The information contained in this site is provided for historical purposes only. The information speaks only as of the date information was originally issued. Ally Financial has no obligation to update any information contained in this site. For current information about the company, please refer to our most recent public filings with the Securities and Exchange Commission at http://www.sec.gov. [links to http://www.sec.gov]
+
+Prospectuses for certain of these transactions are also available herein. They are in Portable Document Format (PDF) and represent the latest version of the prospectus. You need Adobe Acrobat installed on your computer in order to view prospectuses. A link to download the Adobe Acrobat reader is available on our Help page. By viewing a prospectus online you agree that you are a U.S. person operating under federal securities laws and that you are not a retail or individual investor, and that you consent to receive an electronic prospectus for purposes of federal and state securities law.
+
+[Button]
+
+i accept [links to Securitization > Auto Securitization Accept page]
+
+
+[Button]
+
+i decline [links to Investor Relations Homepage]
+
+
+
+
+[ALLY.COM STANDARD FOOTER]
+
+Ally Financial Inc. © 2009 - 2011    privacy | security | legal | site map | give feedback
+
+
+Securitization > Auto Securitization Accept
+
+[ALLY.COM STANDARD C-FRAME]
+ ally logo	                                                              [search ally.com] <<search>>  global | contact us | help | security
+ 
+[icon] print                [icon] text
+
+							
+
+[ALLY.COM STANDARD TOP NAV DAY 1]
+Ally Home [link to Ally Homepage] Our Company [link to Our Company menu]   Investor Relations [link to Investor Relations menu]       Media Center [link to Media page]  Careers [link to Our Careers page]  Giving Back [link to Giving Back page]   Ally Story [link to Ally Story page]   About Ally [link to About Ally page] 
+
+
+
+[INVESTOR RELATIONS LEFT NAV DAY 1]
+Investor Relations [link to Investor Relations Homepage] 
+Financial Information [links to Financial Information menu]   
+Earnings Releases [link to Earnings Release page] 
+Annual Reports [link to Annual Reports page] 
+SEC Filings [link to SEC Filings page]
+Other Regulatory Filings [link to Other Regulatory Filings page]
+Subsidiary Financials [link to Subsidiary Financials page]
+Events & Presentations [link to Events & Presentations page]
+Shareholder Information [link to Shareholder Information menu]
+Stock Price Info [link to Stock Price Information page]
+Stock Transfer Agent [link to Stock Transfer Agent page]
+Fixed Income [link to Fixed Income menu]
+Trust Preferred Securities [link to Trust Preferred Securities page]
+Preferred Stock [link to Preferred Stock page]
+Demand Notes [link to Demand Notes page]
+Securitization [link to Securitization menu]
+Auto Securitization [link to Auto Securitization page]
+Mortgage Securitization [link to Mortgage Securitization page]
+Non-hired NRSRO [link to Non-hired NRSRO page]
+Corporate Governance [link to Corporate Governance page]
+Press Releases [link to Press Releases page]
+
+
+[INVESTOR RELATIONS LEFT NAV TILE DAY 1]
+[H3] 
+Investor Tools 
+
+Investor Kit [link to Investor Kit page]
+Help & FAQs [link to FAQ Investor page]
+Investor Contacts [link to Investor Contacts page]
+
+
+[H1]
+Investor Relations
+
+[H2]
+Auto Securitization
+
+Forward Looking, Asset Backed
+Here you'll find access to prospectus materials and servicer reports for public asset-backed securities (ABS) transactions for which Ally Financial acts as Servicer. Just use the links under Trust information to read these materials.
+
+For additional information, please email [links to mailto: securitization@ally.com] or call us at 1-866-710-4623.
+
+Retail Automotive Securitization
+•	Issued primarily through Ally Auto Receivables Trust (AART)
+•	Primary assets of the trusts are fixed rate retail installment sales contracts or leases used to finance the purchase or lease of new and used cars and light trucks
+Wholesale Automotive Securitization
+•	Issued primarily through Ally Master Owner Trust (AMOT)
+•	Primary assets of the trust are revolving pools of receivables arising under floorplan financing agreements between Ally Financial and the group of retail automotive dealers
+
+
+[H2]
+Trust Information
+
+[Copy]
+
+U.S. Trusts [links to http://www.ally.com/about/investor/products/auto-securitization/us/index.html]
+Canada Trusts [links to http://www.ally.com/about/investor/products/auto-securitization/ca/index.html]
+
+
+ [ALLY.COM STANDARD FOOTER]
+
+Ally Financial Inc. © 2009 - 2011    privacy | security | legal | site map | give feedback
+
+
+
+Securitization > Mortgage Securitization
+
+
+[ALLY.COM STANDARD C-FRAME]
+ ally logo	                                                              [search ally.com] <<search>>  global | contact us | help | security
+ 
+[icon] print                [icon] text
+
+							
+
+[ALLY.COM STANDARD TOP NAV DAY 1]
+Ally Home [link to Ally Homepage] Our Company [link to Our Company menu]   Investor Relations [link to Investor Relations menu]      Media Center [link to Media page]  Careers [link to Our Careers page]   Giving Back [link to Giving Back page]   Ally Story [link to Ally Story page]   About Ally [link to About Ally page] 
+
+
+
+[INVESTOR RELATIONS LEFT NAV DAY 1]
+Investor Relations [link to Investor Relations Homepage] 
+Financial Information [links to Financial Information menu]   
+Earnings Releases [link to Earnings Release page] 
+Annual Reports [link to Annual Reports page] 
+SEC Filings [link to SEC Filings page]
+Other Regulatory Filings [link to Other Regulatory Filings page]
+Subsidiary Financials [link to Subsidiary Financials page]
+Events & Presentations [link to Events & Presentations page]
+Shareholder Information [link to Shareholder Information menu]
+Stock Price Info [link to Stock Price Information page]
+Stock Transfer Agent [link to Stock Transfer Agent page]
+Fixed Income [link to Fixed Income menu]
+Trust Preferred Securities [link to Trust Preferred Securities page]
+Preferred Stock [link to Preferred Stock page]
+Demand Notes [link to Demand Notes page]
+Securitization [link to Securitization menu]
+Auto Securitization [link to Auto Securitization page]
+Mortgage Securitization [link to Mortgage Securitization page]
+Non-hired NRSRO [link to Non-hired NRSRO page]
+Corporate Governance [link to Corporate Governance page]
+Press Releases [link to Press Releases page]
+
+
+[INVESTOR RELATIONS LEFT NAV TILE DAY 1]
+[H3] 
+Investor Tools 
+
+Investor Kit [link to Investor Kit page]
+Help & FAQs [link to FAQ Investor page]
+Investor Contacts [link to Investor Contacts page]
+
+
+ [H1]
+Investor Relations
+
+[H2]
+Mortgage Securitization
+
+[Copy]
+Learn more about our mortgage and asset-backed securities [links to https://www.gmacrescap.com/investors/], for business and institutional investors only.
+
+[legal disclaimer]
+The information provided in the following section pertains to securities backed by mortgage loans and receivables serviced by Ally Financial’s mortgage affiliates. It is intended for the use of institutional and corporate investors, investment banking firms, securities dealers and brokers, securities research analysts and other interested parties located in the United States of America. Ally Financial and its affiliates reserve the right to amend or revise any information contained herein at any time without notification. Furthermore, neither Ally Financial nor its affiliates assume any responsibility for damages incurred in connection with the use of the information contained herein. These materials are provided for informational purposes only, and should not be construed as an offer to sell, purchase, or trade the related securities.
+
+The information contained in this site is provided for historical purposes only. The information speaks only as of the date information was originally issued. We have no obligation to update any information contained in this site. For current information about the company, please refer to our recent public filings with the Securities and Exchange Commission at http://www.sec.gov.
+
+Prospectuses for certain of these transactions are also available herein. They are in Portable Document Format (PDF) and represent the latest version of the prospectus. You need Adobe Acrobat installed on your computer in order to view prospectuses. A link to download Adobe Acrobat reader is available on our Help page. By viewing a prospectus online you agree that you are a U.S. person operating under federal securities laws and that you are not a retail or individual investor, and that you consent to receive an electronic prospectus for purposes of federal and state securities law.
+
+[ALLY.COM STANDARD FOOTER]
+
+Ally Financial Inc. © 2009 - 2011    privacy | security | legal | site map | give feedback
+
+
+Securitization > Non-hired NRSRO
+
+
+[ALLY.COM STANDARD C-FRAME]
+ ally logo	                                                              [search ally.com] <<search>>  global | contact us | help | security
+ 
+[icon] print                [icon] text
+
+							
+
+[ALLY.COM STANDARD TOP NAV DAY 1]
+Ally Home [link to Ally Homepage] Our Company [link to Our Company menu]   Investor Relations [link to Investor Relations menu]      Media Center [link to Media page]  Careers [link to Our Careers page]   Giving Back [link to Giving Back page]   Ally Story [link to Ally Story page]   About Ally [link to About Ally page] 
+
+
+
+[INVESTOR RELATIONS LEFT NAV DAY 1]
+Investor Relations [link to Investor Relations Homepage] 
+Financial Information [links to Financial Information menu]   
+Earnings Releases [link to Earnings Release page] 
+Annual Reports [link to Annual Reports page] 
+SEC Filings [link to SEC Filings page]
+Other Regulatory Filings [link to Other Regulatory Filings page]
+Subsidiary Financials [link to Subsidiary Financials page]
+Events & Presentations [link to Events & Presentations page]
+Shareholder Information [link to Shareholder Information menu]
+Stock Price Info [link to Stock Price Information page]
+Stock Transfer Agent [link to Stock Transfer Agent page]
+Fixed Income [link to Fixed Income menu]
+Trust Preferred Securities [link to Trust Preferred Securities page]
+Preferred Stock [link to Preferred Stock page]
+Demand Notes [link to Demand Notes page]
+Securitization [link to Securitization menu]
+Auto Securitization [link to Auto Securitization page]
+Mortgage Securitization [link to Mortgage Securitization page]
+Non-hired NRSRO [link to Non-hired NRSRO page]
+Corporate Governance [link to Corporate Governance page]
+Press Releases [link to Press Releases page]
+
+
+[INVESTOR RELATIONS LEFT NAV TILE DAY 1]
+[H3] 
+Investor Tools 
+
+Investor Kit [link to Investor Kit page]
+Help & FAQs [link to FAQ Investor page]
+Investor Contacts [link to Investor Contacts page]
+
+
+ [H1]
+Investor Relations
+
+[H2]
+Non-hired NRSRO
+
+[Copy]
+Ally Financial has made securitization information available on a password-protected website (Venue, an RR Donnelley service). The information provided is in accordance with Securities Exchange Commission Rule 240.17g-5 as described in paragraphs (a)(3)(iii)(C) and (D) of that section.
+
+Already have access to Venue?
+Please proceed to www.rrdvenue.com. 
+
+Want to request access to Venue?
+Complete the Venue Access Request Form [link to Venue Access Request Form PDF from iCrossing] 
+Email the Venue Access Request Form along with the non-hired NRSRO’s Securities and Exchange Commission (SEC) certificate and proof it was submitted to the SEC to NRSRO_requests@ally.com. 
+Once your information is verified, RR Donnelley’s Client Services will send you an email with your username and a temporary password that will allow you access to Venue and the Ally Financial non-hired NRSRO information. 
+
+
+[ALLY.COM STANDARD FOOTER]
+
+Ally Financial Inc. © 2009 - 2011    privacy | security | legal | site map | give feedback
+
+
+
+
+Corporate Governance
+
+[ALLY.COM STANDARD C-FRAME]
+ ally logo	                                                              [search ally.com] <<search>>  global | contact us | help | security
+ 
+[icon] print                [icon] text
+
+							
+
+[ALLY.COM STANDARD TOP NAV DAY 1]
+Ally Home [link to Ally Homepage] Our Company [link to Our Company menu]   Investor Relations [link to Investor Relations menu   Media Center [link to Media page]  ]    Careers [link to Our Careers page]  Giving Back [link to Giving Back page]   Ally Story [link to Ally Story page]   About Ally [link to About Ally page] 
+
+
+
+[INVESTOR RELATIONS LEFT NAV DAY 1]
+Investor Relations [link to Investor Relations Homepage] 
+Financial Information [links to Financial Information menu]   
+Earnings Releases [link to Earnings Release page] 
+Annual Reports [link to Annual Reports page] 
+SEC Filings [link to SEC Filings page]
+Other Regulatory Filings [link to Other Regulatory Filings page]
+Subsidiary Financials [link to Subsidiary Financials page]
+Events & Presentations [link to Events & Presentations page]
+Shareholder Information [link to Shareholder Information menu]
+Stock Price Info [link to Stock Price Information page]
+Stock Transfer Agent [link to Stock Transfer Agent page]
+Fixed Income [link to Fixed Income menu]
+Trust Preferred Securities [link to Trust Preferred Securities page]
+Preferred Stock [link to Preferred Stock page]
+Demand Notes [link to Demand Notes page]
+Securitization [link to Securitization menu]
+Auto Securitization [link to Auto Securitization page]
+Mortgage Securitization [link to Mortgage Securitization page]
+Non-hired NRSRO [link to Non-hired NRSRO page]
+Corporate Governance [link to Corporate Governance page]
+Press Releases [link to Press Releases page]
+
+
+[INVESTOR RELATIONS LEFT NAV TILE DAY 1]
+[H3] 
+Investor Tools 
+
+Investor Kit [link to Investor Kit page]
+Help & FAQs [link to FAQ Investor page]
+Investor Contacts [link to Investor Contacts page]
+
+
+
+[H1]
+Investor Relations
+
+[H2]
+Corporate Governance
+
+[Copy]
+At Ally Financial, everything we do is guided by our core values: to do right by our customers, our employees, and our investors. Learn more about how we uphold the highest standards of corporate governance and ethical conduct. 
+
+
+Leadership [links to http://media.ally.com/index.php?s=20&item=148]
+Keeping us focused on delivering for our customers and our shareholders.
+
+Board of Directors [links to http://media.ally.com/index.php?s=52&item=124]
+Guiding the long term success of Ally.
+
+Policies & Charters  [links to http://www.ally.com/about/company-structure/policies-charters/index.html]
+How we conduct and meet our obligations.
+
+
+[ALLY.COM STANDARD FOOTER]
+
+Ally Financial Inc. © 2009 - 2011    privacy | security | legal | site map | give feedback
+
+
+
+Shareholder Information > Stock Price Info
+
+[ALLY.COM STANDARD C-FRAME]
+ ally logo	                                                              [search ally.com] <<search>>  global | contact us | help | security
+ 
+[icon] print                [icon] text
+
+							
+
+[ALLY.COM STANDARD TOP NAV DAY 1]
+Ally Home [link to Ally Homepage] Our Company [link to Our Company menu]   Investor Relations [link to Investor Relations menu]    Media Center [link to Media page] Careers [link to Our Careers page]     Giving Back [link to Giving Back page]   Ally Story [link to Ally Story page]   About Ally [link to About Ally page] 
+
+
+
+[INVESTOR RELATIONS LEFT NAV DAY 1]
+Investor Relations [link to Investor Relations Homepage] 
+Financial Information [links to Financial Information menu]   
+Earnings Releases [link to Earnings Release page] 
+Annual Reports [link to Annual Reports page] 
+SEC Filings [link to SEC Filings page]
+Other Regulatory Filings [link to Other Regulatory Filings page]
+Subsidiary Financials [link to Subsidiary Financials page]
+Events & Presentations [link to Events & Presentations page]
+Shareholder Information [link to Shareholder Information menu]
+Stock Price Info [link to Stock Price Information page]
+Stock Transfer Agent [link to Stock Transfer Agent page]
+Fixed Income [link to Fixed Income menu]
+Trust Preferred Securities [link to Trust Preferred Securities page]
+Preferred Stock [link to Preferred Stock page]
+Demand Notes [link to Demand Notes page]
+Securitization [link to Securitization menu]
+Auto Securitization [link to Auto Securitization page]
+Mortgage Securitization [link to Mortgage Securitization page]
+Non-hired NRSRO [link to Non-hired NRSRO page]
+Corporate Governance [link to Corporate Governance page]
+Press Releases [link to Press Releases page]
+
+
+[INVESTOR RELATIONS LEFT NAV TILE DAY 1]
+[H3] 
+Investor Tools 
+
+Investor Kit [link to Investor Kit page]
+Help & FAQs [link to FAQ Investor page]
+Investor Contacts [link to Investor Contacts page]
+
+
+
+[H1]
+Investor Relations
+
+[H2]
+Stock Price Information
+
+  [Copy]
+Ally Financial Inc. (NYSE: ALLY)
+
+ [Stock price live feed table]
+Range
+52 week:
+Open:
+Vol/Avg:
+Mkt cap:
+P/E:
+Div/yield:
+EPS:
+Shares:
+
+ 
+
+From: [date box] To: [date box] 
+
+ [Copy]
+View: 	
+
+[Toggle buttons] 
+candlestick chart
+list 
+ [Stock price candlestick chart or list view]
+ [Candlestick view]
+Date
+Volume 
+High
+Low 
+Open 
+Close
+
+[Candlestick legend]
+How to read this chart
+See the daily stock price and range.
+
+[legend graphic]
+
+
+[List]
+Date
+Volume 
+High
+Low 
+Open 
+Close
+
+[Copy default view]
+Stock information is provided by Thomson Reuters and Yahoo. Market data delayed at least 20 minutes.
+ 
+[Copy stock history view if Yahoo is down]
+Stock information is provided by Thomson Reuters. Market data delayed at least 20 minutes.
+
+[PreIPO copy]
+Coming soon…
+Please check back for ALLY stock price information from NYSE.
+
+[Post IPO pre history copy]
+Coming soon…
+Please check back for ALLY stock price history from NYSE.
+
+[No Feeds copy]
+Ally stock price information is currently unavailable.
+We apologize for any inconvenience. Please check back soon.
+
+[No History Feed copy]
+Ally stock price information is currently unavailable.
+We apologize for any inconvenience. Please check back soon.
+
+[No Daily Feed copy]
+Ally stock price information is currently unavailable.
+We apologize for any inconvenience. Please check back soon.
+
+[stock price chart]
+
+[Copy]
+How to read this chart [links to contextual help legend]
+
+ 
+
+[ALLY.COM STANDARD FOOTER]
+
+Ally Financial Inc. © 2009 - 2011    privacy | security | legal | site map | give feedback
+
+
+
+
+Shareholder Information > Stock Transfer Agent
+
+[ALLY.COM STANDARD C-FRAME]
+ ally logo	                                                              [search ally.com] <<search>>  global | contact us | help | security
+ 
+[icon] print                [icon] text
+
+							
+
+[ALLY.COM STANDARD TOP NAV DAY 1]
+Ally Home [link to Ally Homepage] Our Company [link to Our Company menu]   Investor Relations [link to Investor Relations menu]      Media Center [link to Media page]   Careers [link to Our Careers page]  Giving Back [link to Giving Back page]   Ally Story [link to Ally Story page]   About Ally [link to About Ally page] 
+
+
+
+[INVESTOR RELATIONS LEFT NAV DAY 1]
+Investor Relations [link to Investor Relations Homepage] 
+Financial Information [links to Financial Information menu]   
+Earnings Releases [link to Earnings Release page] 
+Annual Reports [link to Annual Reports page] 
+SEC Filings [link to SEC Filings page]
+Other Regulatory Filings [link to Other Regulatory Filings page]
+Subsidiary Financials [link to Subsidiary Financials page]
+Events & Presentations [link to Events & Presentations page]
+Shareholder Information [link to Shareholder Information menu]
+Stock Price Info [link to Stock Price Information page]
+Stock Transfer Agent [link to Stock Transfer Agent page]
+Fixed Income [link to Fixed Income menu]
+Trust Preferred Securities [link to Trust Preferred Securities page]
+Preferred Stock [link to Preferred Stock page]
+Demand Notes [link to Demand Notes page]
+Securitization [link to Securitization menu]
+Auto Securitization [link to Auto Securitization page]
+Mortgage Securitization [link to Mortgage Securitization page]
+Non-hired NRSRO [link to Non-hired NRSRO page]
+Corporate Governance [link to Corporate Governance page]
+Press Releases [link to Press Releases page]
+
+
+[INVESTOR RELATIONS LEFT NAV TILE DAY 1]
+[H3] 
+Investor Tools 
+
+Investor Kit [link to Investor Kit page]
+Help & FAQs [link to FAQ Investor page]
+Investor Contacts [link to Investor Contacts page]
+
+
+
+[H1]
+Investor Relations
+
+[H2]
+Stock Transfer Agent
+
+[Copy]
+If you are a holder of Ally Financial Inc. common stock and need assistance, please contact our Registrar and Transfer Agent, Computershare Trust Company, N.A by:
+
+Mail
+Computershare Investor Services
+P.O. Box 43078
+Providence, RI 02940-3078
+United States of America
+ 
+Email
+shareholder@computershare.com [links to preferred mail client]
+
+Phone
+U.S. toll-free: 1-888-250-3985
+Outside the U.S.: 1-781-575-4555
+For hearing impaired: 1-800-368-0328 
+Representatives are available from 8:30 am – 6:00 pm ET, Mon through Fri, to assist you. 
+
+Website
+www.computershare.com [links to www.computershare.com]
+Access your account by clicking on "Investor Centre" to:
+•	Get share balance
+•	Request printable forms 
+•	View the current market value and historical stock prices 
+
+
+[ALLY.COM STANDARD FOOTER]
+
+Ally Financial Inc. © 2009 - 2011    privacy | security | legal | site map | give feedback
+
+
+
+Demand Notes
+
+[ALLY.COM STANDARD C-FRAME]
+ ally logo	                                                              [search ally.com] <<search>>  global | contact us | help | security
+ 
+[icon] print                [icon] text
+
+							
+
+[ALLY.COM STANDARD TOP NAV DAY 1]
+Ally Home [link to Ally Homepage] Our Company [link to Our Company menu]   Investor Relations [link to Investor Relations menu]      Media Center [link to Media page]  Careers [link to Our Careers page]   Giving Back [link to Giving Back page]   Ally Story [link to Ally Story page]   About Ally [link to About Ally page] 
+
+
+
+[INVESTOR RELATIONS LEFT NAV DAY 1]
+Investor Relations [link to Investor Relations Homepage] 
+Financial Information [links to Financial Information menu]   
+Earnings Releases [link to Earnings Release page] 
+Annual Reports [link to Annual Reports page] 
+SEC Filings [link to SEC Filings page]
+Other Regulatory Filings [link to Other Regulatory Filings page]
+Subsidiary Financials [link to Subsidiary Financials page]
+Events & Presentations [link to Events & Presentations page]
+Shareholder Information [link to Shareholder Information menu]
+Stock Price Info [link to Stock Price Information page]
+Stock Transfer Agent [link to Stock Transfer Agent page]
+Fixed Income [link to Fixed Income menu]
+Trust Preferred Securities [link to Trust Preferred Securities page]
+Preferred Stock [link to Preferred Stock page]
+Demand Notes [link to Demand Notes page]
+Securitization [link to Securitization menu]
+Auto Securitization [link to Auto Securitization page]
+Mortgage Securitization [link to Mortgage Securitization page]
+Non-hired NRSRO [link to Non-hired NRSRO page]
+Corporate Governance [link to Corporate Governance page]
+Press Releases [link to Press Releases page]
+
+
+[INVESTOR RELATIONS LEFT NAV TILE DAY 1]
+[H3] 
+Investor Tools 
+
+Investor Kit [link to Investor Kit page]
+Help & FAQs [link to FAQ Investor page]
+Investor Contacts [link to Investor Contacts page]
+
+
+
+[H1]
+Investor Relations
+
+[H2]
+Demand Notes
+
+[copy]
+
+[no changes from this page http://www.ally.com/about/investor/products/demand-notes/index.html]
+
+[Legal disclaimer]
+
+Demand Notes:
+ 
+
+
+
+[ALLY.COM STANDARD FOOTER]
+
+Ally Financial Inc. © 2009 - 2011    privacy | security | legal | site map | give feedback
+
+
+
