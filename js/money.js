@@ -1,4 +1,9 @@
 ALLY.define('money', ['date-extensions'], function (DateExt) {
+	
+	/**
+	 * @param numberAsStringWithDecimal {string}
+	 * @return {string}
+	 */
 	var insertCommas = function (numberAsStringWithDecimal) {
 		var parts = numberAsStringWithDecimal.split("."),
 			left = parts[0],
@@ -20,14 +25,25 @@ ALLY.define('money', ['date-extensions'], function (DateExt) {
 		return result + '.' + right;	
 	};
 	
+	/**
+	 * @param principal {number}
+	 * @param apr {number}
+	 * @param startDate {Date object}
+	 * @param endDate {Date object}
+	 * @return {number}
+	 */
 	var applyInterestBetweenStartAndEndDates =	function(principal, apr, startDate, endDate) {
 		return principal * Math.pow(1 + ((apr/100)/365), DateExt.daysBetweenDates(startDate, endDate));
 	};
 
 	
-	//seems like a bad practice to hide your parameters inside an object
-	//because then your API for this function is hidden
-	//why not: function(principle, startDate, endDate, apr)?
+	//params argument is an object with lots of possible properties...should make
+	//this consistent with the above function	
+	/**
+	 * @param principal {number}
+	 * @param params {object}
+	 * @return {Money object}
+	 */
 	var calculateInterest = function (principal, params) { 
 		params.startDate = params.startDate || new Date();
 		
@@ -41,6 +57,10 @@ ALLY.define('money', ['date-extensions'], function (DateExt) {
 	};
 	
 	
+	/**
+	 * @param amount {number}
+	 * @return {object}
+	 */
 	var Money = function (amount) {
 		return {
 			toString: function () { 

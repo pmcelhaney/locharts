@@ -1,13 +1,21 @@
 ALLY.define('grid', [], function () {
 
+	/**
+	 * @param min {number}
+	 * @param max {number}
+	 * @param size {number}
+	 * @param precision {number}
+	 */
 	var roundOutMinAndMax = function (min, max, size, precision) {
-	   var size = size || 60;
-	   var precision = precision || 2;
-	   var domain = max - min;
-	   var slice = Math.round(domain / size) || Math.pow(10, -precision - 1);
+		var size = size || 60,
+			precision = precision || 2,
+	   		domain = max - min,
+	   		slice = Math.round(domain / size) || Math.pow(10, -precision - 1);
+	
 	   return [ +(min - min % slice).toPrecision(precision), +(max + slice - ( max % slice || slice ) ).toPrecision(precision) ];
 
 	};
+	
 	return function (options) {
 		
 		var options = options || {},
@@ -28,6 +36,11 @@ ALLY.define('grid', [], function () {
 			yMaxValue = roundedMinAndMax[1];
 		
 		return {
+			
+			/**
+			 * @param i {number}
+			 * @return {number}
+			 */
 			xForIndex: function (i) { 
 				var min, max;
 				if (xValues) {
@@ -41,6 +54,10 @@ ALLY.define('grid', [], function () {
 				}
 			},
 			
+			/**
+			 * @param x {number}
+			 * @return {number}
+			 */
 			indexForX: function (x) {
 				var ratio =	 (x - this.xForLeftEdge()) / width;
 				
@@ -63,75 +80,128 @@ ALLY.define('grid', [], function () {
 					return Math.min( Math.round( ratio * (columnCount) - 0.5 ), columnCount - 1);
 				}
 			},
-		
+			
+			/**
+			 * @param value {number}
+			 * @return {number}
+			 */
 			yForValue: function (value) {
 				if (isNaN(value)) return 0;
 				return Math.round( this.yForBottomEdge() - (value - yMinValue) * ( height / (yMaxValue - yMinValue) ) );
 			},
-		
+			
+			/** 
+			 * @return {number}
+			 */
 			xForLeftEdge: function () {
 				return marginLeft;
 			},
-		
+					
+			/**
+			 * @return {number}
+			 */
 			xForRightEdge: function () {
 				return marginLeft + width;
 			},
 		
-		
+			/** 
+			 * @return {number}
+			 */
 			yForTopEdge: function () {
 				return marginTop;
 			},
 		
+			/** 
+			 * @return {number}
+			 */
 			yForBottomEdge: function () {
 				return marginTop + height;
 			},
 
+			/** 
+			 * @return {number}
+			 */
 			columnWidth: function () {
 				return width / columnCount;
 			},
 		
 
-		
+			/** 
+			 * @return {number}
+			 */
 			width: function () {
 				return width;
 			},
 			
+			/** 
+			 * @return {number}
+			 */
 			outerWidth: function () {
 				return options.width;
 			},
 		
+			/** 
+			 * @return {number}
+			 */
 			height: function () {
 				return height;
 			},
 			
+			/** 
+			 * @return {number}
+			 */
 			outerHeight: function () {
 				return options.height;
 			},
 		
+			/** 
+			 * @return {number}
+			 */
 			yMinValue: function () {
 				return yMinValue;
 			},
 		
+			/** 
+			 * @return {number}
+			 */
 			yMaxValue: function () {
 				return yMaxValue;
 			},
 			
+			/** 
+			 * @return {number}
+			 */
 			xMinValue: function () {
 				return xMinValue;
 			},
 		
+			/** 
+			 * @return {number}
+			 */
 			xMaxValue: function () {
 				return xMaxValue;
 			},
 			
+			/** 
+			 * @param {number}
+			 * @return {number}
+			 */
 			color: function ( i ) {
 				return colors[ i % colors.length ];
 			},
 			
+			/** 
+			 * @param {number}
+			 * @return {number}
+			 */
 			fillColor: function ( i ) {
 				return fillColors[ i % fillColors.length ];
 			},
 			
+			/** 
+			 * @param {number}
+			 * @return {number}
+			 */
 			gradient: function ( i ) {
 				return gradients[ i % gradients.length ];
 			}
