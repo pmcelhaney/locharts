@@ -1,3 +1,4 @@
+//requiring 'grid', but passing it as 'Grid'--is that a good thing?
 ALLY.define('chart', ['grid', 'layers'], function (Grid, builtInLayers) {
 	
 	var dataMax = function (data) {
@@ -42,7 +43,6 @@ ALLY.define('chart', ['grid', 'layers'], function (Grid, builtInLayers) {
 				options.data = options.data();
 			}	 
 			var data = ( options.data && $.isArray( options.data[0] ) ) ? options.data : [options.data];
-
 
 			var grid = (options.Grid || Grid)( {
 				width: this.element.width(),

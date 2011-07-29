@@ -1,4 +1,4 @@
-ALLY.define('layers', [], function () {
+ALLY.define('layers', ['date-extensions'], function (DateExt) {
 
 
 var COLORS = {
@@ -6,18 +6,21 @@ var COLORS = {
 	TEXT: '#645050'
 };
 
+/** 
+ *
+xAxis: {
+	labels: function(){ },
+	separators: function(){ }
+}	
 
+yAxis: {
+	labels: function(){ },
+	separators: function(){ }
+}
+ 
+showValuesAbovePoints: true | false
 
-var formatDate = function(d) {
-	var twoDigits = function(n) {
-		return n > 9 ? n : '0' + n;
-	};
-	if (!d.getMonth) {
-		return d;
-	}
-	return twoDigits(d.getMonth() + 1) + '/' + twoDigits(d.getDate()) + '/' + d.getFullYear();		
-};
-
+ */
 
 
 return {
@@ -104,6 +107,7 @@ return {
 		for (i = Math.floor(grid.yMinValue()); i < grid.yMaxValue() ; i += increment) {
 			if (i > grid.yMinValue()) {
 				y = 0.5 + grid.yForValue(i);
+				//draws the horizontal background lines, should probably be optional
 				paper.path('M' + (grid.xForLeftEdge() + 0.5) + ' ' + y + 'L' + (grid.xForRightEdge() + 0.5) + ' ' + y ).attr('stroke', COLORS.LINES).attr('z-index', 0);
 				$('<span class="y-axis-label">' + formatter(i).toString() + '</span>').css({ position: 'absolute', left: grid.xForLeftEdge() - 105, top: grid.yForValue(i) - 7, width: '100px' }).appendTo(this.container);
 			}
@@ -326,7 +330,7 @@ return {
 		
 		for (i=0; i<howMany; i++) {
 			index = Math.floor((i + 0.5) * this.data[0].length / howMany);
-			$('<span class="x-axis-label">' + formatDate(this.data[0][index].date) + '</span>').css({ position: 'absolute', left: grid.xForIndex(index) - 50, top: grid.yForBottomEdge() + 5, width: '100px' }).appendTo(this.container);
+			$('<span class="x-axis-label">' + DateExt.formatDate(this.data[0][index].date) + '</span>').css({ position: 'absolute', left: grid.xForIndex(index) - 50, top: grid.yForBottomEdge() + 5, width: '100px' }).appendTo(this.container);
 		}
 		return { 
 			remove: function () {

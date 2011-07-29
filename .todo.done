@@ -1,0 +1,43 @@
+implement the table view | id:0668eeffa618a086fde9414174e53e33ad0f164b
+Sometimes the very first datapoint doesn't activate on hover. | id:09a2a5d5cbb4104a236fdc8ef215fee651ea1187
+add list / chart view split button | id:0c235c7966faee6992c769f2c46726f778cacbc1
+Allow data to be a function so I work around the valueOf bug. | id:0c4adb3d932de95a190f50462fec0ae1cd487d90
+make sure the background color on the table matches the comp | id:12004b7af33966e6aff9fc9c5a2954fa9e28fc09
+Write a functional spec | id:1cbf5aa36e77d5e25de7979dd793df9bf32759c2
+Replace each loops on reversed data with simple backward counting for loops. | id:21f1056ed2c9ca273c042b5ff0cbda775efbd1b9
+Work around jQuery bug | id:29fc10b4dae8620a0ea1acc3d04cbd1c3438f162
+ths are not aligned right in IE | id:3ac4d9847316378aec6d21a25d0f11589eb9a72c
+add arrows to the scrubber so people can see how it works | id:44a8584f290a10953803f8578aa642bc5e4bf235
+Load chart initially with values in the form. | id:465262da2f157767152385a8077b181ea26ad9dc
+Don't calculate container.offset() on every mousemove. | id:4c1679f86dd7448cfa856a5714e84f693a6d6185
+remove the opacity on the bars on the volume chart | id:66510d03033de6bb593fe899eb7274239f51afa5
+Select the last datapoint on load | id:6dc6002f708bd2a5864d0b64c8da092bda935acb
+Try delayedmousemove plugin for better performance in IE | id:6f6ab37a89c5f18ce842469d6e2acdc65d044957
+Jumping from bar graph to candlestick and vice-versa can leave an extra bar highlighted | id:76bb20d9c665c283046a03833115bb67ed17d363
+Wrap in a relatively positioned div automatically | id:7fd159cb6556441f8c5b1b75ca0d6969f0d1f86a
+update current day dispaly to match comp | id:81fa448c1b4d71e0ba6c73f7bb25b984271629b5
+Fix the print preview | id:86a56ea222fc23430fa6a8b685d90a39650d4f6c
+add Convert spaces back to tabs. | id:88d208ea009758a7881c42e0519d226d737cc068
+add proxy Yahoo feed through Tridion | id:8c19eda2c111e3fb82377a5ce0bbeffc46c85b2f
+Try curl.js instead of require.js | id:99c6d6de3acbb52b966938b2844ac231ec7231eb
+Improve dates on the x axis | id:9d42757d6ca71da2f51748927976e0a40dae678b
+use form standard for date range form | id:a7d7b468aadb30aa258755cf61762a67eb33fe77
+ce | id:b452d6b23b3c28f85872fffd99bdaf90ce0ad44a
+add ac tracking when feed fails | id:b53839b0a3d798cd31e62bae24259609faaec5ea
+enable datepickers | id:b697b7cff562efce49a5a208fc4cc12b38cf86f2
+Add See the daily stock price and range. to legend. | id:c1b0d4f9f1c7f8fbba9db0197d5a7ad1218ac27d
+add headers on the y axis labels | id:c28cd05ddd1aa51a3c059ff8264a67c4b2bedba2
+Populate the top table with Velocity | id:c6293380735f1254d41276818cfafc09a3c51efb
+Implement the % on percent changed | id:ce69ce67ff58b9cf2086ee667ca11c5f38c37947
+Add the headers and current stock data | id:ce7aa580e2c2708f24db1fc53e96d19c7e699dfc
+Create ALLY.define() to ease in transistion to AMD | id:d6923bd6c1d1693c2d6bf8d8607ac4433a5983c4
+change text to divs | id:d91edf2dab420cd94ab3f89289489bb9cbae18c7
+Update the dates in the form when they're changed in the scrubber. | id:dbe67c14f4e9ea10ac7de9698bf2df260fb8e113
+Prevent double-click on split button | id:dced8d1e47da06bdac1d499d43b53d9ff0cd791d
+add legend dejargonator | id:e1fa95db29ba25e6da7e545a048a8d5bb38aee4e
+add try proxying Mergent feed through Tridion | id:e44915f1d7fe85d7e1de39289d2b5932135b7213
+remove the scrubber | id:e67c5dbece27801f76fcc5cfc5aca2d4169f804d
+Moving the scrubber doesn't change the end date on the graph | id:ef9a37c4398f63f95ca61031ba83e33fc0e3ac2d
+Fix scrubber click to account for container offset. | id:f38b80e04e800c2bb8f2c9f2ef6447e16a3470af
+Pagination on list view | id:f9993b13a114a96cf59d7cf10f2366d36e9ddfde
+The cursor doesn't change to ew on IE. | id:fa5aa647248bdbbe6701a4515644909ba06ce4c8

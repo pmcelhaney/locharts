@@ -16,7 +16,7 @@ ALLY.define('examples', ['chart', 'money'], function (chart, Money) {
 			layers: [
 				"borders", 
 				["y-axis markers", 6, Money], 
-				"x-axis label separators",	
+				"x-axis label separators",
 				["x-axis labels", ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)']], 
 				"bars", 
 				"values above points", 
