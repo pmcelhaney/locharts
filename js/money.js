@@ -5,13 +5,14 @@ ALLY.define('money', ['date-extensions'], function (DateExt) {
 			right = parts[1],
 			result = "",
 			leftLength = left.length,
-			i;
+			i = 0;
 		
-		while(i < leftLength){
-			if ((left.length - i) % 3 === 0 && i != 0) { 
+		while(i < leftLength){ 
+			if ((leftLength - i) % 3 === 0 && i != 0) { 
 				result += ","; 
 			} 
 			result += left.charAt(i);
+			
 			i += 1;
 		}
 	
