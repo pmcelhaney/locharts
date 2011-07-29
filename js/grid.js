@@ -8,40 +8,24 @@ ALLY.define('grid', [], function () {
 	   return [ +(min - min % slice).toPrecision(precision), +(max + slice - ( max % slice || slice ) ).toPrecision(precision) ];
 
 	};
-	
-
-
 	return function (options) {
-		var options = options || {};
-		var marginLeft = options.marginLeft || 0;
-		var marginRight = options.marginRight || 0;
-		var marginTop = options.marginTop || 0;
-		var marginBottom = options.marginBottom || 0;
-	
-		var width = ( options.width || 960 ) - marginLeft - marginRight;
-		var height = ( options.height || 960 ) - marginBottom - marginTop;
-	
-	
-		var columnCount = options.columnCount || 1;
-	
-		var roundedMinAndMax = roundOutMinAndMax(options.yMinValue || 0, options.yMaxValue || 1);
 		
-		var yMinValue = roundedMinAndMax[0];
-		var yMaxValue = roundedMinAndMax[1];
-		
-		
-		
-
-	
-		var colors = options.colors || ['#000']; 
-		
-		var fillColors = options.fillColors || colors; 
-
-		var gradients = options.gradients || fillColors;
-	
-		var edgeToEdge = options.edgeToEdge || options.xValues;
-		
-		var xValues = options.xValues;
+		var options = options || {},
+			marginLeft = options.marginLeft || 0,
+			marginRight = options.marginRight || 0,
+			marginTop = options.marginTop || 0,
+			marginBottom = options.marginBottom || 0,
+			columnCount = options.columnCount || 1,
+			colors = options.colors || ['#000'],
+			fillColors = options.fillColors || colors,
+			gradients = options.gradients || fillColors,
+			edgeToEdge = options.edgeToEdge || options.xValues,
+			xValues = options.xValues,
+			width = ( options.width || 960 ) - marginLeft - marginRight,
+			height = ( options.height || 960 ) - marginBottom - marginTop,
+			roundedMinAndMax = roundOutMinAndMax(options.yMinValue || 0, options.yMaxValue || 1),
+			yMinValue = roundedMinAndMax[0],
+			yMaxValue = roundedMinAndMax[1];
 		
 		return {
 			xForIndex: function (i) { 

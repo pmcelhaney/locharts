@@ -1,4 +1,3 @@
-//requiring 'grid', but passing it as 'Grid'--is that a good thing?
 ALLY.define('chart', ['grid', 'layers'], function (Grid, builtInLayers) {
 	
 	var dataMax = function (data) {

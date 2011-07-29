@@ -45,6 +45,7 @@ ALLY.define('date-extensions', [], function () {
 		/** 
 		 * @param startDate {Date object}
 		 * @param endDate {Date object}
+		 * @return {number}
 		 */
 		daysBetweenDates: function (startDate, endDate) {		
 			return Math.round( ( endDate - startDate ) / MILLISECONDS_IN_A_DAY ); 
