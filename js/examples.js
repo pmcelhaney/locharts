@@ -69,7 +69,7 @@ ALLY.define('examples', ['chart', 'money'], function (chart, Money) {
 			marginTop: 40,
 			marginLeft: 100,
 			marginRight: 50,
-			colors: ['rgb(55,152,199)', 'rgb(101,3,96)']
+			colors: ['rgb(55,152,199)', 'rgb(101,3,96)', 'rgb(75,125,220)']
 		});
 		
 		
@@ -102,11 +102,32 @@ ALLY.define('examples', ['chart', 'money'], function (chart, Money) {
 			marginLeft: 100,
 			marginRight: 50,
 			colors: ["rgb(82,182,101)","rgb(233,126,0)","rgb(31,124,166)", "rgb(127,127,127)"],
-			fillColors: ["rgb(255,255,255)","rgba(136,211,245)", "rgba(44,18,98)"],
+			fillColors: ["rgb(50,150,180)","rgba(136,211,245)", "rgba(44,18,98)"],
 			yMinValue: 49000,
 			yMaxValue: 56000
 		});
 		
+		
+		$('#pie-chart').chart({
+			data: (function () {
+				var arr = []; 
+				$('#wealth-by-type tbody tr td').each(function () { 
+					arr.push(Money(parseInt($(this).text(), 10))); 
+				});
+				
+				return arr;	
+			})(),		
+			layers: [
+				"borders",
+				"pie"
+			],
+			marginBottom: 20,
+			marginTop: 20,
+			marginLeft: 20,
+			marginRight: 20,
+			colors: ["rgb(82,182,101)","rgb(233,126,0)","rgb(31,124,166)", "rgb(127,127,127)"],
+			fillColors: ["rgb(50,150,180)","rgba(136,211,245)", "rgba(44,18,98)"],
+		});
 		
 		var TradingDay = function (v, o, h, l, c, d) {
 			

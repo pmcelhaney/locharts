@@ -72,7 +72,9 @@ return {
 		var paper = this.paper;
 		var grid = this.grid;
 		$(this.data[0]).each(function (i) {
-			paper.text(grid.xForIndex(i), grid.yForBottomEdge() + 10, labels[i]).attr('fill', COLORS.TEXT);
+			//paper.text(grid.xForIndex(i), grid.yForBottomEdge() + 10, labels[i]).attr('fill', COLORS.TEXT);
+			paper.text(grid.xForIndex(i), grid.yForBottomEdge() + 10, "x: " + grid.xForIndex(i) + " y: " + grid.yForBottomEdge()).attr('fill', COLORS.TEXT);
+			
 		});
 	},
 
@@ -183,7 +185,8 @@ return {
 		
 		$(data).each(function (seriesIndex, series) {
 			$(series).each(function (i) {
-				paper.circle(grid.xForIndex(i), grid.yForValue(this), 5).attr('stroke-width', 0).attr('fill', grid.color(data.length - 1 - seriesIndex));
+				//paper.circle(grid.xForIndex(i), grid.yForValue(this), 5).attr('stroke-width', 0).attr('fill', grid.color(data.length - 1 - seriesIndex));
+				paper.text(grid.xForIndex(i), grid.yForValue(this), "x: " + grid.xForIndex(i) + " y: " + grid.yForValue(this)).attr('fill', COLORS.TEXT);
 			});
 		});
 	},
@@ -209,16 +212,17 @@ return {
 	'differential area': function () {
 		var paper = this.paper;
 		var grid = this.grid;
-		var data = this.data;		
-		var previousY = grid.yForBottomEdge();
-				
+		var data = this.data;	
+
 		$(data).each(function (i) {
 			var path = ['M',  ( grid.xForIndex(i) + 0.5 ), ( grid.yForValue(data[i][i]) + 0.5 ) ];
 			path.push('L', (grid.xForIndex(data.length) + 0.5), (grid.yForValue(data[i][data.length]) + 0.5) );
 			path.push('L', ( grid.xForIndex(data.length) + 0.5 ), (grid.yForValue(data[Math.max(0, i-1)][data.length]) + 0.5) );
 			path.push('Z');
-			paper.path(path).attr({	 fill: grid.fillColor(i),  'stroke-width': 0, opacity: 0.4	});
+//console.log(path);
+			paper.path(path).attr({	 fill: grid.fillColor(i),  'stroke-width': 2, opacity: 0.4	}); //set stroke for debugging
 		});
+
 		
 	},
 	
@@ -316,6 +320,35 @@ return {
 			}, function () {
 				//this.attr('fill', grid.gradient(0)).attr('fill-opacity', 0.8);
 			});
+		});
+	},
+	
+	'pie': function () {
+		var grid = this.grid,
+			paper = this.paper,
+			data = this.data[0],
+			dataLength = data.length,
+			dataTotal = 0,
+			i = 0,
+			centerX = grid.xMidpoint(),
+			centerY = grid.yMidpoint();
+
+console.log(centerX);
+
+		while (i < dataLength) {
+			dataTotal += data[i].valueOf();
+			i += 1;
+		}
+		
+		$(data).each(function (seriesIndex, series) {
+			var path = ['M', centerX, centerY];
+//			path.push('L', (grid.xForIndex(data.length) + 0.5), (grid.yForValue(data[i][data.length]) + 0.5) );
+//			path.push('L', ( grid.xForIndex(data.length) + 0.5 ), (grid.yForValue(data[Math.max(0, i-1)][data.length]) + 0.5) );
+			path.push('V', -150);
+			path.push('A', 150, "150 0 0", "0 -150", 150);
+			path.push('Z');
+//console.log(path);
+			paper.path(path).attr({	 fill: grid.fillColor(i),  'stroke-width': 2, opacity: 0.4	}); //set stroke for debugging
 		});
 	},
 	

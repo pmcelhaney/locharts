@@ -168,6 +168,10 @@ ALLY.define('grid', [], function () {
 				return yMaxValue;
 			},
 			
+			yMidpoint: function () {
+				return Math.ceil(height / 2);
+			},
+			
 			/** 
 			 * @return {number}
 			 */
@@ -182,9 +186,13 @@ ALLY.define('grid', [], function () {
 				return xMaxValue;
 			},
 			
+			xMidpoint: function () {
+				return Math.ceil(width / 2);
+			},
+						
 			/** 
 			 * @param {number}
-			 * @return {number}
+			 * @return RGB value (e.g. "rgb(55,152,199)") {String}
 			 */
 			color: function ( i ) {
 				return colors[ i % colors.length ];
@@ -192,7 +200,7 @@ ALLY.define('grid', [], function () {
 			
 			/** 
 			 * @param {number}
-			 * @return {number}
+			 * @return RGB value (e.g. "rgb(55,152,199)") {string}
 			 */
 			fillColor: function ( i ) {
 				return fillColors[ i % fillColors.length ];
@@ -200,7 +208,7 @@ ALLY.define('grid', [], function () {
 			
 			/** 
 			 * @param {number}
-			 * @return {number}
+			 * @return RGB value (e.g. "270-rgb(55,152,199)-rgb(70,195,255)") {string}
 			 */
 			gradient: function ( i ) {
 				return gradients[ i % gradients.length ];
