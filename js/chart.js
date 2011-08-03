@@ -18,9 +18,8 @@ ALLY.define('chart', ['grid', 'layers'], function (Grid, builtInLayers) {
 		return result;
 
 	};
-	
+
 	  $.widget("ally.chart", {
-		// These options will be used as defaults
 		options: {	},
 		
 		_create: function () {
@@ -92,8 +91,6 @@ ALLY.define('chart', ['grid', 'layers'], function (Grid, builtInLayers) {
 		},
  
 		_setOption: function(key, value) {
-		  // Use the _setOption method to respond to changes to options
-	  
 		  $.Widget.prototype._setOption.apply(this,arguments);
 		},
 		
