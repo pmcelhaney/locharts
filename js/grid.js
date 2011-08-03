@@ -1,5 +1,7 @@
 ALLY.define('grid', [], function () {
 
+	var RADIAN = Math.PI / 180;
+
 	/**
 	 * @param {number} min 
 	 * @param {number} max
@@ -17,10 +19,10 @@ ALLY.define('grid', [], function () {
 
 	};
 	
-			/**
-			 * @param {object} options A group of options that config this particular instance of a grid
-			 * @returns {object} The grid object
-			 */
+	/**
+	 * @param {object} options A group of options that config this particular instance of a grid
+	 * @returns {object} The grid object
+	 */
 	return function (options) {
 		
 		var options = options || {},
@@ -197,6 +199,29 @@ ALLY.define('grid', [], function () {
 			 */
 			xMidpoint: function () {
 				return Math.ceil(width / 2);
+			},
+			
+			/**
+			 * Calculates and returns the set of coordinates for each end of an arc (a pie piece sector)
+			 * @param {number} cx Center x-coordinate of the circle that serves as origin of the radius
+			 * @param {number} cy Center y-coordinate of the circle that serves as origin of the radius
+			 * @param {number} r radius
+			 * @param {number} startAngle Angle in degrees
+			 * @param {number} endAngle Angle in degrees
+			 * @returns {object} Two sets of coordinates 
+			 */
+			sectorCoordinates: function (cx, cy, r, startAngle, endAngle) {
+		        var x1 = cx + r * Math.cos(-startAngle * RADIAN),
+		            x2 = cx + r * Math.cos(-endAngle * RADIAN),
+		            y1 = cy + r * Math.sin(-startAngle * RADIAN),
+		            y2 = cy + r * Math.sin(-endAngle * RADIAN);
+		
+				return {
+					'x1': x1,
+					'y1': y1,
+					'x2': x2,
+					'y2': y2
+				};
 			},
 						
 			/** 
