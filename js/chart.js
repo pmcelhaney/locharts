@@ -10,7 +10,6 @@ ALLY.define('chart', ['grid', 'layers'], function (Grid, builtInLayers) {
 		var result = 0;
 		var datum;
 
-
 		for( i=0; i < data.length; i++ ) {
 			datum = data[i];
 			result = Math.max(result, $.isArray(datum) ? dataMax(datum) : datum);
@@ -20,8 +19,6 @@ ALLY.define('chart', ['grid', 'layers'], function (Grid, builtInLayers) {
 
 	};
 	
-	
-	// The jQuery.aj namespace will automatically be created if it doesn't exist
 	  $.widget("ally.chart", {
 		// These options will be used as defaults
 		options: {	},
