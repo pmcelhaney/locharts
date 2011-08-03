@@ -3,16 +3,16 @@ ALLY.define('grid', [], function () {
 	/**
 	 * @param min {number}
 	 * @param max {number}
-	 * @param size {number}
+	 * @param howManySlices {number}
 	 * @param precision {number}
 	 */
-	var roundOutMinAndMax = function (min, max, size, precision) {
-		var size = size || 60,
+	var roundOutMinAndMax = function (min, max, howManySlices, precision) {
+		var howManySlices = howManySlices || 60,
 			precision = precision || 2,
-	   		domain = max - min,
-	   		slice = Math.round(domain / size) || Math.pow(10, -precision - 1);
-	
-	   return [ +(min - min % slice).toPrecision(precision), +(max + slice - ( max % slice || slice ) ).toPrecision(precision) ];
+			domain = max - min,
+			sizeOfSlice = Math.round(domain / howManySlices) || Math.pow(10, -precision - 1);
+			
+		return [ +( min - (min % sizeOfSlice) ).toPrecision(precision), +( max - (max % sizeOfSlice) + (max % sizeOfSlice ? sizeOfSlice : 0) ).toPrecision(precision) ];
 
 	};
 	
