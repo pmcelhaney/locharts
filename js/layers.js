@@ -6,17 +6,17 @@ var COLORS = {
 };
 
 return {
-	'bars' : function (widthFactor, opacity) {
+	'bars':  function (widthFactor, opacity) {
 		var opacity = opacity || 0.8;
 		var grid = this.grid;
 		var paper = this.paper;
 		var eventTarget = this.eventTarget;
 		var bars = [];
-		
+	
 		var width = Math.round( grid.columnWidth() * (widthFactor || 0.5) );
 		var fillColor = grid.gradient(0);
 		var yForBottomEdge = grid.yForBottomEdge();
-		
+	
 		$(this.data[0]).each(function (i) {
 			var datum = this;
 
@@ -27,35 +27,32 @@ return {
 			bars[i] = bar;
 		});
 
-
-		var barRecievesFocus = function (event, i, datum) {
+		var barReceivesFocus = function (event, i, datum) {
 			bars[i].attr('fill', grid.gradient(1)).attr('fill-opacity', 1);
 		};
-		
+	
 		var barLosesFocus = function (event, i, datum) {
 			bars[i].attr('fill', grid.gradient(0)).attr('fill-opacity', opacity);
 		};
-		
-		$(eventTarget).bind('focusDatum.chart', barRecievesFocus);
+	
+		$(eventTarget).bind('focusDatum.chart', barReceivesFocus);
 		$(eventTarget).bind('blurDatum.chart', barLosesFocus);
-		
-		
+	
+	
 		return {
 			name: 'bars',
 			remove: function () {
-				$(eventTarget).unbind('focusDatum.chart', barRecievesFocus);
+				$(eventTarget).unbind('focusDatum.chart', barReceivesFocus);
 				$(eventTarget).unbind('blurDatum.chart', barLosesFocus);
 			}  
 		};
 
-	},
-
+	}, 
 	'x-axis labels': function (labels) {
 		var paper = this.paper;
 		var grid = this.grid;
 		$(this.data[0]).each(function (i) {
 			paper.text(grid.xForIndex(i), grid.yForBottomEdge() + 10, labels[i]).attr('fill', COLORS.TEXT);
-			//paper.text(grid.xForIndex(i), grid.yForBottomEdge() + 10, "x: " + grid.xForIndex(i) + " y: " + grid.yForBottomEdge()).attr('fill', COLORS.TEXT);
 			
 		});
 	},
@@ -105,9 +102,11 @@ return {
 
 	'borders': function () {
 		var rect = this.paper.rect(this.grid.xForLeftEdge() + 0.5, this.grid.yForTopEdge() + 0.5, this.grid.width(), this.grid.height());
-		rect.attr('fill', '#FBFBFB');
+		rect.attr('fill', '#f0f0f0');
 		rect.attr('stroke', COLORS.LINES);
 		
+		console.dir(this.paper);
+		console.dir(this.grid.width());
 	},
 	
 
@@ -170,6 +169,31 @@ return {
 				paper.circle(grid.xForIndex(i), grid.yForValue(this), 5).attr('stroke-width', 0).attr('fill', grid.color(data.length - 1 - seriesIndex));
 			});
 		});
+	},
+	
+	'hover dots': function () {
+		var paper = this.paper;
+		var grid = this.grid;
+		var data = this.data;
+		
+		var dot = paper.circle(-100, -100, Math.min(5, Math.max(3, grid.columnWidth() / 2))).attr('stroke-width', 0).attr('fill', grid.color(1));
+	   
+		var moveDot = function (event, index, datum) {
+			dot.attr({cx: grid.xForIndex(index), cy: grid.yForValue(data[0][index]) });
+		};
+		
+		var target = $(this.eventTarget);
+		
+		target.bind('focusDatum.chart.hoverDots', moveDot);
+		
+		return {
+			remove: function () {
+				target.unbind('focusDatum.chart.hoverDots');
+			}
+			
+		};
+
+	
 	},
 	
 	'area': function () {
@@ -378,31 +402,6 @@ return {
 				$(element).find('.x-axis-label').remove();
 			}
 		};
-	},
-	
-	'hover dots': function () {
-		var paper = this.paper;
-		var grid = this.grid;
-		var data = this.data;
-		
-		var dot = paper.circle(-100, -100, Math.min(5, Math.max(3, grid.columnWidth() / 2))).attr('stroke-width', 0).attr('fill', grid.color(1));
-	   
-		var moveDot = function (event, index, datum) {
-			dot.attr({cx: grid.xForIndex(index), cy: grid.yForValue(data[0][index]) });
-		};
-		
-		var target = $(this.eventTarget);
-		
-		target.bind('focusDatum.chart.hoverDots', moveDot);
-		
-		return {
-			remove: function () {
-				target.unbind('focusDatum.chart.hoverDots');
-			}
-			
-		};
-
-	
 	},
 	
 	'scrubber': function (start, stop) {
