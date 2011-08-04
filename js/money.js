@@ -5,20 +5,16 @@ ALLY.define('money', ['date-extensions'], function (DateExt) {
 	 * @returns {string}
 	 */
 	var insertCommas = function (numberAsStringWithDecimal) {
-		var parts = numberAsStringWithDecimal.split("."),
-			left = parts[0],
-			right = parts[1],
-			result = "",
-			leftLength = left.length,
-			i = 0;
+		var parts = numberAsStringWithDecimal.split(".");
+		var	left = parts[0];
+		var	right = parts[1];
+		var result = "";
 		
-		while(i < leftLength){ 
-			if ((leftLength - i) % 3 === 0 && i != 0) { 
+		for(var i = 0; i < left.length; i++){ 
+			if ((left.length - i) % 3 === 0 && i != 0) { 
 				result += ","; 
 			} 
 			result += left.charAt(i);
-			
-			i += 1;
 		}
 	
 	
