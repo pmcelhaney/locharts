@@ -1,40 +1,22 @@
 ALLY.define('layers', ['date-extensions'], function (DateExt) {
 
-
 var COLORS = {
 	LINES: '#DCDFE3',
 	TEXT: '#645050'
 };
 
-/** 
- *
-xAxis: {
-	labels: function(){ },
-	separators: function(){ }
-}	
-
-yAxis: {
-	labels: function(){ },
-	separators: function(){ }
-}
- 
-showValuesAbovePoints: true | false
-
- */
-
-
 return {
-	'bars' : function (widthFactor, opacity) {
+	'bars':  function (widthFactor, opacity) {
 		var opacity = opacity || 0.8;
 		var grid = this.grid;
 		var paper = this.paper;
 		var eventTarget = this.eventTarget;
 		var bars = [];
-		
+	
 		var width = Math.round( grid.columnWidth() * (widthFactor || 0.5) );
 		var fillColor = grid.gradient(0);
 		var yForBottomEdge = grid.yForBottomEdge();
-		
+	
 		$(this.data[0]).each(function (i) {
 			var datum = this;
 
@@ -45,35 +27,32 @@ return {
 			bars[i] = bar;
 		});
 
-
-		var barRecievesFocus = function (event, i, datum) {
+		var barReceivesFocus = function (event, i, datum) {
 			bars[i].attr('fill', grid.gradient(1)).attr('fill-opacity', 1);
 		};
-		
+	
 		var barLosesFocus = function (event, i, datum) {
 			bars[i].attr('fill', grid.gradient(0)).attr('fill-opacity', opacity);
 		};
-		
-		$(eventTarget).bind('focusDatum.chart', barRecievesFocus);
+	
+		$(eventTarget).bind('focusDatum.chart', barReceivesFocus);
 		$(eventTarget).bind('blurDatum.chart', barLosesFocus);
-		
-		
+	
+	
 		return {
 			name: 'bars',
 			remove: function () {
-				$(eventTarget).unbind('focusDatum.chart', barRecievesFocus);
+				$(eventTarget).unbind('focusDatum.chart', barReceivesFocus);
 				$(eventTarget).unbind('blurDatum.chart', barLosesFocus);
 			}  
 		};
 
-	},
-
+	}, 
 	'x-axis labels': function (labels) {
 		var paper = this.paper;
 		var grid = this.grid;
 		$(this.data[0]).each(function (i) {
-			//paper.text(grid.xForIndex(i), grid.yForBottomEdge() + 10, labels[i]).attr('fill', COLORS.TEXT);
-			paper.text(grid.xForIndex(i), grid.yForBottomEdge() + 10, "x: " + grid.xForIndex(i) + " y: " + grid.yForBottomEdge()).attr('fill', COLORS.TEXT);
+			paper.text(grid.xForIndex(i), grid.yForBottomEdge() + 10, labels[i]).attr('fill', COLORS.TEXT);
 			
 		});
 	},
@@ -123,9 +102,11 @@ return {
 
 	'borders': function () {
 		var rect = this.paper.rect(this.grid.xForLeftEdge() + 0.5, this.grid.yForTopEdge() + 0.5, this.grid.width(), this.grid.height());
-		rect.attr('fill', '#FBFBFB');
+		rect.attr('fill', '#f0f0f0');
 		rect.attr('stroke', COLORS.LINES);
 		
+		console.dir(this.paper);
+		console.dir(this.grid.width());
 	},
 	
 
@@ -185,10 +166,34 @@ return {
 		
 		$(data).each(function (seriesIndex, series) {
 			$(series).each(function (i) {
-				//paper.circle(grid.xForIndex(i), grid.yForValue(this), 5).attr('stroke-width', 0).attr('fill', grid.color(data.length - 1 - seriesIndex));
-				paper.text(grid.xForIndex(i), grid.yForValue(this), "x: " + grid.xForIndex(i) + " y: " + grid.yForValue(this)).attr('fill', COLORS.TEXT);
+				paper.circle(grid.xForIndex(i), grid.yForValue(this), 5).attr('stroke-width', 0).attr('fill', grid.color(data.length - 1 - seriesIndex));
 			});
 		});
+	},
+	
+	'hover dots': function () {
+		var paper = this.paper;
+		var grid = this.grid;
+		var data = this.data;
+		
+		var dot = paper.circle(-100, -100, Math.min(5, Math.max(3, grid.columnWidth() / 2))).attr('stroke-width', 0).attr('fill', grid.color(1));
+	   
+		var moveDot = function (event, index, datum) {
+			dot.attr({cx: grid.xForIndex(index), cy: grid.yForValue(data[0][index]) });
+		};
+		
+		var target = $(this.eventTarget);
+		
+		target.bind('focusDatum.chart.hoverDots', moveDot);
+		
+		return {
+			remove: function () {
+				target.unbind('focusDatum.chart.hoverDots');
+			}
+			
+		};
+
+	
 	},
 	
 	'area': function () {
@@ -219,8 +224,7 @@ return {
 			path.push('L', (grid.xForIndex(data.length) + 0.5), (grid.yForValue(data[i][data.length]) + 0.5) );
 			path.push('L', ( grid.xForIndex(data.length) + 0.5 ), (grid.yForValue(data[Math.max(0, i-1)][data.length]) + 0.5) );
 			path.push('Z');
-//console.log(path);
-			paper.path(path).attr({	 fill: grid.fillColor(i),  'stroke-width': 2, opacity: 0.4	}); //set stroke for debugging
+			paper.path(path).attr({	fill: grid.fillColor(i), 'stroke-width': 0, opacity: 0.4 });
 		});
 
 		
@@ -330,28 +334,56 @@ return {
 			dataLength = data.length,
 			dataTotal = 0,
 			i = 0,
+			rad = Math.PI / 180,
 			centerX = grid.xMidpoint(),
-			centerY = grid.yMidpoint();
+			centerY = grid.yMidpoint(),
+			radius = 100, //need to make this configurable
+			angle = 0; //probably wouldn't hurt to make this configurable, too
 
-console.log(centerX);
+		//get the sum of all the values so that we can determine percents later
+		while (i < dataLength) {
+			dataTotal += data[i].valueOf();
+			i += 1;
+		}
 
+		$(data).each(function (seriesIndex, series) {
+			var value = this.valueOf(),
+				valuePercent = value/dataTotal,
+				angleIncrease = valuePercent * 360,
+				coords = grid.sectorCoordinates(centerX, centerY, radius, angle, angle + angleIncrease),
+				path = paper.path(["M", centerX, centerY, "L", coords['x1'], coords['y1'], "A", radius, radius, 0, +(angleIncrease > 180), 0, coords['x2'], coords['y2'], "z"])
+							.attr({ fill: grid.fillColor(seriesIndex), 'stroke-width': 2, opacity: 0.4 });
+				angle += angleIncrease;
+		});
+	},
+	
+	'pie labels': function (labels) {
+		var grid = this.grid,
+			paper = this.paper,
+			data = this.data[0],
+			dataLength = data.length,
+			dataTotal = 0,
+			i = 0,
+			rad = Math.PI / 180,
+			centerX = grid.xMidpoint(),
+			centerY = grid.yMidpoint(),
+			radius = 100, //need to make this configurable
+			angle = 0; //probably wouldn't hurt to make this configurable, too
+			
 		while (i < dataLength) {
 			dataTotal += data[i].valueOf();
 			i += 1;
 		}
 		
 		$(data).each(function (seriesIndex, series) {
-			var path = ['M', centerX, centerY];
-//			path.push('L', (grid.xForIndex(data.length) + 0.5), (grid.yForValue(data[i][data.length]) + 0.5) );
-//			path.push('L', ( grid.xForIndex(data.length) + 0.5 ), (grid.yForValue(data[Math.max(0, i-1)][data.length]) + 0.5) );
-			path.push('V', -150);
-			path.push('A', 150, "150 0 0", "0 -150", 150);
-			path.push('Z');
-//console.log(path);
-			paper.path(path).attr({	 fill: grid.fillColor(i),  'stroke-width': 2, opacity: 0.4	}); //set stroke for debugging
+			var value = this.valueOf(),
+				valuePercent = value/dataTotal,
+				angleIncrease = valuePercent * 360,
+				textAngle = angle + (angleIncrease/2),
+				txt = paper.text(centerX + (radius + 55) * Math.cos(-textAngle * rad), centerY + (radius + 25) * Math.sin(-textAngle * rad), labels[seriesIndex]).attr({ fill: grid.fillColor(seriesIndex), stroke:0, 'font-size': '12px'  });
+				angle += angleIncrease;
 		});
 	},
-	
 	
 	'x-axis date labels': function () {
 		var paper = this.paper;
@@ -370,31 +402,6 @@ console.log(centerX);
 				$(element).find('.x-axis-label').remove();
 			}
 		};
-	},
-	
-	'hover dots': function () {
-		var paper = this.paper;
-		var grid = this.grid;
-		var data = this.data;
-		
-		var dot = paper.circle(-100, -100, Math.min(5, Math.max(3, grid.columnWidth() / 2))).attr('stroke-width', 0).attr('fill', grid.color(1));
-	   
-		var moveDot = function (event, index, datum) {
-			dot.attr({cx: grid.xForIndex(index), cy: grid.yForValue(data[0][index]) });
-		};
-		
-		var target = $(this.eventTarget);
-		
-		target.bind('focusDatum.chart.hoverDots', moveDot);
-		
-		return {
-			remove: function () {
-				target.unbind('focusDatum.chart.hoverDots');
-			}
-			
-		};
-
-	
 	},
 	
 	'scrubber': function (start, stop) {

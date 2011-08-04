@@ -109,24 +109,18 @@ ALLY.define('examples', ['chart', 'money'], function (chart, Money) {
 		
 		
 		$('#pie-chart').chart({
-			data: (function () {
-				var arr = []; 
-				$('#wealth-by-type tbody tr td').each(function () { 
-					arr.push(Money(parseInt($(this).text(), 10))); 
-				});
-				
-				return arr;	
-			})(),		
+			data: $('#wealth-by-type tbody tr td').map(function(){ return Money(parseInt($(this).text(), 10)); }).toArray(),
 			layers: [
 				"borders",
-				"pie"
+				"pie",
+				["pie labels", $('#wealth-by-type thead tr th').map(function(){ return $(this).text(); }).toArray()]
 			],
 			marginBottom: 20,
 			marginTop: 20,
 			marginLeft: 20,
 			marginRight: 20,
 			colors: ["rgb(82,182,101)","rgb(233,126,0)","rgb(31,124,166)", "rgb(127,127,127)"],
-			fillColors: ["rgb(50,150,180)","rgba(136,211,245)", "rgba(44,18,98)"],
+			fillColors: ["rgb(50,150,180)","rgba(136,211,245)", "rgba(44,18,98)", "rgba(90,18,98)"],
 		});
 		
 		var TradingDay = function (v, o, h, l, c, d) {

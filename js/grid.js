@@ -1,5 +1,7 @@
 ALLY.define('grid', [], function () {
 
+	var RADIAN = Math.PI / 180;
+
 	/**
 	 * @param min {number}
 	 * @param max {number}
@@ -16,6 +18,10 @@ ALLY.define('grid', [], function () {
 
 	};
 	
+	/**
+	 * @param {object} options A group of options that config this particular instance of a grid
+	 * @returns {object} The grid object
+	 */
 	return function (options) {
 		
 		var options = options || {},
@@ -38,8 +44,8 @@ ALLY.define('grid', [], function () {
 		return {
 			
 			/**
-			 * @param i {number}
-			 * @return {number}
+			 * @param {number} i 
+			 * @returns {number}
 			 */
 			xForIndex: function (i) { 
 				var min, max;
@@ -55,8 +61,8 @@ ALLY.define('grid', [], function () {
 			},
 			
 			/**
-			 * @param x {number}
-			 * @return {number}
+			 * @param {number} x 
+			 * @returns {number}
 			 */
 			indexForX: function (x) {
 				var ratio =	 (x - this.xForLeftEdge()) / width;
@@ -82,8 +88,8 @@ ALLY.define('grid', [], function () {
 			},
 			
 			/**
-			 * @param value {number}
-			 * @return {number}
+			 * @param {number} value 
+			 * @returns {number}
 			 */
 			yForValue: function (value) {
 				if (isNaN(value)) return 0;
@@ -91,124 +97,154 @@ ALLY.define('grid', [], function () {
 			},
 			
 			/** 
-			 * @return {number}
+			 * @returns {number}
 			 */
 			xForLeftEdge: function () {
 				return marginLeft;
 			},
 					
 			/**
-			 * @return {number}
+			 * @returns {number}
 			 */
 			xForRightEdge: function () {
 				return marginLeft + width;
 			},
 		
 			/** 
-			 * @return {number}
+			 * @returns {number}
 			 */
 			yForTopEdge: function () {
 				return marginTop;
 			},
 		
 			/** 
-			 * @return {number}
+			 * @returns {number}
 			 */
 			yForBottomEdge: function () {
 				return marginTop + height;
 			},
 
 			/** 
-			 * @return {number}
+			 * @returns {number}
 			 */
 			columnWidth: function () {
 				return width / columnCount;
 			},
-		
 
 			/** 
-			 * @return {number}
+			 * @returns {number}
 			 */
 			width: function () {
 				return width;
 			},
 			
 			/** 
-			 * @return {number}
+			 * @returns {number}
 			 */
 			outerWidth: function () {
 				return options.width;
 			},
 		
 			/** 
-			 * @return {number}
+			 * @returns {number}
 			 */
 			height: function () {
 				return height;
 			},
 			
 			/** 
-			 * @return {number}
+			 * @returns {number}
 			 */
 			outerHeight: function () {
 				return options.height;
 			},
 		
 			/** 
-			 * @return {number}
+			 * @returns {number}
 			 */
 			yMinValue: function () {
 				return yMinValue;
 			},
 		
 			/** 
-			 * @return {number}
+			 * @returns {number}
 			 */
 			yMaxValue: function () {
 				return yMaxValue;
 			},
 			
+			/**
+			 * @returns {number} The vertical (y-axis) midpoint of the grid
+			 */
 			yMidpoint: function () {
 				return Math.ceil(height / 2);
 			},
 			
 			/** 
-			 * @return {number}
+			 * @returns {number}
 			 */
 			xMinValue: function () {
 				return xMinValue;
 			},
 		
 			/** 
-			 * @return {number}
+			 * @returns {number}
 			 */
 			xMaxValue: function () {
 				return xMaxValue;
 			},
-			
+			/**
+			 * @returns {number} The horizontal (x-axis) midpoint of the grid
+			 */
 			xMidpoint: function () {
 				return Math.ceil(width / 2);
 			},
+			
+			/**
+			 * Calculates and returns the set of coordinates for each end of an arc (a pie piece sector)
+			 * @param {number} cx Center x-coordinate of the circle that serves as origin of the radius
+			 * @param {number} cy Center y-coordinate of the circle that serves as origin of the radius
+			 * @param {number} r radius
+			 * @param {number} startAngle Angle in degrees
+			 * @param {number} endAngle Angle in degrees
+			 * @returns {object} Two sets of coordinates 
+			 */
+			sectorCoordinates: function (cx, cy, r, startAngle, endAngle) {
+		        var x1 = cx + r * Math.cos(-startAngle * RADIAN),
+		            x2 = cx + r * Math.cos(-endAngle * RADIAN),
+		            y1 = cy + r * Math.sin(-startAngle * RADIAN),
+		            y2 = cy + r * Math.sin(-endAngle * RADIAN);
+		
+				return {
+					'x1': x1,
+					'y1': y1,
+					'x2': x2,
+					'y2': y2
+				};
+			},
 						
 			/** 
-			 * @param {number}
-			 * @return RGB value (e.g. "rgb(55,152,199)") {String}
+			 * Returns a color from the color array in a round-robin fashion.
+			 * @param {number} i An index for the color array
+			 * @returns {string} RGB value (e.g. "rgb(55,152,199)") 
 			 */
 			color: function ( i ) {
 				return colors[ i % colors.length ];
 			},
 			
 			/** 
-			 * @param {number}
-			 * @return RGB value (e.g. "rgb(55,152,199)") {string}
+			 * Returns a fillColor from the fillColor array in a round-robin fashion.
+			 * @param {number} i An index for the fillColors array
+			 * @return {string} RGB value (e.g. "rgb(55,152,199)") 
 			 */
 			fillColor: function ( i ) {
 				return fillColors[ i % fillColors.length ];
 			},
 			
 			/** 
-			 * @param {number}
-			 * @return RGB value (e.g. "270-rgb(55,152,199)-rgb(70,195,255)") {string}
+			 * Returns a color from the gradients array in a round-robin fashion.
+			 * @param {number} i An index for the gradients array
+			 * @return {string} RGB value (e.g. "270-rgb(55,152,199)-rgb(70,195,255)") 
 			 */
 			gradient: function ( i ) {
 				return gradients[ i % gradients.length ];
