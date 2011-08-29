@@ -1,4 +1,4 @@
-ALLY.define('grid', [], function () {
+define([], function () {
 
 	var RADIAN = Math.PI / 180;
 

@@ -1,4 +1,4 @@
-ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
+define(['chart', 'money'], function (chart, Money) {
 
 
 	var TradingDay = function (v, o, h, l, c, d) {

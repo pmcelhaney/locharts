@@ -2,7 +2,7 @@
  * A collection of utility functions for doing work with Dates.
  */
 
-ALLY.define('date-extensions', [], function () {
+define([], function () {
 	
 	var MILLISECONDS_IN_A_DAY = 1000 * 60 * 60 * 24;
 	

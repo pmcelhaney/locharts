@@ -1,4 +1,4 @@
-ALLY.define('layers', ['date-extensions'], function (DateExt) {
+define(['date-extensions'], function (DateExt) {
 
 var COLORS = {
 	LINES: '#DCDFE3',

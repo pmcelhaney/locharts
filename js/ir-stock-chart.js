@@ -13,7 +13,7 @@ One day in the very near future I hope there we will be using AMD/RequireJS, whi
 
 
 /****************************************
-ALLY.define(name, dependencies, fn)
+define(name, dependencies, fn)
 
 Defines a module and puts it in the ALLY namespace. Use this function to 
 replace the boiler-plate (function () { ... }()) call that wraps JavaScript
@@ -32,7 +32,7 @@ ALLY.car = ( function (wheels, engine) {
 
 You can write:
 
-ALLY.define('car', ['wheels', 'engine'], function (wheels, engine)) {
+define('car', ['wheels', 'engine'], function (wheels, engine)) {
 
 	// A whole bunch of code
 	
@@ -47,7 +47,7 @@ code a little simpler and more standardized.
 */
 
 ALLY = window.ALLY || {};
-ALLY.define = function (name, dependencies, fn) {
+define = function (name, dependencies, fn) {
 	
 	if (window.define && define.amd && !define.amd.dontReplaceAllyDefine) {
 		return define(name, dependencies, fn);
@@ -71,7 +71,7 @@ Calculates interest and stuff. But here it's just used for formatting.
 Money(5).toString() === "$5.00";
 *********************************************************************************************/
 
-ALLY.define('money', [], function () {
+define([], function () {
 	var insertCommas = function (numberAsStringWithDecimal) {
 		var parts = numberAsStringWithDecimal.split(".");
 		var left = parts[0];
@@ -147,7 +147,7 @@ chart-grid
 Utility functions for drawing charts. See the readme.md file in the ally-charts project.
 *********************************************************************************************/
 
-ALLY.define('chart-grid', [], function () {
+define('chart-grid', [], function () {
 
 	return function (options) {
 		var options = options || {};
@@ -302,7 +302,7 @@ See the readme.md file in the ally-charts project.
 
 
 
-ALLY.define('chart-layers', [], function () {
+define('chart-layers', [], function () {
 
 
 var COLORS = {
@@ -660,7 +660,7 @@ $.fn.chart() definition
 See the readme.md file in the ally-charts project.
 *********************************************************************************************/
 
-ALLY.define('chart', ['chart-grid', 'chart-layers'], function (Grid, builtInLayers) {
+define('chart', ['chart-grid', 'chart-layers'], function (Grid, builtInLayers) {
 	
 	var dataMax = function (data) {
 
@@ -801,7 +801,7 @@ This is where we get down to the actual business of implementing the stock chart
 *********************************************************************************************/
 
 
-ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
+define('stock-chart', ['chart', 'money'], function (chart, Money) {
 
 	if ($.support.svg === undefined) {
 		$.support.svg = window.SVGAngle || document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1");

@@ -1,4 +1,4 @@
-ALLY.define('money', ['date-extensions'], function (DateExt) {
+define(['date-extensions'], function (DateExt) {
 	
 	/**
 	 * @param {string} numberAsStringWithDecimal 
