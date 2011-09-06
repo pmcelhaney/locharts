@@ -1,4 +1,4 @@
-define(["money"], function(Money) {
+define(["js/money"], function(Money) {
 	describe("Money", function () {
 		/* 
 			.calculateInterest({apr, years})

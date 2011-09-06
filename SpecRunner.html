@@ -16,12 +16,12 @@
   <script type="text/javascript" src="globals/require.js"></script>
 
 </head>
-<body onunload="">
+<body>
 
 <script type="text/javascript">
 
 
-$(function () {
+(function () {
 
 	var HrefFixReporter = function () {};
 	HrefFixReporter.prototype = $.extend({}, jasmine.Reporter);
@@ -36,7 +36,7 @@ $(function () {
     var matches = window.location.search.match(/[?&]module=([^&]+)/);
     var module = matches && matches.length > 1 && matches[1];
 	if (module) {
-        require({ baseUrl: 'js', urlArgs: "bust=" +  (new Date()).getTime(), paths: {'specs' : '../specs' }}, ['specs/' + module], function () {
+        require({ urlArgs: "bust=" +  (new Date()).getTime()}, ['specs/' + module], function () {
         	jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
         	jasmine.getEnv().addReporter(new HrefFixReporter());
         	jasmine.getEnv().execute();
@@ -45,12 +45,15 @@ $(function () {
 			});
         });
     } else {
-        $('body').append('<h1>Any requests?</h1><p>Add the name of the spec module to the querystring, e.g. <code>?module=example-spec</code> to run <code>specs/interest-table-spec.js</code>.')
+        
+		$(function () {
+			$('body').append('<h1>Any requests?</h1><p>Add the name of the spec module to the querystring, e.g. <code>?module=example-spec</code> to run <code>specs/interest-table-spec.js</code>.');
+		})
     }
 	
 	
 
-});
+}());
 
 </script>
 

@@ -1,5 +1,5 @@
 define(
-	['date-extensions', 'layers/bars', 'layers/x-axis-labels', 'layers/values-above-points', 'layers/x-axis-label-separators', 'layers/y-axis-markers', 'layers/background', 'layers/bubble', 'layers/horizontal-grid-lines', 'layers/dots', 'layers/hover-dots', 'layers/area', 'layers/area-differential', 'layers/hotspots', 'layers/hotspots-column', 'layers/candlestick', 'layers/pie', 'layers/pie-labels', 'layers/x-axis-date-labels', 'layers/scrubber'], 
+	['./date-extensions', './layers/bars', './layers/x-axis-labels', './layers/values-above-points', './layers/x-axis-label-separators', './layers/y-axis-markers', './layers/background', './layers/bubble', './layers/horizontal-grid-lines', './layers/dots', './layers/hover-dots', './layers/area', './layers/area-differential', './layers/hotspots', './layers/hotspots-column', './layers/candlestick', './layers/pie', './layers/pie-labels', './layers/x-axis-date-labels', './layers/scrubber'], 
 	function (DateExt, bars, xAxisLabels, valuesAbovePoints, xAxisLabelSeparators, yAxisMarkers, background, bubble, horizontalGridLines, dots, hoverDots, area, differentialArea, hotspots, columnHotspots, candlestick, pie, pieLabels, xAxisDateLabels, scrubber) {
 
 

@@ -5,7 +5,7 @@ window.logTime = function () {
 
 
 
-define(['layers', 'chart', './grid-spec', './ally-define-spec', './money-spec' ], function (builtInLayers) {
+define(['js/layers', 'js/chart', './grid-spec', './ally-define-spec', './money-spec' ], function (builtInLayers) {
 
 	
 
@@ -238,7 +238,7 @@ define(['layers', 'chart', './grid-spec', './ally-define-spec', './money-spec' ]
 		});
 	
 		it("should recognize a built-in layer and skip a missing layer", function() {
-			require('layers')['a built-in layer'] = function () {
+			builtInLayers['a built-in layer'] = function () {
 				args = Array.prototype.slice.apply(arguments);
 			};
 		

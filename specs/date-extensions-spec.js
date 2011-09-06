@@ -1,4 +1,4 @@
-define(["date-extensions"], function(DateExt) {
+define(["js/date-extensions"], function(DateExt) {
 	describe("Date-extensions-spec", function () {
 
 		it("should format a date dd/mm/yyyy", function () {

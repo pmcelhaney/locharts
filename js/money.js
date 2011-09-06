@@ -1,4 +1,4 @@
-define(['date-extensions'], function (DateExt) {
+define(['./date-extensions'], function (DateExt) {
 	
 	/**
 	 * @param {string} numberAsStringWithDecimal 
