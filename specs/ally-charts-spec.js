@@ -24,7 +24,7 @@ define(['js/layers', 'js/chart', './grid-spec', './ally-define-spec', './money-s
 				container: c,
 				width: w,
 				height: h,
-				remove: function () {} 
+				remove: function () {}
 			}; 
 		};
 
@@ -132,7 +132,7 @@ define(['js/layers', 'js/chart', './grid-spec', './ally-define-spec', './money-s
 		it("should create a grid with the right height and width", function () {
 			var grid;
 			$('<div style="width: 600px; height: 400px"></div>').chart({
-					layers: [],
+					layers: [ function () { } ],
 					data: [],
 					Grid: function (options) { grid = options; }
 			});		 
@@ -143,9 +143,9 @@ define(['js/layers', 'js/chart', './grid-spec', './ally-define-spec', './money-s
 		it("should set the yMaxValue to 110% of the highest value in the data", function () {
 			var grid;
 			$('<div></div>').chart({
-					layers: [],
+					layers: [ function () { } ],
 					data: [10,20,30,40,50],
-					Grid: function (options) { grid = options; }
+					Grid: function (options) { grid = options; return { columnWidth: function () { console.debug(arguments.callee.caller); } }; }
 			});
 			expect(grid.yMaxValue).toEqual(55);
 		});
@@ -247,6 +247,24 @@ define(['js/layers', 'js/chart', './grid-spec', './ally-define-spec', './money-s
 			});
 		
 			expect(args).toEqual(['foo', 'bar']);
+		});
+		
+		
+		it("should draw a bar chart by default", function () {
+			var layers = [];
+			var defaultLayers = ['borders','y-axis markers', 'bars','values above points'];
+			
+			$(defaultLayers).each(function (i, name) {
+				builtInLayers[name] = function () { layers.push(name); };
+			});
+
+			
+			$('<div></div>').chart({
+				data: [1, 2, 3]
+			});
+			
+			expect(layers).toEqual(defaultLayers);
+			
 		});
 		
 		

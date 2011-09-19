@@ -20,7 +20,9 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
 	};
 
 	  $.widget("ally.chart", {
-		options: {	},
+		options: {
+			layers: []
+		},
 		
 		_create: function () {
 			this.container = $('<div></div>').css('position', 'relative').appendTo(this.element[0])[0];
@@ -33,6 +35,9 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
 			if (newData) this.options.data = newData;
 			
 			var options = this.options;
+			if (options.layers.length === 0 ) {
+				options.layers = ['borders','y-axis markers', 'bars','values above points'];
+			}
 			
 			if ( $.isFunction(options.data) ) {
 				options.data = options.data();
@@ -68,8 +73,7 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
 				container: this.container,
 				eventTarget: options.eventTarget || this.element[0]
 			};
-		
-
+			
 			$.each(options.layers, function () {
 				var layer = this;
 				var layerFunc;
