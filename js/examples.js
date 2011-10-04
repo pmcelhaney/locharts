@@ -102,7 +102,7 @@ define(['./chart', './money'], function (chart, Money) {
 			marginLeft: 100,
 			marginRight: 50,
 			colors: ["rgb(82,182,101)","rgb(233,126,0)","rgb(31,124,166)", "rgb(127,127,127)"],
-			fillColors: ["rgb(50,150,180)","rgba(136,211,245)", "rgba(44,18,98)"],
+			fillColors: ["rgba(50,150,180,0)","rgba(136,211,245)", "rgba(44,18,98)"],
 			yMinValue: 49000,
 			yMaxValue: 56000
 		});
