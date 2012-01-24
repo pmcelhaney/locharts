@@ -1,3 +1,5 @@
 # You should create a symlink from files to ally-base
 # ln -s files /path/to/ally-base
 files
+build
+.DS_Store
