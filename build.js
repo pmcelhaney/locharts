@@ -4,7 +4,8 @@
     dir: "./build",
     modules: [
         {
-            name: "chart"
+            name: "examples"
         }
-    ]
+    ],
+    optimize: "none"
 })
