@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+
+<meta charset="utf-8" />
+<title>Ally Charts</title>
+<link rel="stylesheet" href="ir-stock-chart.css" type="text/css" media="screen" charset="utf-8">
+
+<style type="text/css" media="screen">
+	body {
+		font-family: Verdana, Helvetica, Arial, Sans-serif;          
+		padding: 0 50px;
+	}            
+	
+	pre { 
+	    background-color: #eee;
+	    border: 1px solid gray; 
+	    padding: 10px;
+	}
+</style>
+
+
+<script type="text/javascript" charset="utf-8" src="globals/jquery-1.6.js"></script>
+<script type="text/javascript" charset="utf-8" src="globals/showdown.js"></script>        
+                                                             
+<link type="text/css"href="globals/prettify/prettify.css" charset="utf-8" rel="stylesheet" />
+<script type="text/javascript" charset="utf-8" src="globals/prettify/prettify.js" ></script>
+
+<script type="text/javascript" charset="utf-8">
+   $.get('readme.md').then( function(markdownText) {     
+       var converter = new Showdown.converter();
+       $(document).ready(function () {
+           $('#article').html( converter.makeHtml(markdownText) );   
+           $('code,pre').addClass('prettyprint');     
+           prettyPrint();
+       });
+   });
+</script>                                                                                                                                                  
+
+
+
+</head>
+
+<body>
+	
+<div id="page">
+		
+<div id="header"></div>
+
+<div id="pusher">
+<div id="content">
+
+<div id="banner"></div>
+<div id="limit">
+<div id="article">
+	
+
+
+
+
+
+	<!-- <div id="local"></div> -->
+	<!-- <div id="serial"></div> -->
+</div><!-- #article -->
+
+<!-- <div id="aside"></div> -->
+
+</div><!-- /#limit -->
+
+<div id="nav">
+	<!-- <div id="widgets"></div> -->
+	<!-- <div id="breadcrumbs"></div> -->
+	<!-- <div id="global"></div> -->
+	<!-- <div id="universal"></div> -->
+	<!-- <div id="tools"></div> -->
+</div><!-- #nav -->
+
+</div><!-- /#content -->
+	
+</div><!-- /#pusher -->	
+
+<div id="footer">
+	<div id="footernav"></div>
+	<div id="affiliations"></div>
+	<div id="copyright"></div>
+	<div id="footnotes"></div>
+	<div id="disclaimers"></div>
+</div><!-- /#footer -->
+	
+<!-- <div id="visual1"></div>	 -->
+<!-- <div id="visual2"></div> -->
+<!-- <div id="visual3"></div> -->
+<!-- <div id="visual4"></div> -->
+	
+</div><!-- #/page -->	
+	
+</body>	
+</html>
