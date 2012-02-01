@@ -1,8 +1,0 @@
-improve ids, classes, and selectors | id:c2ffac69a48257cc824f1afc9cde1b22ddb1682b
-
-allow passing animation timing and easing style as parameters for bubbles
-
-Questions:
-"The jQuery.aj namespace will automatically be created if it doesn't exist" <-- "jQuery.aj"??
-
-Why do we need the "data" for a chart to be an array with arrays inside it? e.g. [[Money, Money, Money]]

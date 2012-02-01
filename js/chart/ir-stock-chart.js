@@ -683,7 +683,6 @@ define('chart', ['chart-grid', 'chart-layers'], function (Grid, builtInLayers) {
 	};
 	
 	
-	// The jQuery.aj namespace will automatically be created if it doesn't exist
 	  $.widget("ally.chart", {
 		// These options will be used as defaults
 		options: {	},
