@@ -1,4 +1,4 @@
-define(['./chart', './money'], function (chart, Money) {
+define(['../chart/chart', '../math/money'], function (chart, Money) {
 
 
 	var COLORS = {

@@ -5,7 +5,7 @@ window.logTime = function () {
 
 
 
-define(['js/layers', 'js/chart', './grid-spec', './money-spec' ], function (builtInLayers) {
+define(['js/chart/layers', 'js/chart/chart', './grid-spec', './money-spec' ], function (builtInLayers) {
 
 	
 

@@ -1,4 +1,4 @@
-define(['./chart', './money'], function (chart, Money) {
+define(['../chart-core/chart', '../math/money'], function (chart, Money) {
 
 
 	var TradingDay = function (v, o, h, l, c, d) {
