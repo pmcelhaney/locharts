@@ -1,6 +1,6 @@
 define(function () {
 	
-	return  function () {
+	return function () {
 		var grid = this.grid;
 		var paper = this.paper;
 		var eventTarget = this.eventTarget;
@@ -20,16 +20,11 @@ define(function () {
 		
 			var line = paper.rect(lineLeft + 0.5, lineTop + 0.5, lineWidth, lineHeight).attr({ fill: grid.gradient(0), 'stroke-width': 0 });
 			var bar = paper.rect(left + 0.5, top + 0.5, width, height).attr({ fill: datum.open > datum.close ? grid.gradient(0) : '#fff', stroke: grid.gradient(0), 'stroke-width': 1 });
-			
-			
-			
-			bar.hover(function () {
-				$(eventTarget).trigger('focusDatum.chart', [i, datum]);
-				//this.attr('fill', grid.gradient(1)).attr('fill-opacity', 1);
-			}, function () {
-				//this.attr('fill', grid.gradient(0)).attr('fill-opacity', 0.8);
-			});
+
 		});
 	};
 
-});
+});            
+
+
+
