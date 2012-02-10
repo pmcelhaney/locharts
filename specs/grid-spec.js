@@ -177,6 +177,12 @@ define(['js/chart/grid'], function(Grid) {
 			var grid = Grid({ yMinValue: 101, yMaxValue: 399 });
 			expect(grid.yMinValue()).toEqual(100);
 			expect(grid.yMaxValue()).toEqual(400);
+		});    
+		
+		
+		it("should return the values for gridlines on the y Axis", function () {
+			var grid = Grid({ yMinValue: 21, yMaxValue: 79 });
+			expect(grid.yValuesForGridLines()).toEqual([20,40,60,80]);
 		});
 	
 		it("should return black as the default color", function () {

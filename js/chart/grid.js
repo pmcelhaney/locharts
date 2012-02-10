@@ -79,6 +79,10 @@ define(['./gridlines'], function (gridLines) {
 			yForValue: function (value) {
 				if (isNaN(value)) return 0;
 				return Math.round( this.yForBottomEdge() - (value - yMinValue) * ( height / (yMaxValue - yMinValue) ) );
+			},                              
+			
+			yValuesForGridLines: function () {
+			    return yValuesForGridLines;
 			},
 			
 			/** 
