@@ -1,22 +1,7 @@
-define([], function () {
-
+define(['./gridlines'], function (gridLines) {
+             
 	var RADIAN = Math.PI / 180;
 
-	/**
-	 * @param min {number}
-	 * @param max {number}
-	 * @param howManySlices {number}
-	 * @param precision {number}
-	 */
-	var roundOutMinAndMax = function (min, max, howManySlices, precision) {
-		var howManySlices = howManySlices || 60,
-			precision = precision || 2,
-			domain = max - min,
-			sizeOfSlice = Math.round(domain / howManySlices) || Math.pow(10, -precision - 1);
-			
-		return [ +( min - (min % sizeOfSlice) ).toPrecision(precision), +( max - (max % sizeOfSlice) + (max % sizeOfSlice ? sizeOfSlice : 0) ).toPrecision(precision) ];
-
-	};
 	
 	/**
 	 * @param {object} options A group of options that config this particular instance of a grid
@@ -37,9 +22,9 @@ define([], function () {
 			xValues = options.xValues,
 			width = ( options.width || 960 ) - marginLeft - marginRight,
 			height = ( options.height || 960 ) - marginBottom - marginTop,
-			roundedMinAndMax = roundOutMinAndMax(options.yMinValue || 0, options.yMaxValue || 1),
-			yMinValue = roundedMinAndMax[0],
-			yMaxValue = roundedMinAndMax[1];
+			yValuesForGridLines = gridLines(options.yMinValue || 0, options.yMaxValue || 1),
+			yMinValue = yValuesForGridLines[0],
+			yMaxValue = yValuesForGridLines.slice(-1)[0];
 		
 		return {
 			

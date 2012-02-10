@@ -135,7 +135,7 @@ define(['js/chart/grid'], function(Grid) {
 			expect(Grid().yForValue(0)).toEqual(960);
 			expect(Grid().yForValue(0.75)).toEqual(960/4);
 			expect(Grid({ height: 60, yMaxValue: 100 }).yForValue(50)).toEqual(30);
-			expect(Grid({ height: 30, yMinValue: 100, yMaxValue: 190 }).yForValue(130)).toEqual(20);		
+			expect(Grid({ height: 30, yMinValue: 100, yMaxValue: 175 }).yForValue(125)).toEqual(20);		
 			expect(Grid({ height: 60, marginBottom: 10, marginTop: 10 }).yForValue(0.75)).toEqual(20);
 		});
 	
