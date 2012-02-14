@@ -15,7 +15,7 @@ define(['../chart/chart', '../math/money'], function (chart, Money) {
 			data: [Money(50598.54), Money(51204.25), Money(51817.21), Money(52437.51)],
 			layers: [
 				"borders", 
-				["y-axis markers", 6, Money], 
+				["y-axis markers", Money], 
 				"x-axis label separators",
 				["x-axis labels", ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)']], 
 				"bars", 
@@ -36,7 +36,7 @@ define(['../chart/chart', '../math/money'], function (chart, Money) {
 			data: [Money(50598.54), Money(51204.25), Money(51817.21), Money(52437.51)],
 			layers: [
 				"borders", 
-				["y-axis markers", 6, Money], 
+				["y-axis markers", Money], 
 				"x-axis label separators",	
 				["x-axis labels", ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)']],	 
 				"lines",
@@ -59,7 +59,7 @@ define(['../chart/chart', '../math/money'], function (chart, Money) {
 			],
 			layers: [
 				"borders", 
-				["y-axis markers", 6, Money], 
+				["y-axis markers", Money], 
 				"x-axis label separators",	
 				["x-axis labels", ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)']],	
 				"area",
@@ -85,7 +85,7 @@ define(['../chart/chart', '../math/money'], function (chart, Money) {
 				} ).toArray(),
 			layers: [
 				"borders", 
-				["y-axis markers", 6, Money], 
+				["y-axis markers", Money], 
 				"x-axis label separators",	
 				["x-axis labels", ['Deposit'].concat($('#raise-your-rate-data').find('tbody tr').find('th:eq(0)').map(function () { return $(this).text(); }).toArray())],	
 				"differential area",

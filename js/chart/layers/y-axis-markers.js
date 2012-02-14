@@ -1,6 +1,6 @@
 define(['./colors'], function (COLORS) {
 	
-	return function (numberOfRows, formatter, position) {
+	return function (formatter, position) {
 		var formatter = formatter || (function (n) { return n; }); 
 		var paper = this.paper;
 		var grid = this.grid;

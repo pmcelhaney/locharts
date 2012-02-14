@@ -261,7 +261,7 @@ define(['../chart/chart', '../math/money'], function (chart, Money) {
 				data: functionize(subset),
 				layers: [
 					"borders", 
-					["y-axis markers", 6, Money, 'right'], 
+					["y-axis markers", Money, 'right'], 
 					["y-axis header", "Price", "right"],
 					"candlestick",
 					"hover dots",
@@ -282,7 +282,7 @@ define(['../chart/chart', '../math/money'], function (chart, Money) {
 				data: functionize(volumeSubset),
 				layers: [
 					"borders", 
-					["y-axis markers", 3, function (n) { return (n / 1000 / 1000).toFixed(1)  + 'm'; }, 'right'], 
+					["y-axis markers", function (n) { return (n / 1000 / 1000).toFixed(1)  + 'm'; }, 'right'], 
 					["y-axis header", "Volume", "right"],
 					"x-axis date labels",	
 					["bars", 0.5, 1],
