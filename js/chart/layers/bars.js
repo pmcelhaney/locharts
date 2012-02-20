@@ -16,8 +16,11 @@ define( function () {
 
 			var left = Math.floor(grid.xForIndex(i) - width/2); 
 			var top = grid.yForValue(datum);
-			var height = yForBottomEdge - top;
-			var bar = paper.rect(left + 0.5, top + 0.5, width, height).attr({ 'fill': fillColor, 'opacity': opacity, 'stroke-width': 0 });
+			var height = yForBottomEdge - top;                               
+			var radius = 8;         
+			var x = left + 0.5;
+			var y = top + 0.5;
+			var bar = paper.rect(x, y, width, height + radius, radius).attr({ 'fill': fillColor, 'opacity': opacity, 'stroke-width': 0, 'clip-rect': [x, y, width, height] }); 
 			bars[i] = bar;
 		});
 
