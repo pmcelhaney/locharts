@@ -13,16 +13,11 @@ define(['../chart/chart', '../math/money'], function (chart, Money) {
 	    var labels = ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)'];       
 	    
 	    $('#abtest-rates').chart({
-			data: [Money(50598.54), Money(51204.25), Money(51817.21), Money(52437.51)],
+			data: [1.00, 0.50, 0.35, 0.25, 0.20, 0.05],
 			layers: [
-				"borders", 
-				["y-axis markers", Money], 
-				"x-axis label separators",
-				["x-axis labels", ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)']], 
-				"bars", 
-				"values above points", 
-				["bubble", function (i, value) { return labels[i] + '<br>Earnings: ' + value.toString(); }],
-				"column hotspots"
+				["x-axis labels", ['Ally', 'ING Direct', 'Bank of America', 'Chase', 'HSBC Advance', 'Wells Fargo']],
+				["bars", 0.8],
+				"values above points"
 			],
 			marginBottom: 20,
 			marginTop: 40,
