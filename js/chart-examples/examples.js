@@ -16,7 +16,7 @@ define(['../chart/chart', '../math/money'], function(chart, Money) {
 			data: [1.00, 0.50, 0.35, 0.25, 0.20, 0.05],
 			layers: [
 				["x-axis labels", ['Ally', 'ING Direct', 'Bank of America', 'Chase', 'HSBC Advance', 'Wells Fargo']],
-				["bars", 0.8], "values above points"],
+				["bars", 0.8, 1, 8], "values above points"],
 			marginBottom: 20,
 			marginTop: 40,
 			marginLeft: 100,
