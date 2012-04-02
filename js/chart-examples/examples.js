@@ -17,7 +17,7 @@ define(['../chart/chart', '../math/money'], function(chart, Money) {
 			layers: [
 				["x-axis labels", ['Ally', 'ING Direct', 'Bank of America', 'Chase', 'HSBC Advance', 'Wells Fargo']],
 				["bars", 0.8, 1, 8],
-				"values as html"
+				["values as html", function (value, index) { return '<span class="apy-label"><span class="number">' + value.toFixed(2) + '</span><span class="percent">%</span> <span class="apy">APY</span></span>'; }]
 			],
 			marginBottom: 20,
 			marginTop: 40,

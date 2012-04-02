@@ -1,0 +1,28 @@
+.apy-label {
+    color: white;
+    display: block;
+    margin: 0 12%;
+    outline: 1px solid red;
+}
+
+.apy-label .number {
+    font-size: 22pt;
+    display: block;
+    float: left;
+    margin-right: 2px;
+    line-height: 100%;
+}
+
+.apy-label .percent {
+    font-size: 12pt;
+    display: block;
+    float: left;
+    line-height: 100%;
+}
+
+.apy-label .apy {
+    font-size: 8pt;
+    display: block;
+    float: left;
+    line-height: 100%;
+}
