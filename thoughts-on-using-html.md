@@ -30,4 +30,45 @@ Also, there should be a way to create a layer that simply combines several other
 
 It would be awesome if the above code was all that's needed to drop in a "raise-your-rate" chart. The framework would know to get data from the table, and add a "ryr" layer, which in turn would pull in all of the layers that compose that chart.
 
+Hmm, might need to add more hints for how to read the table.
 
+    <figure
+        class="lochart"
+        data-layers="ryr"
+        data-x-axis="#table > thead > th"
+        data-y-axis="#table > tbody > th:nth-child(1)"
+        data-series-container="#table > tbody > tr"
+        data-values="td"
+    ></figure>
+
+
+A slightly more complex version, for multifacted data like the stock chart.
+
+    <figure
+        class="lochart"
+        data-layers="candlestick"
+        data-x-axis="#table > thead > th"
+        data-series-container="#table > tbody > tr"
+        data-values="td:nth-child(5)"
+        data-values-date="td:nth-child(1)"
+        data-values-high="td:nth-child(2)"
+        data-values-low="td:nth-child(3)"
+        data-values-open="td:nth-child(4)"
+        data-values-close="td:nth-child(5)"
+    ></figure>
+
+Here's how it might look if the data wasn't in table. Say for example, it's in a bunch
+of ULs preceded by H4s.
+
+    <figure
+        class="lochart"
+        data-layers="area"
+        data-x-axis="#data > h4"
+        data-series-container="#data > ul"
+        data-values="li"
+    ></figure>
+
+Yeah, that seems pretty solid. So I need to start breaking out the examples into individual
+modules, get rid of the layers.js module and instead have the examples pull in their layers
+directly, turn example modules into composed layers, and start building out a chartBuilder
+module that can read these figure tags.
