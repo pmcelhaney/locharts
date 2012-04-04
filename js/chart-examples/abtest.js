@@ -1,15 +1,15 @@
 /*global define*/
 
-define(['../chart/chart'], function () {
+define(['../chart/chart', '../chart/layers/x-axis-labels', '../chart/layers/bars', '../chart/layers/values-as-html'], function (chart, xAxisLabels, bars, valuesAsHtml) {
 
     $(function () {
 
         $('#abtest-rates').chart({
             data: [1.00, 0.50, 0.35, 0.25, 0.20, 0.05],
             layers: [
-                ["x-axis labels", ['Ally', 'ING Direct', 'Bank of America', 'Chase', 'HSBC Advance', 'Wells Fargo']],
-                ["bars", 0.8, 1, 8],
-                ["values as html", function (value, index) { return '<span class="apy-label"><span class="number">' + value.toFixed(2) + '</span><span class="percent">%</span> <span class="apy">APY</span></span>'; }]
+                [xAxisLabels, ['Ally', 'ING Direct', 'Bank of America', 'Chase', 'HSBC Advance', 'Wells Fargo']],
+                [bars, 0.8, 1, 8],
+                [valuesAsHtml, function (value, index) { return '<span class="apy-label"><span class="number">' + value.toFixed(2) + '</span><span class="percent">%</span> <span class="apy">APY</span></span>'; }]
             ],
             marginBottom: 20,
             marginTop: 40,
