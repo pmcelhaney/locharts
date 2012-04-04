@@ -276,6 +276,26 @@ define(['js/chart/layers', 'js/chart/chart', './grid-spec', './money-spec'], fun
 			expect(args).toEqual(['arg1', 'arg2']);
 		});
 
+		it("should allow a layer to call another layer", function() {
+			var layers = [];
+
+			var subLayer = function (name, index) {
+				layers.push(name + index);
+			};
+
+			var Layer = function(name) {
+					return function() {
+						this.applyLayer(subLayer, [name, 1]);
+						this.applyLayer(subLayer, [name, 2]);
+					};
+				};
+
+			$('<div></div>').chart({
+				layers: [Layer('A'), Layer('B'), Layer('C')]
+			});
+			expect(layers).toEqual(['A1', 'A2', 'B1', 'B2', 'C1', 'C2']);
+		});
+
 		it("should recognize a built-in layer and skip a missing layer", function() {
 			builtInLayers['a built-in layer'] = function() {
 				args = Array.prototype.slice.apply(arguments);

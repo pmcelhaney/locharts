@@ -1,6 +1,6 @@
 /*global define*/
 
-define(['../chart/chart', '../math/money'], function (chart, money) {
+define(['../chart/chart', '../chart/layers/area-chart', '../math/money'], function (chart, areaChart, money) {
 
     $(function () {
 
@@ -13,7 +13,7 @@ define(['../chart/chart', '../math/money'], function (chart, money) {
                 [money(100), money(200), money(400), money(600)],
                 [money(100), money(200), money(400), money(800)]
             ],
-            layers: ["borders", ["y-axis markers", money], "x-axis label separators", ["x-axis labels", labels], "area", "dots"],
+            layers: [ [ areaChart, labels] ],
             marginBottom: 20,
             marginTop: 40,
             marginLeft: 100,

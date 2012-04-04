@@ -71,7 +71,8 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
 				paper: this.paper,
 				element: this.element[0],
 				container: this.container,
-				eventTarget: options.eventTarget || this.element[0]
+				eventTarget: options.eventTarget || this.element[0],
+				applyLayer: function (layer, args) { layer.apply(this, args ); }
 			};
 			
 			$.each(options.layers, function () {

@@ -1,25 +1,15 @@
 /*global define*/
 
-define(['../chart/chart', '../math/money'], function (chart, money) {
+define(['../chart/chart', '../math/money', '../chart/layers/raise-your-rate-chart'], function (chart, money, raiseYourRateChart) {
 
     $(function () {
 
-        var labels = ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)'];
+        var labels = ['Deposit'].concat($('#raise-your-rate-data').find('tbody tr').find('th:eq(0)').map(function () { return $(this).text(); }).toArray());
 
         $('#differential-area').chart({
             edgeToEdge: true,
             data: $('#raise-your-rate-data').find('tbody tr').map(function () {  return [$(this).find('td').map(function () { return money(parseInt($(this).text(), 10)); }).toArray()]; }).toArray(),
-            layers: [
-                "borders",
-                ["y-axis markers", money],
-                "x-axis label separators",
-                ["x-axis labels", ['Deposit'].concat($('#raise-your-rate-data').find('tbody tr').find('th:eq(0)').map(function () { return $(this).text(); }).toArray())],
-                "differential area",
-                "lines",
-                "dots",
-                ["bubble", function (i) { return (i === 3 ? 'Final balance' : ['1st', '2nd', '3rd'][i] + ' rate: ' + $('#raise-your-rate-data tbody tr').eq(i).find('th:eq(1)').text() + '%') + '<br>Date: ' + $('#raise-your-rate-data thead th').eq(i + 2).text(); }],
-                "column hotspots"
-            ],
+            layers: [ [raiseYourRateChart, labels] ],
             xValues: $('#raise-your-rate-data').find('thead th:gt(1)').map(function () { return new Date($(this).text()).getTime(); }).toArray(),
             marginBottom: 20,
             marginTop: 40,

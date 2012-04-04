@@ -16,7 +16,7 @@ define(function() {
 				return grid.yForValue(data[series][index]) + 0.5;
 			};
 
-
+		console.log(data);
 		$(data).each(function(i) {
 
 			var path = ['M', getX(i), getY(i, i)]; // left 
