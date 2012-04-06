@@ -9,8 +9,18 @@ define(function() {
 		var bars = [];
 
 		var width = Math.round(grid.columnWidth() * (widthFactor || 0.5));
-		var fillColor = grid.gradient(0);
+
+		var colors = this.meta['colors'] || [];
+		var roundRobin = function ( a, i ) {
+				return a[ i % a.length ];
+			};
+
+		var fillColor = colors[0] || grid.gradient(0);
+		var highlightColor = roundRobin(colors, 1) || grid.gradient(1);
+
 		var yForBottomEdge = grid.yForBottomEdge();
+
+
 
 		$(this.data[0]).each(function(i) {
 			var datum = this;
@@ -30,11 +40,11 @@ define(function() {
 		});
 
 		var barReceivesFocus = function(event, i, datum) {
-				bars[i].attr('fill', grid.gradient(1)).attr('fill-opacity', 1);
+				bars[i].attr('fill', highlightColor).attr('fill-opacity', 1);
 			};
 
 		var barLosesFocus = function(event, i, datum) {
-				bars[i].attr('fill', grid.gradient(0)).attr('fill-opacity', opacity);
+				bars[i].attr('fill', fillColor).attr('fill-opacity', opacity);
 			};
 
 		$(eventTarget).bind('focusDatum.chart', barReceivesFocus);

@@ -1,11 +1,16 @@
 define(function() {
 
 
-
 	return function() {
 		var paper = this.paper;
 		var grid = this.grid;
 		var data = this.data;
+
+		var colors = this.meta['colors-fill'] || this.meta['colors'] || [];
+		var wrapAround = function ( a, i ) {
+			return a[ i % a.length ];
+		};
+
 
 		var getX = function(index) {
 				return grid.xForIndex(index) + 0.5;
@@ -16,10 +21,9 @@ define(function() {
 				return grid.yForValue(data[series][index]) + 0.5;
 			};
 
-		console.log(data);
 		$(data).each(function(i) {
 
-			var path = ['M', getX(i), getY(i, i)]; // left 
+			var path = ['M', getX(i), getY(i, i)]; // left
 			var j = i;
 
 			while (j++ <= data.length) {
@@ -31,7 +35,7 @@ define(function() {
 			}
 
 			paper.path(path).attr({
-				fill: grid.fillColor(i),
+				fill: wrapAround(colors, i),
 				'stroke-width': 0,
 				opacity: 0.4
 			});

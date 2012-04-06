@@ -4,7 +4,14 @@ define(function () {
 		var paper = this.paper;
 		var grid = this.grid;
 		var data = $.extend([], this.data).reverse();
-		
+
+		var colors = this.meta['colors'] || [];
+		console.log(this.meta);
+		var self = this;
+		var roundRobin = function ( a, i ) {
+				return a[ i % a.length ];
+			};
+
 		$(data).each(function (seriesIndex, series) {
 			var path = 'M' + ( grid.xForIndex(0) + 0.5 ) + ' ' + grid.yForValue(series[0]);
 			$(series).each(function (i) {
@@ -12,9 +19,9 @@ define(function () {
 					path += 'L' + ( grid.xForIndex(i) + 0.5 ) + ' ' + ( grid.yForValue(this) + 0.5 );
 				}
 			});
-			paper.path(path).attr('stroke', grid.color(data.length - 1 - seriesIndex));
+			paper.path(path).attr('stroke', colors[0]);
 		});
-		
+
 	};
 
 });
