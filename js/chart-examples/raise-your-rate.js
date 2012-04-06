@@ -4,6 +4,7 @@ define(['../chart/chart', '../math/money', '../chart/layers/raise-your-rate-char
 
     $(function () {
 
+
         $('#differential-area').chart({
             edgeToEdge: true,
             data: $('#raise-your-rate-data').find('tbody tr').map(function () {  return [$(this).find('td').map(function () { return money(parseInt($(this).text(), 10)); }).toArray()]; }).toArray(),
