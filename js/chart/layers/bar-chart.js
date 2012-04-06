@@ -7,7 +7,7 @@ define(['../../math/money', './bars', './background', './y-axis-markers', './x-a
         this.applyLayer(background);
         this.applyLayer(yAxisMarkers, money);
         this.applyLayer(xAxisLabelSeparators);
-        this.applyLayer(xAxisLabels, [labels]);
+        this.applyLayer(xAxisLabels);
         this.applyLayer(bars);
         this.applyLayer(valuesAbovePoints);
         this.applyLayer(bubble, function (i, value) { return labels[i] + '<br>Earnings: ' + value.toString(); });

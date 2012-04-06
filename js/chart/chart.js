@@ -21,7 +21,8 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
 
       $.widget("ally.chart", {
         options: {
-            layers: []
+            layers: [],
+            meta: {}
         },
 
         _create: function () {
@@ -72,6 +73,7 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
                 element: this.element[0],
                 container: this.container,
                 eventTarget: options.eventTarget || this.element[0],
+                meta: this.options.meta,
                 applyLayer: function (layer, args) { layer.apply(this, args ); }
             };
 

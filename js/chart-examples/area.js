@@ -4,8 +4,6 @@ define(['../chart/chart', '../chart/layers/area-chart', '../math/money'], functi
 
     $(function () {
 
-        var labels = ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)'];
-
         $('#area').chart({
             edgeToEdge: true,
             data: [
@@ -13,7 +11,8 @@ define(['../chart/chart', '../chart/layers/area-chart', '../math/money'], functi
                 [money(100), money(200), money(400), money(600)],
                 [money(100), money(200), money(400), money(800)]
             ],
-            layers: [ [ areaChart, labels] ],
+            layers: [ areaChart ],
+            meta: {labels:  ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)'] },
             marginBottom: 20,
             marginTop: 40,
             marginLeft: 100,

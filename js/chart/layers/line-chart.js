@@ -6,7 +6,7 @@ define(['../../math/money', './bars', './background', './y-axis-markers', './x-a
         this.applyLayer(background);
         this.applyLayer(yAxisMarkers, money);
         this.applyLayer(xAxisLabelSeparators);
-        this.applyLayer(xAxisLabels, [labels]);
+        this.applyLayer(xAxisLabels);
         this.applyLayer(lines);
         this.applyLayer(dots);
 

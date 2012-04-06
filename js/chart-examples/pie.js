@@ -4,9 +4,6 @@ define(['../chart/chart', '../math/money'], function (chart, money) {
 
     $(function () {
 
-        var labels = ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)'];
-
-
         $('#pie-chart').chart({
             data: $('#wealth-by-type tbody tr td').map(function () { return money(parseInt($(this).text(), 10)); }).toArray(),
             layers: ["borders", "pie", ["pie labels", $('#wealth-by-type thead tr th').map(function () { return $(this).text(); }).toArray()]],

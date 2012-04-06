@@ -349,6 +349,24 @@ define(['js/chart/layers', 'js/chart/chart', './grid-spec', './money-spec'], fun
 		});
 
 
+		it("should make metadata available to the layer", function() {
+			var meta;
+			var layer = function() {
+					meta = this.meta;
+				};
+
+			$('<figure></figure>').chart({
+				layers: [layer],
+				data: [
+					[2, 4, 6, 8]
+				],
+				meta: { xAxisLabels: ['a','b','c','d'] }
+			});
+
+			expect(meta.xAxisLabels).toEqual(['a','b','c','d']);
+		});
+
+
 		describe("the paper", function() {
 
 			var paper;
