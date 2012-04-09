@@ -1,3 +1,35 @@
+/*
+axis (
+  {
+    smallestValue: deterimined from data by default,
+    largestValue: determined from data by default,
+    gridLines: 4,
+    sectionCount: based on data for X, undefined for Y, -- pForIndex and indexForP don't apply unless this is defined
+    edgeToEdge: false, -- only applicable if using equal sections (sectionCount is passed)
+    length: 960,
+    marginStart: 0,
+    marginEnd: 0
+  }
+)
+.pForIndex(i)
+.indexForP(p)
+.pForValue(v)
+.pForStartEdge()
+.pForEndEdge()
+.isEdgeToEdge()
+.length()
+.outerLength()
+.sectionLength()
+.valuesForGridLines()
+.minValue()
+.maxValue()
+
+
+might need to break this into scalarAxis and indexAxis
+
+*/
+
+
 define(['js/chart/grid'], function(Grid) {
     describe("Grid-Spec", function() {
     /*
