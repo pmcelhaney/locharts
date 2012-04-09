@@ -1,5 +1,5 @@
 /*global define*/
-define(['../../math/money', './bars', './background', './y-axis-markers', './horizontal-grid-lines', './x-axis-label-separators', './x-axis-labels', './area-differential', './dots', './bubble', './hotspots-column'], function (money, bars, background, yAxisMarkers, lines, xAxisLabelSeparators, xAxisLabels, differentialArea, dots, bubble, columnHotspots) {
+define(['../../math/money', './bars', './background', './y-axis-markers', './lines', './x-axis-label-separators', './x-axis-labels', './area-differential', './dots', './bubble', './hotspots-column'], function (money, bars, background, yAxisMarkers, lines, xAxisLabelSeparators, xAxisLabels, differentialArea, dots, bubble, columnHotspots) {
 
     return function (labels) {
 
