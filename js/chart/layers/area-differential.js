@@ -6,7 +6,7 @@ define(function() {
 		var grid = this.grid;
 		var data = this.data;
 
-		var colors = this.meta['colors-fill'] || this.meta['colors'] || [];
+		var colors = this.spec['colors-fill'] || this.spec['colors'] || [];
 		var wrapAround = function ( a, i ) {
 			return a[ i % a.length ];
 		};

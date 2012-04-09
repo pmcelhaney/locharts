@@ -5,7 +5,7 @@ define(function () {
 		var grid = this.grid;
 		var data = $.extend([], this.data).reverse();
 
-		var colors =  this.meta['colors-fill'] || this.meta['colors'] || [];
+		var colors =  this.spec['colors-fill'] || this.spec['colors'] || [];
 
 		var roundRobin = function ( a, i ) {
 				return a[ i % a.length ];

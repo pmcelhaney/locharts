@@ -10,7 +10,7 @@ define(function() {
 
 		var width = Math.round(grid.columnWidth() * (widthFactor || 0.5));
 
-		var colors = this.meta['colors'] || [];
+		var colors = this.spec['colors'] || [];
 		var roundRobin = function ( a, i ) {
 				return a[ i % a.length ];
 			};

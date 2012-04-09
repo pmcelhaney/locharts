@@ -13,7 +13,7 @@ define(function () {
 			radius = 100, //need to make this configurable
 			angle = 0; //probably wouldn't hurt to make this configurable, too
 
-		var colors = this.meta['colors-fill'] || this.meta['colors'] || [];
+		var colors = this.spec['colors-fill'] || this.spec['colors'] || [];
         var wrapAround = function ( a, i ) {
             return a[ i % a.length ];
         };

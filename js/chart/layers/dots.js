@@ -5,7 +5,7 @@ define(function () {
 		var grid = this.grid;
 		var data = $.extend([], this.data).reverse();
 
-		var colors = this.meta['colors'] || [];
+		var colors = this.spec['colors'] || [];
 		var wrapAround = function ( a, i ) {
 				return a[ i % a.length ];
 			};

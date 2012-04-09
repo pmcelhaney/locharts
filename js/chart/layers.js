@@ -4,7 +4,7 @@ define(
 
 
 return {
-	'bars':  bars, 
+	'bars':  bars,
 	'x-axis labels': xAxisLabels,
 	'values above points': valuesAbovePoints,
 	'x-axis label separators': xAxisLabelSeparators,

@@ -12,9 +12,9 @@ define(function () {
 			centerY = grid.yMidpoint(),
 			radius = 100, //need to make this configurable
 			angle = 0, //probably wouldn't hurt to make this configurable, too
-			labels = this.meta.labels;
+			labels = this.spec.labels;
 
-		var colors = this.meta['colors'] || [];
+		var colors = this.spec['colors'] || [];
         var wrapAround = function ( a, i ) {
             return a[ i % a.length ];
         };

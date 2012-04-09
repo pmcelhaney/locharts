@@ -349,10 +349,10 @@ define(['js/chart/layers', 'js/chart/chart', './grid-spec', './money-spec'], fun
 		});
 
 
-		it("should make metadata available to the layer", function() {
-			var meta;
+		it("should make spec available to the layer", function() {
+			var spec;
 			var layer = function() {
-					meta = this.meta;
+					spec = this.spec;
 				};
 
 			$('<figure></figure>').chart({
@@ -360,10 +360,10 @@ define(['js/chart/layers', 'js/chart/chart', './grid-spec', './money-spec'], fun
 				data: [
 					[2, 4, 6, 8]
 				],
-				meta: { xAxisLabels: ['a','b','c','d'] }
+				spec: { xAxisLabels: ['a','b','c','d'] }
 			});
 
-			expect(meta.xAxisLabels).toEqual(['a','b','c','d']);
+			expect(spec.xAxisLabels).toEqual(['a','b','c','d']);
 		});
 
 
