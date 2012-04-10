@@ -1,6 +1,6 @@
 /*global define, ALLY, document, window, setTimeout, forms, s, $, Image */
 
-define(['../chart/chart', '../math/money'], function(chart, Money) {
+define(['../chart/chart', '../math/money', '../chart/layers/candlestick-chart'], function(chart, Money, candlestickChart) {
 
 	if ($.support.svg === undefined) {
 		$.support.svg = window.SVGAngle || document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1");
@@ -290,8 +290,7 @@ define(['../chart/chart', '../math/money'], function(chart, Money) {
 
 			candlestick.chart({
 				data: functionize(subset),
-				layers: ["borders", ["y-axis markers", Money, 'right'],
-					["y-axis header", "Price", "right"], "candlestick", "hover dots", "column hotspots"],
+				layers: [candlestickChart],
 				marginBottom: 1,
 				marginTop: 10,
 				marginLeft: 1,
