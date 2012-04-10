@@ -1,4 +1,3 @@
-- convert stock chart to not use built in layers
 - kill off built in layers
 - charge all layer parameters to use spec instead
 - make data part of the spec
