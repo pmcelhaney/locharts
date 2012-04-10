@@ -1,6 +1,6 @@
 /*global define, ALLY, document, window, setTimeout, forms, s, $, Image */
 
-define(['../chart/chart', '../math/money', '../chart/layers/candlestick-chart'], function(chart, Money, candlestickChart) {
+define(['../chart/chart', '../math/money', '../chart/layers/candlestick-chart', '../chart/layers/stock-volume-bar-chart'], function(chart, Money, candlestickChart, volumeBarChart) {
 
 	if ($.support.svg === undefined) {
 		$.support.svg = window.SVGAngle || document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1");
@@ -311,10 +311,7 @@ define(['../chart/chart', '../math/money', '../chart/layers/candlestick-chart'],
 				position: 'relative'
 			}).chart({
 				data: functionize(volumeSubset),
-				layers: ["borders", ["y-axis markers", function(n) {
-					return (n / 1000 / 1000).toFixed(1) + 'm';
-				}, 'right'],
-					["y-axis header", "Volume", "right"], "x-axis date labels", ["bars", 0.5, 1], "column hotspots"],
+				layers: [ volumeBarChart ],
 				marginBottom: 20,
 				marginTop: 10,
 				marginLeft: 1,
