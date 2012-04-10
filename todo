@@ -1,0 +1,11 @@
+- convert stock chart to not use built in layers
+- kill off built in layers
+- charge all layer parameters to use spec instead
+- make data part of the spec
+- make margins, xValues, edgeToEdge, etc. part of the spec
+- remove color stuff from grid
+- extract a chart object from the jQuery UI component (layerConext)
+- rename layers to printers
+
+chart = orthagonal.chart(targetElement, { /* spec */});
+chart.print(printer, {/* spec */})
