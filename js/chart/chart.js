@@ -1,4 +1,4 @@
-define(['./grid', './layers'], function (Grid, builtInLayers) {
+define(['./grid'], function (Grid) {
 
     var dataMax = function (data) {
 
@@ -87,10 +87,9 @@ define(['./grid', './layers'], function (Grid, builtInLayers) {
                     args = this.slice(1);
                 }
 
-                layerFn =  $.isFunction(layer) ? layer : builtInLayers[layer] ;
 
-                if ( $.isFunction(layerFn) ) {
-                    layers.push ( layerFn.apply(layerContext, args) );
+                if ( $.isFunction(layer) ) {
+                    layers.push ( layer.apply(layerContext, args) );
                 }
             });
 

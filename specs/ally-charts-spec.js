@@ -7,7 +7,7 @@ window.logTime = function() {
 
 
 
-define(['js/chart/layers', 'js/chart/chart', './grid-spec', './money-spec'], function(builtInLayers) {
+define([ 'js/chart/chart', './grid-spec', './money-spec'], function() {
 
 
 
@@ -296,37 +296,9 @@ define(['js/chart/layers', 'js/chart/chart', './grid-spec', './money-spec'], fun
 			expect(layers).toEqual(['A1', 'A2', 'B1', 'B2', 'C1', 'C2']);
 		});
 
-		it("should recognize a built-in layer and skip a missing layer", function() {
-			builtInLayers['a built-in layer'] = function() {
-				args = Array.prototype.slice.apply(arguments);
-			};
-
-			$('<div></div>').chart({
-				layers: ['a built-in layer', 'a missing layer', ['a built-in layer', 'foo', 'bar']]
-			});
-
-			expect(args).toEqual(['foo', 'bar']);
-		});
 
 
-		it("should draw a bar chart by default", function() {
-			var layers = [];
-			var defaultLayers = ['borders', 'y-axis markers', 'bars', 'values above points'];
 
-			$(defaultLayers).each(function(i, name) {
-				builtInLayers[name] = function() {
-					layers.push(name);
-				};
-			});
-
-
-			$('<div></div>').chart({
-				data: [1, 2, 3]
-			});
-
-			expect(layers).toEqual(defaultLayers);
-
-		});
 
 
 		it("should remove each layer when the chart is removed", function() {

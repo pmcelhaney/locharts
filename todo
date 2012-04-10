@@ -1,4 +1,3 @@
-- kill off built in layers
 - charge all layer parameters to use spec instead
 - make data part of the spec
 - make margins, xValues, edgeToEdge, etc. part of the spec
