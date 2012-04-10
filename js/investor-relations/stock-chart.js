@@ -1,3 +1,5 @@
+/*global define, ALLY, document, window, setTimeout, forms, s, $, Image */
+
 define(['../chart/chart', '../math/money'], function(chart, Money) {
 
 	if ($.support.svg === undefined) {
@@ -69,11 +71,13 @@ define(['../chart/chart', '../math/money'], function(chart, Money) {
 		var data = [];
 		var volumeData = [];
 
+		var addLoadingIndicator, drawStockChart, removeLoadingIndicator, populateListView, filterListView;
+
 		var loadFromYahoo = function() {
 
 				addLoadingIndicator();
 				var parseDate = function(s) {
-						parts = s.split('-');
+						var parts = s.split('-');
 						return new Date(+parts[0], +parts[1] - 1, +parts[2]);
 					};
 
@@ -144,7 +148,7 @@ define(['../chart/chart', '../math/money'], function(chart, Money) {
 		var loadFromMergent = function() {
 
 				var parseDate = function(s) {
-						parts = s.split('-');
+						var parts = s.split('-');
 						return new Date(+parts[0], +parts[1] - 1, +parts[2]);
 					};
 
@@ -211,7 +215,7 @@ define(['../chart/chart', '../math/money'], function(chart, Money) {
 				// I assume this is supposed to be called to initiate forms.js magic.
 				forms.clean(form);
 
-				// Turn on the datepickers.  
+				// Turn on the datepickers.
 				$('.item.calendar input', form).datepicker({
 					beforeShowDay: $.datepicker.noWeekends
 				});
@@ -244,11 +248,11 @@ define(['../chart/chart', '../math/money'], function(chart, Money) {
 				}, 1);
 			};
 
-		var addLoadingIndicator = function () {
+		addLoadingIndicator = function () {
 			$('#candlestick').after('<img id="chart-loading-indicator" src="http://www.ally.com/files/pres/images/loading.gif">');
 		};
 
-		var removeLoadingIndicator = function () {
+		removeLoadingIndicator = function () {
 			$('#chart-loading-indicator').remove();
 		};
 
@@ -264,121 +268,121 @@ define(['../chart/chart', '../math/money'], function(chart, Money) {
 				return i - 1;
 			};
 
-		var drawStockChart = function() {
-				var endDate = data.slice(-1)[0].date;
-				var startDate = new Date(endDate.getFullYear(), endDate.getMonth() - 1, endDate.getDate());
+		drawStockChart = function() {
+			var endDate = data.slice(-1)[0].date;
+			var startDate = new Date(endDate.getFullYear(), endDate.getMonth() - 1, endDate.getDate());
 
-				var subset = data.slice(indexForDate(startDate), indexForDate(endDate) + 1);
+			var subset = data.slice(indexForDate(startDate), indexForDate(endDate) + 1);
 
-				var volumeSubset = volumeData.slice(indexForDate(startDate), indexForDate(endDate) + 1);
+			var volumeSubset = volumeData.slice(indexForDate(startDate), indexForDate(endDate) + 1);
 
-				startDateField.datepicker('setDate', startDate);
-				endDateField.datepicker('setDate', endDate);
-
-
-				startDateField.add(endDateField).datepicker('option', 'minDate', data[0].date);
-				startDateField.add(endDateField).datepicker('option', 'maxDate', data.slice(-1)[0].date);
+			startDateField.datepicker('setDate', startDate);
+			endDateField.datepicker('setDate', endDate);
 
 
-
-				var candlestick = $('#candlestick').html('').css('height', '220px');
-
-
-				candlestick.chart({
-					data: functionize(subset),
-					layers: ["borders", ["y-axis markers", Money, 'right'],
-						["y-axis header", "Price", "right"], "candlestick", "hover dots", "column hotspots"],
-					marginBottom: 1,
-					marginTop: 10,
-					marginLeft: 1,
-					marginRight: 60,
-					colors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
-					yMaxValue: Math.max.apply(null, $(subset).map(function() {
-						return this.high;
-					}).toArray()) + 1,
-					yMinValue: Math.min.apply(null, $(subset).map(function() {
-						return this.low;
-					}).toArray()) - 1,
-					eventTarget: '#candlestick'
-				})
-
-				.after('<div id="volume-bar-chart"></div>').find('+div').css({
-					width: $('#candlestick').width(),
-					height: 100,
-					position: 'relative'
-				}).chart({
-					data: functionize(volumeSubset),
-					layers: ["borders", ["y-axis markers", function(n) {
-						return (n / 1000 / 1000).toFixed(1) + 'm';
-					}, 'right'],
-						["y-axis header", "Volume", "right"], "x-axis date labels", ["bars", 0.5, 1], "column hotspots"],
-					marginBottom: 20,
-					marginTop: 10,
-					marginLeft: 1,
-					marginRight: 60,
-					colors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
-					eventTarget: '#candlestick'
-				});
-
-
-				$('#candlestick').bind('focusDatum.chart', function(event, index, datum) {
-					$('#daily-stock-details td.date').text(formatDate(datum.date));
-					$('#daily-stock-details td.volume').text(datum.volume);
-					$('#daily-stock-details td.open').text(datum.open.toFixed(2));
-					$('#daily-stock-details td.close').text(datum.close.toFixed(2));
-					$('#daily-stock-details td.high').text(datum.high.toFixed(2));
-					$('#daily-stock-details td.low').text(datum.low.toFixed(2));
-				});
-
-				$(startDateField).add(endDateField).bind('change.chart', function(e) {
-					e.preventDefault();
-
-					$('#candlestick').unbind('blurDatum.chart');
-
-					var startDate = startDateField.datepicker('getDate');
-					var endDate = endDateField.datepicker('getDate');
-
-					var startDateWasChanged = (startDateField[0] === e.target);
-
-					if (startDate > endDate) {
-						if (startDateWasChanged) {
-							endDateField.datepicker('setDate', endDate = startDate);
-						} else {
-							startDateField.datepicker('setDate', startDate = endDate);
-						}
-
-					}
-
-					var subset = data.slice(indexForDate(startDate), indexForDate(endDate) + 1);
-					$('#candlestick').chart('option', 'yMaxValue', Math.max.apply(null, $(subset).map(function() {
-						return this.high;
-					}).toArray()) + 1);
-					$('#candlestick').chart('option', 'yMinValue', Math.min.apply(null, $(subset).map(function() {
-						return this.low;
-					}).toArray()) - 1);
-					$('#candlestick').chart('draw', subset);
-
-					$('#candlestick+div').chart('draw', volumeData.slice(indexForDate(startDate), indexForDate(endDate) + 1));
+			startDateField.add(endDateField).datepicker('option', 'minDate', data[0].date);
+			startDateField.add(endDateField).datepicker('option', 'maxDate', data.slice(-1)[0].date);
 
 
 
-					var indexOfSelectedDate = startDateWasChanged ? 0 : subset.length - 1;
-					$('#candlestick').trigger('focusDatum.chart', ([indexOfSelectedDate, subset[indexOfSelectedDate]]));
+			var candlestick = $('#candlestick').html('').css('height', '220px');
 
-					filterListView();
-				});
 
-				$('#candlestick').trigger('focusDatum.chart', [subset.length - 1, subset.slice(-1)[0]]);
-			};
+			candlestick.chart({
+				data: functionize(subset),
+				layers: ["borders", ["y-axis markers", Money, 'right'],
+					["y-axis header", "Price", "right"], "candlestick", "hover dots", "column hotspots"],
+				marginBottom: 1,
+				marginTop: 10,
+				marginLeft: 1,
+				marginRight: 60,
+				colors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
+				yMaxValue: Math.max.apply(null, $(subset).map(function() {
+					return this.high;
+				}).toArray()) + 1,
+				yMinValue: Math.min.apply(null, $(subset).map(function() {
+					return this.low;
+				}).toArray()) - 1,
+				eventTarget: '#candlestick'
+			})
 
-		var filterListView = function() {
+			.after('<div id="volume-bar-chart"></div>').find('+div').css({
+				width: $('#candlestick').width(),
+				height: 100,
+				position: 'relative'
+			}).chart({
+				data: functionize(volumeSubset),
+				layers: ["borders", ["y-axis markers", function(n) {
+					return (n / 1000 / 1000).toFixed(1) + 'm';
+				}, 'right'],
+					["y-axis header", "Volume", "right"], "x-axis date labels", ["bars", 0.5, 1], "column hotspots"],
+				marginBottom: 20,
+				marginTop: 10,
+				marginLeft: 1,
+				marginRight: 60,
+				colors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
+				eventTarget: '#candlestick'
+			});
+
+
+			$('#candlestick').bind('focusDatum.chart', function(event, index, datum) {
+				$('#daily-stock-details td.date').text(formatDate(datum.date));
+				$('#daily-stock-details td.volume').text(datum.volume);
+				$('#daily-stock-details td.open').text(datum.open.toFixed(2));
+				$('#daily-stock-details td.close').text(datum.close.toFixed(2));
+				$('#daily-stock-details td.high').text(datum.high.toFixed(2));
+				$('#daily-stock-details td.low').text(datum.low.toFixed(2));
+			});
+
+			$(startDateField).add(endDateField).bind('change.chart', function(e) {
+				e.preventDefault();
+
+				$('#candlestick').unbind('blurDatum.chart');
+
 				var startDate = startDateField.datepicker('getDate');
 				var endDate = endDateField.datepicker('getDate');
 
-				var firstRowIndex = data.length - indexForDate(endDate) - 1;
-				var lastRowIndex = data.length - indexForDate(startDate);
-				$('#daily-stock-details tr.historical').addClass('filtered-out').slice(firstRowIndex, lastRowIndex).removeClass('filtered-out');
-			};
+				var startDateWasChanged = (startDateField[0] === e.target);
+
+				if (startDate > endDate) {
+					if (startDateWasChanged) {
+						endDateField.datepicker('setDate', endDate = startDate);
+					} else {
+						startDateField.datepicker('setDate', startDate = endDate);
+					}
+
+				}
+
+				var subset = data.slice(indexForDate(startDate), indexForDate(endDate) + 1);
+				$('#candlestick').chart('option', 'yMaxValue', Math.max.apply(null, $(subset).map(function() {
+					return this.high;
+				}).toArray()) + 1);
+				$('#candlestick').chart('option', 'yMinValue', Math.min.apply(null, $(subset).map(function() {
+					return this.low;
+				}).toArray()) - 1);
+				$('#candlestick').chart('draw', subset);
+
+				$('#candlestick+div').chart('draw', volumeData.slice(indexForDate(startDate), indexForDate(endDate) + 1));
+
+
+
+				var indexOfSelectedDate = startDateWasChanged ? 0 : subset.length - 1;
+				$('#candlestick').trigger('focusDatum.chart', ([indexOfSelectedDate, subset[indexOfSelectedDate]]));
+
+				filterListView();
+			});
+
+			$('#candlestick').trigger('focusDatum.chart', [subset.length - 1, subset.slice(-1)[0]]);
+		};
+
+		filterListView = function() {
+			var startDate = startDateField.datepicker('getDate');
+			var endDate = endDateField.datepicker('getDate');
+
+			var firstRowIndex = data.length - indexForDate(endDate) - 1;
+			var lastRowIndex = data.length - indexForDate(startDate);
+			$('#daily-stock-details tr.historical').addClass('filtered-out').slice(firstRowIndex, lastRowIndex).removeClass('filtered-out');
+		};
 
 		$('#stock-chart-split-button').bind('click.chart', function(e) {
 			e.preventDefault();
@@ -390,24 +394,24 @@ define(['../chart/chart', '../math/money'], function(chart, Money) {
 		});
 
 
-		var populateListView = function() {
+		populateListView = function() {
 
-				$(data).each(function(i) {
+			$(data).each(function(i) {
 
-					var cells = [
-					formatDate(this.date), this.volume, this.open.toFixed(2), this.close.toFixed(2), this.high.toFixed(2), this.low.toFixed(2)];
+				var cells = [
+				formatDate(this.date), this.volume, this.open.toFixed(2), this.close.toFixed(2), this.high.toFixed(2), this.low.toFixed(2)];
 
-					var tr = $('<tr class="historical ' + (i % 2 ? 'rowa' : 'rowb') + '"></tr>');
+				var tr = $('<tr class="historical ' + (i % 2 ? 'rowa' : 'rowb') + '"></tr>');
 
-					$(cells).each(function() {
-						tr.append('<td>' + this + '</td>');
-					});
-					tr.prependTo($('#daily-stock-details tbody'));
-
+				$(cells).each(function() {
+					tr.append('<td>' + this + '</td>');
 				});
+				tr.prependTo($('#daily-stock-details tbody'));
 
-				filterListView();
-			};
+			});
+
+			filterListView();
+		};
 
 		var setUpLegendDejargonator = function() {
 				var anchor = $('#candlestick-chart-legend a');
