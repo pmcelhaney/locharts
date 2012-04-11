@@ -14,7 +14,7 @@ define(function () {
             };
         };
 
-        textContent = textContent || function (i, value) {
+        textContent = this.spec.bubbleFormatter || textContent || function (i, value) {
             return i + ': ' + value.toString();
         };
 

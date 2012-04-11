@@ -6,7 +6,6 @@ define(function () {
 		var data = $.extend([], this.data).reverse();
 
 		var colors = this.spec['colors'] || [];
-		console.log(this.spec);
 		var self = this;
 		var roundRobin = function ( a, i ) {
 				return a[ i % a.length ];

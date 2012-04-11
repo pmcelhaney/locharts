@@ -4,6 +4,7 @@
 - remove color stuff from grid
 - extract a chart object from the jQuery UI component (layerConext)
 - rename layers to printers
+- rewrite the documentation
 
 chart = orthagonal.chart(targetElement, { /* spec */});
 chart.print(printer, {/* spec */})

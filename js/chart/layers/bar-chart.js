@@ -5,12 +5,12 @@ define(['../../math/money', './bars', './background', './y-axis-markers', './x-a
  // ["borders", ["y-axis markers", money], "x-axis label separators", ["x-axis labels", labels], "area", "dots"]
 
         this.applyLayer(background);
-        this.applyLayer(yAxisMarkers, money);
+        this.applyLayer(yAxisMarkers);
         this.applyLayer(xAxisLabelSeparators);
         this.applyLayer(xAxisLabels);
         this.applyLayer(bars);
         this.applyLayer(valuesAbovePoints);
-        this.applyLayer(bubble, function (i, value) { return labels[i] + '<br>Earnings: ' + value.toString(); });
+        this.applyLayer(bubble);
         this.applyLayer(columnHotspots);
 
     };

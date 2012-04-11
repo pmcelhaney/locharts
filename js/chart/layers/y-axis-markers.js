@@ -1,7 +1,8 @@
 define(['./colors'], function (COLORS) {
 
     return function (formatter, position) {
-        formatter = formatter || (function (n) { return n; });
+        console.log(this.spec);
+        formatter = this.spec.yAxisLabelFormatter || formatter || (function (n) { return n; });
         var paper = this.paper;
         var grid = this.grid;
         var element = this.element;
