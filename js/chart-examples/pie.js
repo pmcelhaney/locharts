@@ -9,12 +9,12 @@ define(['../chart/chart', '../math/money', '../chart/layers/pie-chart'], functio
             layers: [pieChart],
             spec: {
                 labels: $('#wealth-by-type thead tr th').map(function () { return $(this).text(); }).toArray(),
-                colors: ["rgb(82,182,101)", "rgb(233,126,0)", "rgb(31,124,166)", "rgb(127,127,127)"]
-            },
-            marginBottom: 20,
-            marginTop: 20,
-            marginLeft: 20,
-            marginRight: 20
+                colors: ["rgb(82,182,101)", "rgb(233,126,0)", "rgb(31,124,166)", "rgb(127,127,127)"],
+                marginBottom: 20,
+                marginTop: 20,
+                marginLeft: 20,
+                marginRight: 20
+            }
         });
 
     });

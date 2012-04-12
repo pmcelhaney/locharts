@@ -15,12 +15,12 @@ define(['../chart/chart', '../math/money', '../chart/layers/raise-your-rate-char
                 xValues: $('#raise-your-rate-data').find('thead th:gt(1)').map(function () { return new Date($(this).text()).getTime(); }).toArray(),
                 yMinValue: 49000,
                 yMaxValue: 56000,
-                edgeToEdge: true
-            },
-            marginBottom: 20,
-            marginTop: 40,
-            marginLeft: 100,
-            marginRight: 50,
+                edgeToEdge: true,
+                marginBottom: 20,
+                marginTop: 40,
+                marginLeft: 100,
+                marginRight: 50
+            }
         });
 
     });

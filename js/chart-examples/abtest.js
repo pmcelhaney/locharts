@@ -9,12 +9,12 @@ define(['../chart/chart', '../chart/layers/hycd-abtest'], function (chart,  hycd
             layers: [ hycdAbtest ],
             spec: {
                 labels: ['Ally', 'ING Direct', 'Bank of America', 'Chase', 'HSBC Advance', 'Wells Fargo'],
-                colors:['270-rgb(55,152,199)-rgb(70,195,255)' /*blue*/ ]
-            },
-            marginBottom: 20,
-            marginTop: 40,
-            marginLeft: 100,
-            marginRight: 10
+                colors:['270-rgb(55,152,199)-rgb(70,195,255)' /*blue*/ ],
+                marginBottom: 20,
+                marginTop: 40,
+                marginLeft: 100,
+                marginRight: 10
+            }
 
         });
     });

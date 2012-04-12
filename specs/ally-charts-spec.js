@@ -199,12 +199,12 @@ define([ 'js/chart/chart', './grid-spec', './money-spec'], function() {
 				spec: {
 					yMinValue: 5,
 					xValues: [1, 2, 3],
-					edgeToEdge: true
+					edgeToEdge: true,
+					marginTop: 10,
+					marginRight: 20,
+					marginBottom: 30,
+					marginLeft: 40
 				},
-				marginTop: 10,
-				marginRight: 20,
-				marginBottom: 30,
-				marginLeft: 40,
 				colors: ['#aaa', '#bbb'],
 				fillColors: ['#111', '#222'],
 				gradients: ['0-#aaa-#bbb', '0-#111-#222']
