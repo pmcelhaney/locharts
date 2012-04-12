@@ -48,8 +48,8 @@ define(['./grid'], function (Grid) {
             var grid = (options.Grid || Grid)( {
                 width: this.element.width(),
                 height: this.element.height(),
-                yMinValue: options.yMinValue,
-                yMaxValue: options.yMaxValue || Math.round( dataMax(options.data) * 1.1 ),
+                yMinValue: options.spec.yMinValue,
+                yMaxValue: options.spec.yMaxValue || Math.round( dataMax(options.data) * 1.1 ),
                 marginTop: options.marginTop,
                 marginRight: options.marginRight,
                 marginBottom: options.marginBottom,
@@ -58,7 +58,7 @@ define(['./grid'], function (Grid) {
                 fillColors: options.fillColors,
                 gradients: options.gradients,
                 edgeToEdge: options.edgeToEdge,
-                xValues: options.xValues,
+                xValues: options.spec.xValues,
                 columnCount: data && data[0] ? data[0].length : undefined
             });
 

@@ -196,8 +196,10 @@ define([ 'js/chart/chart', './grid-spec', './money-spec'], function() {
 				data: [
 					[10, 20, 50]
 				],
-				yMinValue: 5,
-				xValues: [1, 2, 3],
+				spec: {
+					yMinValue: 5,
+					xValues: [1, 2, 3]
+				},
 				marginTop: 10,
 				marginRight: 20,
 				marginBottom: 30,
