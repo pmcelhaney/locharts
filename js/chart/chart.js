@@ -57,7 +57,7 @@ define(['./grid'], function (Grid) {
                 colors: options.colors,
                 fillColors: options.fillColors,
                 gradients: options.gradients,
-                edgeToEdge: options.edgeToEdge,
+                edgeToEdge: options.spec.edgeToEdge,
                 xValues: options.spec.xValues,
                 columnCount: data && data[0] ? data[0].length : undefined
             });
