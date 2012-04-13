@@ -3,7 +3,11 @@ define(function () {
 	return function () {
 		var grid = this.grid;
 		var paper = this.paper;
-		var eventTarget = this.eventTarget;
+		var eventTarget = this.spec.eventTarget;
+
+		var colors = this.spec['colors'] || ['#000'];
+
+
 		$(this.data[0]).each(function (i) {
 			var datum = this;
 			var width = Math.round(grid.columnWidth() / 2);
@@ -18,8 +22,8 @@ define(function () {
 			var lineHeight = grid.yForValue(datum.low) - lineTop;
 
 
-			var line = paper.rect(lineLeft + 0.5, lineTop + 0.5, lineWidth, lineHeight).attr({ fill: grid.gradient(0), 'stroke-width': 0 });
-			var bar = paper.rect(left + 0.5, top + 0.5, width, height).attr({ fill: datum.open > datum.close ? grid.gradient(0) : '#fff', stroke: grid.gradient(0), 'stroke-width': 1 });
+			var line = paper.rect(lineLeft + 0.5, lineTop + 0.5, lineWidth, lineHeight).attr({ fill: colors[0], 'stroke-width': 0 });
+			var bar = paper.rect(left + 0.5, top + 0.5, width, height).attr({ fill: datum.open > datum.close ? colors[0] : '#fff', stroke: colors[0], 'stroke-width': 1 });
 
 		});
 	};

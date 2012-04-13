@@ -4,7 +4,7 @@ define(function () {
         var paper = this.paper;
         var grid = this.grid;
         var data = this.data;
-        var eventTarget = this.eventTarget;
+        var eventTarget = this.spec.eventTarget;
         var container = this.container;
         var containerOffsetLeft;
         var oldColumnIndex; //= data.slice(-1)[0].length-1;  <-- Can't remember why I did this; it might be necessary for IE7.

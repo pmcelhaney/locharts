@@ -291,18 +291,21 @@ define(['../chart/chart', '../math/money', '../chart/layers/candlestick-chart', 
 			candlestick.chart({
 				data: functionize(subset),
 				layers: [candlestickChart],
-				marginBottom: 1,
-				marginTop: 10,
-				marginLeft: 1,
-				marginRight: 60,
-				colors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
-				yMaxValue: Math.max.apply(null, $(subset).map(function() {
-					return this.high;
-				}).toArray()) + 1,
-				yMinValue: Math.min.apply(null, $(subset).map(function() {
-					return this.low;
-				}).toArray()) - 1,
-				eventTarget: '#candlestick'
+				spec: {
+					marginBottom: 1,
+					marginTop: 10,
+					marginLeft: 1,
+					marginRight: 60,
+					colors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
+					yMaxValue: Math.max.apply(null, $(subset).map(function() {
+						return this.high;
+					}).toArray()) + 1,
+					yMinValue: Math.min.apply(null, $(subset).map(function() {
+						return this.low;
+					}).toArray()) - 1,
+					eventTarget: '#candlestick'
+				}
+
 			})
 
 			.after('<div id="volume-bar-chart"></div>').find('+div').css({
@@ -312,12 +315,15 @@ define(['../chart/chart', '../math/money', '../chart/layers/candlestick-chart', 
 			}).chart({
 				data: functionize(volumeSubset),
 				layers: [ volumeBarChart ],
-				marginBottom: 20,
-				marginTop: 10,
-				marginLeft: 1,
-				marginRight: 60,
-				colors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
-				eventTarget: '#candlestick'
+				spec: {
+					marginBottom: 20,
+					marginTop: 10,
+					marginLeft: 1,
+					marginRight: 60,
+					colors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
+					eventTarget: '#candlestick'
+				}
+
 			});
 
 

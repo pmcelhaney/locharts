@@ -1,6 +1,5 @@
 define(['../chart-core/chart', '../math/money'], function (chart, Money) {
 
-
     var TradingDay = function (v, o, h, l, c, d) {
 
         return {
@@ -174,14 +173,16 @@ define(['../chart-core/chart', '../math/money'], function (chart, Money) {
                     "hover dots",
                     "column hotspots"
                 ],
-                marginBottom: 1,
-                marginTop: 10,
-                marginLeft: 40,
-                marginRight: 1,
-                colors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
-                yMaxValue: Math.max.apply(null, $(subset).map(function () { return this.high; } ).toArray()) + 1,
-                yMinValue: Math.min.apply(null, $(subset).map(function () { return this.low; } ).toArray()) - 1,
-                eventTarget: '#candlestick'
+                spec: {
+                    marginBottom: 1,
+                    marginTop: 10,
+                    marginLeft: 40,
+                    marginRight: 1,
+                    colors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
+                    yMaxValue: Math.max.apply(null, $(subset).map(function () { return this.high; } ).toArray()) + 1,
+                    yMinValue: Math.min.apply(null, $(subset).map(function () { return this.low; } ).toArray()) - 1,
+                    eventTarget: '#candlestick'
+                }
             })
 
             .after('<div></div>').find('+div').css({width: $('#candlestick').width(), height: 100, position: 'relative'})
@@ -194,12 +195,15 @@ define(['../chart-core/chart', '../math/money'], function (chart, Money) {
                     ["bars", 0.5, 1],
                     "column hotspots"
                 ],
-                marginBottom: 20,
-                marginTop: 10,
-                marginLeft: 40,
-                marginRight: 1,
-                colors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
-                eventTarget: '#candlestick'
+                spec: {
+                    marginBottom: 20,
+                    marginTop: 10,
+                    marginLeft: 40,
+                    marginRight: 1,
+                    colors: ['rgb(55,152,199)', 'rgb(101,3,96)'],
+                    eventTarget: '#candlestick'
+                }
+
             })
 
 

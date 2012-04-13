@@ -31,11 +31,13 @@ define(['./grid'], function (Grid) {
         },
         draw: function(newData) {
 
+
             if (this.paper) { this.remove(); }
 
             if (newData) this.options.data = newData;
 
             var options = this.options;
+            console.log(options);
             if (options.layers.length === 0 ) {
                 options.layers = ['borders','y-axis markers', 'bars','values above points'];
             }

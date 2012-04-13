@@ -5,7 +5,7 @@ define(function() {
 		radius = radius || 0;
 		var grid = this.grid;
 		var paper = this.paper;
-		var eventTarget = this.eventTarget;
+		var eventTarget = this.spec.eventTarget;
 		var bars = [];
 
 		var width = Math.round(grid.columnWidth() * (widthFactor || 0.5));
