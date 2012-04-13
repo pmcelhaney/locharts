@@ -68,6 +68,7 @@ define(['./grid'], function (Grid) {
 
             var layers = this.layers = [];
 
+            this.options.spec.eventTarget = this.options.spec.eventTarget || this.element[0];
             var layerContext = {
                 grid: grid,
                 data: data,
