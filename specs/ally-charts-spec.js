@@ -204,10 +204,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec'], function() {
 					marginRight: 20,
 					marginBottom: 30,
 					marginLeft: 40
-				},
-				colors: ['#aaa', '#bbb'],
-				fillColors: ['#111', '#222'],
-				gradients: ['0-#aaa-#bbb', '0-#111-#222']
+				}
 
 			});
 
@@ -219,9 +216,6 @@ define([ 'js/chart/chart', './grid-spec', './money-spec'], function() {
 			expect(grid.marginBottom).toEqual(30);
 			expect(grid.marginLeft).toEqual(40);
 			expect(grid.marginLeft).toEqual(40);
-			expect(grid.colors).toEqual(['#aaa', '#bbb']);
-			expect(grid.fillColors).toEqual(['#111', '#222']);
-			expect(grid.gradients).toEqual(['0-#aaa-#bbb', '0-#111-#222']);
 			expect(grid.edgeToEdge).toBeTruthy();
 
 		});

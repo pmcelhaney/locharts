@@ -220,44 +220,6 @@ define(['js/chart/grid'], function(Grid) {
             expect(grid.yValuesForGridLines()).toEqual([20,40,60,80]);
         });
 
-        it("should return black as the default color", function () {
-            var grid = Grid();
-            expect(grid.color(0)).toEqual('#000');
-            expect(grid.color(1)).toEqual('#000');
-            expect(grid.color(5)).toEqual('#000');
-        });
-
-        it("should return the correct color", function () {
-            var grid = Grid({colors: ['#aaa', '#bbb', '#ccc']});
-            expect(grid.color(0)).toEqual('#aaa');
-            expect(grid.color(1)).toEqual('#bbb');
-            expect(grid.color(2)).toEqual('#ccc');
-            expect(grid.color(3)).toEqual('#aaa');
-        });
-
-        it("should return the correct fillColor", function () {
-            var grid = Grid({fillColors: ['#aaa', '#bbb', '#ccc']});
-            expect(grid.fillColor(0)).toEqual('#aaa');
-            expect(grid.fillColor(1)).toEqual('#bbb');
-            expect(grid.fillColor(2)).toEqual('#ccc');
-            expect(grid.fillColor(3)).toEqual('#aaa');
-        });
-
-        it("should return the correct gradients", function () {
-            var grid = Grid({gradients: ['270-#aaa-#bbb', '270-#bbb-#ccc', '270-#ccc-#ddd']});
-            expect(grid.gradient(0)).toEqual('270-#aaa-#bbb');
-            expect(grid.gradient(1)).toEqual('270-#bbb-#ccc');
-            expect(grid.gradient(2)).toEqual('270-#ccc-#ddd');
-            expect(grid.gradient(3)).toEqual('270-#aaa-#bbb');
-        });
-
-
-        it("should fall through gradient -> fillColor -> color", function () {
-            expect( Grid({fillColors: ['#f00']}).gradient(0)  ).toEqual('#f00');
-            expect( Grid({colors:     ['#c00']}).gradient(0)  ).toEqual('#c00');
-            expect( Grid({colors:     ['#b00']}).fillColor(0) ).toEqual('#b00');
-        });
-
 
 
     });

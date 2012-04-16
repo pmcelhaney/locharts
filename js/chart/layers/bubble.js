@@ -1,11 +1,15 @@
 define(function () {
 
+    var roundRobin = function ( a, i ) {
+        return a[ i % a.length ];
+    };
+
     return function (textContent) {
         var grid = this.grid;
         var data = this.data;
         var width = 130;
         var height = 40;
-
+        var colors = this.spec.colors;
 
         var textPosition = function (i, datum) {
             return {
@@ -20,13 +24,13 @@ define(function () {
 
         var text = $('<div id="text"></div>')
             .appendTo(this.container)
-            .css({ border: '2px solid ' + grid.color(0), 'border-radius': '5px', background: '#fff', width: width-10, height: height-10, padding: '5px', position: 'absolute', top: textPosition(0, data[0][0]).top, left: textPosition(0,  data[0][0]).left, 'font-size': '10px' })
+            .css({ border: '2px solid ' + colors[0], 'border-radius': '5px', background: '#fff', width: width-10, height: height-10, padding: '5px', position: 'absolute', top: textPosition(0, data[0][0]).top, left: textPosition(0,  data[0][0]).left, 'font-size': '10px' })
             .html(textContent(0, data[0][0]));
 
 
         $(this.eventTarget).bind('focusDatum.chart', function (event, index, datum) {
             text.animate( textPosition(index, datum), 200, "linear", function () {
-                 $(this).css('border-color', grid.color(index));
+                 $(this).css('border-color', roundRobin(colors, index));
                  $(this).html(textContent(index, datum));
             });
         });

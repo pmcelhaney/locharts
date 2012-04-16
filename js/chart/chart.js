@@ -37,7 +37,6 @@ define(['./grid'], function (Grid) {
             if (newData) this.options.data = newData;
 
             var options = this.options;
-            console.log(options);
             if (options.layers.length === 0 ) {
                 options.layers = ['borders','y-axis markers', 'bars','values above points'];
             }
@@ -56,9 +55,6 @@ define(['./grid'], function (Grid) {
                 marginRight: options.spec.marginRight,
                 marginBottom: options.spec.marginBottom,
                 marginLeft: options.spec.marginLeft,
-                colors: options.colors,
-                fillColors: options.fillColors,
-                gradients: options.gradients,
                 edgeToEdge: options.spec.edgeToEdge,
                 xValues: options.spec.xValues,
                 columnCount: data && data[0] ? data[0].length : undefined
@@ -75,7 +71,7 @@ define(['./grid'], function (Grid) {
                 paper: this.paper,
                 element: this.element[0],
                 container: this.container,
-                eventTarget: options.eventTarget || this.element[0],
+                eventTarget: this.options.eventTarget || this.element[0],
                 spec: this.options.spec,
                 applyLayer: function (layer, args) { layer.apply(this, args ); }
             };
@@ -98,6 +94,7 @@ define(['./grid'], function (Grid) {
 
 
         },
+
 
         _setOption: function(key, value) {
             $.Widget.prototype._setOption.apply(this,arguments);

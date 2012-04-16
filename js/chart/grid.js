@@ -15,9 +15,6 @@ define(['./gridlines'], function (gridLines) {
         var marginTop = options.marginTop || 0;
         var marginBottom = options.marginBottom || 0;
         var columnCount = options.columnCount || 1;
-        var colors = options.colors || ['#000'];
-        var fillColors = options.fillColors || colors;
-        var gradients = options.gradients || fillColors;
         var edgeToEdge = options.edgeToEdge || options.xValues;
         var xValues = options.xValues;
         var width = ( options.width || 960 ) - marginLeft - marginRight;
@@ -210,34 +207,8 @@ define(['./gridlines'], function (gridLines) {
                     'x2': x2,
                     'y2': y2
                 };
-            },
-
-            /**
-             * Returns a color from the color array in a round-robin fashion.
-             * @param {number} i An index for the color array
-             * @returns {string} RGB value (e.g. "rgb(55,152,199)")
-             */
-            color: function ( i ) {
-                return colors[ i % colors.length ];
-            },
-
-            /**
-             * Returns a fillColor from the fillColor array in a round-robin fashion.
-             * @param {number} i An index for the fillColors array
-             * @return {string} RGB value (e.g. "rgb(55,152,199)")
-             */
-            fillColor: function ( i ) {
-                return fillColors[ i % fillColors.length ];
-            },
-
-            /**
-             * Returns a color from the gradients array in a round-robin fashion.
-             * @param {number} i An index for the gradients array
-             * @return {string} RGB value (e.g. "270-rgb(55,152,199)-rgb(70,195,255)")
-             */
-            gradient: function ( i ) {
-                return gradients[ i % gradients.length ];
             }
+
         };
     };
 });
