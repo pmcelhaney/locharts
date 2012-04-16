@@ -28,7 +28,7 @@ define(function () {
             .html(textContent(0, data[0][0]));
 
 
-        $(this.eventTarget).bind('focusDatum.chart', function (event, index, datum) {
+        $(this.spec.eventTarget).bind('focusDatum.chart', function (event, index, datum) {
             text.animate( textPosition(index, datum), 200, "linear", function () {
                  $(this).css('border-color', roundRobin(colors, index));
                  $(this).html(textContent(index, datum));

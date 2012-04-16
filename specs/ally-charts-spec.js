@@ -116,22 +116,6 @@ define([ 'js/chart/chart', './grid-spec', './money-spec'], function() {
 			expect(container.children().first().css('position')).toEqual('relative');
 		});
 
-		it("should make the eventTarget available to the layer", function() {
-			var eventTarget;
-			var layer = function() {
-					eventTarget = this.eventTarget;
-				};
-
-			$('<div id="parentElement"></div>').chart({
-				layers: [layer],
-				data: [
-					[2, 4, 6, 8]
-				],
-				eventTarget: '#target'
-			});
-
-			expect(eventTarget).toEqual('#target');
-		});
 
 		it("should wrap one-dimensional data in an array", function() {
 			var data;
