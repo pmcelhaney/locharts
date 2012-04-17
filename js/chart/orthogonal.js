@@ -1,7 +1,7 @@
 define(function () {
 
-    // var chart = orthogonal.chart(element[, gridFactory]);
-    // chart.print(data[, spec]);
+    // var chart = orthogonal.chart(element, spec);
+    // chart.print(printer [, spec]);
 
 
     return {
@@ -9,7 +9,7 @@ define(function () {
             //var grid, data, paper, element, container;
             //var container = $('<div></div>').css('position', 'relative').appendTo(element[0])[0];
 
-            var initialize = function (data, spec) {
+            var initialize = function (printer, spec) {
                 // create the container
                 // create the paper
                 // store the data
@@ -17,7 +17,7 @@ define(function () {
             };
 
             return {
-                print: function(printer, data, spec) {
+                print: function(printer, spec) {
                     if (spec) { initialize(); }
                     // create the context, which has element, container, paper, data, grid, spec
                     // call printer.apply(context)

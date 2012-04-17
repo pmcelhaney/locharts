@@ -5,17 +5,17 @@ A printer will be called in the context of a chart object that has:
 - paper
 - grid
 - element
+- container (positioning context)
 - spec
 - print(printer[, spec])
 - helper functions
-- other stuff that's part of layerContext now
 
 Rename "meta" to "spec" and make data part of spec.
 
 Basically, a printer will know how to print a layer given a spec.
 
-this.print(printer[, spec]) can be used to call another printer. The optional spec argument would cause
-the existing spec to be extended.
+this.print(printer[, spec]) can be used to call another printer. The optional spec argument would cause the existing spec to be extended.
+
 
 Kicking off a chart would look something like this:
 

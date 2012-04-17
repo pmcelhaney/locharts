@@ -1,7 +1,25 @@
-- make data part of the spec
-- extract a chart object from the jQuery UI component (layerConext)
+- change layers widget option to chartType
 - rename layers to printers
 - rewrite the documentation
+- (maybe) add some built-in chartTypes mapped to strings
+- extract a chart object from the jQuery UI component (layerConext)
 
 chart = orthagonal.chart(targetElement, { /* spec */});
 chart.print(printer, {/* spec */})
+
+Extracting the orthagonal.chart() object is the last thing that needs
+to happen. I need the API for printers to be solidified. Then it
+doesn't matter if I rewrite the entire framework.
+
+As far as the printer API goes, there are no longer arguments. It's
+just a question of what belongs to this and what belongs to this.spec.
+
+If I want to keep data separate from the spec, I could just do:
+
+chart = orthagonal.chart(targetElement, data, { /* spec */});
+chart.print(printer, {/* spec */})
+
+Anyway, I can play around with different APIs for the framework, once
+the API for printers is defined. The context with which a printer
+is called is where the real API lives. The framework is just gluing
+printers together.
