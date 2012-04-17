@@ -1,5 +1,16 @@
 # Should Locharts use HTML?
 
+**Note: To make this work elegantly, I'm going to need to build out a new module that works like this**
+
+	slurpData({
+	    'layers':"ryr",
+	    'x-axis':"#table > thead > th",
+	    'y-axis':"#table > tbody > th:nth-child(1)",
+	    'series-container':"#table > tbody > tr",
+	    'values':"td"
+	}); // -> the data array passed to chart
+
+
 I've experimented with the idea of adding textual content as HTML and found a pretty flexible way to do it. Each label is wrapped in a 0x0 div that's absolutely positioned in the general area where the label is expected to go. A label marking a point can be anchored above the point (bottom: 0), below the point (top: 0), to the left (right: 0), or to the right (left: 0).
 
 I could create layers for "HTML at points", "HTML at x-axis", and "HTML at y axis", which should provide the ability to put points wherever I need. A formatter function provided as an argument would specify exactly what markup to write.
