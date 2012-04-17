@@ -1,6 +1,5 @@
-- change layers widget option to chartType
-- rename layers to printers
 - rewrite the documentation
+- rename layers to printers
 - (maybe) add some built-in chartTypes mapped to strings
 - extract a chart object from the jQuery UI component (layerConext)
 
