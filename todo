@@ -1,24 +1,25 @@
 - rewrite the documentation
-- rename layers to printers
-- (maybe) add some built-in chartTypes mapped to strings
+- rename layers to templates
+- (maybe) add some built-in templates mapped to strings
+- build utilities for getting data from the HTML (see thoughts-on-using-html.md)
 - extract a chart object from the jQuery UI component (layerConext)
 
 chart = orthagonal.chart(targetElement, { /* spec */});
-chart.print(printer, {/* spec */})
+chart.print(template, {/* spec */})
 
 Extracting the orthagonal.chart() object is the last thing that needs
-to happen. I need the API for printers to be solidified. Then it
+to happen. I need the API for templates to be solidified. Then it
 doesn't matter if I rewrite the entire framework.
 
-As far as the printer API goes, there are no longer arguments. It's
+As far as the template API goes, there are no longer arguments. It's
 just a question of what belongs to this and what belongs to this.spec.
 
 If I want to keep data separate from the spec, I could just do:
 
 chart = orthagonal.chart(targetElement, data, { /* spec */});
-chart.print(printer, {/* spec */})
+chart.print(template, {/* spec */})
 
 Anyway, I can play around with different APIs for the framework, once
-the API for printers is defined. The context with which a printer
+the API for templates is defined. The context with which a template
 is called is where the real API lives. The framework is just gluing
-printers together.
+templates together.
