@@ -38,9 +38,6 @@ define(['./orthogonal', './grid'], function (orthogonal, Grid) {
             if (newData) this.options.data = newData;
 
             var options = this.options;
-            if (options.layers.length === 0 ) {
-                options.layers = ['borders','y-axis markers', 'bars','values above points'];
-            }
 
             if ( $.isFunction(options.data) ) {
                 options.data = options.data();
@@ -63,8 +60,6 @@ define(['./orthogonal', './grid'], function (orthogonal, Grid) {
 
             this.paper = Raphael(this.container, this.element.width(), this.element.height());
 
-            var layers = this.layers = [];
-
             this.options.spec.eventTarget = this.options.spec.eventTarget || this.element[0];
             var layerContext = {
                 grid: grid,
@@ -76,22 +71,7 @@ define(['./orthogonal', './grid'], function (orthogonal, Grid) {
                 applyLayer: function (layer, args) { layer.apply(this, args ); }
             };
 
-            $.each(options.layers, function () {
-                var layer = this;
-                var layerFunc;
-                var args = [];
-
-                if ( $.isArray(this) ) {
-                    layer = this[0];
-                    args = this.slice(1);
-                }
-
-
-                if ( $.isFunction(layer) ) {
-                    layers.push ( layer.apply(layerContext, args) );
-                }
-            });
-
+            this.layer = options.chartType.apply(layerContext);
 
         },
 
@@ -102,11 +82,9 @@ define(['./orthogonal', './grid'], function (orthogonal, Grid) {
 
         remove: function () {
 
-            $(this.layers).each(function () {
-                if ( this.remove ) {
-                    this.remove();
-                }
-            });
+            if (this.layer.remove) {
+                this.layer.remove();
+            }
 
             this.paper.remove();
             delete this.paper;

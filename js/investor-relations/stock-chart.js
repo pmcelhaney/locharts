@@ -290,7 +290,7 @@ define(['../chart/chart', '../math/money', '../chart/layers/candlestick-chart', 
 
 			candlestick.chart({
 				data: functionize(subset),
-				layers: [candlestickChart],
+				chartType: candlestickChart,
 				spec: {
 					marginBottom: 1,
 					marginTop: 10,
@@ -314,7 +314,7 @@ define(['../chart/chart', '../math/money', '../chart/layers/candlestick-chart', 
 				position: 'relative'
 			}).chart({
 				data: functionize(volumeSubset),
-				layers: [ volumeBarChart ],
+				chartType: volumeBarChart ,
 				spec: {
 					marginBottom: 20,
 					marginTop: 10,

@@ -30,6 +30,24 @@ define([ 'js/chart/chart', './grid-spec', './money-spec'], function() {
 			};
 		};
 
+		it("should load a chartType", function() {
+			var data;
+			var layer = function() {
+					data = this.data;
+				};
+
+			$('div').chart({
+				chartType: layer,
+				data: [
+					[2, 4, 6, 8]
+				]
+			});
+
+			expect(data).toEqual([
+				[2, 4, 6, 8]
+			]);
+		});
+
 		it("should make the data available to the layer", function() {
 			var data;
 			var layer = function() {
@@ -37,7 +55,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec'], function() {
 				};
 
 			$('div').chart({
-				layers: [layer],
+				chartType: layer,
 				data: [
 					[2, 4, 6, 8]
 				]
@@ -55,7 +73,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec'], function() {
 				};
 
 			$('div').chart({
-				layers: [layer],
+				chartType: layer,
 				data: function() {
 					return [2, 4, 6, 8];
 				}
@@ -74,7 +92,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec'], function() {
 				};
 
 			$('<div id="parentElement"></div>').chart({
-				layers: [layer],
+				chartType: layer,
 				data: [
 					[2, 4, 6, 8]
 				]
@@ -91,7 +109,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec'], function() {
 				};
 
 			var target = $('<div id="parentElement"></div>').chart({
-				layers: [layer],
+				chartType: layer,
 				data: [
 					[2, 4, 6, 8]
 				]
@@ -107,7 +125,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec'], function() {
 				};
 
 			var container = $('<div id="parentElement"></div>').chart({
-				layers: [layer],
+				chartType: layer,
 				data: [
 					[2, 4, 6, 8]
 				]
@@ -124,7 +142,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec'], function() {
 				};
 
 			$('<div></div>').chart({
-				layers: [layer],
+				chartType: layer,
 				data: [2, 4, 6, 8]
 			});
 
@@ -136,7 +154,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec'], function() {
 		it("should create a grid with the right height and width", function() {
 			var grid;
 			$('<div style="width: 600px; height: 400px"></div>').chart({
-				layers: [function() {}],
+				chartType: function() {},
 				data: [],
 				Grid: function(options) {
 					grid = options;
@@ -149,7 +167,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec'], function() {
 		it("should set the yMaxValue to 110% of the highest value in the data", function() {
 			var grid;
 			$('<div></div>').chart({
-				layers: [function() {}],
+				chartType: function() {},
 				data: [10, 20, 30, 40, 50],
 				Grid: function(options) {
 					grid = options;
@@ -171,11 +189,9 @@ define([ 'js/chart/chart', './grid-spec', './money-spec'], function() {
 					return options;
 				},
 
-				layers: [
-
-				function() {
+				chartType: function() {
 					grid = this.grid;
-				}],
+				},
 
 				data: [
 					[10, 20, 50]
@@ -212,11 +228,9 @@ define([ 'js/chart/chart', './grid-spec', './money-spec'], function() {
 					return options;
 				},
 
-				layers: [
-
-				function() {
+				chartType: function() {
 					grid = this.grid;
-				}],
+				},
 
 				data: [
 					[10, 20, 50]
@@ -230,7 +244,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec'], function() {
 		});
 
 
-		it("should apply each layer in order", function() {
+		xit("should apply each layer in order", function() {
 			var layers = [];
 			var Layer = function(name) {
 					return function() {
@@ -243,7 +257,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec'], function() {
 			expect(layers).toEqual(['one', 'two', 'three']);
 		});
 
-		it("should pass the options for a layer", function() {
+		xit("should pass the options for a layer", function() {
 			var args;
 			var layer = function() {
 					args = Array.prototype.slice.apply(arguments);
@@ -259,19 +273,25 @@ define([ 'js/chart/chart', './grid-spec', './money-spec'], function() {
 		it("should allow a layer to call another layer", function() {
 			var layers = [];
 
-			var subLayer = function (name, index) {
-				layers.push(name + index);
+			var SubLayer = function (name, index) {
+				return function () {
+					layers.push(name + index);
+				};
 			};
 
 			var Layer = function(name) {
 					return function() {
-						this.applyLayer(subLayer, [name, 1]);
-						this.applyLayer(subLayer, [name, 2]);
+						this.applyLayer(SubLayer(name, 1));
+						this.applyLayer(SubLayer(name, 2));
 					};
 				};
 
 			$('<div></div>').chart({
-				layers: [Layer('A'), Layer('B'), Layer('C')]
+				chartType: function () {
+					this.applyLayer(Layer('A'));
+					this.applyLayer(Layer('B'));
+					this.applyLayer(Layer('C'));
+				}
 			});
 			expect(layers).toEqual(['A1', 'A2', 'B1', 'B2', 'C1', 'C2']);
 		});
@@ -282,22 +302,19 @@ define([ 'js/chart/chart', './grid-spec', './money-spec'], function() {
 
 
 		it("should remove each layer when the chart is removed", function() {
-			var removedLayers = [];
-			var Layer = function(name) {
-					return function() {
-						return {
-							remove: function() {
-								removedLayers.push(name);
-							}
-						};
-					};
-				};
+			var layerWasRemoved = false;
+
 			$('<div></div>').chart({
-				layers: [Layer('one'), Layer('two'), Layer('three')]
+				chartType: function () {
+					return {
+						remove: function () {
+							layerWasRemoved = true;
+						}
+					};
+				}
 			}).chart('remove');
 
-
-			expect(removedLayers).toEqual(['one', 'two', 'three']);
+			expect(layerWasRemoved).toBeTruthy();
 		});
 
 
@@ -308,7 +325,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec'], function() {
 				};
 
 			$('<figure></figure>').chart({
-				layers: [layer],
+				chartType: layer,
 				data: [
 					[2, 4, 6, 8]
 				],
@@ -331,9 +348,8 @@ define([ 'js/chart/chart', './grid-spec', './money-spec'], function() {
 					};
 
 				element.chart({
-					layers: [layer]
+					chartType: layer
 				});
-
 			});
 
 			it("should be added to the relatively positioned wrapper inside the target element", function() {
