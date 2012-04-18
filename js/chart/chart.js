@@ -68,7 +68,7 @@ define(['./orthogonal', './grid'], function (orthogonal, Grid) {
                 element: this.element[0],
                 container: this.container,
                 spec: this.options.spec,
-                applyLayer: function (layer, args) { layer.apply(this, args ); }
+                print: function (layer, args) { layer.apply(this, args ); }
             };
 
             this.layer = options.chartType.apply(layerContext);

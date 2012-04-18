@@ -3,11 +3,11 @@ define(['./background', './y-axis-markers',  './x-axis-date-labels', './bars', '
 
     return function (labels) {
 
-        this.applyLayer(background);
-        this.applyLayer(yAxisMarkers, [function(n) { return (n / 1000 / 1000).toFixed(1) + 'm'; }, 'right']);
-        this.applyLayer(xAxisDateLabels);
-        this.applyLayer(bars, [0.5, 1]);
-        this.applyLayer(columnHotspots);
+        this.print(background);
+        this.print(yAxisMarkers, [function(n) { return (n / 1000 / 1000).toFixed(1) + 'm'; }, 'right']);
+        this.print(xAxisDateLabels);
+        this.print(bars, [0.5, 1]);
+        this.print(columnHotspots);
     };
 
 });

@@ -281,16 +281,16 @@ define([ 'js/chart/chart', './grid-spec', './money-spec'], function() {
 
 			var Layer = function(name) {
 					return function() {
-						this.applyLayer(SubLayer(name, 1));
-						this.applyLayer(SubLayer(name, 2));
+						this.print(SubLayer(name, 1));
+						this.print(SubLayer(name, 2));
 					};
 				};
 
 			$('<div></div>').chart({
 				chartType: function () {
-					this.applyLayer(Layer('A'));
-					this.applyLayer(Layer('B'));
-					this.applyLayer(Layer('C'));
+					this.print(Layer('A'));
+					this.print(Layer('B'));
+					this.print(Layer('C'));
 				}
 			});
 			expect(layers).toEqual(['A1', 'A2', 'B1', 'B2', 'C1', 'C2']);

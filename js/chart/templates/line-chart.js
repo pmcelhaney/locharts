@@ -3,12 +3,12 @@ define(['../../math/money', './bars', './background', './y-axis-markers', './x-a
 
     return function (labels) {
 
-        this.applyLayer(background);
-        this.applyLayer(yAxisMarkers, money);
-        this.applyLayer(xAxisLabelSeparators);
-        this.applyLayer(xAxisLabels);
-        this.applyLayer(lines);
-        this.applyLayer(dots);
+        this.print(background);
+        this.print(yAxisMarkers, money);
+        this.print(xAxisLabelSeparators);
+        this.print(xAxisLabels);
+        this.print(lines);
+        this.print(dots);
 
     };
 

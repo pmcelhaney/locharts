@@ -4,14 +4,14 @@ define(['../../math/money', './bars', './background', './y-axis-markers', './x-a
     return function (labels) {
  // ["borders", ["y-axis markers", money], "x-axis label separators", ["x-axis labels", labels], "area", "dots"]
 
-        this.applyLayer(background);
-        this.applyLayer(yAxisMarkers);
-        this.applyLayer(xAxisLabelSeparators);
-        this.applyLayer(xAxisLabels);
-        this.applyLayer(bars);
-        this.applyLayer(valuesAbovePoints);
-        this.applyLayer(bubble);
-        this.applyLayer(columnHotspots);
+        this.print(background);
+        this.print(yAxisMarkers);
+        this.print(xAxisLabelSeparators);
+        this.print(xAxisLabels);
+        this.print(bars);
+        this.print(valuesAbovePoints);
+        this.print(bubble);
+        this.print(columnHotspots);
 
     };
 

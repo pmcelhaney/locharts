@@ -3,11 +3,11 @@ define(['../../math/money', './background', './y-axis-markers',  './candlestick'
 
     return function (labels) {
 
-        this.applyLayer(background);
-        this.applyLayer(yAxisMarkers, [money, 'right']);
-        this.applyLayer(candlestick);
-        this.applyLayer(hoverDots);
-        this.applyLayer(columnHotspots);
+        this.print(background);
+        this.print(yAxisMarkers, [money, 'right']);
+        this.print(candlestick);
+        this.print(hoverDots);
+        this.print(columnHotspots);
     };
 
 });
