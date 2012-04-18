@@ -1,6 +1,6 @@
 /*global define*/
 
-define(['../chart/chart', '../chart/layers/hycd-abtest'], function (chart,  hycdAbtest) {
+define(['../chart/chart', '../chart/templates/hycd-abtest'], function (chart,  hycdAbtest) {
 
     $(function () {
 
@@ -30,7 +30,7 @@ define(['../chart/chart', '../chart/layers/hycd-abtest'], function (chart,  hycd
 
     orthogonal.createChart({
         data: [1.00, 0.50, 0.35, 0.25, 0.20, 0.05],
-        layers: [ hycdAbtest ],
+        templates: [ hycdAbtest ],
         meta: {
                 labels: ['Ally', 'ING Direct', 'Bank of America', 'Chase', 'HSBC Advance', 'Wells Fargo'],
                 colors: ['270-rgb(55,152,199)-rgb(70,195,255)']

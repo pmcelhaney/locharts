@@ -1,6 +1,6 @@
 /*global define*/
 
-define(['../chart/chart', '../chart/layers/bar-chart', '../math/money'], function (chart, barChart, money) {
+define(['../chart/chart', '../chart/templates/bar-chart', '../math/money'], function (chart, barChart, money) {
 
     $(function () {
         var labels = ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)'];

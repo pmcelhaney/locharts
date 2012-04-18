@@ -21,7 +21,7 @@ define(['./orthogonal', './grid'], function (orthogonal, Grid) {
 
       $.widget("ally.chart", {
         options: {
-            layers: [],
+            templates: [],
             spec: {}
         },
 

@@ -1,6 +1,6 @@
 /*global define*/
 
-define(['../chart/chart', '../chart/layers/line-chart', '../math/money'], function (chart, lineChart, money) {
+define(['../chart/chart', '../chart/templates/line-chart', '../math/money'], function (chart, lineChart, money) {
 
     $(function () {
 

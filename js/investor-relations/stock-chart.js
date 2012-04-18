@@ -1,6 +1,6 @@
 /*global define, ALLY, document, window, setTimeout, forms, s, $, Image */
 
-define(['../chart/chart', '../math/money', '../chart/layers/candlestick-chart', '../chart/layers/stock-volume-bar-chart'], function(chart, Money, candlestickChart, volumeBarChart) {
+define(['../chart/chart', '../math/money', '../chart/templates/candlestick-chart', '../chart/templates/stock-volume-bar-chart'], function(chart, Money, candlestickChart, volumeBarChart) {
 
 	if ($.support.svg === undefined) {
 		$.support.svg = window.SVGAngle || document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1");

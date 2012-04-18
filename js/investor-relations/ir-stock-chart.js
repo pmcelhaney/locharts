@@ -316,9 +316,9 @@ ALLY.define('chart-grid', [], function () {
 
 
 /*******************************************************************************************
-chart-layers
+chart-templates
 
-This is where all of the Raphael drawing takes place. Only the layers that are used by the
+This is where all of the Raphael drawing takes place. Only the templates that are used by the
 stock chart have been included.
 
 See the readme.md file in the ally-charts project.
@@ -326,7 +326,7 @@ See the readme.md file in the ally-charts project.
 
 
 
-ALLY.define('chart-layers', [], function () {
+ALLY.define('chart-templates', [], function () {
 
 
 var COLORS = {
@@ -596,7 +596,7 @@ $.fn.chart() definition
 See the readme.md file in the ally-charts project.
 *********************************************************************************************/
 
-ALLY.define('chart', ['chart-grid', 'chart-layers'], function (Grid, builtInLayers) {
+ALLY.define('chart', ['chart-grid', 'chart-templates'], function (Grid, builtIntemplates) {
 	
 	var dataMax = function (data) {
 
@@ -661,7 +661,7 @@ ALLY.define('chart', ['chart-grid', 'chart-layers'], function (Grid, builtInLaye
 			
 			this.paper = Raphael(this.container, this.element.width(), this.element.height());
 			
-			var layers = this.layers = [];
+			var templates = this.templates = [];
 			
 			var layerContext = { 
 				grid: grid,
@@ -673,7 +673,7 @@ ALLY.define('chart', ['chart-grid', 'chart-layers'], function (Grid, builtInLaye
 			};
 		
 
-			$.each(options.layers, function () {
+			$.each(options.templates, function () {
 				var layer = this;
 				var layerFunc;
 				var args = [];
@@ -683,10 +683,10 @@ ALLY.define('chart', ['chart-grid', 'chart-layers'], function (Grid, builtInLaye
 					args = this.slice(1);	
 				} 
 
-				layerFn =  $.isFunction(layer) ? layer : builtInLayers[layer] ;
+				layerFn =  $.isFunction(layer) ? layer : builtIntemplates[layer] ;
 
 				if ( $.isFunction(layerFn) ) {		
-					layers.push ( layerFn.apply(layerContext, args) );	
+					templates.push ( layerFn.apply(layerContext, args) );	
 				}
 			});
 		  
@@ -701,7 +701,7 @@ ALLY.define('chart', ['chart-grid', 'chart-layers'], function (Grid, builtInLaye
 		
 		remove: function () {
 	   
-			$(this.layers).each(function () {
+			$(this.templates).each(function () {
 				 if ( this.remove ) {
 					 this.remove(); 
 				 }
@@ -994,7 +994,7 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 			
 			candlestick.chart({
 				data: functionize(subset),
-				layers: [
+				templates: [
 					"borders", 
 					["y-axis markers", 6, Money, 'right'], 
 					["y-axis header", "Price", "right"],
@@ -1015,7 +1015,7 @@ ALLY.define('stock-chart', ['chart', 'money'], function (chart, Money) {
 			.after('<div id="volume-bar-chart"></div>').find('+div').css({width: $('#candlestick').width(), height: 100, position: 'relative'})
 			.chart({
 				data: functionize(volumeSubset),
-				layers: [
+				templates: [
 					"borders", 
 					["y-axis markers", 3, function (n) { return (n / 1000 / 1000).toFixed(1)  + 'm'; }, 'right'], 
 					["y-axis header", "Volume", "right"],

@@ -166,7 +166,7 @@ define(['../chart-core/chart', '../math/money'], function (chart, Money) {
 
             $('#candlestick').chart({
                 data: functionize(subset),
-                layers: [
+                templates: [
                     "borders",
                     ["y-axis markers", 6, Money],
                     "candlestick",
@@ -188,7 +188,7 @@ define(['../chart-core/chart', '../math/money'], function (chart, Money) {
             .after('<div></div>').find('+div').css({width: $('#candlestick').width(), height: 100, position: 'relative'})
             .chart({
                 data: functionize(volumeSubset),
-                layers: [
+                templates: [
                     "borders",
                     ["y-axis markers", 3, function (n) { return n / 1000 / 1000 + 'm'; }],
                     "x-axis date labels",
@@ -210,7 +210,7 @@ define(['../chart-core/chart', '../math/money'], function (chart, Money) {
             .after('<div id="scrubber"></div>').find('+div').css({width: $('#candlestick').width(), height: 50})
             .chart({
                 data: functionize(data),
-                layers: [
+                templates: [
                     "borders",
                     "area",
                     ["scrubber", indexForDate(startDate), indexForDate(endDate)]
