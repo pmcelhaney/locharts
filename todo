@@ -1,7 +1,7 @@
+- put arguments from bars into spec
+- tag version 0.1 and start stripping away all the cruft
 - rewrite the documentation
-- rename layers to templates
 - (maybe) add some built-in templates mapped to strings
-- build utilities for getting data from the HTML (see thoughts-on-using-html.md)
 - extract a chart object from the jQuery UI component (layerConext)
 
 chart = orthagonal.chart(targetElement, { /* spec */});

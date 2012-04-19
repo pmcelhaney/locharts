@@ -1,4 +1,4 @@
-define([ './grid'], function ( Grid) {
+define([ './grid', './scraper'], function ( Grid, scraper) {
 
     var dataMax = function (data) {
 
@@ -27,8 +27,28 @@ define([ './grid'], function ( Grid) {
 
         _create: function () {
             this.container = $('<div></div>').css('position', 'relative').appendTo(this.element[0])[0];
+            this._applyHtml5Data();
             this.draw();
         },
+
+        _applyHtml5Data: function () {
+            var html5Data = $(this.element).data();
+            var spec = this.options.spec;
+            if(html5Data.values) {
+                this.options.data = $('html').scrape([html5Data.values], parseFloat);
+            }
+            if(html5Data.labels && !this.options.spec.labels) {
+                spec.labels = $('html').scrape([html5Data.labels]);
+            }
+
+            spec.marginTop = spec.marginTop || html5Data.marginTop;
+            spec.marginRight = spec.marginRight || html5Data.marginRight;
+            spec.marginBottom = spec.marginBottom || html5Data.marginBottom;
+            spec.marginLeft = spec.marginLeft || html5Data.marginLeft;
+
+            spec.colors = spec.colors || ['#000', '#999'];
+        },
+
         draw: function(newData) {
 
 

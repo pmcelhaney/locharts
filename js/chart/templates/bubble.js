@@ -4,12 +4,14 @@ define(function () {
         return a[ i % a.length ];
     };
 
-    return function (textContent) {
+    return function () {
         var grid = this.grid;
         var data = this.data;
         var width = 130;
         var height = 40;
         var colors = this.spec.colors;
+        var labels = this.spec.labels;
+
 
         var textPosition = function (i, datum) {
             return {
@@ -18,8 +20,8 @@ define(function () {
             };
         };
 
-        textContent = this.spec.bubbleFormatter || textContent || function (i, value) {
-            return i + ': ' + value.toString();
+        textContent = this.spec.bubbleFormatter || function (i, value) {
+            return (labels ? labels[i] + ': ' : '') + value.toString();
         };
 
         var text = $('<div id="text"></div>')

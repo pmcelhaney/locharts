@@ -1,4 +1,8 @@
 define(function() {
+	var roundRobin = function ( a, i ) {
+			return a[ i % a.length ];
+		};
+
 
 	return function(widthFactor, opacity, radius) {
 		opacity = opacity || 0.8;
@@ -11,12 +15,10 @@ define(function() {
 		var width = Math.round(grid.columnWidth() * (widthFactor || 0.5));
 
 		var colors = this.spec['colors'] || [];
-		var roundRobin = function ( a, i ) {
-				return a[ i % a.length ];
-			};
 
-		var fillColor = colors[0] || grid.gradient(0);
-		var highlightColor = roundRobin(colors, 1) || grid.gradient(1);
+
+		var fillColor = colors[0] || '#000';
+		var highlightColor = roundRobin(colors, 1) || '#999';
 
 		var yForBottomEdge = grid.yForBottomEdge();
 

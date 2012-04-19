@@ -362,6 +362,55 @@ define([ 'js/chart/chart', './grid-spec', './money-spec', './scraper-spec'], fun
 
 		});
 
+		describe("Using data attributes", function () {
+
+			it("should support data-values", function() {
+				var data;
+
+				var table = $('<table id="source-table"><tr><td>2<td>4<td>6<td>8</table>').appendTo('body');
+				$('<figure data-values="#source-table td"></figure>').chart({
+					template: function() {
+						data = this.data;
+					}
+				});
+
+				expect(data).toEqual([
+					[2, 4, 6, 8]
+				]);
+
+				table.remove();
+			});
+
+			it("should support data-labels", function() {
+				var labels;
+
+				var ol = $('<ol id="list-o-labels"><li>alpha<li>bravo<li>charlie</ol>').appendTo('body');
+				$('<figure data-labels="#list-o-labels li"></figure>').chart({
+					template: function() {
+						labels = this.spec.labels;
+					}
+				});
+
+				expect(labels).toEqual(['alpha', 'bravo', 'charlie']);
+
+				ol.remove();
+			});
+
+			it("should support data-margin-x", function() {
+				var margins;
+
+				$('<figure data-margin-top="12" data-margin-right="3" data-margin-bottom="6" data-margin-left="9"></figure>').chart({
+					template: function() {
+						margins = [this.spec.marginTop, this.spec.marginRight, this.spec.marginBottom, this.spec.marginLeft];
+					}
+				});
+
+				expect(margins).toEqual([12, 3, 6, 9]);
+
+			});
+
+		});
+
 	});
 
 });

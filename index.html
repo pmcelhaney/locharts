@@ -38,6 +38,19 @@
 	th, td {
 		text-align: center;
 	}
+
+	#baseball-standings {
+		width: 400px;
+		border: 1px solid #ccc;
+	}
+
+	#baseball-standings td {
+		text-align: left;
+	}
+
+	figure {
+		margin: 0;
+	}
 </style>
 
 
@@ -167,6 +180,43 @@
 
 <div id="pie-chart" style="width:800px; height:400px;"></div>
 
+
+<h2>Using Data Attributes</h2>
+
+
+<table id="baseball-standings">
+	<tr>
+		<td>Baltimore</td>
+		<td>6</td>
+	</tr>
+	<tr>
+		<td>Toronto</td>
+		<td>5</td>
+	</tr>
+	<tr>
+		<td>NY Yankees</td>
+		<td>5</td>
+	</tr>
+	<tr>
+		<td>Tampa Bay</td>
+		<td>5</td>
+	</tr>
+	<tr>
+		<td>Boston</td>
+		<td>4</td>
+	</tr>
+
+</table>
+
+
+<figure
+ 	style="width: 800px; height: 400px;"
+	class="bar-chart"
+	data-margin-left="50"
+	data-margin-right="50"
+	data-labels="#baseball-standings td:nth-of-type(1)"
+	data-values="#baseball-standings td:nth-of-type(2)"
+	></figure>
 
 
 	<!-- <div id="local"></div> -->
