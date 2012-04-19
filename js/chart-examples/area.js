@@ -10,7 +10,7 @@ define(['../chart/chart', '../chart/templates/area-chart', '../math/money'], fun
                 [money(100), money(200), money(400), money(600)],
                 [money(100), money(200), money(400), money(800)]
             ],
-            chartType: areaChart,
+            template: areaChart,
             spec: {
                 edgeToEdge: true,
                 labels:  ['1st term (12 mo)', '1 renewal (2 yr)', '2 renewals (3 yr)', '3 renewals (4 yr)'],

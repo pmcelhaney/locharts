@@ -30,14 +30,14 @@ define([ 'js/chart/chart', './grid-spec', './money-spec', './scraper-spec'], fun
 			};
 		};
 
-		it("should load a chartType", function() {
+		it("should load a template", function() {
 			var data;
 			var layer = function() {
 					data = this.data;
 				};
 
 			$('div').chart({
-				chartType: layer,
+				template: layer,
 				data: [
 					[2, 4, 6, 8]
 				]
@@ -55,7 +55,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec', './scraper-spec'], fun
 				};
 
 			$('div').chart({
-				chartType: layer,
+				template: layer,
 				data: [
 					[2, 4, 6, 8]
 				]
@@ -73,7 +73,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec', './scraper-spec'], fun
 				};
 
 			$('div').chart({
-				chartType: layer,
+				template: layer,
 				data: function() {
 					return [2, 4, 6, 8];
 				}
@@ -92,7 +92,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec', './scraper-spec'], fun
 				};
 
 			$('<div id="parentElement"></div>').chart({
-				chartType: layer,
+				template: layer,
 				data: [
 					[2, 4, 6, 8]
 				]
@@ -109,7 +109,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec', './scraper-spec'], fun
 				};
 
 			var target = $('<div id="parentElement"></div>').chart({
-				chartType: layer,
+				template: layer,
 				data: [
 					[2, 4, 6, 8]
 				]
@@ -125,7 +125,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec', './scraper-spec'], fun
 				};
 
 			var container = $('<div id="parentElement"></div>').chart({
-				chartType: layer,
+				template: layer,
 				data: [
 					[2, 4, 6, 8]
 				]
@@ -142,7 +142,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec', './scraper-spec'], fun
 				};
 
 			$('<div></div>').chart({
-				chartType: layer,
+				template: layer,
 				data: [2, 4, 6, 8]
 			});
 
@@ -154,7 +154,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec', './scraper-spec'], fun
 		it("should create a grid with the right height and width", function() {
 			var grid;
 			$('<div style="width: 600px; height: 400px"></div>').chart({
-				chartType: function() {},
+				template: function() {},
 				data: [],
 				Grid: function(options) {
 					grid = options;
@@ -167,7 +167,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec', './scraper-spec'], fun
 		it("should set the yMaxValue to 110% of the highest value in the data", function() {
 			var grid;
 			$('<div></div>').chart({
-				chartType: function() {},
+				template: function() {},
 				data: [10, 20, 30, 40, 50],
 				Grid: function(options) {
 					grid = options;
@@ -189,7 +189,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec', './scraper-spec'], fun
 					return options;
 				},
 
-				chartType: function() {
+				template: function() {
 					grid = this.grid;
 				},
 
@@ -228,7 +228,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec', './scraper-spec'], fun
 					return options;
 				},
 
-				chartType: function() {
+				template: function() {
 					grid = this.grid;
 				},
 
@@ -287,7 +287,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec', './scraper-spec'], fun
 				};
 
 			$('<div></div>').chart({
-				chartType: function () {
+				template: function () {
 					this.print(Layer('A'));
 					this.print(Layer('B'));
 					this.print(Layer('C'));
@@ -305,7 +305,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec', './scraper-spec'], fun
 			var layerWasRemoved = false;
 
 			$('<div></div>').chart({
-				chartType: function () {
+				template: function () {
 					return {
 						remove: function () {
 							layerWasRemoved = true;
@@ -325,7 +325,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec', './scraper-spec'], fun
 				};
 
 			$('<figure></figure>').chart({
-				chartType: layer,
+				template: layer,
 				data: [
 					[2, 4, 6, 8]
 				],
@@ -348,7 +348,7 @@ define([ 'js/chart/chart', './grid-spec', './money-spec', './scraper-spec'], fun
 					};
 
 				element.chart({
-					chartType: layer
+					template: layer
 				});
 			});
 

@@ -70,7 +70,7 @@ define([ './grid'], function ( Grid) {
                 print: function (layer, args) { layer.apply(this, args ); }
             };
 
-            this.layer = options.chartType.apply(layerContext);
+            this.layer = options.template.apply(layerContext);
 
         },
 
