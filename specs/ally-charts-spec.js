@@ -7,7 +7,7 @@ window.logTime = function() {
 
 
 
-define([ 'js/chart/chart', './grid-spec', './money-spec'], function() {
+define([ 'js/chart/chart', './grid-spec', './money-spec', './scraper-spec'], function() {
 
 
 
