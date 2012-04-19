@@ -1,4 +1,4 @@
-define(['./orthogonal', './grid'], function (orthogonal, Grid) {
+define([ './grid'], function ( Grid) {
 
     var dataMax = function (data) {
 
@@ -27,7 +27,6 @@ define(['./orthogonal', './grid'], function (orthogonal, Grid) {
 
         _create: function () {
             this.container = $('<div></div>').css('position', 'relative').appendTo(this.element[0])[0];
-            this.chart = orthogonal.chart(this.element);
             this.draw();
         },
         draw: function(newData) {

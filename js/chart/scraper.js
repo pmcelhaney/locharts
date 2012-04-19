@@ -1,13 +1,15 @@
 /*global define*/
 
 define(function () {
-    $.fn.scrape  =  function (template) {
+    var filter = function (val) { return val; };
+    $.fn.scrape  =  function (template, customFilter) {
+        filter = customFilter || filter;
         return scrape(this, template);
     };
 
     var scrape = function (context, template) {
         if (typeof template === "string") {
-            return $(context).find(template).text();
+            return filter( $(context).find(template).text() );
         }
 
         if ($.isArray(template)) {
@@ -42,6 +44,6 @@ define(function () {
     };
 
     var scrapeValues = function (context, selector) {
-        return $(context).find(selector).map( function () { return $(this).text(); } ).toArray();
+        return $(context).find(selector).map( function () { return filter ( $(this).text() ); } ).toArray();
     };
 });

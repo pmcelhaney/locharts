@@ -55,26 +55,11 @@ define(['js/chart/scraper'], function (scraper) {
             expect(data).toEqual([ {a: '1', b: '2', c: '3'}, {a: '1', b: '4', c: '9'}, {a: '2', b: '4', c: '6'} ]);
         });
 
+        it("should filter values through a function if passed", function () {
+            var data = $('<ul><li>3</li><li>6</li><li>9</li></ul>').scrape(['li'], parseFloat);
+            expect(data).toEqual([3, 6, 9]);
+        });
+
     });
-
-
-    // $(html).scrape({open: 'td:nth-child(1)', close: 'td:nth-child(2)', valueOf: 'td:nth-child(2)'});
-
-    // // into an a string
-    // 'selector';
-
-    // // into an array
-    // ['selector'];
-
-
-    // // into a an array of arrays
-    // ['selector', 'context-selector'];
-
-    // // into an objet
-    // {'key': 'selector', 'key': 'selector'};
-
-    // // into an array of objects
-    // [{ 'key': 'selector', 'key': 'selector' }, 'context-slector'];
-
 
 });
