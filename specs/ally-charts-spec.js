@@ -10,6 +10,15 @@ window.logTime = function() {
 define([ 'js/chart/chart', './grid-spec', './money-spec', './scraper-spec'], function() {
 
 
+	window.Raphael = function(c, w, h) {
+		return {
+			container: c,
+			width: w,
+			height: h,
+			remove: function() {}
+		};
+	};
+
 
 	describe("Chart Widget", function() {
 		/*
@@ -19,16 +28,6 @@ define([ 'js/chart/chart', './grid-spec', './money-spec', './scraper-spec'], fun
 	*/
 		var mockLayerWasCalled = false;
 
-
-
-		window.Raphael = function(c, w, h) {
-			return {
-				container: c,
-				width: w,
-				height: h,
-				remove: function() {}
-			};
-		};
 
 		it("should load a template", function() {
 			var data;
