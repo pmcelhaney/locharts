@@ -1,8 +1,51 @@
-- put arguments from bars into spec
-- tag version 0.1 and start stripping away all the cruft
+TO SHIP
+[ ] HYCD Landing Page
+[ ] A/B Testing
+[ ] CD Laddering
+[ ] Stock Price Information
+
+TO DO (in support of shipping)
+[ ] create a stand-alone demo page for the HYCD landing page
+[ ] build the HYCD landing template
+[ ] build script that includes the HYCD chart and its dependencies
+[ ] implement the HYCD chart on the actual page
+
+
+
+
+
+
+
+
+NOT TO DO (yet)
+- fix issues in templates that aren't shipping
+- add some built in templates mapped to strings
+- tag version 0.5 and start stripping away all the cruft
 - rewrite the documentation
-- (maybe) add some built-in templates mapped to strings
 - extract a chart object from the jQuery UI component (layerConext)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DON'T EVEN THINK ABOUT IT
+
+I can play around with different APIs for the framework later.
+The API for templates is defined. The context with which a template
+is called is where the real API lives. The framework is just gluing
+templates together.
 
 chart = orthagonal.chart(targetElement, { /* spec */});
 chart.print(template, {/* spec */})
@@ -18,8 +61,3 @@ If I want to keep data separate from the spec, I could just do:
 
 chart = orthagonal.chart(targetElement, data, { /* spec */});
 chart.print(template, {/* spec */})
-
-Anyway, I can play around with different APIs for the framework, once
-the API for templates is defined. The context with which a template
-is called is where the real API lives. The framework is just gluing
-templates together.

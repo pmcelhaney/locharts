@@ -4,9 +4,10 @@ define(function() {
 		};
 
 
-	return function(widthFactor, opacity, radius) {
-		opacity = opacity || 0.8;
-		radius = radius || 0;
+	return function() {
+		var widthFactor = this.spec.widthFactor || 0.8;
+		var opacity = this.spec.opacity || 0.8;
+		var radius = this.spec.barRadius || 0;
 		var grid = this.grid;
 		var paper = this.paper;
 		var eventTarget = this.spec.eventTarget;
