@@ -28,7 +28,7 @@ define(function() {
 		$(this.data[0]).each(function(i) {
 			var datum = this;
 
-			var left = Math.floor(grid.xForIndex(i) - width / 2);
+			var left = Math.floor(grid.xForIndex(i) - width / 2 + (grid.columnWidth() * (1 - widthFactor) / 2));
 			var top = grid.yForValue(datum);
 			var height = yForBottomEdge - top;
 			var x = left + 0.5;
