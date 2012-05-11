@@ -2,11 +2,12 @@
 
     baseUrl: "./js",
     name: "almond",
-    include: ["chart"],
-    out: "build/ally.chart.js",
+    include: ["chart/chart"],
+    out: "build/jquery.locharts.js",
     optimize: "none",
     wrap: {
-      start: '/* Ally Charts - version $version */\n\n(function(){',
-      end: '}());'
+      startFile: 'build.start.txt',
+      endFile: 'build.end.txt'
     }
+
 })
