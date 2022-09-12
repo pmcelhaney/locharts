@@ -1,5 +1,8 @@
 # LoCharts
 
+> Note: I built this before [D3](https://en.wikipedia.org/wiki/D3.js) was created. It was fun, and the code was still in use on Ally Bank's web site last time I checked (about 10 years later), but if you're looking for a modern charting library that's maintained, check out D3. 
+
+
 ## Overview
 Locharts is a library for building beatiful charts on the web. It's designed to be as easy-as-possible to use, whether you desire:
 
