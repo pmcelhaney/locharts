@@ -4,6 +4,8 @@
 
 ## Overview
 
+[Check out some examples!](https://patrickmcelhaney.com/locharts)
+
 LoCharts is a library for building beautiful charts on the web. It's designed to be as easy-as-possible to use, whether you desire:
 
 - a quick out-of-the box solution with a few customization options
